@@ -25,7 +25,7 @@ This repository contains comprehensive documentation and guides on how to use th
 
 ## Getting Started
 
-Visit the [documentation site](https://lobstr.io/docs) or browse the files in this repository to learn how to utilize the lobstr.io API.
+Visit the [documentation site](https://docs.lobstr.io/) or browse the files in this repository to learn how to utilize the lobstr.io API.
 
 ### Typical API Workflow
 
