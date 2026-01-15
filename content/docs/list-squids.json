@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint returns a paginated list of all squids belonging to the authenticated user. You can search by name and control pagination with query parameters.\n\n{{RENDER:responseStructure}}\n\n{{RENDER:squidObjectFields}}",
+    "introduction": "This endpoint returns a paginated list of all squids belonging to the authenticated user. You can search by name and control pagination with query parameters.",
     "sections": {
       "responseStructure": {
         "title": "Response Structure",

@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint removes all tasks and their associated results from a specified squid, returning the number of deleted items while keeping the squid's configuration intact.\n\n## What Gets Deleted\n\nDepending on the `type` parameter:\n- **url**: Removes all URL-based tasks and their results\n- **params**: Removes all parameter-based tasks and their results\n\nThe squid itself remains with all its settings (name, parameters, integrations, schedule) preserved. This is useful when you want to:\n- Clear old tasks before adding new ones\n- Reset a squid without losing its configuration\n- Remove tasks that are no longer needed\n\n{{RENDER:requestBody}}\n\n{{RENDER:responseFields}}",
+    "introduction": "This endpoint removes all tasks and their associated results from a specified squid, returning the number of deleted items while keeping the squid's configuration intact.\n\n## What Gets Deleted\n\nDepending on the `type` parameter:\n- **url**: Removes all URL-based tasks and their results\n- **params**: Removes all parameter-based tasks and their results\n\nThe squid itself remains with all its settings (name, parameters, integrations, schedule) preserved. This is useful when you want to:\n- Clear old tasks before adding new ones\n- Reset a squid without losing its configuration\n- Remove tasks that are no longer needed",
     "sections": {
       "requestBody": {
         "title": "Request Body",

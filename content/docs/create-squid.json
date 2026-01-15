@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint creates a new squid for a specified crawler by providing the crawler's hash ID. A squid is a container that groups together related tasks and configurations for a specific scraping operation.\n\n## What is a Squid?\n\nA squid acts as a project workspace for your scraping tasks:\n- **Groups tasks**: All URLs or items you want to scrape with the same crawler\n- **Stores configuration**: Crawler parameters, concurrency settings, delivery options\n- **Manages runs**: Tracks execution history and results\n- **Enables scheduling**: Set up automated recurring scrapes\n\n{{RENDER:bodyParameters}}\n\n{{RENDER:responseFields}}",
+    "introduction": "This endpoint creates a new squid for a specified crawler by providing the crawler's hash ID. A squid is a container that groups together related tasks and configurations for a specific scraping operation.\n\n## What is a Squid?\n\nA squid acts as a project workspace for your scraping tasks:\n- **Groups tasks**: All URLs or items you want to scrape with the same crawler\n- **Stores configuration**: Crawler parameters, concurrency settings, delivery options\n- **Manages runs**: Tracks execution history and results\n- **Enables scheduling**: Set up automated recurring scrapes",
     "sections": {
       "bodyParameters": {
         "title": "Request Body",

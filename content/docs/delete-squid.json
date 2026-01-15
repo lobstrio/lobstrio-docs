@@ -9,7 +9,32 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint permanently deletes a specified squid and all its associated data (tasks, results, and configurations) from Lobstr.io.\n\n## What Gets Deleted\n\nWhen you delete a squid, the following are permanently removed:\n- The squid itself and all its settings\n- All tasks (URLs and parameters)\n- All results and run history\n- All configuration (parameters, integrations, schedule)\n- Any pending or active runs\n\n## Important Notes\n\n⚠️ **This action is irreversible.** Once deleted, the squid and all its data cannot be recovered.\n\nIf you want to:\n- Temporarily stop a squid: Use Update Squid to set `is_active: false`\n- Clear tasks but keep configuration: Use Empty Squid instead\n- Preserve run history: Download results before deleting\n\n## Response\n\nThe endpoint returns a simple confirmation:\n- **id**: The deleted squid's identifier\n- **object**: Always \"squid\"\n- **deleted**: Boolean confirming deletion (always true on success)",
+    "introduction": "This endpoint permanently deletes a specified squid and all its associated data (tasks, results, and configurations) from Lobstr.io.\n\n## What Gets Deleted\n\nWhen you delete a squid, the following are permanently removed:\n- The squid itself and all its settings\n- All tasks (URLs and parameters)\n- All results and run history\n- All configuration (parameters, integrations, schedule)\n- Any pending or active runs",
+    "sections": {
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "id",
+            "type": "string",
+            "description": "The deleted squid's identifier",
+            "example": "\"5b071952127e47d2adc8d684ff24dbd2\""
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"squid\"",
+            "example": "\"squid\""
+          },
+          {
+            "path": "deleted",
+            "type": "boolean",
+            "description": "Boolean confirming deletion (always true on success)",
+            "example": "true"
+          }
+        ]
+      }
+    },
     "parameters": [
       {
         "name": "squid_hash",
