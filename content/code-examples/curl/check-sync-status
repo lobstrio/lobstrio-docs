@@ -1,0 +1,2 @@
+curl -X GET "https://api.lobstr.io/v1/synchronize/75bed0d425c4bc1912a17fe9fc4dd2a1" \
+  -H "Authorization: Token YOUR_API_KEY"
