@@ -54,10 +54,10 @@ export default function DocContent({ content }: DocContentProps) {
   };
 
   // Process introduction: render {{RENDER:}} sections inline, track which were rendered
-  const processIntroductionWithSections = (): { parts: (string | JSX.Element)[]; renderedSections: Set<string> } => {
+  const processIntroductionWithSections = (): { parts: (string | React.ReactNode)[]; renderedSections: Set<string> } => {
     const text = content.content.introduction;
     const markerRegex = /\{\{RENDER:(\w+)\}\}/g;
-    const parts: (string | JSX.Element)[] = [];
+    const parts: (string | React.ReactNode)[] = [];
     const renderedSections = new Set<string>();
     let lastIndex = 0;
     let match;

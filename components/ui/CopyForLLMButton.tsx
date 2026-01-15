@@ -52,9 +52,19 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
       formatted += '\n';
     }
 
-    formatted += `## cURL Example\n\n\`\`\`bash\n${content.examples.curl}\n\`\`\`\n\n`;
-    formatted += `## Python Example\n\n\`\`\`python\n${content.examples.python}\n\`\`\`\n\n`;
-    formatted += `## Response (${content.examples.response.status})\n\n\`\`\`json\n${content.examples.response.body}\n\`\`\`\n\n`;
+    // Add language examples
+    if (content.examples.languages && content.examples.languages.length > 0) {
+      content.examples.languages.forEach((lang) => {
+        formatted += `## ${lang.label} Example\n\n\`\`\`${lang.language}\n${lang.code}\n\`\`\`\n\n`;
+      });
+    }
+
+    // Add response examples
+    if (content.examples.responses && content.examples.responses.length > 0) {
+      content.examples.responses.forEach((resp) => {
+        formatted += `## Response (${resp.status})\n\n\`\`\`json\n${resp.body}\n\`\`\`\n\n`;
+      });
+    }
 
     if (content.content.proTips.length > 0) {
       formatted += `## Pro Tips\n\n`;
