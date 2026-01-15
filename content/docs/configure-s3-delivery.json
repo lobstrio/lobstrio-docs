@@ -1,0 +1,140 @@
+{
+  "slug": "configure-s3-delivery",
+  "title": "Configure Amazon S3 Delivery",
+  "description": "Export squid run results directly to an AWS S3 bucket",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery?squid={squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure Amazon S3 delivery to export run results directly to an AWS S3 bucket. Results will be automatically uploaded to your specified bucket and path when runs complete.\n\n## Authentication Options\n\nYou can authenticate with S3 in two ways:\n\n1. **AWS Credentials**: Provide `aws_access_key` and `aws_secret_key` in the request\n2. **Bucket Policy**: If you don't provide credentials, ensure your bucket policy allows public WRITE permissions",
+    "sections": {
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "s3_fields.bucket",
+            "type": "string",
+            "required": true,
+            "description": "Name of the S3 bucket where data will be stored",
+            "example": "\"my-bucket\""
+          },
+          {
+            "name": "s3_fields.is_active",
+            "type": "boolean",
+            "required": true,
+            "description": "Set to true to enable S3 delivery, false to disable",
+            "example": "true"
+          },
+          {
+            "name": "s3_fields.target_path",
+            "type": "string",
+            "required": true,
+            "description": "Folder path inside the bucket where results will be saved",
+            "example": "\"exports\""
+          },
+          {
+            "name": "s3_fields.aws_access_key",
+            "type": "string",
+            "required": false,
+            "description": "(Optional) AWS Access Key for authentication. If not provided, bucket must have public WRITE permissions",
+            "example": "\"AKIAIOSFODNN7EXAMPLE\""
+          },
+          {
+            "name": "s3_fields.aws_secret_key",
+            "type": "string",
+            "required": false,
+            "description": "(Optional) AWS Secret Key for authentication. If not provided, bucket must have public WRITE permissions",
+            "example": "\"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\""
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "s3_fields.bucket",
+            "type": "string",
+            "description": "S3 bucket name",
+            "example": "\"my-bucket\""
+          },
+          {
+            "path": "s3_fields.is_active",
+            "type": "boolean",
+            "description": "Whether S3 delivery is active",
+            "example": "true"
+          },
+          {
+            "path": "s3_fields.target_path",
+            "type": "string",
+            "description": "Target folder path in bucket",
+            "example": "\"exports\""
+          },
+          {
+            "path": "s3_fields.aws_access_key",
+            "type": "string",
+            "description": "AWS Access Key (returned if provided)",
+            "example": "\"AKIAIOSFODNN7EXAMPLE\""
+          },
+          {
+            "path": "s3_fields.aws_secret_key",
+            "type": "string",
+            "description": "AWS Secret Key (returned if provided)",
+            "example": "\"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\""
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the squid for which to configure S3 delivery",
+        "example": "c106a44a98044ef18acc59986ae10967"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "warning",
+        "content": "If you don't provide AWS credentials, your bucket policy MUST allow public WRITE permissions for Lobstr to upload files."
+      },
+      {
+        "type": "tip",
+        "content": "For better security, provide AWS credentials instead of making your bucket publicly writable. Use IAM users with limited permissions."
+      },
+      {
+        "type": "note",
+        "content": "The target_path creates a folder structure in your bucket. Results will be uploaded to s3://bucket/target_path/filename.csv"
+      },
+      {
+        "type": "tip",
+        "content": "Use the Test S3 endpoint to verify your bucket permissions and credentials before activating automatic delivery."
+      },
+      {
+        "type": "warning",
+        "content": "AWS credentials are stored and returned in API responses. Ensure you're using HTTPS and handle responses securely."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Configure Amazon S3 Delivery - Lobstr.io API Documentation",
+    "description": "Learn how to export squid results directly to AWS S3 buckets using the Lobstr.io API. Configure bucket credentials and target paths."
+  }
+}

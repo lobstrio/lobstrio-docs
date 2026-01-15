@@ -1,0 +1,211 @@
+{
+  "slug": "test-delivery",
+  "title": "Test Delivery Configuration",
+  "description": "Verify delivery configurations before activating them",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery/test-{route}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Test endpoints allow you to verify your delivery configurations work correctly before activating automatic delivery. Each delivery method has its own test endpoint.\n\n{{RENDER:availableEndpoints}}",
+    "sections": {
+      "availableEndpoints": {
+        "title": "Available Test Endpoints",
+        "columns": [
+          {
+            "header": "Endpoint",
+            "key": "endpoint"
+          },
+          {
+            "header": "Route",
+            "key": "route"
+          },
+          {
+            "header": "Purpose",
+            "key": "purpose"
+          }
+        ],
+        "rows": [
+          {
+            "endpoint": "**Test Email**",
+            "route": "/v1/delivery/test-email",
+            "purpose": "Verify email address can receive notifications"
+          },
+          {
+            "endpoint": "**Test Google Sheet**",
+            "route": "/v1/delivery/test-googlesheet",
+            "purpose": "Verify sheet permissions and accessibility"
+          },
+          {
+            "endpoint": "**Test Webhook**",
+            "route": "/v1/delivery/test-webhook",
+            "purpose": "Verify webhook endpoint is reachable and responding"
+          },
+          {
+            "endpoint": "**Test Amazon S3**",
+            "route": "/v1/delivery/test-s3",
+            "purpose": "Verify S3 bucket permissions and credentials"
+          },
+          {
+            "endpoint": "**Test SFTP**",
+            "route": "/v1/delivery/test-sftp",
+            "purpose": "Verify SFTP server connectivity and credentials"
+          }
+        ]
+      },
+      "emailParameters": {
+        "title": "Test Email - Request Body",
+        "parameters": [
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "description": "Email address to test",
+            "example": "\"user@example.com\""
+          }
+        ]
+      },
+      "googleSheetParameters": {
+        "title": "Test Google Sheet - Request Body",
+        "parameters": [
+          {
+            "name": "url",
+            "type": "string",
+            "required": true,
+            "description": "Google Sheet URL to test permissions",
+            "example": "\"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\""
+          }
+        ]
+      },
+      "webhookParameters": {
+        "title": "Test Webhook - Request Body",
+        "parameters": [
+          {
+            "name": "url",
+            "type": "string",
+            "required": true,
+            "description": "Webhook endpoint URL to test",
+            "example": "\"https://your-webhook.com/endpoint\""
+          }
+        ]
+      },
+      "s3Parameters": {
+        "title": "Test Amazon S3 - Request Body",
+        "parameters": [
+          {
+            "name": "bucket",
+            "type": "string",
+            "required": true,
+            "description": "S3 bucket name to test",
+            "example": "\"my-bucket\""
+          },
+          {
+            "name": "aws_access_key",
+            "type": "string",
+            "required": false,
+            "description": "(Optional) AWS Access Key for authentication",
+            "example": "\"AKIAIOSFODNN7EXAMPLE\""
+          },
+          {
+            "name": "aws_secret_key",
+            "type": "string",
+            "required": false,
+            "description": "(Optional) AWS Secret Key for authentication",
+            "example": "\"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\""
+          }
+        ]
+      },
+      "sftpParameters": {
+        "title": "Test SFTP - Request Body",
+        "parameters": [
+          {
+            "name": "host",
+            "type": "string",
+            "required": true,
+            "description": "SFTP server hostname or IP",
+            "example": "\"sftp.example.com\""
+          },
+          {
+            "name": "port",
+            "type": "integer",
+            "required": true,
+            "description": "SFTP server port",
+            "example": "22"
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "required": true,
+            "description": "SFTP username",
+            "example": "\"user\""
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "required": true,
+            "description": "SFTP password",
+            "example": "\"password\""
+          },
+          {
+            "name": "directory",
+            "type": "string",
+            "required": true,
+            "description": "Target directory path",
+            "example": "\"/upload/path\""
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "route",
+        "type": "string",
+        "required": true,
+        "description": "The delivery method to test: 'email', 'googlesheet', 'webhook', 's3', or 'sftp'",
+        "example": "email"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Always test your delivery configuration before activating automatic delivery to catch permission or connectivity issues early."
+      },
+      {
+        "type": "note",
+        "content": "Test endpoints do not require a squid parameter - they only verify that your credentials and endpoints work."
+      },
+      {
+        "type": "warning",
+        "content": "A successful test response (success: true) means the configuration is valid, but doesn't guarantee future deliveries will succeed if permissions change."
+      },
+      {
+        "type": "tip",
+        "content": "For webhook tests, check the status_code field to ensure your endpoint returns 200/201/202 as expected."
+      },
+      {
+        "type": "note",
+        "content": "Test endpoints use the same validation logic as the actual delivery system, so a successful test is a reliable indicator."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Test Delivery Configuration - Lobstr.io API Documentation",
+    "description": "Learn how to test delivery configurations before activation using the Lobstr.io API. Verify email, webhooks, SFTP, S3, and Google Sheets."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "slug": "configure-email-delivery",
+  "title": "Configure Email Delivery",
+  "description": "Set up email notifications for squid run completions",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery?squid={squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure email delivery to receive notifications when your squid runs complete. You can choose to receive immediate notifications or attach results for later use.",
+    "sections": {
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "description": "The email address to receive notifications",
+            "example": "\"user@example.com\""
+          },
+          {
+            "name": "notifications",
+            "type": "boolean",
+            "required": true,
+            "description": "Set to true to send email immediately upon completion, or false to attach it for later use",
+            "example": "true"
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "email",
+            "type": "string",
+            "description": "The configured email address",
+            "example": "\"user@example.com\""
+          },
+          {
+            "path": "notifications",
+            "type": "boolean",
+            "description": "Whether immediate notifications are enabled",
+            "example": "true"
+          },
+          {
+            "path": "notifications_activation_date",
+            "type": "string",
+            "description": "ISO timestamp when notifications were activated",
+            "example": "\"2025-02-26T15:48:48.538226\""
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the squid for which to configure email delivery",
+        "example": "c106a44a98044ef18acc59986ae10967"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Set notifications to false if you want to manage email delivery manually rather than receiving automatic notifications."
+      },
+      {
+        "type": "note",
+        "content": "The notifications_activation_date is automatically set when you enable notifications for the first time."
+      },
+      {
+        "type": "warning",
+        "content": "Make sure the email address is valid and can receive emails. Invalid addresses will cause delivery failures."
+      },
+      {
+        "type": "tip",
+        "content": "Use the Test Email endpoint to verify your email configuration before activating notifications."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Configure Email Delivery - Lobstr.io API Documentation",
+    "description": "Learn how to set up email notifications for squid run completions using the Lobstr.io API. Configure email addresses and notification preferences."
+  }
+}

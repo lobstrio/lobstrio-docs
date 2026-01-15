@@ -1,0 +1,657 @@
+
+{
+	"name": "Delivery",
+	"item": [
+		{
+			"name": "Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"notifications\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "squid",
+							"value": "{{squid_hash}}"
+						}
+					]
+				},
+				"description": "The email delivery settings allow you to receive run completion notifications directly via email.\n\n\n| Parameter         | Type    | Description                                                                                         |\n|-------------------|---------|-----------------------------------------------------------------------------------------------------|\n| **email**         | string  | The email address to which the notification will be sent.                                           |\n| **notifications** | boolean | Set to `true` to send the email immediately upon completion, or `false` to attach it for later use. |\n"
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token <api_key>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@example.com\",\r\n    \"notifications\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery"
+							],
+							"query": [
+								{
+									"key": "squid",
+									"value": "{{squid_hash}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"email\": \"user@example.com\",\n    \"notifications\": true,\n    \"notifications_activation_date\": \"2025-02-26T15:48:48.538226\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SFTP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ftp_fields\": {\r\n        \"host\": \"localhost\",\r\n        \"port\": 22,\r\n        \"password\": \"myC00lP@ssword\",\r\n        \"username\": \"ijaz\",\r\n        \"directory\": \"/\",\r\n        \"is_active\": true\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "squid",
+							"value": "{{squid_hash}}"
+						}
+					]
+				},
+				"description": "The SFTP delivery settings allow you to securely store run results on your own SFTP server.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| **host** | string | SFTP server hostname or IP address. |\n| **port** | integer | SFTP server port number (default is 22). |\n| **username** | string | Username for SFTP authentication. |\n| **password** | string | Password for SFTP authentication. |\n| **directory** | string | Target directory path on the SFTP server. |\n| **is_active** | boolean | Set to `true` to enable SFTP delivery, `false` to disable. |"
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token <api_key>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ftp_fields\": {\r\n        \"host\": \"sftp.example.com\",\r\n        \"port\": 22,\r\n        \"username\": \"user\",\r\n        \"password\": \"password\",\r\n        \"directory\": \"/upload/path\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery"
+							],
+							"query": [
+								{
+									"key": "squid",
+									"value": "{{squid_hash}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"ftp_fields\": {\n        \"host\": \"sftp.example.com\",\n        \"port\": 22,\n        \"username\": \"user\",\n        \"password\": \"password\",\n        \"directory\": \"/upload/path\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Google Sheet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"google_sheet_fields\": {\r\n        \"url\": \"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\",\r\n        \"append\": false,\r\n        \"is_active\": true\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "squid",
+							"value": "{{squid_hash}}"
+						}
+					]
+				},
+				"description": "The delivery settings allow you to export run results directly to a shared Google Sheet.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| **url** | string | Public Google Sheet URL (must be accessible with Editor permission). |\n| **append** | boolean | `false`: Overwrites previous data with the last run's result.  <br>`true`: Appends new results, deduplicated. |\n| **is_active** | boolean | Set to `true` to enable Google Sheet export, `false` to disable. |\n\n**Behavior**:\n\n- **append = false**: Only the latest run's data is exported. Any previously exported data is overwritten.\n    \n- **append = true**: Data from all runs is appended and deduplicated before export.\n    \n\n**Important:**\n\n- The Google Sheet must be shared with \"Anyone with the link\" and granted **Editor** access.\n    \n- Export is limited to 100,000 rows."
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"google_sheet_fields\": {\r\n        \"url\": \"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\",\r\n        \"append\": false,\r\n        \"is_active\": true\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery"
+							],
+							"query": [
+								{
+									"key": "squid",
+									"value": "{{squid_hash}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"google_sheet_fields\": {\n        \"url\": \"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\",\n        \"is_active\": true,\n        \"append\": false\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Amazon S3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"s3_fields\": {\r\n        \"bucket\": \"my-bucket\",\r\n        \"is_active\": true,\r\n        \"target_path\": \"exports\",\r\n        \"aws_access_key\": \"your_access_key\",\r\n        \"aws_secret_key\": \"your_secret_key\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "squid",
+							"value": "{{squid_hash}}"
+						}
+					]
+				},
+				"description": "The delivery settings allow you to export run results directly to an AWS S3 bucket.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| **bucket** | string | Name of the S3 bucket where data will be stored. |\n| **is_active** | boolean | Set to `true` to enable S3 delivery, `false` to disable. |\n| **target_path** | string | Folder path inside the bucket where results will be saved. |\n| **aws_access_key** | string | (Optional) AWS Access Key for authentication. |\n| **aws_secret_key** | string | (Optional) AWS Secret Key for authentication. |\n\n> **Key Point:** If you do not provide **aws_access_key** or **aws_secret_key**, ensure that your bucket policy allows all users to have **WRITE** permissions."
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token <api_key>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"s3_fields\": {\r\n        \"bucket\": \"my-bucket\",\r\n        \"is_active\": true,\r\n        \"target_path\": \"exports\",\r\n        \"aws_access_key\": \"your_access_key\",\r\n        \"aws_secret_key\": \"your_secret_key\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery"
+							],
+							"query": [
+								{
+									"key": "squid",
+									"value": "{{squid_hash}}"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"s3_fields\": {\n        \"bucket\": \"my-bucket\",\n        \"is_active\": true,\n        \"target_path\": \"exports\",\n        \"aws_access_key\": \"your_access_key\",\n        \"aws_secret_key\": \"your_secret_key\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Webhook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"webhook_fields\": {\r\n        \"url\": \"https://your-webhook.com/endpoint\",\r\n        \"is_active\": true,\r\n        \"retry\": false,\r\n        \"events\": {\r\n            \"run.done\": false,\r\n            \"run.error\": true,\r\n            \"run.paused\": false,\r\n            \"run.running\": true\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery?squid={{squid_hash}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery"
+					],
+					"query": [
+						{
+							"key": "squid",
+							"value": "{{squid_hash}}"
+						}
+					]
+				},
+				"description": "Webhooks allow you to receive real-time notifications about your squid's events. When configured, Lobstr will send HTTP POST requests to your specified endpoint whenever certain events occur.\n\n### Configuration Parameters\n\n| Field | Type | Description |\n| --- | --- | --- |\n| **url** | `string` | Your webhook endpoint URL. |\n| **retry** | `boolean` | Enable automatic retries for failed webhook deliveries (up to 3 attempts). |\n| **events** | `object` | Map of event names (`run.running`, `run.paused`, `run.done`, `run.error`) to `true`/`false` to subscribe/unsubscribe. |\n| **is_active** | `boolean` | Master switch to enable/disable webhooks. |\n\n## Event Types\n\n| Event | Description | Trigger Condition |\n| --- | --- | --- |\n| **run.running** | Run is actively executing | Emitted when a Squid run begins or resumes. |\n| **run.paused** | Run paused | Emitted when the run is temporarily halted (e.g., account limits reached). |\n| **run.done** | Run completed successfully | Emitted when the run finishes without errors. |\n| **run.error** | Unexpected error occurred | When a run has crashed with an error |\n\n## Webhook Payload\n\nWhen an event occurs, Lobstr sends a JSON payload to your webhook URL:\n\n``` json\n{\n  \"id\": \"c39b1922a5424c3c84a7cb2ec731bc5f\",     // Run hash\n  \"object\": \"run\",                               // Always \"run\"\n  \"event\": \"run.done\",                           // Event type\n  \"squid\": {                                     // Squid descriptor\n    \"id\": \"8177beb16fdf4e0e8d4b2ba767d1ffb5\",\n    \"name\": \"Google Maps Search Export (1)\"\n  },\n  \"timestamp\": \"2025/06/18 17:32:31\"             // Event timestamp (YYYY/MM/DD HH:MM:SS)\n}\n\n ```\n\n### Payload Fields\n\n| Field          | Type     | Description                                                       |\n| -------------- | -------- | ----------------------------------------------------------------- |\n| **id**         | `string` | Unique identifier for the run (hash).                             |\n| **object**     | `string` | Always `\"run\"`.                                                   |\n| **event**      | `string` | One of the subscribed **Event Types**.                            |\n| **squid.id**   | `string` | Squid hash.                                                       |\n| **squid.name** | `string` | Human‑friendly Squid name.                                        |\n| **timestamp**  | `string` | Timestamp of the event in the format `YYYY/MM/DD HH:MM:SS` (UTC). |\n\n## Retry Mechanism\n\nWhen `retry` is enabled:\n\n- Failed webhook deliveries are retried **up to 3 times**\n    \n- Retries occur with a **15-minute delay** between attempts\n    \n\n## Webhook Response\n\n- Your endpoint should respond within **30 seconds**\n    \n- Return **HTTP 200, 201, or 202** to indicate successful receipt"
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token <api_key>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"webhook_fields\": {\r\n        \"url\": \"https://your-webhook.com/endpoint\",\r\n        \"is_active\": true,\r\n        \"retry\": false,\r\n        \"events\": {\r\n            \"run.running\": false,\r\n            \"run.paused\": true,\r\n            \"run.done\": false,\r\n            \"run.error\": true\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.lobstr.io/v1/delivery?squid=<squid_hash>",
+							"protocol": "https",
+							"host": [
+								"api",
+								"lobstr",
+								"io"
+							],
+							"path": [
+								"v1",
+								"delivery"
+							],
+							"query": [
+								{
+									"key": "squid",
+									"value": "<squid_hash>"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"webhook_fields\": {\n        \"url\": \"https://your-webhook.com/endpoint\",\n        \"is_active\": true,\n        \"retry\": false,\n        \"events\": {\n            \"run.running\": false,\n            \"run.paused\": true,\n            \"run.done\": false,\n            \"run.error\": true\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{api_key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\": \"https://your-webhook.com/endpoint\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/delivery/test-<route>",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"delivery",
+						"test-<route>"
+					]
+				},
+				"description": "Test endpoints allow you to verify your delivery configurations before activating them."
+			},
+			"response": [
+				{
+					"name": "Email",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token <api_key>",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.lobstr.io/v1/delivery/test-email",
+							"protocol": "https",
+							"host": [
+								"api",
+								"lobstr",
+								"io"
+							],
+							"path": [
+								"v1",
+								"delivery",
+								"test-email"
+							]
+						}
+					},
+					"status": "Method Not Allowed",
+					"code": 405,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"success\": true\n}"
+				},
+				{
+					"name": "Google sheet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery/test-googlesheet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery",
+								"test-googlesheet"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"success\": true\n}"
+				},
+				{
+					"name": "Webhook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\": \"https://your-webhook.com/endpoint\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery/test-webhook",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery",
+								"test-webhook"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"status_code\": 200\n}"
+				},
+				{
+					"name": "Amazon S3",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bucket\": \"lobstr\",\r\n    \"aws_access_key\": \"mykey\",\r\n    \"aws_secret_key\": \"mysecret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery/test-s3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery",
+								"test-s3"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false\n}"
+				},
+				{
+					"name": "SFTP",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{api_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"host\": \"sftp.example.com\",\r\n    \"port\": 22,\r\n    \"username\": \"user\",\r\n    \"password\": \"password\",\r\n    \"directory\": \"/upload/path\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/delivery/test-sftp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"delivery",
+								"test-sftp"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"success\": false\r\n}"
+				}
+			]
+		}
+	],
+	"description": "The Delivery API allows you to configure various methods for receiving data from your Lobstr squids. You can set up multiple delivery methods including email notifications, SFTP transfers, Google Sheets integration, Amazon S3 uploads, and webhooks."
+}

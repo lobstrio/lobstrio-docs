@@ -1,0 +1,114 @@
+{
+  "slug": "configure-google-sheet-delivery",
+  "title": "Configure Google Sheet Delivery",
+  "description": "Export squid run results directly to a shared Google Sheet",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery?squid={squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure Google Sheet delivery to export run results directly to a shared Google Sheet. Results can be overwritten with each run or appended with deduplication.\n\n## Behavior\n\n- **append = false**: Only the latest run's data is exported. Any previously exported data is overwritten.\n- **append = true**: Data from all runs is appended and deduplicated before export.\n\n## Requirements\n\n- The Google Sheet must be shared with \"Anyone with the link\"\n- The sheet must have **Editor** access permission\n- Export is limited to 100,000 rows",
+    "sections": {
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "google_sheet_fields.url",
+            "type": "string",
+            "required": true,
+            "description": "Public Google Sheet URL (must be accessible with Editor permission)",
+            "example": "\"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\""
+          },
+          {
+            "name": "google_sheet_fields.append",
+            "type": "boolean",
+            "required": true,
+            "description": "false: Overwrites previous data with the last run's result. true: Appends new results, deduplicated",
+            "example": "false"
+          },
+          {
+            "name": "google_sheet_fields.is_active",
+            "type": "boolean",
+            "required": true,
+            "description": "Set to true to enable Google Sheet export, false to disable",
+            "example": "true"
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "google_sheet_fields.url",
+            "type": "string",
+            "description": "The configured Google Sheet URL",
+            "example": "\"https://docs.google.com/spreadsheets/d/1ly9nwTs-hNaFCzWtSljevSf16chs5Nn0PIv_TpQSEhA/edit?usp=sharing\""
+          },
+          {
+            "path": "google_sheet_fields.is_active",
+            "type": "boolean",
+            "description": "Whether Google Sheet export is active",
+            "example": "true"
+          },
+          {
+            "path": "google_sheet_fields.append",
+            "type": "boolean",
+            "description": "Append mode setting",
+            "example": "false"
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the squid for which to configure Google Sheet delivery",
+        "example": "c106a44a98044ef18acc59986ae10967"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "warning",
+        "content": "The Google Sheet MUST be shared with 'Anyone with the link' and have Editor permissions. Without these settings, export will fail."
+      },
+      {
+        "type": "tip",
+        "content": "Use append: false for dashboards where you only want the latest data. Use append: true for historical tracking."
+      },
+      {
+        "type": "note",
+        "content": "When append is true, Lobstr automatically deduplicates rows before exporting, so you won't get duplicate entries."
+      },
+      {
+        "type": "warning",
+        "content": "Export is limited to 100,000 rows. If your squid generates more results, consider using S3 or SFTP delivery instead."
+      },
+      {
+        "type": "tip",
+        "content": "Use the Test Google Sheet endpoint to verify your sheet permissions before activating automatic delivery."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Configure Google Sheet Delivery - Lobstr.io API Documentation",
+    "description": "Learn how to export squid results directly to Google Sheets using the Lobstr.io API. Configure sheet URLs and append modes."
+  }
+}

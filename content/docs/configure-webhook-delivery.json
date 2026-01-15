@@ -1,0 +1,258 @@
+{
+  "slug": "configure-webhook-delivery",
+  "title": "Configure Webhook Delivery",
+  "description": "Set up real-time webhook notifications for squid run events",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery?squid={squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure webhooks to receive real-time HTTP POST notifications when your squid's events occur. Subscribe to specific events like run start, completion, pause, or errors.\n\n{{RENDER:eventTypes}}\n\n## Webhook Payload\n\nLobstr sends a JSON payload to your webhook URL:\n\n```json\n{\n  \"id\": \"c39b1922a5424c3c84a7cb2ec731bc5f\",\n  \"object\": \"run\",\n  \"event\": \"run.done\",\n  \"squid\": {\n    \"id\": \"8177beb16fdf4e0e8d4b2ba767d1ffb5\",\n    \"name\": \"Google Maps Search Export (1)\"\n  },\n  \"timestamp\": \"2025/06/18 17:32:31\"\n}\n```\n\n{{RENDER:payloadFields}}\n\n## Retry Mechanism\n\nWhen `retry` is enabled:\n- Failed webhook deliveries are retried **up to 3 times**\n- Retries occur with a **15-minute delay** between attempts\n\n## Webhook Response Requirements\n\n- Your endpoint should respond within **30 seconds**\n- Return **HTTP 200, 201, or 202** to indicate successful receipt",
+    "sections": {
+      "eventTypes": {
+        "title": "Event Types",
+        "columns": [
+          {
+            "header": "Event",
+            "key": "event"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          },
+          {
+            "header": "Trigger Condition",
+            "key": "trigger"
+          }
+        ],
+        "rows": [
+          {
+            "event": "**run.running**",
+            "description": "Run is actively executing",
+            "trigger": "Emitted when a Squid run begins or resumes"
+          },
+          {
+            "event": "**run.paused**",
+            "description": "Run paused",
+            "trigger": "Emitted when the run is temporarily halted (e.g., account limits reached)"
+          },
+          {
+            "event": "**run.done**",
+            "description": "Run completed successfully",
+            "trigger": "Emitted when the run finishes without errors"
+          },
+          {
+            "event": "**run.error**",
+            "description": "Unexpected error occurred",
+            "trigger": "When a run has crashed with an error"
+          }
+        ]
+      },
+      "payloadFields": {
+        "title": "Payload Fields",
+        "columns": [
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
+        ],
+        "rows": [
+          {
+            "field": "**id**",
+            "type": "string",
+            "description": "Unique identifier for the run (hash)"
+          },
+          {
+            "field": "**object**",
+            "type": "string",
+            "description": "Always \"run\""
+          },
+          {
+            "field": "**event**",
+            "type": "string",
+            "description": "One of the subscribed Event Types"
+          },
+          {
+            "field": "**squid.id**",
+            "type": "string",
+            "description": "Squid hash"
+          },
+          {
+            "field": "**squid.name**",
+            "type": "string",
+            "description": "Human-friendly Squid name"
+          },
+          {
+            "field": "**timestamp**",
+            "type": "string",
+            "description": "Event timestamp in YYYY/MM/DD HH:MM:SS format (UTC)"
+          }
+        ]
+      },
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "webhook_fields.url",
+            "type": "string",
+            "required": true,
+            "description": "Your webhook endpoint URL that will receive POST requests",
+            "example": "\"https://your-webhook.com/endpoint\""
+          },
+          {
+            "name": "webhook_fields.is_active",
+            "type": "boolean",
+            "required": true,
+            "description": "Master switch to enable/disable webhooks",
+            "example": "true"
+          },
+          {
+            "name": "webhook_fields.retry",
+            "type": "boolean",
+            "required": true,
+            "description": "Enable automatic retries for failed webhook deliveries (up to 3 attempts with 15-minute delays)",
+            "example": "false"
+          },
+          {
+            "name": "webhook_fields.events.run.running",
+            "type": "boolean",
+            "required": true,
+            "description": "Subscribe to run start/resume events",
+            "example": "true"
+          },
+          {
+            "name": "webhook_fields.events.run.paused",
+            "type": "boolean",
+            "required": true,
+            "description": "Subscribe to run pause events",
+            "example": "false"
+          },
+          {
+            "name": "webhook_fields.events.run.done",
+            "type": "boolean",
+            "required": true,
+            "description": "Subscribe to run completion events",
+            "example": "false"
+          },
+          {
+            "name": "webhook_fields.events.run.error",
+            "type": "boolean",
+            "required": true,
+            "description": "Subscribe to run error events",
+            "example": "true"
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "webhook_fields.url",
+            "type": "string",
+            "description": "Configured webhook endpoint URL",
+            "example": "\"https://your-webhook.com/endpoint\""
+          },
+          {
+            "path": "webhook_fields.is_active",
+            "type": "boolean",
+            "description": "Whether webhooks are active",
+            "example": "true"
+          },
+          {
+            "path": "webhook_fields.retry",
+            "type": "boolean",
+            "description": "Whether retry mechanism is enabled",
+            "example": "false"
+          },
+          {
+            "path": "webhook_fields.events.run.running",
+            "type": "boolean",
+            "description": "Subscription status for run.running events",
+            "example": "true"
+          },
+          {
+            "path": "webhook_fields.events.run.paused",
+            "type": "boolean",
+            "description": "Subscription status for run.paused events",
+            "example": "false"
+          },
+          {
+            "path": "webhook_fields.events.run.done",
+            "type": "boolean",
+            "description": "Subscription status for run.done events",
+            "example": "false"
+          },
+          {
+            "path": "webhook_fields.events.run.error",
+            "type": "boolean",
+            "description": "Subscription status for run.error events",
+            "example": "true"
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the squid for which to configure webhook delivery",
+        "example": "c106a44a98044ef18acc59986ae10967"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Subscribe only to events you need. For most use cases, run.done and run.error are sufficient."
+      },
+      {
+        "type": "warning",
+        "content": "Your webhook endpoint must respond within 30 seconds or the delivery will be marked as failed."
+      },
+      {
+        "type": "tip",
+        "content": "Enable retry for production webhooks to handle temporary network issues or server downtime automatically."
+      },
+      {
+        "type": "note",
+        "content": "Webhook payloads are sent as JSON with Content-Type: application/json header. Parse the request body to extract event data."
+      },
+      {
+        "type": "tip",
+        "content": "Use the Test Webhook endpoint to verify your endpoint is accessible and responding correctly before activating webhooks."
+      },
+      {
+        "type": "warning",
+        "content": "Implement proper authentication/validation in your webhook endpoint to ensure requests are coming from Lobstr.io."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Configure Webhook Delivery - Lobstr.io API Documentation",
+    "description": "Learn how to set up real-time webhook notifications for squid events using the Lobstr.io API. Configure event subscriptions and retry policies."
+  }
+}

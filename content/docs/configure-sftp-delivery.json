@@ -1,0 +1,153 @@
+{
+  "slug": "configure-sftp-delivery",
+  "title": "Configure SFTP Delivery",
+  "description": "Set up secure SFTP server delivery for squid run results",
+  "category": "Delivery",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/delivery?squid={squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure SFTP delivery to securely store run results on your own SFTP server. Results will be automatically uploaded to your specified server and directory when runs complete.",
+    "sections": {
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "ftp_fields.host",
+            "type": "string",
+            "required": true,
+            "description": "SFTP server hostname or IP address",
+            "example": "\"sftp.example.com\""
+          },
+          {
+            "name": "ftp_fields.port",
+            "type": "integer",
+            "required": true,
+            "description": "SFTP server port number (default is 22)",
+            "example": "22"
+          },
+          {
+            "name": "ftp_fields.username",
+            "type": "string",
+            "required": true,
+            "description": "Username for SFTP authentication",
+            "example": "\"user\""
+          },
+          {
+            "name": "ftp_fields.password",
+            "type": "string",
+            "required": true,
+            "description": "Password for SFTP authentication",
+            "example": "\"myC00lP@ssword\""
+          },
+          {
+            "name": "ftp_fields.directory",
+            "type": "string",
+            "required": true,
+            "description": "Target directory path on the SFTP server where files will be uploaded",
+            "example": "\"/upload/path\""
+          },
+          {
+            "name": "ftp_fields.is_active",
+            "type": "boolean",
+            "required": true,
+            "description": "Set to true to enable SFTP delivery, false to disable",
+            "example": "true"
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "ftp_fields.host",
+            "type": "string",
+            "description": "SFTP server hostname",
+            "example": "\"sftp.example.com\""
+          },
+          {
+            "path": "ftp_fields.port",
+            "type": "integer",
+            "description": "SFTP server port",
+            "example": "22"
+          },
+          {
+            "path": "ftp_fields.username",
+            "type": "string",
+            "description": "SFTP username",
+            "example": "\"user\""
+          },
+          {
+            "path": "ftp_fields.password",
+            "type": "string",
+            "description": "SFTP password (returned in response)",
+            "example": "\"myC00lP@ssword\""
+          },
+          {
+            "path": "ftp_fields.directory",
+            "type": "string",
+            "description": "Target directory path",
+            "example": "\"/upload/path\""
+          },
+          {
+            "path": "ftp_fields.is_active",
+            "type": "boolean",
+            "description": "Whether SFTP delivery is active",
+            "example": "true"
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the squid for which to configure SFTP delivery",
+        "example": "c106a44a98044ef18acc59986ae10967"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "warning",
+        "content": "Ensure your SFTP server is accessible from Lobstr.io's servers. Check firewall rules and IP allowlists if connection fails."
+      },
+      {
+        "type": "tip",
+        "content": "Use the Test SFTP endpoint to verify your credentials and server connectivity before activating automatic delivery."
+      },
+      {
+        "type": "note",
+        "content": "The directory path must exist on the server. Lobstr will not create directories automatically."
+      },
+      {
+        "type": "warning",
+        "content": "Store SFTP credentials securely. While they're returned in API responses, treat them as sensitive data."
+      },
+      {
+        "type": "tip",
+        "content": "Set is_active to false to temporarily disable SFTP delivery without removing your configuration."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Configure SFTP Delivery - Lobstr.io API Documentation",
+    "description": "Learn how to set up secure SFTP server delivery for squid results using the Lobstr.io API. Configure SFTP credentials and target directories."
+  }
+}
