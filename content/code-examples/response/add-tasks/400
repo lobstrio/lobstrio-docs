@@ -1,0 +1,7 @@
+{
+  "error": {
+    "message": "Invalid task parameters. Each task must contain required fields for the crawler.",
+    "type": "validation_error",
+    "param": "tasks"
+  }
+}

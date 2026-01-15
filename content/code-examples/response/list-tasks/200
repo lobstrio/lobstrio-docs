@@ -1,0 +1,26 @@
+{
+  "total_results": 2,
+  "limit": 50,
+  "page": 1,
+  "total_pages": 1,
+  "data": [
+    {
+      "id": "6b9d3afdf4e76df374915a50d7a495c4",
+      "created_at": "2025-03-05T09:24:49.581177",
+      "is_active": true,
+      "params": {
+        "url": "https://www.linkedin.com/in/johndoe"
+      }
+    },
+    {
+      "id": "c5e29d2aba8b77cdc56391e7405302de",
+      "created_at": "2025-03-05T09:24:49.581177",
+      "is_active": true,
+      "params": {
+        "url": "https://www.linkedin.com/in/janedoe"
+      }
+    }
+  ],
+  "next": null,
+  "previous": null
+}

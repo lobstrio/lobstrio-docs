@@ -1,0 +1,25 @@
+import requests
+
+url = "https://api.lobstr.io/v1/runtasks"
+headers = {
+    "Authorization": "Token YOUR_API_KEY"
+}
+params = {
+    "run": "300e9c5c127d421c90f431478d9a2cfb",
+    "page": 1,
+    "limit": 50
+}
+
+response = requests.get(url, headers=headers, params=params)
+data = response.json()
+
+print(f"Total tasks in run: {data['total_results']}\n")
+
+for task in data['data']:
+    status_icon = "✓" if task['status'] == "completed" else "✗"
+    print(f"{status_icon} Task: {task['id']}")
+    print(f"   Status: {task['status']}")
+    print(f"   Results: {task['last_result']}/{task['total_results']}")
+    print(f"   Done Reason: {task['done_reason']}")
+    print(f"   Params: {task['params']}")
+    print()

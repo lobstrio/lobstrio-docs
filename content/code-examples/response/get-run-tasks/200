@@ -1,0 +1,31 @@
+{
+  "total_results": 1,
+  "limit": 50,
+  "page": 1,
+  "total_pages": 1,
+  "result_from": 1,
+  "result_to": 1,
+  "data": [
+    {
+      "object": "runtask",
+      "id": "1262f6f99dac7dffb05a513fff0ded77",
+      "started_at": "2025-02-10T14:30:58Z",
+      "ended_at": "2025-02-10T14:31:10Z",
+      "total_results": 138,
+      "last_result": 6,
+      "total_pages": 1,
+      "done_reason": "run_aborted",
+      "last_page": 0,
+      "status": "aborted",
+      "run": "300e9c5c127d421c90f431478d9a2cfb",
+      "task": "d30334cd8d21ab16048c5e2e7136a9f1",
+      "params": {
+        "url": "https://www.google.com/maps/search/restaurant/@43.2928346,5.3662584,17z"
+      },
+      "last_collection_at": "2025-02-10T14:31:10Z",
+      "done_reason_desc": null
+    }
+  ],
+  "next": null,
+  "previous": null
+}

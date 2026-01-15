@@ -1,0 +1,119 @@
+{
+  "slug": "add-tasks",
+  "title": "Add Tasks",
+  "description": "Create new tasks within a specified squid",
+  "category": "Task",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/tasks",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "This endpoint creates new tasks within a specified squid. Tasks define the specific scraping jobs to be executed, such as URLs to scrape or search parameters.\n\n**Note:** The accepted task input keys (e.g., `url`, `city`, `activity`) depend on the crawler used in your squid. Use the Get Crawler Parameters endpoint to discover valid keys for your crawler.",
+    "sections": {
+      "bodyParameters": {
+        "title": "Request Body",
+        "parameters": [
+          {
+            "name": "squid",
+            "type": "string",
+            "required": true,
+            "description": "The hash ID of the squid to add tasks to",
+            "example": "\"a1b2c3d4e5f6g7h8i9j0\""
+          },
+          {
+            "name": "tasks",
+            "type": "array",
+            "required": true,
+            "description": "Array of task objects. Each task contains parameters specific to the crawler",
+            "example": "[{\"url\": \"https://example.com\"}]"
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "duplicated_count",
+            "type": "integer",
+            "description": "Number of tasks that were duplicates and not added",
+            "example": "0"
+          },
+          {
+            "path": "tasks",
+            "type": "array",
+            "description": "Array of created task objects",
+            "example": "[...]"
+          },
+          {
+            "path": "tasks[].id",
+            "type": "string",
+            "description": "Unique task identifier",
+            "example": "\"c5e29d2aba8b77cdc56391e7405302de\""
+          },
+          {
+            "path": "tasks[].created_at",
+            "type": "string",
+            "description": "Task creation timestamp (ISO 8601)",
+            "example": "\"2025-02-10T14:19:32.916901\""
+          },
+          {
+            "path": "tasks[].is_active",
+            "type": "boolean",
+            "description": "Whether the task is active and ready to run",
+            "example": "true"
+          },
+          {
+            "path": "tasks[].params",
+            "type": "object",
+            "description": "Task parameters (URL, search terms, etc.)",
+            "example": "{\"url\": \"...\"}"
+          },
+          {
+            "path": "tasks[].object",
+            "type": "string",
+            "description": "Always \"task\"",
+            "example": "\"task\""
+          }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Must be application/json"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the Get Crawler Parameters endpoint to discover which task keys are valid for your specific crawler."
+      },
+      {
+        "type": "note",
+        "content": "Duplicate tasks (same parameters) are automatically detected and not added. Check duplicated_count in the response."
+      },
+      {
+        "type": "warning",
+        "content": "Task parameters vary by crawler. Using invalid keys will result in task creation failure."
+      },
+      {
+        "type": "tip",
+        "content": "For bulk task creation, consider using the Upload Tasks endpoint with a CSV file instead."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Add Tasks - Lobstr.io API Documentation",
+    "description": "Learn how to create new scraping tasks within a squid using the Lobstr.io API."
+  }
+}

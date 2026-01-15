@@ -1,0 +1,89 @@
+{
+  "slug": "upload-tasks",
+  "title": "Upload Tasks",
+  "description": "Upload a CSV/TSV file containing multiple tasks for a squid",
+  "category": "Task",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/tasks/upload",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "This endpoint allows you to upload a file (CSV/TSV) containing multiple tasks for a specific squid. The file should contain task parameters in columns matching the crawler's expected keys. This is ideal for bulk task creation.",
+    "sections": {
+      "formParameters": {
+        "title": "Form Data Parameters",
+        "parameters": [
+          {
+            "name": "file",
+            "type": "file",
+            "required": true,
+            "description": "CSV or TSV file containing task data. Column headers should match crawler parameter keys",
+            "example": "tasks.csv"
+          },
+          {
+            "name": "squid",
+            "type": "string",
+            "required": true,
+            "description": "The hash ID of the squid to add tasks to",
+            "example": "\"a1b2c3d4e5f6g7h8i9j0\""
+          }
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "id",
+            "type": "string",
+            "description": "Upload task identifier for tracking progress",
+            "example": "\"427a7bfc54cf4ce483d83ba23425164b\""
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"task_upload\"",
+            "example": "\"task_upload\""
+          }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "multipart/form-data",
+        "required": true,
+        "description": "Must be multipart/form-data for file upload"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the returned task ID with Check Upload Status to monitor the upload progress."
+      },
+      {
+        "type": "note",
+        "content": "CSV column headers must match the crawler's expected parameter keys (e.g., 'url', 'city', 'activity')."
+      },
+      {
+        "type": "warning",
+        "content": "Large files may take time to process. Always check upload status before running the squid."
+      },
+      {
+        "type": "tip",
+        "content": "TSV (tab-separated) files are also supported and may be easier to work with for URLs containing commas."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Upload Tasks - Lobstr.io API Documentation",
+    "description": "Learn how to bulk upload tasks from a CSV/TSV file using the Lobstr.io API."
+  }
+}

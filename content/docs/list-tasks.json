@@ -1,0 +1,129 @@
+{
+  "slug": "list-tasks",
+  "title": "List Tasks",
+  "description": "Retrieve a paginated list of tasks for a specific squid",
+  "category": "Task",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/tasks",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "This endpoint retrieves a paginated list of tasks for a specific squid. You can choose between two query types to get different levels of detail.",
+    "sections": {
+      "queryParameters": {
+        "title": "Query Parameters",
+        "columns": [
+          {"header": "Parameter", "key": "param"},
+          {"header": "Type", "key": "type"},
+          {"header": "Required", "key": "required"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"param": "**squid**", "type": "string", "required": "Yes", "description": "The squid hash ID to list tasks for"},
+          {"param": "**type**", "type": "string", "required": "No", "description": "Response detail level: 'url' (basic) or 'params' (detailed). Default: 'url'"},
+          {"param": "**page**", "type": "integer", "required": "No", "description": "Page number for pagination. Default: 1"},
+          {"param": "**limit**", "type": "integer", "required": "No", "description": "Results per page. Default: 50, Max: 100"}
+        ]
+      },
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "total_results",
+            "type": "integer",
+            "description": "Total number of tasks",
+            "example": "2"
+          },
+          {
+            "path": "limit",
+            "type": "integer",
+            "description": "Maximum results per page",
+            "example": "50"
+          },
+          {
+            "path": "page",
+            "type": "integer",
+            "description": "Current page number",
+            "example": "1"
+          },
+          {
+            "path": "total_pages",
+            "type": "integer",
+            "description": "Total number of pages",
+            "example": "1"
+          },
+          {
+            "path": "data",
+            "type": "array",
+            "description": "Array of task objects",
+            "example": "[...]"
+          },
+          {
+            "path": "data[].id",
+            "type": "string",
+            "description": "Unique task identifier",
+            "example": "\"6b9d3afdf4e76df374915a50d7a495c4\""
+          },
+          {
+            "path": "data[].created_at",
+            "type": "string",
+            "description": "Task creation timestamp",
+            "example": "\"2025-03-05T09:24:49.581177\""
+          },
+          {
+            "path": "data[].is_active",
+            "type": "boolean",
+            "description": "Whether the task is active",
+            "example": "true"
+          },
+          {
+            "path": "data[].params",
+            "type": "object",
+            "description": "Task parameters",
+            "example": "{\"url\": \"...\"}"
+          },
+          {
+            "path": "next",
+            "type": "string | null",
+            "description": "URL for next page (null if last page)",
+            "example": "null"
+          },
+          {
+            "path": "previous",
+            "type": "string | null",
+            "description": "URL for previous page (null if first page)",
+            "example": "null"
+          }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use type=url for a quick overview of tasks, or type=params when you need full parameter details."
+      },
+      {
+        "type": "note",
+        "content": "Results are paginated. Use the next and previous URLs to navigate through large task lists."
+      },
+      {
+        "type": "tip",
+        "content": "Check is_active to identify tasks that are ready to run vs. disabled tasks."
+      }
+    ]
+  },
+  "seo": {
+    "title": "List Tasks - Lobstr.io API Documentation",
+    "description": "Learn how to retrieve a list of tasks for a squid using the Lobstr.io API."
+  }
+}

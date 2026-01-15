@@ -1,0 +1,157 @@
+{
+  "slug": "get-task",
+  "title": "Get Task",
+  "description": "Retrieve detailed information about a specific task",
+  "category": "Task",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/tasks/{task_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "This endpoint retrieves detailed information about a specific task using its hash ID, including its current status, parameters, and execution history.",
+    "sections": {
+      "responseFields": {
+        "title": "Response Field Explanations",
+        "fields": [
+          {
+            "path": "hash_value",
+            "type": "string",
+            "description": "Unique task identifier",
+            "example": "\"c5e29d2aba8b77cdc56391e7405302de\""
+          },
+          {
+            "path": "created_at",
+            "type": "string",
+            "description": "Task creation timestamp (ISO 8601)",
+            "example": "\"2024-12-24T10:57:55.045567\""
+          },
+          {
+            "path": "is_active",
+            "type": "boolean",
+            "description": "Whether the task is active",
+            "example": "true"
+          },
+          {
+            "path": "params",
+            "type": "object",
+            "description": "Task parameters (URL, search terms, etc.)",
+            "example": "{\"url\": \"https://...\"}"
+          },
+          {
+            "path": "module",
+            "type": "integer",
+            "description": "Internal module identifier",
+            "example": "5"
+          },
+          {
+            "path": "status",
+            "type": "object",
+            "description": "Detailed execution status information",
+            "example": "{...}"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"task\"",
+            "example": "\"task\""
+          }
+        ]
+      },
+      "statusFields": {
+        "title": "Status Object Fields",
+        "fields": [
+          {
+            "path": "status.status",
+            "type": "string",
+            "description": "Current task status (pending, running, completed, aborted, failed)",
+            "example": "\"completed\""
+          },
+          {
+            "path": "status.started_at",
+            "type": "string",
+            "description": "When task execution started",
+            "example": "\"2025-02-04T10:25:47.278419\""
+          },
+          {
+            "path": "status.ended_at",
+            "type": "string",
+            "description": "When task execution ended",
+            "example": "\"2025-02-04T10:26:52.310738\""
+          },
+          {
+            "path": "status.is_done",
+            "type": "boolean",
+            "description": "Whether the task has completed",
+            "example": "true"
+          },
+          {
+            "path": "status.total_results",
+            "type": "integer",
+            "description": "Total number of results scraped",
+            "example": "156"
+          },
+          {
+            "path": "status.total_pages",
+            "type": "integer",
+            "description": "Total pages processed",
+            "example": "1"
+          },
+          {
+            "path": "status.done_reason",
+            "type": "string",
+            "description": "Reason for task completion (completed, run_aborted, error, etc.)",
+            "example": "\"completed\""
+          },
+          {
+            "path": "status.has_errors",
+            "type": "boolean",
+            "description": "Whether errors occurred during execution",
+            "example": "false"
+          },
+          {
+            "path": "status.errors",
+            "type": "string | null",
+            "description": "Error details if any occurred",
+            "example": "null"
+          }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "task_hash",
+        "type": "string",
+        "required": true,
+        "description": "The unique identifier (hash) of the task",
+        "example": "c5e29d2aba8b77cdc56391e7405302de"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the status.total_results field to track how much data has been collected for this task."
+      },
+      {
+        "type": "note",
+        "content": "The done_reason field helps identify why a task stopped - whether it completed normally, was aborted, or encountered errors."
+      },
+      {
+        "type": "warning",
+        "content": "Tasks with status 'aborted' may have partial results. Check total_results to see what was collected."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Task - Lobstr.io API Documentation",
+    "description": "Learn how to retrieve detailed information about a specific task using the Lobstr.io API."
+  }
+}
