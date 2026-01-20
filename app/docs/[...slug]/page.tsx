@@ -12,7 +12,7 @@ import CodeColumn from '@/components/layout/CodeColumn';
 import { codeToHtml } from 'shiki';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }
 
 /**
@@ -21,7 +21,8 @@ interface PageProps {
  */
 export async function generateStaticParams() {
   const slugs = await getAllDocSlugs();
-  return slugs.map((slug) => ({ slug }));
+  // Split each slug by '/' to create the array format needed for catch-all routes
+  return slugs.map((slug) => ({ slug: slug.split('/') }));
 }
 
 /**
@@ -29,9 +30,11 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  // Join the slug array back into a path string
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug;
 
   try {
-    const content = await loadDocContent(slug);
+    const content = await loadDocContent(slugPath);
 
     return {
       title: content.seo.title,
@@ -60,9 +63,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
  */
 export default async function DocPage({ params }: PageProps) {
   const { slug } = await params;
+  // Join the slug array back into a path string
+  const slugPath = Array.isArray(slug) ? slug.join('/') : slug;
 
   try {
-    const content = await loadDocContent(slug);
+    const content = await loadDocContent(slugPath);
     const navigation = await loadNavigation();
 
     // Language to Shiki language mapping

@@ -110,18 +110,24 @@ function loadResponseExamples(slug: string): ResponseExample[] {
 
 /**
  * Load documentation content for a specific slug
+ * Supports nested paths like "examples/gmaps/add-tasks"
  */
 export async function loadDocContent(slug: string): Promise<DocContent> {
+  // Support nested paths - slug can be "examples/gmaps/add-tasks" or "authentication"
   const filePath = path.join(process.cwd(), 'content', 'docs', `${slug}.json`);
 
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const content: DocContent = JSON.parse(fileContent);
 
+    // For code examples, use the last part of the slug or the full slug
+    // e.g., "examples/gmaps/add-tasks" -> look for code examples with slug "examples/gmaps/add-tasks"
+    const codeExampleSlug = slug;
+
     // Load code examples from files (dynamic discovery)
     content.examples = {
-      languages: loadLanguageExamples(slug),
-      responses: loadResponseExamples(slug),
+      languages: loadLanguageExamples(codeExampleSlug),
+      responses: loadResponseExamples(codeExampleSlug),
     };
 
     return content;
@@ -131,7 +137,36 @@ export async function loadDocContent(slug: string): Promise<DocContent> {
 }
 
 /**
- * Get all available document slugs
+ * Recursively get all JSON files in a directory
+ */
+function getAllJsonFiles(dir: string, baseDir: string): string[] {
+  const slugs: string[] = [];
+
+  try {
+    const items = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const item of items) {
+      const fullPath = path.join(dir, item.name);
+
+      if (item.isDirectory()) {
+        // Recursively search subdirectories
+        slugs.push(...getAllJsonFiles(fullPath, baseDir));
+      } else if (item.isFile() && item.name.endsWith('.json')) {
+        // Convert file path to slug (relative to baseDir, without .json)
+        const relativePath = path.relative(baseDir, fullPath);
+        const slug = relativePath.replace(/\.json$/, '').replace(/\\/g, '/');
+        slugs.push(slug);
+      }
+    }
+  } catch (error) {
+    console.warn(`Error reading directory ${dir}:`, error);
+  }
+
+  return slugs;
+}
+
+/**
+ * Get all available document slugs (supports nested folders)
  */
 export async function getAllDocSlugs(): Promise<string[]> {
   const docsDir = path.join(process.cwd(), 'content', 'docs');
@@ -142,12 +177,7 @@ export async function getAllDocSlugs(): Promise<string[]> {
       return [];
     }
 
-    const files = fs.readdirSync(docsDir);
-    const slugs = files
-      .filter((file) => file.endsWith('.json'))
-      .map((file) => file.replace('.json', ''));
-
-    return slugs;
+    return getAllJsonFiles(docsDir, docsDir);
   } catch (error) {
     console.error('Error reading docs directory:', error);
     return [];
@@ -187,7 +217,7 @@ export async function loadNavigation(): Promise<Navigation> {
 }
 
 /**
- * Check if a doc exists
+ * Check if a doc exists (supports nested paths)
  */
 export async function docExists(slug: string): Promise<boolean> {
   const filePath = path.join(process.cwd(), 'content', 'docs', `${slug}.json`);

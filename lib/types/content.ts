@@ -197,11 +197,20 @@ export interface NavItem {
 }
 
 /**
+ * Navigation subsection (for nested groups like Examples > Google Maps Scraper)
+ */
+export interface NavSubsection {
+  title: string;
+  items: NavItem[];
+}
+
+/**
  * Navigation section structure
  */
 export interface NavSection {
   title: string;
-  items: NavItem[];
+  items?: NavItem[];
+  subsections?: NavSubsection[];
 }
 
 /**
