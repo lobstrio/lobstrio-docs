@@ -1,0 +1,14 @@
+{
+  "name": "Sales Navigator Leads Scraper (1)",
+  "no_line_breaks": true,
+  "params": {
+    "functions": {
+      "email": true
+    },
+    "max_pages": 100,
+    "max_results": null,
+    "profiles_per_page": 25
+  },
+  "to_complete": false,
+  "export_unique_results": true
+}

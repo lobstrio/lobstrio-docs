@@ -1,0 +1,31 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+# Update squid settings with email enrichment and linked accounts
+payload = {
+    "name": "Sales Navigator Leads Scraper (1)",
+    "accounts": ["YOUR_SALES_NAV_ACCOUNT_HASH"],  # Required: linked Sales Nav accounts
+    "no_line_breaks": True,
+    "export_unique_results": True,
+    "to_complete": False,
+    "params": {
+        "functions": {
+            "email": True  # Enable email enrichment (extra credits)
+        },
+        "profiles_per_page": 25,  # Max: 25
+        "max_pages": 100,         # Max: 100
+        "max_results": None       # null = no limit
+    }
+}
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json=payload
+)
+
+print(f"Settings updated: {response.json()['name']}")

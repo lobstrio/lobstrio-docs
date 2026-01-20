@@ -1,0 +1,133 @@
+{
+  "slug": "examples/sales-navigator-leads-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped LinkedIn leads with contact and company information",
+  "category": "Sales Navigator Leads Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve scraped lead profiles from LinkedIn Sales Navigator including personal details, company information, and enriched email addresses.",
+    "sections": {
+      "leadFields": {
+        "title": "Lead Information Fields",
+        "content": "Personal and professional details for each lead:",
+        "fields": [
+          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "1287975"},
+          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
+          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"25baebaace0143f1bfa185e7541c1d43\""},
+          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"02a09b072c0447d08cd7b604ebe1d98d\""},
+          {"path": "first_name", "type": "string", "description": "Lead's first name", "example": "\"John\""},
+          {"path": "last_name", "type": "string", "description": "Lead's last name", "example": "\"Smith\""},
+          {"path": "full_name", "type": "string", "description": "Lead's full name", "example": "\"John Smith\""},
+          {"path": "headline", "type": "string", "description": "LinkedIn headline (job title + company)", "example": "\"Vice President of Operations at Example Corp\""},
+          {"path": "position", "type": "string", "description": "Current position title", "example": "\"Vice President of Operations\""},
+          {"path": "seniority", "type": "string", "description": "Seniority level", "example": "\"Vice President\""},
+          {"path": "location", "type": "string", "description": "Lead's location (city, state, country)", "example": "\"Los Angeles, California, United States\""},
+          {"path": "connections", "type": "integer", "description": "Number of 1st-degree connections", "example": "500"},
+          {"path": "industry", "type": "string | null", "description": "Lead's industry category", "example": "\"Food and Beverage Manufacturing\""},
+          {"path": "email", "type": "string | null", "description": "Enriched email address (if functions.email enabled)", "example": "\"john.smith@example.com\""},
+          {"path": "linkedin_profile_url", "type": "string", "description": "URL to public LinkedIn profile", "example": "\"https://www.linkedin.com/in/johnsmith\""},
+          {"path": "sales_navigator_profile_url", "type": "string", "description": "URL to Sales Navigator profile", "example": "\"https://www.linkedin.com/sales/people/...\""}
+        ]
+      },
+      "positionFields": {
+        "title": "Position Details",
+        "content": "Information about the lead's current role:",
+        "fields": [
+          {"path": "started_on", "type": "string", "description": "When lead started current position (ISO date)", "example": "\"2013-08-01T00:00:00Z\""},
+          {"path": "months_in_position", "type": "integer", "description": "Tenure in current role (months)", "example": "132"},
+          {"path": "years_in_position", "type": "integer", "description": "Tenure in current role (years)", "example": "11"},
+          {"path": "months_in_company", "type": "integer", "description": "Time at current company (months)", "example": "132"},
+          {"path": "years_in_company", "type": "integer", "description": "Time at current company (years)", "example": "11"},
+          {"path": "current_job_numbers", "type": "integer", "description": "Number of concurrent positions held", "example": "1"}
+        ]
+      },
+      "companyFields": {
+        "title": "Company Information",
+        "content": "Details about the lead's company:",
+        "fields": [
+          {"path": "company_name", "type": "string", "description": "Name of the company", "example": "\"Example Corp\""},
+          {"path": "company_id", "type": "integer", "description": "LinkedIn company ID", "example": "1006741"},
+          {"path": "company_linkedin_url", "type": "string", "description": "URL to company LinkedIn page", "example": "\"https://www.linkedin.com/company/example-corp/\""},
+          {"path": "company_domain", "type": "string", "description": "Company website domain", "example": "\"example.com\""},
+          {"path": "company_description", "type": "string", "description": "Company description text", "example": "\"Example Corp is a leading provider...\""},
+          {"path": "company_industry", "type": "string", "description": "Company industry category", "example": "\"Food and Beverage Manufacturing\""},
+          {"path": "company_employee_count_range", "type": "string", "description": "Company size range", "example": "\"51-200\""},
+          {"path": "company_revenue_range", "type": "string", "description": "Revenue bracket", "example": "\"10.0 mil USD - 20.0 mil USD\""},
+          {"path": "company_type", "type": "string", "description": "Company type", "example": "\"Privately Held\""},
+          {"path": "company_location", "type": "string", "description": "Company headquarters location", "example": "\"United States\""},
+          {"path": "company_profile_picture", "type": "string", "description": "URL to company logo", "example": "\"https://media.licdn.com/...\""}
+        ]
+      },
+      "enrichmentFields": {
+        "title": "Enrichment & Metadata",
+        "content": "Additional enrichment and scraping metadata:",
+        "fields": [
+          {"path": "functions.email.filling_date", "type": "string", "description": "When email enrichment was performed", "example": "\"06/20/2025, 12:16:58 +0200\""},
+          {"path": "match_filters", "type": "boolean", "description": "Whether lead matched Sales Navigator filters exactly", "example": "true"},
+          {"path": "degree", "type": "string", "description": "Connection degree (1st, 2nd, 3rd)", "example": "\"3rd\""},
+          {"path": "scraping_time", "type": "string", "description": "When this result was scraped (ISO 8601)", "example": "\"2025-06-20T11:47:53.554Z\""}
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "Hash of the squid to get results from",
+        "example": "25baebaace0143f1bfa185e7541c1d43"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Hash of a specific run (optional, filters to that run only)",
+        "example": "02a09b072c0447d08cd7b604ebe1d98d"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number (default: 1)",
+        "example": "1"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Results per page (default: 50, max: 100)",
+        "example": "50"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the `next` URL in the response to paginate through all results automatically."
+      },
+      {
+        "type": "tip",
+        "content": "The `email` field is only populated when `functions.email` is enabled in settings."
+      },
+      {
+        "type": "note",
+        "content": "Company data is enriched automatically and may include additional details not visible in Sales Navigator."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Results - Sales Navigator Leads Scraper - Lobstr.io API",
+    "description": "Retrieve LinkedIn leads with contact and company data using the Lobstr.io API."
+  }
+}

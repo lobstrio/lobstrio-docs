@@ -1,0 +1,15 @@
+{
+  "duplicated_count": 0,
+  "tasks": [
+    {
+      "id": "1995ef75ed06f21b514298b31caa8139",
+      "created_at": "2025-07-07T10:04:54.651445",
+      "is_active": true,
+      "params": {
+        "url": "https://www.linkedin.com/sales/search/people?query=(filters:List((type:SENIORITY_LEVEL,values:List((id:300,text:Vice%20President)))))"
+      },
+      "module": 2,
+      "object": "task"
+    }
+  ]
+}
