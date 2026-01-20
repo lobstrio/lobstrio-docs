@@ -1,0 +1,11 @@
+curl -X POST "https://api.lobstr.io/v1/tasks" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "squid": "YOUR_SQUID_HASH",
+    "tasks": [
+      {
+        "url": "https://www.vinted.fr/catalog?search_text=nike&order=newest_first"
+      }
+    ]
+  }'
