@@ -1,0 +1,17 @@
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Twitter User Tweets Scraper (2)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "json": true,
+      "hours_back": null,
+      "max_results": 98,
+      "exclude_reposts": true,
+      "collect_pinned_tweets": true
+    }
+  }'
