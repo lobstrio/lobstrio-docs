@@ -1,0 +1,23 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+run_id = "YOUR_RUN_HASH"
+
+# Get Twitter search results
+response = requests.get(f"{BASE_URL}/results",
+    headers=headers,
+    params={"squid": squid_id, "run": run_id}
+)
+
+data = response.json()
+print(f"Total tweets: {data['total_results']}")
+
+for tweet in data["data"]:
+    print(f"\n@{tweet['username']} ({tweet['name']})")
+    print(f"  Content: {tweet['content'][:100]}...")
+    print(f"  Likes: {tweet['likes']} | Retweets: {tweet['retweet_count']} | Views: {tweet['views_count']}")
+    print(f"  URL: {tweet['tweet_url']}")

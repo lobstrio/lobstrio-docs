@@ -1,0 +1,143 @@
+{
+  "slug": "examples/twitter-search-results-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped Twitter search results",
+  "category": "Twitter Search Results Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve scraped tweets from your Twitter search queries. Each result contains tweet content, engagement metrics, media attachments, and user information.",
+    "sections": {
+      "coreFields": {
+        "title": "Core Result Fields",
+        "content": "Standard result identifiers:",
+        "fields": [
+          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "53557759"},
+          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
+          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"72d18e4c94534b829877bb7c092b1f80\""},
+          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"3ff48bb8ef19426e87fbb3e102dd4531\""}
+        ]
+      },
+      "tweetFields": {
+        "title": "Tweet Information",
+        "content": "Core tweet content and metadata:",
+        "fields": [
+          {"path": "content", "type": "string", "description": "Full text content of the tweet", "example": "\"This is the tweet text...\""},
+          {"path": "name", "type": "string", "description": "Display name of the tweet author", "example": "\"Elon Musk\""},
+          {"path": "username", "type": "string", "description": "Twitter handle without @", "example": "\"elonmusk\""},
+          {"path": "user_id", "type": "string", "description": "Twitter's internal user ID", "example": "\"44196397\""},
+          {"path": "tweet_url", "type": "string", "description": "Direct URL to the tweet", "example": "\"https://x.com/elonmusk/status/...\""},
+          {"path": "internal_unique_id", "type": "string", "description": "Twitter's internal tweet ID", "example": "\"1234567890123456789\""},
+          {"path": "published_at", "type": "string", "description": "Tweet publication timestamp (ISO 8601)", "example": "\"2025-07-04T04:05:30Z\""}
+        ]
+      },
+      "engagementFields": {
+        "title": "Engagement Metrics",
+        "content": "Tweet interaction counts:",
+        "fields": [
+          {"path": "likes", "type": "integer", "description": "Number of likes", "example": "15000"},
+          {"path": "retweet_count", "type": "integer", "description": "Number of retweets", "example": "5000"},
+          {"path": "reply_count", "type": "integer", "description": "Number of replies", "example": "1000"},
+          {"path": "quote_count", "type": "integer", "description": "Number of quote tweets", "example": "500"},
+          {"path": "bookmarks_count", "type": "integer", "description": "Number of bookmarks", "example": "2000"},
+          {"path": "views_count", "type": "integer", "description": "Number of views", "example": "1000000"}
+        ]
+      },
+      "tweetTypeFields": {
+        "title": "Tweet Type Flags",
+        "content": "Indicates retweets and quote tweets:",
+        "fields": [
+          {"path": "is_retweeted", "type": "boolean", "description": "Whether this is a retweet", "example": "false"},
+          {"path": "is_quoted", "type": "boolean", "description": "Whether this is a quote tweet", "example": "false"},
+          {"path": "original_tweet_id", "type": "string", "description": "ID of original tweet if retweeted/quoted", "example": "\"1234567890123456780\""},
+          {"path": "original_tweet_url", "type": "string", "description": "URL of original tweet if retweeted/quoted", "example": "\"https://x.com/user/status/...\""}
+        ]
+      },
+      "mediaFields": {
+        "title": "Media Attachments",
+        "content": "Tweets can have up to 4 media attachments (media_0 through media_3):",
+        "fields": [
+          {"path": "media_N_thumbnail", "type": "string", "description": "Thumbnail URL for the media item", "example": "\"https://pbs.twimg.com/...\""},
+          {"path": "media_N_type", "type": "string", "description": "Type of media (photo, video, etc.)", "example": "\"photo\""},
+          {"path": "media_N_url", "type": "string", "description": "Direct URL to the media item", "example": "\"https://pbs.twimg.com/...\""}
+        ]
+      },
+      "twitterCardFields": {
+        "title": "Twitter Card Fields",
+        "content": "If the tweet contains a link with a Twitter Card preview:",
+        "fields": [
+          {"path": "binded_media_title", "type": "string", "description": "Title of the Twitter Card", "example": "\"Article Title\""},
+          {"path": "binded_media_description", "type": "string", "description": "Description of the Twitter Card", "example": "\"Article description...\""},
+          {"path": "binded_media_url", "type": "string", "description": "URL the card links to", "example": "\"https://example.com/article\""},
+          {"path": "binded_media_domain", "type": "string", "description": "Domain of the linked URL", "example": "\"example.com\""},
+          {"path": "binded_media_thumbnail_url", "type": "string", "description": "Thumbnail image of the card", "example": "\"https://example.com/image.jpg\""}
+        ]
+      },
+      "timestampFields": {
+        "title": "Timestamps",
+        "fields": [
+          {"path": "scraping_time", "type": "string", "description": "When this tweet was scraped (ISO 8601)", "example": "\"2025-07-04T04:08:09.340Z\""}
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "Hash of the squid to get results from",
+        "example": "72d18e4c94534b829877bb7c092b1f80"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Hash of a specific run (optional)",
+        "example": "3ff48bb8ef19426e87fbb3e102dd4531"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number (default: 1)",
+        "example": "1"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Results per page (default: 50, max: 100)",
+        "example": "50"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use `views_count` to identify viral tweets in your search results."
+      },
+      {
+        "type": "tip",
+        "content": "Check `is_retweeted` and `is_quoted` to filter out reposts from original content."
+      },
+      {
+        "type": "note",
+        "content": "Media fields use N as a placeholder for 0-3 (e.g., `media_0_url`, `media_1_url`)."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Results - Twitter Search Results Scraper - Lobstr.io API",
+    "description": "Retrieve Twitter search results using the Lobstr.io API."
+  }
+}
