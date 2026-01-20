@@ -1,0 +1,11 @@
+curl -X POST "https://api.lobstr.io/v1/tasks" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tasks": [
+      {
+        "url": "https://www.leboncoin.fr/annonces/offres/provence_alpes_cote_d_azur/bouches_du_rhone/p-2"
+      }
+    ],
+    "squid": "YOUR_SQUID_HASH"
+  }'

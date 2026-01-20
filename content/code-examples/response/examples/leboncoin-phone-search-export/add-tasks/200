@@ -1,0 +1,15 @@
+{
+  "duplicated_count": 0,
+  "tasks": [
+    {
+      "id": "bbeff62182c6239a8df533ec9d281c2e",
+      "created_at": "2025-07-04T04:57:45.202264",
+      "is_active": true,
+      "params": {
+        "url": "https://www.leboncoin.fr/annonces/offres/provence_alpes_cote_d_azur/bouches_du_rhone/p-2"
+      },
+      "module": 103,
+      "object": "task"
+    }
+  ]
+}
