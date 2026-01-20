@@ -1,0 +1,58 @@
+{
+  "slug": "examples/facebook-page-details-export/update-settings",
+  "title": "Update Settings",
+  "description": "Configure squid settings for Facebook Page Details Export",
+  "category": "Facebook Page Details Export",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/squids/{squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your squid settings for the Facebook Page Details Export scraper. This scraper uses standard squid settings with no scraper-specific parameters.",
+    "sections": {
+      "squidSettings": {
+        "title": "Squid Settings",
+        "content": "Configure general squid settings:",
+        "columns": [
+          {"header": "Setting", "key": "setting"},
+          {"header": "Type", "key": "type"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"setting": "**name**", "type": "string", "description": "Display name for this squid configuration"},
+          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping workers (default: 1)"},
+          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
+          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
+          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"},
+          {"setting": "**params**", "type": "object", "description": "Empty object - no scraper-specific parameters"}
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "note",
+        "content": "This scraper has no special parameters - use standard squid settings only."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Update Settings - Facebook Page Details Export - Lobstr.io API",
+    "description": "Configure Facebook Page Details Export scraper settings using the Lobstr.io API."
+  }
+}
