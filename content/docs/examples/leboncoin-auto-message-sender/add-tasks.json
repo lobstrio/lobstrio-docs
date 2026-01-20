@@ -1,0 +1,74 @@
+{
+  "slug": "examples/leboncoin-auto-message-sender/add-tasks",
+  "title": "Add Tasks",
+  "description": "Add Leboncoin listing URLs to send automated messages",
+  "category": "Leboncoin Auto Message Sender",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/tasks",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Add Leboncoin listing URLs to send automated messages to sellers. Each task represents a listing that will receive your templated message.\n\nUnlike search export scrapers, this tool takes direct listing URLs rather than search result pages. You can obtain listing URLs from the Leboncoin Listings Search Export scraper results.",
+    "sections": {
+      "requestBody": {
+        "title": "Request Body",
+        "columns": [
+          {"header": "Field", "key": "field"},
+          {"header": "Type", "key": "type"},
+          {"header": "Required", "key": "required"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Leboncoin Auto Message Sender crawler"},
+          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+        ]
+      },
+      "taskObject": {
+        "title": "Task Object",
+        "columns": [
+          {"header": "Field", "key": "field"},
+          {"header": "Type", "key": "type"},
+          {"header": "Required", "key": "required"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"field": "**url**", "type": "string", "required": "Yes", "description": "Direct Leboncoin listing URL (e.g., `https://www.leboncoin.fr/ad/locations/2943434204`)"}
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the Leboncoin Listings Search Export scraper to collect listing URLs, then pass them to this tool for messaging."
+      },
+      {
+        "type": "warning",
+        "content": "Ensure you have configured your message template in the squid settings before adding tasks."
+      },
+      {
+        "type": "note",
+        "content": "Messages are only sent to listings where the seller has messaging enabled."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Add Tasks - Leboncoin Auto Message Sender - Lobstr.io API",
+    "description": "Learn how to add Leboncoin auto message tasks using the Lobstr.io API."
+  }
+}

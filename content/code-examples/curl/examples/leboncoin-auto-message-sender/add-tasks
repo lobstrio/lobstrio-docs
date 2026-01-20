@@ -1,0 +1,11 @@
+curl -X POST "https://api.lobstr.io/v1/tasks" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tasks": [
+      {
+        "url": "https://www.leboncoin.fr/ad/locations/2943434204"
+      }
+    ],
+    "squid": "YOUR_SQUID_HASH"
+  }'

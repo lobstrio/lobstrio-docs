@@ -1,0 +1,28 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+# Configure message template and settings
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Leboncoin Auto Message Sender (4)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            # Message template with dynamic variables
+            "message": "Hello #pseudo#,\n\nI want to enquire about #title#.",
+            "hours_back": 1,           # Only listings from last hour
+            "max_results": 3,          # Process max 3 listings
+            "max_unique_results_per_run": 10  # Max 10 per run
+        }
+    }
+)
+
+print(response.json())

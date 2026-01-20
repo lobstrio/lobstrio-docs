@@ -1,0 +1,13 @@
+{
+  "name": "Leboncoin Auto Message Sender (4)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "message": "Hello #pseudo#,\n\nI want to enquire about #title#.",
+    "max_unique_results_per_run": 20,
+    "hours_back": 1,
+    "max_results": 3
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "slug": "examples/leboncoin-auto-message-sender/get-results",
+  "title": "Get Results",
+  "description": "Retrieve message sending results from Leboncoin Auto Message Sender",
+  "category": "Leboncoin Auto Message Sender",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve results showing which messages were sent successfully and which were skipped or failed. Each result includes the message content, delivery status, and listing details.",
+    "sections": {
+      "resultFields": {
+        "title": "Result Fields",
+        "content": "Core result data:",
+        "fields": [
+          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "53557759"},
+          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
+          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"72d18e4c94534b829877bb7c092b1f80\""},
+          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"3ff48bb8ef19426e87fbb3e102dd4531\""},
+          {"path": "annonce_id", "type": "string", "description": "Leboncoin listing ID the message was sent to", "example": "\"2943434204\""},
+          {"path": "url", "type": "string", "description": "Direct URL of the Leboncoin listing", "example": "\"https://www.leboncoin.fr/ad/locations/2943434204\""}
+        ]
+      },
+      "messageFields": {
+        "title": "Message Information",
+        "content": "Details about the sent message:",
+        "fields": [
+          {"path": "message", "type": "string", "description": "The actual message sent, with variables replaced", "example": "\"Hello Jean, I am interested in your listing...\""},
+          {"path": "message_hash", "type": "string | null", "description": "Hash of message content used to prevent duplicate sends", "example": "\"a1b2c3d4e5f6\""}
+        ]
+      },
+      "statusFields": {
+        "title": "Status Fields",
+        "content": "Message delivery status indicators:",
+        "fields": [
+          {"path": "is_sent", "type": "boolean", "description": "True if the message was successfully sent", "example": "true"},
+          {"path": "was_already_sent", "type": "boolean | null", "description": "True if skipped because same message was already sent", "example": "false"},
+          {"path": "is_deactivated", "type": "boolean", "description": "True if the listing was deactivated at processing time", "example": "false"}
+        ]
+      },
+      "timestampFields": {
+        "title": "Timestamps",
+        "content": "Timing information:",
+        "fields": [
+          {"path": "last_publication_date", "type": "string", "description": "When the listing was last published (ISO 8601)", "example": "\"2025-07-04T04:05:30Z\""},
+          {"path": "scraping_time", "type": "string", "description": "When this result was processed (ISO 8601)", "example": "\"2025-07-04T04:08:09.340Z\""},
+          {"path": "functions.one_time_message.filling_date", "type": "string", "description": "Timestamp when the message function was executed", "example": "\"07/04/2025, 06:08:09 +0200\""}
+        ]
+      },
+      "statusInterpretation": {
+        "title": "Message Status Interpretation",
+        "content": "How to interpret the status fields:",
+        "columns": [
+          {"header": "is_sent", "key": "is_sent"},
+          {"header": "was_already_sent", "key": "was_already_sent"},
+          {"header": "is_deactivated", "key": "is_deactivated"},
+          {"header": "Meaning", "key": "meaning"}
+        ],
+        "rows": [
+          {"is_sent": "true", "was_already_sent": "null/false", "is_deactivated": "false", "meaning": "Message sent successfully"},
+          {"is_sent": "false", "was_already_sent": "true", "is_deactivated": "false", "meaning": "Skipped - duplicate message already sent"},
+          {"is_sent": "false", "was_already_sent": "null/false", "is_deactivated": "true", "meaning": "Skipped - listing was deactivated"},
+          {"is_sent": "false", "was_already_sent": "null/false", "is_deactivated": "false", "meaning": "Failed to send message"}
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "Hash of the squid to get results from",
+        "example": "72d18e4c94534b829877bb7c092b1f80"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Hash of a specific run (optional)",
+        "example": "3ff48bb8ef19426e87fbb3e102dd4531"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number (default: 1)",
+        "example": "1"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Results per page (default: 50, max: 100)",
+        "example": "50"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Filter results by `is_sent=true` to see only successfully delivered messages."
+      },
+      {
+        "type": "tip",
+        "content": "Check `was_already_sent` to identify duplicate message attempts that were skipped."
+      },
+      {
+        "type": "note",
+        "content": "The `message_hash` enables duplicate detection - identical messages to the same listing are automatically skipped."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Results - Leboncoin Auto Message Sender - Lobstr.io API",
+    "description": "Retrieve Leboncoin auto message results using the Lobstr.io API."
+  }
+}
