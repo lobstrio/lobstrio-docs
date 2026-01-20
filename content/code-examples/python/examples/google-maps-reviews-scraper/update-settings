@@ -1,0 +1,33 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "b6ab0f03b02e472a8e2ab0b16b4fdd0f"
+
+# Configure scraper settings
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Restaurant Reviews Paris",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "run_notify": "on_success",
+        "timezone": "Europe/Paris",
+        "params": {
+            "sort_by": "newest",
+            "hours_back": None,
+            "max_results": 20,
+            "language": "English (United States)",
+            "functions": {
+                "short_link": False
+            }
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+print(f"Sort by: {data['params']['sort_by']}")
+print(f"Max results: {data['params']['max_results']}")

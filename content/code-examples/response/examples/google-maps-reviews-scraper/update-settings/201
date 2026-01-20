@@ -1,0 +1,16 @@
+{
+  "name": "Restaurant Reviews Paris",
+  "no_line_breaks": true,
+  "params": {
+    "sort_by": "newest",
+    "hours_back": null,
+    "max_results": 20,
+    "language": "English (United States)",
+    "functions": {
+      "short_link": false
+    }
+  },
+  "to_complete": false,
+  "run_notify": "on_success",
+  "export_unique_results": true
+}

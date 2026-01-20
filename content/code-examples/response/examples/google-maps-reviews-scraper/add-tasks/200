@@ -1,0 +1,23 @@
+{
+  "duplicated_count": 0,
+  "tasks": [
+    {
+      "id": "8c15009a391a79151873fe9451285e90",
+      "created_at": "2025-03-17T11:56:51.691986",
+      "is_active": true,
+      "params": {
+        "url": "https://maps.google.com/?cid=1357935577401699828"
+      },
+      "object": "task"
+    },
+    {
+      "id": "a6ed45088d82beef3d254679457b5eb6",
+      "created_at": "2025-03-17T11:56:51.692109",
+      "is_active": true,
+      "params": {
+        "url": "https://www.google.com/maps/place/La+Tour+d'Argent/@48.8499542,2.3524796,17z"
+      },
+      "object": "task"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "slug": "examples/google-maps-reviews-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped Google Maps reviews data",
+  "category": "Google Maps Reviews Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve the scraped review data from your Google Maps Reviews Scraper runs. Results include reviewer information, ratings, review text (original and translated), and place details.",
+    "sections": {
+      "resultFields": {
+        "title": "Result Fields",
+        "content": "Each result object contains the following fields:",
+        "fields": [
+          {"path": "id", "type": "string", "description": "Unique result identifier", "example": "\"6ab98eca1b26828a1a206be9d66db305\""},
+          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
+          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"b6ab0f03b02e472a8e2ab0b16b4fdd0f\""},
+          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"c29f2f1464ec45d599b1b4f43595bf3a\""},
+          {"path": "user_name", "type": "string", "description": "Reviewer's display name", "example": "\"Jacques LEWINER\""},
+          {"path": "score", "type": "integer", "description": "Rating given (1-5 stars)", "example": "5"},
+          {"path": "text", "type": "string", "description": "English-translated review text", "example": "\"Everything is perfect...\""},
+          {"path": "original_text", "type": "string", "description": "Original review in native language", "example": "\"Tout est parfait...\""},
+          {"path": "lang", "type": "string", "description": "Language code of original review", "example": "\"fr\""},
+          {"path": "published_at", "type": "string", "description": "Relative time when posted", "example": "\"a week ago\""},
+          {"path": "published_at_datetime", "type": "timestamp", "description": "Exact datetime when posted (ISO 8601)", "example": "\"2025-03-15T11:56:57.651Z\""},
+          {"path": "place_name", "type": "string", "description": "Name of the reviewed business", "example": "\"La Rôtisserie d'Argent\""},
+          {"path": "place_address", "type": "string", "description": "Business address", "example": "\"19 Quai de la Tournelle, 75005 Paris\""},
+          {"path": "place_average_score", "type": "float", "description": "Overall rating of the place", "example": "4.4"},
+          {"path": "place_id", "type": "string", "description": "Google Maps Place ID", "example": "\"ChIJg4octORx5kcRijmhQTSm1Fs\""},
+          {"path": "cid", "type": "string", "description": "Google Maps Customer ID", "example": "\"6617096495883696522\""},
+          {"path": "is_user_local_guide", "type": "boolean", "description": "Whether reviewer is a Google Local Guide", "example": "true"},
+          {"path": "user_reviews_count", "type": "integer", "description": "Total reviews posted by this user", "example": "4"},
+          {"path": "user_link", "type": "string", "description": "Link to reviewer's Google Maps profile", "example": "\"https://www.google.com/maps/contrib/...\""},
+          {"path": "user_image_url", "type": "string", "description": "URL of reviewer's profile picture", "example": "\"https://lh3.googleusercontent.com/...\""},
+          {"path": "response_from_owner", "type": "string", "description": "Owner's response to the review (if any)", "example": "\"\""},
+          {"path": "review_link", "type": "string", "description": "Direct link to the review on Google Maps", "example": "\"https://www.google.com/maps/reviews/...\""},
+          {"path": "short_review_link", "type": "string", "description": "Shortened URL (requires functions.short_link = true)", "example": "\"https://maps.app.goo.gl/...\""},
+          {"path": "pictures", "type": "string", "description": "URLs of photos attached to the review", "example": "\"\""},
+          {"path": "total_likes", "type": "integer", "description": "Number of likes on the review", "example": "0"},
+          {"path": "total_reviews", "type": "integer", "description": "Total reviews for this place", "example": "3224"},
+          {"path": "visited_in", "type": "string", "description": "When the reviewer visited", "example": "\"2025-03-22 00:00:00\""},
+          {"path": "scraping_time", "type": "timestamp", "description": "When this result was scraped", "example": "\"2025-03-22T13:18:45.227Z\""}
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "Hash of the squid to get results from",
+        "example": "b6ab0f03b02e472a8e2ab0b16b4fdd0f"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Hash of a specific run (optional, filters to that run only)",
+        "example": "c29f2f1464ec45d599b1b4f43595bf3a"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number (default: 1)",
+        "example": "1"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Results per page (default: 50, max: 100)",
+        "example": "50"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "The `text` field contains automatically translated English text. Use `original_text` for the native language version."
+      },
+      {
+        "type": "tip",
+        "content": "Use the `next` URL in the response to paginate through all results."
+      },
+      {
+        "type": "note",
+        "content": "Results are sorted by scraping time (most recent first) by default."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Results - Google Maps Reviews Scraper - Lobstr.io API",
+    "description": "Retrieve scraped Google Maps reviews including ratings, review text, and reviewer information."
+  }
+}

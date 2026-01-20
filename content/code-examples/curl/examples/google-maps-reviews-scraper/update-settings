@@ -1,0 +1,19 @@
+curl -X POST "https://api.lobstr.io/v1/squids/b6ab0f03b02e472a8e2ab0b16b4fdd0f" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Restaurant Reviews Paris",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "run_notify": "on_success",
+    "timezone": "Europe/Paris",
+    "params": {
+      "sort_by": "newest",
+      "hours_back": null,
+      "max_results": 20,
+      "language": "English (United States)",
+      "functions": {
+        "short_link": false
+      }
+    }
+  }'
