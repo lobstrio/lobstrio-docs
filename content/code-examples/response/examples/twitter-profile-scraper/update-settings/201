@@ -1,0 +1,9 @@
+{
+  "name": "Twitter Profile Scraper (2)",
+  "no_line_breaks": true,
+  "params": {
+    "json": true
+  },
+  "to_complete": false,
+  "export_unique_results": true
+}
