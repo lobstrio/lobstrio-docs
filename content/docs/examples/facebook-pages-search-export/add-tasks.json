@@ -1,0 +1,70 @@
+{
+  "slug": "examples/facebook-pages-search-export/add-tasks",
+  "title": "Add Tasks",
+  "description": "Add Facebook Pages search URLs to scrape",
+  "category": "Facebook Pages Search Export",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/tasks",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Add Facebook Pages search URLs to scrape business pages. The scraper extracts page information including contact details, follower counts, and social links.",
+    "sections": {
+      "requestBody": {
+        "title": "Request Body",
+        "columns": [
+          {"header": "Field", "key": "field"},
+          {"header": "Type", "key": "type"},
+          {"header": "Required", "key": "required"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Facebook Pages Search Export crawler"},
+          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+        ]
+      },
+      "taskObject": {
+        "title": "Task Object",
+        "columns": [
+          {"header": "Field", "key": "field"},
+          {"header": "Type", "key": "type"},
+          {"header": "Required", "key": "required"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"field": "**url**", "type": "string", "required": "Yes", "description": "Facebook Pages search URL (e.g., `https://www.facebook.com/search/pages?q=coffee%20shop`)"}
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Perform your search on Facebook first, then copy the URL to preserve all search parameters."
+      },
+      {
+        "type": "note",
+        "content": "Facebook Pages search URLs follow the format: `https://www.facebook.com/search/pages?q=YOUR_SEARCH_QUERY` where the query should be URL-encoded."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Add Tasks - Facebook Pages Search Export - Lobstr.io API",
+    "description": "Learn how to add Facebook Pages search scraping tasks using the Lobstr.io API."
+  }
+}

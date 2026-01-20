@@ -1,0 +1,8 @@
+{
+  "name": "Facebook Pages Search Export (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {}
+}

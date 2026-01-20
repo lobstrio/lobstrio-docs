@@ -1,0 +1,11 @@
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Facebook Pages Search Export (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {}
+  }'
