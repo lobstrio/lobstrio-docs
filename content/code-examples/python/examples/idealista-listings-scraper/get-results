@@ -1,0 +1,28 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+run_id = "YOUR_RUN_HASH"
+
+# Get Idealista property listings
+response = requests.get(f"{BASE_URL}/results",
+    headers=headers,
+    params={"squid": squid_id, "run": run_id}
+)
+
+data = response.json()
+print(f"Total listings: {data['total_results']}")
+
+for listing in data["data"]:
+    print(f"\n{listing['title']}")
+    print(f"  Price: {listing['currency']}{listing['price']:,}")
+    print(f"  Area: {listing['area']} m²")
+    print(f"  Bedrooms: {listing['bedrooms']}")
+    if listing.get('floor'):
+        print(f"  Floor: {listing['floor']}")
+    if listing.get('phone'):
+        print(f"  Phone: {listing['phone']}")
+    print(f"  URL: {listing['url']}")

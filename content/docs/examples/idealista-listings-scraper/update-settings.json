@@ -1,0 +1,83 @@
+{
+  "slug": "examples/idealista-listings-scraper/update-settings",
+  "title": "Update Settings",
+  "description": "Configure the Idealista Listings Scraper parameters and options",
+  "category": "Examples",
+  "subcategory": "Idealista Listings Scraper",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/squids/{squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your Idealista Listings Scraper squid settings to control pagination and scraping behavior. Adjust the maximum pages to scrape based on your needs.",
+    "sections": {
+      "squidParams": {
+        "title": "Squid Parameters",
+        "content": "The following parameters can be configured in the `params` object:",
+        "table": {
+          "columns": [
+            { "header": "Parameter", "key": "param" },
+            { "header": "Type", "key": "type" },
+            { "header": "Description", "key": "description" }
+          ],
+          "rows": [
+            { "param": "max_pages", "type": "integer", "description": "Maximum number of search result pages to scrape per task (default: 100)" }
+          ]
+        }
+      },
+      "generalSettings": {
+        "title": "General Settings",
+        "content": "Standard squid settings that apply to all scrapers:",
+        "table": {
+          "columns": [
+            { "header": "Setting", "key": "setting" },
+            { "header": "Type", "key": "type" },
+            { "header": "Description", "key": "description" }
+          ],
+          "rows": [
+            { "setting": "name", "type": "string", "description": "Custom name for this squid" },
+            { "setting": "concurrency", "type": "integer", "description": "Number of parallel scraping threads" },
+            { "setting": "export_unique_results", "type": "boolean", "description": "Filter duplicate results when exporting" },
+            { "setting": "to_complete", "type": "boolean", "description": "Mark squid as complete when all tasks finish" },
+            { "setting": "no_line_breaks", "type": "boolean", "description": "Remove line breaks from text fields" }
+          ]
+        }
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Idealista typically shows 30 listings per page. Setting max_pages to 100 can yield up to 3,000 listings per search URL."
+      },
+      {
+        "type": "note",
+        "content": "Keep concurrency at 1 for Idealista to avoid rate limiting issues."
+      }
+    ]
+  },
+  "examples": {
+    "curl": "examples/idealista-listings-scraper/update-settings",
+    "python": "examples/idealista-listings-scraper/update-settings",
+    "response": "examples/idealista-listings-scraper/update-settings"
+  },
+  "seo": {
+    "title": "Update Settings - Idealista Listings Scraper - Lobstr.io API",
+    "description": "Configure your Idealista Listings Scraper with pagination settings and scraping parameters for Spanish real estate data."
+  }
+}

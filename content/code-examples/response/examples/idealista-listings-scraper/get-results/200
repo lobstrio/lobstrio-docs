@@ -1,0 +1,31 @@
+{
+  "total_results": 100,
+  "limit": 100,
+  "page": 1,
+  "total_pages": 1,
+  "result_from": 1,
+  "result_to": 100,
+  "data": [
+    {
+      "id": 77153,
+      "object": "result",
+      "squid": "cd75312523ed4ba88f71fc6c984823e2",
+      "run": "170fd6e6629f45b284bdeeee8fbb1c20",
+      "area": 440,
+      "bedrooms": 5,
+      "currency": "€",
+      "description": "IC2 Berango offers for sale EXCLUSIVELY, a spectacular villa in Berango, located in the Santa Ana area. This impressive property, built entirely in ashlar stone, has approximately 440 square meters built, distributed in 5 spacious bedrooms and 4 bathrooms. In impeccable condition, this villa is presented as a unique",
+      "floor": "",
+      "functions": null,
+      "main_image": null,
+      "native_id": 77153,
+      "phone": "+34946980112",
+      "price": 1275000,
+      "scraping_time": "2025-01-29T08:46:11.581Z",
+      "title": "Detached house in calle Jesus Maria Leizaola, Berango",
+      "url": "https://www.idealista.com/en/inmueble/104990102/"
+    }
+  ],
+  "next": "https://api.lobstr.io/v1/results?squid=e23069fee2594ee0aed755be195b156c&run=6ecdfb8a43c841d18502f045200196f7&page=2&page_size=100",
+  "previous": null
+}

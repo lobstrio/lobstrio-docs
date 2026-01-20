@@ -1,0 +1,97 @@
+{
+  "slug": "examples/idealista-listings-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped Idealista property listings with details and contact information",
+  "category": "Examples",
+  "subcategory": "Idealista Listings Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve property listings scraped from Idealista search results. Each result contains property details including price, area, bedrooms, description, and contact phone number.",
+    "sections": {
+      "resultFields": {
+        "title": "Result Fields",
+        "content": "Each result object contains the following property listing data:",
+        "fields": [
+          { "path": "id", "type": "integer", "description": "Unique identifier for this result", "example": "77153" },
+          { "path": "object", "type": "string", "description": "Object type, always \"result\"", "example": "\"result\"" },
+          { "path": "squid", "type": "string", "description": "Hash ID of the squid that produced this result", "example": "\"cd75312523ed4ba88f71fc6c984823e2\"" },
+          { "path": "run", "type": "string", "description": "Hash ID of the run during which this result was scraped", "example": "\"170fd6e6629f45b284bdeeee8fbb1c20\"" },
+          { "path": "title", "type": "string", "description": "Property listing title", "example": "\"Detached house in calle Jesus Maria Leizaola, Berango\"" },
+          { "path": "price", "type": "number", "description": "Listing price in specified currency", "example": "1275000" },
+          { "path": "currency", "type": "string", "description": "Currency symbol for the listing price", "example": "\"\\u20ac\"" },
+          { "path": "area", "type": "number", "description": "Built area in square meters", "example": "440" },
+          { "path": "bedrooms", "type": "integer", "description": "Number of bedrooms", "example": "5" },
+          { "path": "floor", "type": "string", "description": "Floor level (if provided)", "example": "\"3rd\"" },
+          { "path": "description", "type": "string", "description": "Short listing description", "example": "\"IC2 Berango offers for sale EXCLUSIVELY...\"" },
+          { "path": "phone", "type": "string", "description": "Contact phone number for the listing", "example": "\"+34946980112\"" },
+          { "path": "main_image", "type": "string|null", "description": "URL of the primary listing image", "example": "null" },
+          { "path": "url", "type": "string", "description": "Direct URL to the listing page on Idealista", "example": "\"https://www.idealista.com/en/inmueble/104990102/\"" },
+          { "path": "scraping_time", "type": "string", "description": "ISO timestamp when the listing was fetched", "example": "\"2025-01-29T08:46:11.581Z\"" },
+          { "path": "native_id", "type": "integer", "description": "Internal listing identifier", "example": "77153" },
+          { "path": "functions", "type": "object|null", "description": "Reserved for function-specific metadata", "example": "null" }
+        ]
+      },
+      "pagination": {
+        "title": "Pagination",
+        "content": "Results are paginated. Use the `next` and `previous` URLs in the response to navigate through pages, or use `page` and `page_size` query parameters."
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The squid hash ID to get results from"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Filter results by specific run hash ID"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number for pagination (default: 1)"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Number of results per page (default: 100, max: 1000)"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Filter results by price range or area in your application code, or apply filters on Idealista before creating tasks for pre-filtered results."
+      },
+      {
+        "type": "note",
+        "content": "Phone numbers are formatted with country codes. Spanish numbers typically start with +34."
+      }
+    ]
+  },
+  "examples": {
+    "curl": "examples/idealista-listings-scraper/get-results",
+    "python": "examples/idealista-listings-scraper/get-results",
+    "response": "examples/idealista-listings-scraper/get-results"
+  },
+  "seo": {
+    "title": "Get Results - Idealista Listings Scraper - Lobstr.io API",
+    "description": "Retrieve scraped Idealista property listings including price, area, bedrooms, contact phone, and listing details from the Lobstr.io API."
+  }
+}
