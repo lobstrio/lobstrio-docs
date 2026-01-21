@@ -1,5 +1,5 @@
 {
-  "slug": "examples/idealista-listings-scraper/update-settings",
+  "slug": "examples/idealista-listings-search-export/update-settings",
   "title": "Update Settings",
   "description": "Configure the Idealista Listings Scraper parameters and options",
   "category": "Examples",
@@ -17,12 +17,25 @@
         "content": "The following parameters can be configured in the `params` object:",
         "table": {
           "columns": [
-            { "header": "Parameter", "key": "param" },
-            { "header": "Type", "key": "type" },
-            { "header": "Description", "key": "description" }
+            {
+              "header": "Parameter",
+              "key": "param"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
           ],
           "rows": [
-            { "param": "max_pages", "type": "integer", "description": "Maximum number of search result pages to scrape per task (default: 100)" }
+            {
+              "param": "max_pages",
+              "type": "integer",
+              "description": "Maximum number of search result pages to scrape per task (default: 100)"
+            }
           ]
         }
       },
@@ -31,16 +44,45 @@
         "content": "Standard squid settings that apply to all scrapers:",
         "table": {
           "columns": [
-            { "header": "Setting", "key": "setting" },
-            { "header": "Type", "key": "type" },
-            { "header": "Description", "key": "description" }
+            {
+              "header": "Setting",
+              "key": "setting"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
           ],
           "rows": [
-            { "setting": "name", "type": "string", "description": "Custom name for this squid" },
-            { "setting": "concurrency", "type": "integer", "description": "Number of parallel scraping threads" },
-            { "setting": "export_unique_results", "type": "boolean", "description": "Filter duplicate results when exporting" },
-            { "setting": "to_complete", "type": "boolean", "description": "Mark squid as complete when all tasks finish" },
-            { "setting": "no_line_breaks", "type": "boolean", "description": "Remove line breaks from text fields" }
+            {
+              "setting": "name",
+              "type": "string",
+              "description": "Custom name for this squid"
+            },
+            {
+              "setting": "concurrency",
+              "type": "integer",
+              "description": "Number of parallel scraping threads"
+            },
+            {
+              "setting": "export_unique_results",
+              "type": "boolean",
+              "description": "Filter duplicate results when exporting"
+            },
+            {
+              "setting": "to_complete",
+              "type": "boolean",
+              "description": "Mark squid as complete when all tasks finish"
+            },
+            {
+              "setting": "no_line_breaks",
+              "type": "boolean",
+              "description": "Remove line breaks from text fields"
+            }
           ]
         }
       }

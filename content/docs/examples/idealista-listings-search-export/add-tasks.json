@@ -1,5 +1,5 @@
 {
-  "slug": "examples/idealista-listings-scraper/add-tasks",
+  "slug": "examples/idealista-listings-search-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add Idealista search URLs as tasks for scraping property listings",
   "category": "Examples",
@@ -17,12 +17,25 @@
         "content": "Each task should contain a URL from an Idealista search results page. You can search for properties by location, type, and other filters on Idealista, then use those search URLs as tasks.",
         "table": {
           "columns": [
-            { "header": "Field", "key": "field" },
-            { "header": "Type", "key": "type" },
-            { "header": "Description", "key": "description" }
+            {
+              "header": "Field",
+              "key": "field"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
           ],
           "rows": [
-            { "field": "url", "type": "string", "description": "Idealista search results page URL" }
+            {
+              "field": "url",
+              "type": "string",
+              "description": "Idealista search results page URL"
+            }
           ]
         }
       },
