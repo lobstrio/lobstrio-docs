@@ -1,0 +1,178 @@
+{
+  "slug": "examples/leboncoin-iter-listings-with-phone/update-settings",
+  "title": "Update Settings",
+  "description": "Configure scraper settings for Leboncoin Listings & Phone Search Export",
+  "category": "Leboncoin Listings & Phone Search Export",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/squids/{squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your squid settings for the Leboncoin Listings & Phone Search Export scraper. This scraper extends the standard Leboncoin scraper with phone number extraction capabilities.",
+    "sections": {
+      "phoneParams": {
+        "title": "Phone Extraction Parameter",
+        "content": "Enable phone number extraction:",
+        "columns": [
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
+        ],
+        "rows": [
+          {
+            "param": "**functions.phone**",
+            "type": "boolean",
+            "default": "false",
+            "description": "Extract phone numbers from listings (incurs extra credits per listing)"
+          }
+        ]
+      },
+      "scraperParams": {
+        "title": "Scraper Parameters",
+        "content": "Set these parameters in the `params` object:",
+        "columns": [
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
+        ],
+        "rows": [
+          {
+            "param": "**max_date**",
+            "type": "string (ISO) | null",
+            "default": "null",
+            "description": "Stop crawling once a listing older than this date is found"
+          },
+          {
+            "param": "**hours_back**",
+            "type": "integer | null",
+            "default": "null",
+            "description": "Collect only listings posted in the last X hours"
+          },
+          {
+            "param": "**max_pages**",
+            "type": "integer",
+            "default": "null",
+            "description": "Maximum number of result pages to crawl"
+          },
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "default": "null",
+            "description": "Total number of listings to collect before stopping"
+          },
+          {
+            "param": "**online_shop**",
+            "type": "boolean",
+            "default": "false",
+            "description": "Extract seller's shop URL (incurs extra requests/credits)"
+          }
+        ]
+      },
+      "squidSettings": {
+        "title": "Squid Settings",
+        "content": "Configure general squid settings:",
+        "columns": [
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
+        ],
+        "rows": [
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping workers (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "warning",
+        "content": "Enabling `functions.phone` adds extra requests per listing, significantly increasing run time and credit usage."
+      },
+      {
+        "type": "tip",
+        "content": "Only enable phone extraction when phone numbers are actually required for your use case."
+      },
+      {
+        "type": "note",
+        "content": "Phone numbers are only available when the seller has enabled phone contact on their listing."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Update Settings - Leboncoin Listings & Phone Search Export - Lobstr.io API",
+    "description": "Configure Leboncoin phone search settings using the Lobstr.io API."
+  }
+}
