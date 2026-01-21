@@ -1,0 +1,65 @@
+{
+  "slug": "examples/linkedin-profile-scraper/update-settings",
+  "title": "Update Settings",
+  "description": "Configure the LinkedIn Profile Scraper settings including email enrichment",
+  "category": "LinkedIn Profile Scraper",
+  "metadata": {
+    "method": "PATCH",
+    "endpoint": "/v2/squid/{squid_id}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your LinkedIn Profile Scraper settings. The main configurable option is email enrichment, which uses Lobstr.io's enrichment service to find email addresses for the profiles you scrape.",
+    "sections": {
+      "settings": {
+        "title": "Available Settings",
+        "columns": [
+          { "header": "Parameter", "key": "parameter" },
+          { "header": "Type", "key": "type" },
+          { "header": "Default", "key": "default" },
+          { "header": "Description", "key": "description" }
+        ],
+        "rows": [
+          { "parameter": "**email**", "type": "boolean", "default": "true", "description": "Enable email enrichment to find email addresses for profiles" }
+        ]
+      },
+      "emailEnrichment": {
+        "title": "Email Enrichment",
+        "content": "When email enrichment is enabled, Lobstr.io will attempt to find the email address associated with each LinkedIn profile.\n\n**Pricing:** 9 credits per profile enriched. No email found = 0 credits charged.\n\nThe enrichment service returns:\n- `email`: The discovered email address (if found)\n- `email_status`: Validation status of the email (valid, invalid, catch-all, etc.)"
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "warning",
+        "content": "Email enrichment costs 9 credits per profile where an email is found. Profiles without a found email are not charged."
+      },
+      {
+        "type": "tip",
+        "content": "If you don't need email addresses, disable enrichment to reduce costs: set `email` to `false`."
+      },
+      {
+        "type": "note",
+        "content": "Email enrichment is enabled by default. Make sure to disable it before running if you don't need email data."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Update Settings - LinkedIn Profile Scraper - Lobstr.io API",
+    "description": "Learn how to configure LinkedIn Profile Scraper settings including email enrichment using the Lobstr.io API."
+  }
+}

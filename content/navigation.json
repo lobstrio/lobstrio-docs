@@ -597,6 +597,23 @@
               "slug": "examples/tiktok-top-ads-scraper/get-results"
             }
           ]
+        },
+        {
+          "title": "LinkedIn Profile Scraper",
+          "items": [
+            {
+              "title": "Add Tasks",
+              "slug": "examples/linkedin-profile-scraper/add-tasks"
+            },
+            {
+              "title": "Update Settings",
+              "slug": "examples/linkedin-profile-scraper/update-settings"
+            },
+            {
+              "title": "Get Results",
+              "slug": "examples/linkedin-profile-scraper/get-results"
+            }
+          ]
         }
       ]
     }
