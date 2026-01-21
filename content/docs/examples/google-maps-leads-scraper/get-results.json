@@ -1,15 +1,15 @@
 {
-  "slug": "examples/google-maps-search-scraper/get-results",
+  "slug": "examples/google-maps-leads-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Google Maps places data",
-  "category": "Google Maps Search Scraper",
+  "category": "Google Maps Leads Scraper",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
     "requiresAuth": true
   },
   "content": {
-    "introduction": "Retrieve the scraped place data from your Google Maps Search Scraper runs. Results include business information, contact details, ratings, location data, and more.",
+    "introduction": "Retrieve the scraped place data from your Google Maps Leads Scraper runs. Results include business information, contact details, ratings, location data, and more.",
     "sections": {
       "resultFields": {
         "title": "Result Fields",
@@ -91,7 +91,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - Google Maps Search Scraper - Lobstr.io API",
+    "title": "Get Results - Google Maps Leads Scraper - Lobstr.io API",
     "description": "Retrieve scraped Google Maps places including business info, contact details, and location data."
   }
 }

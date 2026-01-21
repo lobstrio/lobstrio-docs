@@ -1,8 +1,8 @@
 {
-  "slug": "examples/google-maps-search-scraper/get-geolocation",
+  "slug": "examples/google-maps-leads-scraper/get-geolocation",
   "title": "Get Geolocation",
   "description": "Fetch valid regions, districts, and cities for parameter-based tasks",
-  "category": "Google Maps Search Scraper",
+  "category": "Google Maps Leads Scraper",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/googlemaps/locations",
@@ -80,7 +80,7 @@
     ]
   },
   "seo": {
-    "title": "Get Geolocation - Google Maps Search Scraper - Lobstr.io API",
+    "title": "Get Geolocation - Google Maps Leads Scraper - Lobstr.io API",
     "description": "Fetch valid regions, districts, and cities for parameter-based Google Maps Search tasks."
   }
 }

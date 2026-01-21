@@ -1,8 +1,8 @@
 {
-  "slug": "examples/google-maps-search-scraper/add-task-params",
+  "slug": "examples/google-maps-leads-scraper/add-task-params",
   "title": "Add Task Params",
   "description": "Add structured search tasks using city, category, and location parameters",
-  "category": "Google Maps Search Scraper",
+  "category": "Google Maps Leads Scraper",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -36,7 +36,7 @@
           {"header": "Description", "key": "description"}
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the google-maps-search-scraper crawler"},
+          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the google-maps-leads-scraper crawler"},
           {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects with location parameters"}
         ]
       }
@@ -68,7 +68,7 @@
     ]
   },
   "seo": {
-    "title": "Add Task Params - Google Maps Search Scraper - Lobstr.io API",
+    "title": "Add Task Params - Google Maps Leads Scraper - Lobstr.io API",
     "description": "Learn how to add structured search tasks using city, category, and location parameters."
   }
 }

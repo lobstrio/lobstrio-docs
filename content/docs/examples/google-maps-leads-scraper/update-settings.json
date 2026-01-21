@@ -1,8 +1,8 @@
 {
-  "slug": "examples/google-maps-search-scraper/update-settings",
+  "slug": "examples/google-maps-leads-scraper/update-settings",
   "title": "Update Settings",
-  "description": "Configure the Google Maps Search Scraper parameters",
-  "category": "Google Maps Search Scraper",
+  "description": "Configure the Google Maps Leads Scraper parameters",
+  "category": "Google Maps Leads Scraper",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -68,7 +68,7 @@
     ]
   },
   "seo": {
-    "title": "Update Settings - Google Maps Search Scraper - Lobstr.io API",
-    "description": "Configure the Google Maps Search Scraper parameters including filters, language, and data collection options."
+    "title": "Update Settings - Google Maps Leads Scraper - Lobstr.io API",
+    "description": "Configure the Google Maps Leads Scraper parameters including filters, language, and data collection options."
   }
 }

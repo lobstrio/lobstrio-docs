@@ -230,27 +230,27 @@
           ]
         },
         {
-          "title": "Google Maps Search Scraper",
+          "title": "Google Maps Leads Scraper",
           "items": [
             {
               "title": "Add Task URLs",
-              "slug": "examples/google-maps-search-scraper/add-task-urls"
+              "slug": "examples/google-maps-leads-scraper/add-task-urls"
             },
             {
               "title": "Get Geolocation",
-              "slug": "examples/google-maps-search-scraper/get-geolocation"
+              "slug": "examples/google-maps-leads-scraper/get-geolocation"
             },
             {
               "title": "Add Task Params",
-              "slug": "examples/google-maps-search-scraper/add-task-params"
+              "slug": "examples/google-maps-leads-scraper/add-task-params"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/google-maps-search-scraper/update-settings"
+              "slug": "examples/google-maps-leads-scraper/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/google-maps-search-scraper/get-results"
+              "slug": "examples/google-maps-leads-scraper/get-results"
             }
           ]
         },

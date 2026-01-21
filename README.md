@@ -102,7 +102,7 @@ Documentation is stored as JSON files in `content/docs/`. Each endpoint has:
 - **Delivery** - Configure email, SFTP, S3, webhook delivery
 
 ### Example Scrapers
-- Google Maps Reviews/Search
+- Google Maps Reviews/Leads
 - Google Search/News
 - Twitter Profile/Search/Tweets
 - Facebook Pages/Details
