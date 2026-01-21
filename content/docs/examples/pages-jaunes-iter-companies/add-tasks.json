@@ -1,5 +1,5 @@
 {
-  "slug": "examples/pages-jaunes-companies-search-export/add-tasks",
+  "slug": "examples/pages-jaunes-iter-companies/add-tasks",
   "title": "Add Tasks",
   "description": "Add Pages Jaunes search URLs as tasks for scraping French business directory listings",
   "category": "Examples",
@@ -17,12 +17,25 @@
         "content": "Each task should contain a URL from a Pages Jaunes search results page. Search for businesses by category and location on the website, then use those search URLs as tasks.",
         "table": {
           "columns": [
-            { "header": "Field", "key": "field" },
-            { "header": "Type", "key": "type" },
-            { "header": "Description", "key": "description" }
+            {
+              "header": "Field",
+              "key": "field"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
           ],
           "rows": [
-            { "field": "url", "type": "string", "description": "Pages Jaunes search results page URL" }
+            {
+              "field": "url",
+              "type": "string",
+              "description": "Pages Jaunes search results page URL"
+            }
           ]
         }
       },
