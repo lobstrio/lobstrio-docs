@@ -348,15 +348,15 @@
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/leboncoin-listings-search-export/add-tasks"
+              "slug": "examples/leboncoin-iter-listings/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/leboncoin-listings-search-export/update-settings"
+              "slug": "examples/leboncoin-iter-listings/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/leboncoin-listings-search-export/get-results"
+              "slug": "examples/leboncoin-iter-listings/get-results"
             }
           ]
         },
@@ -365,15 +365,15 @@
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/leboncoin-phone-search-export/add-tasks"
+              "slug": "examples/leboncoin-iter-listings-with-phone/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/leboncoin-phone-search-export/update-settings"
+              "slug": "examples/leboncoin-iter-listings-with-phone/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/leboncoin-phone-search-export/get-results"
+              "slug": "examples/leboncoin-iter-listings-with-phone/get-results"
             }
           ]
         },
@@ -514,19 +514,19 @@
           ]
         },
         {
-          "title": "Idealista Listings Scraper",
+          "title": "Idealista Listings Search Export",
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/idealista-listings-scraper/add-tasks"
+              "slug": "examples/idealista-listings-search-export/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/idealista-listings-scraper/update-settings"
+              "slug": "examples/idealista-listings-search-export/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/idealista-listings-scraper/get-results"
+              "slug": "examples/idealista-listings-search-export/get-results"
             }
           ]
         },
@@ -535,15 +535,15 @@
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/pap-search-export/add-tasks"
+              "slug": "examples/pap-iter-apartments/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/pap-search-export/update-settings"
+              "slug": "examples/pap-iter-apartments/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/pap-search-export/get-results"
+              "slug": "examples/pap-iter-apartments/get-results"
             }
           ]
         },
@@ -552,32 +552,32 @@
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/pages-jaunes-companies-search-export/add-tasks"
+              "slug": "examples/pages-jaunes-iter-companies/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/pages-jaunes-companies-search-export/update-settings"
+              "slug": "examples/pages-jaunes-iter-companies/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/pages-jaunes-companies-search-export/get-results"
+              "slug": "examples/pages-jaunes-iter-companies/get-results"
             }
           ]
         },
         {
-          "title": "TripAdvisor Restaurants Scraper",
+          "title": "TripAdvisor Restaurants Search Export",
           "items": [
             {
               "title": "Add Tasks",
-              "slug": "examples/tripadvisor-restaurants-scraper/add-tasks"
+              "slug": "examples/tripadvisor-restaurants-search-export/add-tasks"
             },
             {
               "title": "Update Settings",
-              "slug": "examples/tripadvisor-restaurants-scraper/update-settings"
+              "slug": "examples/tripadvisor-restaurants-search-export/update-settings"
             },
             {
               "title": "Get Results",
-              "slug": "examples/tripadvisor-restaurants-scraper/get-results"
+              "slug": "examples/tripadvisor-restaurants-search-export/get-results"
             }
           ]
         }
