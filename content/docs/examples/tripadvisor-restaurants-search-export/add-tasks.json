@@ -1,5 +1,5 @@
 {
-  "slug": "examples/tripadvisor-restaurants-scraper/add-tasks",
+  "slug": "examples/tripadvisor-restaurants-search-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add TripAdvisor restaurant search URLs as tasks for scraping restaurant listings",
   "category": "Examples",
@@ -17,12 +17,25 @@
         "content": "Each task should contain a URL from a TripAdvisor restaurant search results page. Search for restaurants by location on TripAdvisor, then use those search URLs as tasks.",
         "table": {
           "columns": [
-            { "header": "Field", "key": "field" },
-            { "header": "Type", "key": "type" },
-            { "header": "Description", "key": "description" }
+            {
+              "header": "Field",
+              "key": "field"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
           ],
           "rows": [
-            { "field": "url", "type": "string", "description": "TripAdvisor restaurant search results page URL" }
+            {
+              "field": "url",
+              "type": "string",
+              "description": "TripAdvisor restaurant search results page URL"
+            }
           ]
         }
       },
