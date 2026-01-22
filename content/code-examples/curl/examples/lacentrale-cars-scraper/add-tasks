@@ -1,0 +1,6 @@
+curl -X POST "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID/task" \
+  -H "Authorization: Token YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://www.lacentrale.fr/listing?yearMin=2024&makesModelsCommercialNames=PEUGEOT"
+  }'

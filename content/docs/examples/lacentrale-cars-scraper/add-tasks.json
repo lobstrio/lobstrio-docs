@@ -1,0 +1,65 @@
+{
+  "slug": "examples/lacentrale-cars-scraper/add-tasks",
+  "title": "Add Tasks",
+  "description": "Add LaCentrale search URLs to scrape vehicle listings using the Lobstr.io API",
+  "category": "LaCentrale Cars Scraper",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v2/squid/{squid_id}/task",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Add LaCentrale search or listing URLs as tasks to your squid. The scraper will extract all vehicle listings matching your search criteria from the French automotive marketplace.",
+    "sections": {
+      "urlFormat": {
+        "title": "URL Format",
+        "content": "Use LaCentrale listing URLs with your desired search filters:\n\n`https://www.lacentrale.fr/listing?yearMin=2025`\n\n`https://www.lacentrale.fr/listing?makesModelsCommercialNames=PEUGEOT`\n\nBuild your search on lacentrale.fr with filters (make, model, year, price, etc.) and copy the URL."
+      },
+      "requestBody": {
+        "title": "Request Body",
+        "columns": [
+          { "header": "Field", "key": "field" },
+          { "header": "Type", "key": "type" },
+          { "header": "Required", "key": "required" },
+          { "header": "Description", "key": "description" }
+        ],
+        "rows": [
+          { "field": "**url**", "type": "string", "required": "Yes", "description": "LaCentrale search or category URL" }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Apply filters on lacentrale.fr (make, model, year, price range, location) to target specific vehicle segments."
+      },
+      {
+        "type": "note",
+        "content": "LaCentrale limits search results to 347 pages maximum per URL. Use multiple filtered searches for comprehensive coverage."
+      },
+      {
+        "type": "tip",
+        "content": "Use the `hours_back` setting to only scrape recently added listings for monitoring new inventory."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Add Tasks - LaCentrale Cars Scraper - Lobstr.io API",
+    "description": "Learn how to add LaCentrale search URLs to scrape French vehicle listings using the Lobstr.io API."
+  }
+}

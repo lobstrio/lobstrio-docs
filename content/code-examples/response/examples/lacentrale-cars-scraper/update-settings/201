@@ -1,0 +1,8 @@
+{
+  "id": "squid_xyz789",
+  "name": "LaCentrale Cars Scraper",
+  "max_pages": 50,
+  "hours_back": 24,
+  "annonce_details": true,
+  "updated_at": "2025-01-15T10:35:00Z"
+}

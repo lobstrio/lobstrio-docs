@@ -1,0 +1,73 @@
+{
+  "slug": "examples/lacentrale-cars-scraper/update-settings",
+  "title": "Update Settings",
+  "description": "Configure the LaCentrale Cars Scraper settings",
+  "category": "LaCentrale Cars Scraper",
+  "metadata": {
+    "method": "PATCH",
+    "endpoint": "/v2/squid/{squid_id}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your LaCentrale Cars Scraper settings. Control pagination, result limits, time filters, and whether to fetch detailed listing information.",
+    "sections": {
+      "settings": {
+        "title": "Available Settings",
+        "columns": [
+          { "header": "Parameter", "key": "parameter" },
+          { "header": "Type", "key": "type" },
+          { "header": "Default", "key": "default" },
+          { "header": "Description", "key": "description" }
+        ],
+        "rows": [
+          { "parameter": "**max_pages**", "type": "integer", "default": "347", "description": "Maximum pages to scrape per task (max: 347)" },
+          { "parameter": "**max_results**", "type": "integer", "default": "unlimited", "description": "Maximum results per task" },
+          { "parameter": "**max_unique_results_per_run**", "type": "integer", "default": "unlimited", "description": "Maximum unique results across all tasks" },
+          { "parameter": "**hours_back**", "type": "integer", "default": "null", "description": "Only scrape listings published within N hours" },
+          { "parameter": "**annonce_details**", "type": "boolean", "default": "true", "description": "Fetch detailed listing info (equipment, seller details)" }
+        ]
+      },
+      "detailsOption": {
+        "title": "Listing Details Option",
+        "content": "When `annonce_details` is enabled, the scraper visits each listing page to extract:\n\n- Full equipment list and options\n- Seller details (address, company info)\n- Technical specifications (CO2, power, fuel consumption)\n- Vehicle history links\n\n**Pricing:** 4 credits per listing when details are enabled."
+      },
+      "hoursBack": {
+        "title": "Hours Back Filter",
+        "content": "Use `hours_back` to monitor new inventory. For example, setting `hours_back: 24` will stop scraping when it reaches listings older than 24 hours (based on `first_online_date`).\n\nPerfect for daily monitoring of new car listings."
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Set `annonce_details: false` if you only need basic listing data to reduce costs."
+      },
+      {
+        "type": "warning",
+        "content": "Enabling `annonce_details` costs 4 additional credits per listing. Plan accordingly for large scrapes."
+      },
+      {
+        "type": "tip",
+        "content": "Use `hours_back: 12` for twice-daily monitoring to catch new listings without duplicates."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Update Settings - LaCentrale Cars Scraper - Lobstr.io API",
+    "description": "Learn how to configure LaCentrale Cars Scraper settings using the Lobstr.io API."
+  }
+}

@@ -1,0 +1,16 @@
+import requests
+
+API_TOKEN = "YOUR_API_TOKEN"
+SQUID_ID = "YOUR_SQUID_ID"
+
+url = f"https://api.lobstr.io/api/v2/squid/{SQUID_ID}/result"
+headers = {
+    "Authorization": f"Token {API_TOKEN}"
+}
+params = {
+    "limit": 10,
+    "offset": 0
+}
+
+response = requests.get(url, headers=headers, params=params)
+print(response.json())
