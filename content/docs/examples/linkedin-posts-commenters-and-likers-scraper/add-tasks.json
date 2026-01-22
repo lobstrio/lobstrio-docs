@@ -1,0 +1,65 @@
+{
+  "slug": "examples/linkedin-posts-commenters-and-likers-scraper/add-tasks",
+  "title": "Add Tasks",
+  "description": "Add LinkedIn post URLs to scrape commenters and likers using the Lobstr.io API",
+  "category": "LinkedIn Posts Commenters and Likers Scraper",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v2/squid/{squid_id}/task",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Add LinkedIn post URLs as tasks to your squid. The scraper will extract all users who commented on or reacted to the post, along with their profile information.",
+    "sections": {
+      "urlFormat": {
+        "title": "URL Format",
+        "content": "Use any LinkedIn post URL format:\n\n`https://www.linkedin.com/posts/username_post-title-activity-123456789/`\n\n`https://www.linkedin.com/feed/update/urn:li:activity:123456789/`\n\nYou can copy the URL directly from any LinkedIn post."
+      },
+      "requestBody": {
+        "title": "Request Body",
+        "columns": [
+          { "header": "Field", "key": "field" },
+          { "header": "Type", "key": "type" },
+          { "header": "Required", "key": "required" },
+          { "header": "Description", "key": "description" }
+        ],
+        "rows": [
+          { "field": "**post_url**", "type": "string", "required": "Yes", "description": "URL of the LinkedIn Post to scrape" }
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Scrape viral posts in your industry to build targeted lead lists from engaged audiences."
+      },
+      {
+        "type": "note",
+        "content": "The scraper extracts both commenters and likers by default. Use settings to toggle each separately."
+      },
+      {
+        "type": "tip",
+        "content": "Posts from LinkedIn influencers often have high-quality engaged audiences for B2B outreach."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Add Tasks - LinkedIn Posts Commenters and Likers Scraper - Lobstr.io API",
+    "description": "Learn how to add LinkedIn post URLs to extract commenters and likers using the Lobstr.io API."
+  }
+}

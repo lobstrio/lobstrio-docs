@@ -665,6 +665,23 @@
               "slug": "examples/sales-navigator-companies-scraper/get-results"
             }
           ]
+        },
+        {
+          "title": "LinkedIn Posts Commenters and Likers Scraper",
+          "items": [
+            {
+              "title": "Add Tasks",
+              "slug": "examples/linkedin-posts-commenters-and-likers-scraper/add-tasks"
+            },
+            {
+              "title": "Update Settings",
+              "slug": "examples/linkedin-posts-commenters-and-likers-scraper/update-settings"
+            },
+            {
+              "title": "Get Results",
+              "slug": "examples/linkedin-posts-commenters-and-likers-scraper/get-results"
+            }
+          ]
         }
       ]
     }

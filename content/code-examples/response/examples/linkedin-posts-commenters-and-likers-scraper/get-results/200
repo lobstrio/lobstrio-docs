@@ -1,0 +1,49 @@
+{
+  "count": 342,
+  "next": "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID/result?limit=10&offset=10",
+  "previous": null,
+  "results": [
+    {
+      "profile_url": "https://www.linkedin.com/in/john-doe/",
+      "first_name": "John",
+      "last_name": "Doe",
+      "full_name": "John Doe",
+      "email": null,
+      "email_status": null,
+      "post_url": "https://www.linkedin.com/posts/example_great-post-activity-7403510298726375424-RIMy",
+      "has_commented": true,
+      "comment": "This is a great post! Thanks for sharing these insights.",
+      "comment_url": "https://www.linkedin.com/feed/update/urn:li:comment:(activity:7403510298726375424,7403512345678901234)/",
+      "has_liked": true,
+      "reaction_type": "LIKE"
+    },
+    {
+      "profile_url": "https://www.linkedin.com/in/jane-smith/",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "full_name": "Jane Smith",
+      "email": null,
+      "email_status": null,
+      "post_url": "https://www.linkedin.com/posts/example_great-post-activity-7403510298726375424-RIMy",
+      "has_commented": false,
+      "comment": null,
+      "comment_url": null,
+      "has_liked": true,
+      "reaction_type": "CELEBRATE"
+    },
+    {
+      "profile_url": "https://www.linkedin.com/in/mike-johnson/",
+      "first_name": "Mike",
+      "last_name": "Johnson",
+      "full_name": "Mike Johnson",
+      "email": null,
+      "email_status": null,
+      "post_url": "https://www.linkedin.com/posts/example_great-post-activity-7403510298726375424-RIMy",
+      "has_commented": true,
+      "comment": "Couldn't agree more! We've seen similar results at our company.",
+      "comment_url": "https://www.linkedin.com/feed/update/urn:li:comment:(activity:7403510298726375424,7403523456789012345)/",
+      "has_liked": false,
+      "reaction_type": null
+    }
+  ]
+}

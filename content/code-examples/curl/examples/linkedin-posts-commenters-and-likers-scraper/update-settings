@@ -1,0 +1,8 @@
+curl -X PATCH "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID" \
+  -H "Authorization: Token YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "scrape_comments": true,
+    "scrape_reactions": true,
+    "email": false
+  }'
