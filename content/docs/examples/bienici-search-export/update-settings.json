@@ -1,0 +1,86 @@
+{
+  "slug": "examples/bienici-search-export/update-settings",
+  "title": "Update Settings",
+  "description": "Configure Bien'Ici Search Export scraper settings",
+  "category": "Bien'Ici Search Export",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/squids/{squid_hash}",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Configure your Bien'Ici Search Export squid settings. Control pagination limits, filter by posting date, and manage sponsored listings collection.",
+    "sections": {
+      "scraperParams": {
+        "title": "Scraper Parameters",
+        "content": "Set these parameters in the `params` object:",
+        "columns": [
+          {"header": "Parameter", "key": "param"},
+          {"header": "Type", "key": "type"},
+          {"header": "Default", "key": "default"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"param": "**max_results**", "type": "integer", "default": "50", "description": "Maximum number of results to collect per search URL (max: 2400)"},
+          {"param": "**max_pages**", "type": "integer", "default": "100", "description": "Last page the crawler will visit during a run"},
+          {"param": "**max_unique_results_per_run**", "type": "integer", "default": "null", "description": "Maximum unique results retrieved across all tasks in a run. Leave empty for unlimited"},
+          {"param": "**hours_back**", "type": "integer", "default": "null", "description": "Only collect ads modified within the last N hours. Uses the modification_date field"},
+          {"param": "**collect_ads**", "type": "boolean", "default": "false", "description": "If false, will NOT collect sponsored listings"}
+        ]
+      },
+      "squidSettings": {
+        "title": "Squid Settings",
+        "content": "Configure general squid settings:",
+        "columns": [
+          {"header": "Setting", "key": "setting"},
+          {"header": "Type", "key": "type"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
+          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1, max: 20)"},
+          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
+          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
+          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use `hours_back` to only collect recently modified listings - perfect for monitoring new properties in your target area."
+      },
+      {
+        "type": "warning",
+        "content": "Setting `max_results` too high may increase run time and credit usage. Start with smaller values and increase as needed."
+      },
+      {
+        "type": "note",
+        "content": "The `collect_ads` parameter controls whether sponsored/promoted listings are included in results. Set to `true` if you want to analyze advertising patterns."
+      },
+      {
+        "type": "tip",
+        "content": "Enable `export_unique_results` to automatically deduplicate listings that appear in multiple search results."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Update Settings - Bien'Ici Search Export - Lobstr.io API",
+    "description": "Configure Bien'Ici Search Export scraper settings using the Lobstr.io API."
+  }
+}

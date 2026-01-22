@@ -699,6 +699,23 @@
               "slug": "examples/lacentrale-cars-scraper/get-results"
             }
           ]
+        },
+        {
+          "title": "Bien'Ici Search Export",
+          "items": [
+            {
+              "title": "Add Tasks",
+              "slug": "examples/bienici-search-export/add-tasks"
+            },
+            {
+              "title": "Update Settings",
+              "slug": "examples/bienici-search-export/update-settings"
+            },
+            {
+              "title": "Get Results",
+              "slug": "examples/bienici-search-export/get-results"
+            }
+          ]
         }
       ]
     }

@@ -1,0 +1,27 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+# Add Bien'Ici search URLs
+# Copy the URL directly from bienici.com after applying filters
+payload = {
+    "squid": squid_id,
+    "tasks": [
+        {
+            "url": "https://www.bienici.com/recherche/achat/bouches-du-rhone-13/maisonvilla"
+        }
+    ]
+}
+
+response = requests.post(f"{BASE_URL}/tasks",
+    headers=headers,
+    json=payload
+)
+
+data = response.json()
+print(f"Added {len(data['tasks'])} tasks")
+print(f"Duplicates skipped: {data['duplicated_count']}")
