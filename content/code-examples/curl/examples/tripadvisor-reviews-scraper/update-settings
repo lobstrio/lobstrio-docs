@@ -1,0 +1,12 @@
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "TripAdvisor Reviews - NYC Hotels",
+    "params": {
+      "max_results": 100,
+      "language": "English",
+      "ratings": "5",
+      "hours_back": 168
+    }
+  }'

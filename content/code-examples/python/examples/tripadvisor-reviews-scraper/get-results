@@ -1,0 +1,38 @@
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_hash = "YOUR_SQUID_HASH"
+
+# Get TripAdvisor review results
+response = requests.get(f"{BASE_URL}/results",
+    headers=headers,
+    params={
+        "squid": squid_hash,
+        "page": 1,
+        "page_size": 100
+    }
+)
+
+data = response.json()
+print(f"Total results: {data['count']}")
+print(f"\nFirst review:")
+
+if data['results']:
+    review = data['results'][0]
+    print(f"  Title: {review['title']}")
+    print(f"  Rating: {review['rating']}/5 stars")
+    print(f"  Reviewer: {review['user_name']}")
+    print(f"  Date: {review['published_date']}")
+    print(f"  Place: {review['place_name']}")
+    print(f"  Review: {review['text'][:100]}...")
+
+    # Check for owner response
+    if review.get('owner_response_text'):
+        print(f"  Owner Response: {review['owner_response_text'][:100]}...")
+
+    # Display subratings if available
+    if review.get('subratings'):
+        print(f"  Subratings: {review['subratings']}")

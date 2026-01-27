@@ -1,0 +1,492 @@
+{
+  "slug": "examples/tripadvisor-reviews-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped TripAdvisor reviews with ratings, user information, photos, subratings, and owner responses",
+  "category": "Examples",
+  "subcategory": "TripAdvisor Reviews Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve reviews scraped from TripAdvisor places. Each result contains comprehensive review data including ratings, review text, user profiles, travel dates, photos, subratings, owner responses, and place information.",
+    "sections": {
+      "reviewFields": {
+        "title": "Review Information Fields",
+        "content": "Core review data and metadata:",
+        "fields": [
+          {
+            "path": "review_id",
+            "type": "string",
+            "description": "Unique TripAdvisor review identifier",
+            "example": "\"1047155136\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Direct URL to the review on TripAdvisor",
+            "example": "\"https://www.tripadvisor.com/ShowUserReviews-g60763-d208453-r1042814279-...\""
+          },
+          {
+            "path": "title",
+            "type": "string",
+            "description": "Review title/headline",
+            "example": "\"Great front desk people at Hilton Times Square!\""
+          },
+          {
+            "path": "text",
+            "type": "text",
+            "description": "Full review text content",
+            "example": "\"Hotel was nice, very close to subways and attractions...\""
+          },
+          {
+            "path": "rating",
+            "type": "integer",
+            "description": "Overall rating given by the reviewer (1-5 stars)",
+            "example": "5"
+          },
+          {
+            "path": "travel_date",
+            "type": "string",
+            "description": "Month and year when the reviewer traveled (YYYY-MM format)",
+            "example": "\"2025-12\""
+          },
+          {
+            "path": "published_date",
+            "type": "datetime",
+            "description": "Date when the review was published on TripAdvisor",
+            "example": "\"2025-12-17\""
+          },
+          {
+            "path": "created_date",
+            "type": "string",
+            "description": "Date when the review was created",
+            "example": "\"2025-12-31\""
+          },
+          {
+            "path": "trip_type",
+            "type": "string",
+            "description": "Type of trip (e.g., BUSINESS, LEISURE, FAMILY)",
+            "example": "\"BUSINESS\""
+          },
+          {
+            "path": "helpful_votes",
+            "type": "integer",
+            "description": "Number of helpful votes the review received",
+            "example": "0"
+          },
+          {
+            "path": "publish_platform",
+            "type": "string",
+            "description": "Platform where the review was published",
+            "example": "\"OTHER\""
+          },
+          {
+            "path": "room_tip",
+            "type": "text|null",
+            "description": "Optional room tip provided by the reviewer",
+            "example": "null"
+          },
+          {
+            "path": "lang",
+            "type": "string",
+            "description": "Language code of the review",
+            "example": "\"en\""
+          },
+          {
+            "path": "original_language",
+            "type": "string",
+            "description": "Original language code before any translation",
+            "example": "\"en\""
+          },
+          {
+            "path": "status",
+            "type": "string",
+            "description": "Publication status of the review",
+            "example": "\"PUBLISHED\""
+          },
+          {
+            "path": "subratings",
+            "type": "json",
+            "description": "Detailed subratings for specific aspects (Value, Rooms, Location, Cleanliness, Service, Sleep Quality)",
+            "example": "{\"Value\": 5, \"Rooms\": 4, \"Location\": 5, \"Cleanliness\": 4, \"Service\": 4, \"Sleep Quality\": 5}"
+          },
+          {
+            "path": "photos",
+            "type": "json",
+            "description": "Array of photo objects with URLs and dimensions",
+            "example": "[{\"id\": 841562802, \"statuses\": [\"PUBLISHED\"], \"photoSizes\": [...]}]"
+          },
+          {
+            "path": "likes_count",
+            "type": "integer",
+            "description": "Number of likes the review received",
+            "example": "0"
+          }
+        ]
+      },
+      "userFields": {
+        "title": "Reviewer Information Fields",
+        "content": "Information about the user who wrote the review:",
+        "fields": [
+          {
+            "path": "user_id",
+            "type": "string",
+            "description": "Unique TripAdvisor user identifier",
+            "example": "\"E0A07C9AA5F4BF39F157B7BC057D5A8F\""
+          },
+          {
+            "path": "user_name",
+            "type": "string",
+            "description": "Display name of the reviewer",
+            "example": "\"Escape53349593856\""
+          },
+          {
+            "path": "username",
+            "type": "string",
+            "description": "Username of the reviewer",
+            "example": "\"Escape53349593856\""
+          },
+          {
+            "path": "is_user_verified",
+            "type": "boolean",
+            "description": "Whether the user account is verified",
+            "example": "false"
+          },
+          {
+            "path": "user_location",
+            "type": "string|null",
+            "description": "Location of the reviewer",
+            "example": "null"
+          },
+          {
+            "path": "user_location_id",
+            "type": "integer|null",
+            "description": "TripAdvisor location ID of the reviewer's location",
+            "example": "null"
+          },
+          {
+            "path": "user_location_name",
+            "type": "string|null",
+            "description": "Name of the reviewer's location",
+            "example": "null"
+          },
+          {
+            "path": "user_total_contributions",
+            "type": "integer",
+            "description": "Total number of contributions by the user",
+            "example": "1"
+          },
+          {
+            "path": "user_total_likes",
+            "type": "integer",
+            "description": "Total likes received by the user",
+            "example": "0"
+          },
+          {
+            "path": "user_helpful_votes",
+            "type": "integer",
+            "description": "Total helpful votes received by the user",
+            "example": "0"
+          },
+          {
+            "path": "user_is_following",
+            "type": "boolean",
+            "description": "Whether the user is following the place",
+            "example": "false"
+          },
+          {
+            "path": "user_avatar_id",
+            "type": "string",
+            "description": "ID of the user's avatar image",
+            "example": "\"452391908\""
+          },
+          {
+            "path": "user_avatar_photo_sizes",
+            "type": "json",
+            "description": "Array of avatar image URLs in different sizes",
+            "example": "[{\"url\": \"https://dynamic-media-cdn.tripadvisor.com/...\", \"width\": 0, \"height\": 0}]"
+          },
+          {
+            "path": "user_profile_link",
+            "type": "string",
+            "description": "URL to the reviewer's TripAdvisor profile",
+            "example": "\"https://www.tripadvisor.com/Profile/Escape53349593856\""
+          }
+        ]
+      },
+      "ownerResponseFields": {
+        "title": "Owner Response Fields",
+        "content": "Information about the business owner's response to the review:",
+        "fields": [
+          {
+            "path": "owner_response_id",
+            "type": "string|null",
+            "description": "Unique identifier for the owner's response",
+            "example": "\"1042950858\""
+          },
+          {
+            "path": "owner_response_text",
+            "type": "text|null",
+            "description": "Text content of the owner's response",
+            "example": "\"We're so happy to know that you enjoyed everything...\""
+          },
+          {
+            "path": "owner_response_lang",
+            "type": "string|null",
+            "description": "Language code of the owner's response",
+            "example": "\"en\""
+          },
+          {
+            "path": "owner_response_published_date",
+            "type": "string|null",
+            "description": "Date when the owner's response was published",
+            "example": "\"2025-12-18\""
+          },
+          {
+            "path": "responder",
+            "type": "string|null",
+            "description": "Title/role of the person who responded",
+            "example": "\"General Manager\""
+          },
+          {
+            "path": "owner_connection_to_subject",
+            "type": "string|null",
+            "description": "Relationship of the responder to the business",
+            "example": "\"General Manager\""
+          }
+        ]
+      },
+      "placeFields": {
+        "title": "Place Information Fields",
+        "content": "Information about the place being reviewed:",
+        "fields": [
+          {
+            "path": "place_id",
+            "type": "string",
+            "description": "TripAdvisor place identifier",
+            "example": "\"208453\""
+          },
+          {
+            "path": "place_name",
+            "type": "string",
+            "description": "Name of the place",
+            "example": "\"Hilton New York Times Square\""
+          },
+          {
+            "path": "place_type",
+            "type": "string",
+            "description": "Type of place (ACCOMMODATION, RESTAURANT, ATTRACTION)",
+            "example": "\"ACCOMMODATION\""
+          },
+          {
+            "path": "place_category",
+            "type": "string",
+            "description": "Specific category within the place type",
+            "example": "\"HOTEL\""
+          },
+          {
+            "path": "place_rating",
+            "type": "float",
+            "description": "Overall average rating of the place",
+            "example": "4.3"
+          },
+          {
+            "path": "place_total_reviews",
+            "type": "integer",
+            "description": "Total number of reviews for the place",
+            "example": "8919"
+          },
+          {
+            "path": "place_parent_geo_id",
+            "type": "integer",
+            "description": "Geographic location ID of the place",
+            "example": "60763"
+          },
+          {
+            "path": "place_city",
+            "type": "string",
+            "description": "City where the place is located",
+            "example": "\"New York City\""
+          },
+          {
+            "path": "place_state",
+            "type": "string",
+            "description": "State/region where the place is located",
+            "example": "\"New York\""
+          },
+          {
+            "path": "place_web_url",
+            "type": "string",
+            "description": "URL to the place's TripAdvisor page",
+            "example": "\"https://www.tripadvisor.com/Hotel_Review-g60763-d208453-Reviews-...\""
+          },
+          {
+            "path": "place_rating_count_1",
+            "type": "integer",
+            "description": "Number of 1-star reviews",
+            "example": "270"
+          },
+          {
+            "path": "place_rating_count_2",
+            "type": "integer",
+            "description": "Number of 2-star reviews",
+            "example": "292"
+          },
+          {
+            "path": "place_rating_count_3",
+            "type": "integer",
+            "description": "Number of 3-star reviews",
+            "example": "705"
+          },
+          {
+            "path": "place_rating_count_4",
+            "type": "integer",
+            "description": "Number of 4-star reviews",
+            "example": "2570"
+          },
+          {
+            "path": "place_rating_count_5",
+            "type": "integer",
+            "description": "Number of 5-star reviews",
+            "example": "5082"
+          },
+          {
+            "path": "review_counts_by_language",
+            "type": "json",
+            "description": "Breakdown of review counts by language",
+            "example": "{\"en\": 7849, \"es\": 170, \"pt\": 219, \"de\": 151, \"fr\": 173}"
+          },
+          {
+            "path": "is_local_provider",
+            "type": "boolean",
+            "description": "Whether the place is a local provider",
+            "example": "true"
+          },
+          {
+            "path": "is_tools_provider",
+            "type": "boolean",
+            "description": "Whether the place uses TripAdvisor tools",
+            "example": "true"
+          },
+          {
+            "path": "alert_status",
+            "type": "boolean",
+            "description": "Alert status for the place",
+            "example": "false"
+          }
+        ]
+      },
+      "metadataFields": {
+        "title": "Metadata Fields",
+        "content": "Standard metadata fields present in all results:",
+        "fields": [
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique identifier for this result record",
+            "example": "335315"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Object type, always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Hash ID of the squid that produced this result",
+            "example": "\"c7ea965333d54a949a9e74ba62029098\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Hash ID of the run during which this result was scraped",
+            "example": "\"31679d8916d946848c3ba442a381e130\""
+          },
+          {
+            "path": "scraping_time",
+            "type": "datetime",
+            "description": "ISO timestamp when the review was fetched",
+            "example": "\"2025-12-17T20:14:05Z\""
+          },
+          {
+            "path": "native_id",
+            "type": "integer",
+            "description": "Native numeric ID matching the id field",
+            "example": "335315"
+          },
+          {
+            "path": "functions",
+            "type": "object|null",
+            "description": "Reserved for function-specific metadata",
+            "example": "null"
+          }
+        ]
+      },
+      "pagination": {
+        "title": "Pagination",
+        "content": "Results are paginated. Use the `next` and `previous` URLs in the response to navigate through pages, or use `page` and `page_size` query parameters."
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "The squid hash ID to get results from"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Filter results by specific run hash ID"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number for pagination (default: 1)"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Number of results per page (default: 100, max: 1000)"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the subratings field to analyze specific aspects of customer satisfaction (e.g., Location, Cleanliness, Service) beyond the overall rating."
+      },
+      {
+        "type": "tip",
+        "content": "Check owner_response_text to see how businesses engage with their reviewers - valuable for competitive analysis and customer service insights."
+      },
+      {
+        "type": "note",
+        "content": "The photos array contains multiple size variants of each image. Use the largest size for high-quality display or smaller sizes for thumbnails."
+      }
+    ]
+  },
+  "examples": {
+    "curl": "examples/tripadvisor-reviews-scraper/get-results",
+    "python": "examples/tripadvisor-reviews-scraper/get-results",
+    "response": "examples/tripadvisor-reviews-scraper/get-results"
+  },
+  "seo": {
+    "title": "Get Results - TripAdvisor Reviews Scraper - Lobstr.io API",
+    "description": "Retrieve scraped TripAdvisor reviews including ratings, user profiles, photos, subratings, owner responses, and comprehensive place information."
+  }
+}

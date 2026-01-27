@@ -1,0 +1,15 @@
+{
+  "duplicated_count": 0,
+  "tasks": [
+    {
+      "id": "a7d9f45e3b2c8e1f7d6a8b9c4e5f7a9b",
+      "created_at": "2025-01-27T14:30:00.123456",
+      "is_active": true,
+      "params": {
+        "url": "https://www.tripadvisor.com/Hotel_Review-g60763-d208453-Reviews-Hilton_New_York_Times_Square-New_York_City_New_York.html"
+      },
+      "module": 132,
+      "object": "task"
+    }
+  ]
+}

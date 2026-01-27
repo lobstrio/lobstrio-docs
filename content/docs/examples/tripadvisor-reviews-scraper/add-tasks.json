@@ -1,0 +1,89 @@
+{
+  "slug": "examples/tripadvisor-reviews-scraper/add-tasks",
+  "title": "Add Tasks",
+  "description": "Add TripAdvisor place URLs as tasks to scrape reviews from hotels, restaurants, and attractions",
+  "category": "Examples",
+  "subcategory": "TripAdvisor Reviews Scraper",
+  "metadata": {
+    "method": "POST",
+    "endpoint": "/v1/tasks",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Add TripAdvisor place URLs to your squid for scraping reviews. The scraper extracts comprehensive review data including ratings, review text, user information, travel dates, photos, subratings, owner responses, and more from hotels, restaurants, and attractions on TripAdvisor.",
+    "sections": {
+      "taskFormat": {
+        "title": "Task Format",
+        "content": "Each task should contain a URL from a TripAdvisor place page. You can scrape reviews from hotels, restaurants, or attractions.",
+        "table": {
+          "columns": [
+            {
+              "header": "Field",
+              "key": "field"
+            },
+            {
+              "header": "Type",
+              "key": "type"
+            },
+            {
+              "header": "Description",
+              "key": "description"
+            }
+          ],
+          "rows": [
+            {
+              "field": "url",
+              "type": "string",
+              "description": "TripAdvisor place URL (hotel, restaurant, or attraction review page)"
+            }
+          ]
+        }
+      },
+      "supportedUrls": {
+        "title": "Supported URL Formats",
+        "content": "The scraper supports TripAdvisor review URLs from various regional domains:",
+        "list": [
+          "Hotel reviews: `https://www.tripadvisor.com/Hotel_Review-g{geo_id}-d{place_id}-Reviews-{place_name}.html`",
+          "Restaurant reviews: `https://www.tripadvisor.com/Restaurant_Review-g{geo_id}-d{place_id}-Reviews-{place_name}.html`",
+          "Attraction reviews: `https://www.tripadvisor.com/Attraction_Review-g{geo_id}-d{place_id}-Reviews-{place_name}.html`",
+          "Example: `https://www.tripadvisor.com/Hotel_Review-g60763-d208453-Reviews-Hilton_New_York_Times_Square-New_York_City_New_York.html`",
+          "Supported TLDs: .com, .fr, .co.uk, .de, .es, .it, .ca, .in, .jp, and other regional domains"
+        ]
+      }
+    },
+    "parameters": [],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json",
+        "required": true,
+        "description": "Request body format"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use the scraper's filter settings (language, rating, hours_back) to collect only the reviews you need and reduce credit consumption."
+      },
+      {
+        "type": "note",
+        "content": "Each place type (hotel, restaurant, attraction) has its own URL format on TripAdvisor. Make sure to use the review page URL, not the overview page."
+      }
+    ]
+  },
+  "examples": {
+    "curl": "examples/tripadvisor-reviews-scraper/add-tasks",
+    "python": "examples/tripadvisor-reviews-scraper/add-tasks",
+    "response": "examples/tripadvisor-reviews-scraper/add-tasks"
+  },
+  "seo": {
+    "title": "Add Tasks - TripAdvisor Reviews Scraper - Lobstr.io API",
+    "description": "Learn how to add TripAdvisor place URLs as tasks for scraping reviews from hotels, restaurants, and attractions with comprehensive review data."
+  }
+}

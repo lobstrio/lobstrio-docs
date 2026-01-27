@@ -582,6 +582,23 @@
           ]
         },
         {
+          "title": "TripAdvisor Reviews Scraper",
+          "items": [
+            {
+              "title": "Add Tasks",
+              "slug": "examples/tripadvisor-reviews-scraper/add-tasks"
+            },
+            {
+              "title": "Update Settings",
+              "slug": "examples/tripadvisor-reviews-scraper/update-settings"
+            },
+            {
+              "title": "Get Results",
+              "slug": "examples/tripadvisor-reviews-scraper/get-results"
+            }
+          ]
+        },
+        {
           "title": "TikTok Top Ads Scraper",
           "items": [
             {
