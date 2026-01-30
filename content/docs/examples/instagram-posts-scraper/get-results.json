@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "Retrieve Instagram posts data from your completed scraping tasks. The scraper extracts comprehensive post information including captions, engagement metrics, media URLs, comments, and metadata.\n\n{{RENDER:postInfoFields}}\n\n{{RENDER:ownerFields}}\n\n{{RENDER:engagementFields}}\n\n{{RENDER:timestampFields}}\n\n{{RENDER:postTypeFields}}\n\n{{RENDER:mediaFields}}\n\n{{RENDER:carouselFields}}\n\n{{RENDER:socialFields}}\n\n{{RENDER:commentFields}}\n\n{{RENDER:metadataFields}}",
+    "introduction": "Retrieve Instagram posts data from your completed scraping tasks. The scraper extracts comprehensive post information including captions, engagement metrics, media URLs, comments, and metadata.",
     "sections": {
       "postInfoFields": {
         "title": "Post Information",
