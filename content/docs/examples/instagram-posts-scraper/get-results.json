@@ -1,0 +1,166 @@
+{
+  "slug": "examples/instagram-posts-scraper/get-results",
+  "title": "Get Results",
+  "description": "Retrieve scraped Instagram posts data from your squid",
+  "category": "Instagram Posts Scraper",
+  "metadata": {
+    "method": "GET",
+    "endpoint": "/v1/results",
+    "requiresAuth": true
+  },
+  "content": {
+    "introduction": "Retrieve Instagram posts data from your completed scraping tasks. The scraper extracts comprehensive post information including captions, engagement metrics, media URLs, comments, and metadata.\n\n{{RENDER:postInfoFields}}\n\n{{RENDER:ownerFields}}\n\n{{RENDER:engagementFields}}\n\n{{RENDER:timestampFields}}\n\n{{RENDER:postTypeFields}}\n\n{{RENDER:mediaFields}}\n\n{{RENDER:carouselFields}}\n\n{{RENDER:socialFields}}\n\n{{RENDER:commentFields}}\n\n{{RENDER:metadataFields}}",
+    "sections": {
+      "postInfoFields": {
+        "title": "Post Information",
+        "fields": [
+          { "path": "url", "type": "string", "description": "Full Instagram post URL", "example": "\"https://www.instagram.com/p/ABC123/\"" },
+          { "path": "post_id", "type": "string", "description": "Unique Instagram post ID", "example": "\"3769351289982373597\"" },
+          { "path": "shortcode", "type": "string", "description": "Post shortcode used in URL", "example": "\"DRPbQcBD07d\"" },
+          { "path": "caption", "type": "string", "description": "Post caption text", "example": "\"Amazing sunset at the beach! #sunset #nature\"" },
+          { "path": "alt", "type": "string", "description": "Alt text / accessibility description", "example": "\"Photo by National Geographic on January 06, 2026\"" }
+        ]
+      },
+      "ownerFields": {
+        "title": "Owner Information",
+        "fields": [
+          { "path": "owner_username", "type": "string", "description": "Username of post owner", "example": "\"natgeo\"" },
+          { "path": "owner_full_name", "type": "string", "description": "Full display name of post owner", "example": "\"National Geographic\"" },
+          { "path": "owner_id", "type": "string", "description": "Instagram user ID of post owner", "example": "\"787132\"" }
+        ]
+      },
+      "engagementFields": {
+        "title": "Engagement Metrics",
+        "fields": [
+          { "path": "likes_count", "type": "integer", "description": "Number of likes on the post", "example": "150000" },
+          { "path": "comments_count", "type": "integer", "description": "Number of comments on the post", "example": "2500" }
+        ]
+      },
+      "timestampFields": {
+        "title": "Timestamps",
+        "fields": [
+          { "path": "timestamp", "type": "bigint", "description": "Unix timestamp of when post was created", "example": "1640000000" },
+          { "path": "timestamp_datetime", "type": "datetime", "description": "ISO 8601 formatted datetime of post creation", "example": "\"2026-01-06T12:00:00+02:00\"" }
+        ]
+      },
+      "postTypeFields": {
+        "title": "Post Type & Status",
+        "fields": [
+          { "path": "product_type", "type": "string", "description": "Type of post (feed, carousel_container, clips, igtv)", "example": "\"carousel_container\"" },
+          { "path": "media_type", "type": "string", "description": "Media type (image, video, carousel)", "example": "\"carousel\"" },
+          { "path": "is_pinned", "type": "boolean", "description": "Whether the post is pinned to profile", "example": "false" },
+          { "path": "is_paid_partnership", "type": "boolean", "description": "Whether post is a paid partnership/sponsored content", "example": "false" }
+        ]
+      },
+      "mediaFields": {
+        "title": "Media URLs",
+        "fields": [
+          { "path": "display_url", "type": "string", "description": "Main image/thumbnail URL", "example": "\"https://example.com/image.jpg\"" },
+          { "path": "video_url", "type": "string", "description": "Video URL (for video posts)", "example": "\"https://example.com/video.mp4\"" },
+          { "path": "reel_url", "type": "string", "description": "Reel URL (for reel posts)", "example": "\"https://www.instagram.com/reel/ABC123/\"" },
+          { "path": "dimensions", "type": "string", "description": "Media dimensions (width x height)", "example": "\"1080x1350\"" },
+          { "path": "image_1", "type": "string", "description": "First carousel image URL", "example": "\"https://example.com/carousel/1.jpg\"" },
+          { "path": "image_2", "type": "string", "description": "Second carousel image URL", "example": "\"https://example.com/carousel/2.jpg\"" },
+          { "path": "image_3", "type": "string", "description": "Third carousel image URL", "example": "\"https://example.com/carousel/3.jpg\"" },
+          { "path": "image_4", "type": "string", "description": "Fourth carousel image URL", "example": "\"https://example.com/carousel/4.jpg\"" },
+          { "path": "image_5", "type": "string", "description": "Fifth carousel image URL", "example": "\"https://example.com/carousel/5.jpg\"" }
+        ]
+      },
+      "carouselFields": {
+        "title": "Carousel Media",
+        "content": "For carousel posts, detailed information about each slide is available:",
+        "fields": [
+          { "path": "carousel_media_count", "type": "integer", "description": "Number of media items in carousel", "example": "3" },
+          { "path": "child_post_1", "type": "object", "description": "First carousel item with id, media_type, display_url/video_url, dimensions", "example": "{\"id\": \"123\", \"media_type\": 1, \"display_url\": \"...\", \"height\": 1350, \"width\": 1080}" },
+          { "path": "child_post_2", "type": "object", "description": "Second carousel item", "example": "{}" },
+          { "path": "child_post_3", "type": "object", "description": "Third carousel item", "example": "{}" },
+          { "path": "child_post_4 - child_post_10", "type": "object", "description": "Additional carousel items (up to 10)", "example": "{}" }
+        ]
+      },
+      "socialFields": {
+        "title": "Tags, Hashtags & Music",
+        "fields": [
+          { "path": "hashtags", "type": "array", "description": "Array of hashtags used in the post", "example": "[\"#sunset\", \"#nature\", \"#photography\"]" },
+          { "path": "user_tags", "type": "array", "description": "Array of tagged users with pk, username, full_name, profile_pic_url, is_verified", "example": "[{\"pk\": \"123\", \"username\": \"tagged_user\", ...}]" },
+          { "path": "coauthors", "type": "array", "description": "Array of co-authors for collaborative posts", "example": "[{\"pk\": \"123\", \"username\": \"coauthor1\", \"full_name\": \"Co Author\", ...}]" },
+          { "path": "music", "type": "object", "description": "Music/audio information for reels", "example": "{\"audio_cluster_id\": \"123\", \"title\": \"Song Title\", \"display_artist\": \"Artist Name\", ...}" }
+        ]
+      },
+      "commentFields": {
+        "title": "Comments",
+        "content": "Up to 15 top comments are extracted from each post:",
+        "fields": [
+          { "path": "comment_1", "type": "object", "description": "First comment with comment_id, text, created_at, user info", "example": "{\"comment_id\": \"123\", \"text\": \"Great post!\", \"created_at\": 1640000000, \"user\": {\"user_id\": \"456\", \"username\": \"commenter1\"}}" },
+          { "path": "comment_2 - comment_15", "type": "object", "description": "Additional comments (up to 15 total)", "example": "{}" }
+        ]
+      },
+      "metadataFields": {
+        "title": "Metadata",
+        "fields": [
+          { "path": "scraping_time", "type": "datetime", "description": "When the data was scraped", "example": "\"2026-01-13T10:30:00+02:00\"" },
+          { "path": "functions", "type": "object", "description": "Internal function metadata", "example": "{}" }
+        ]
+      }
+    },
+    "parameters": [
+      {
+        "name": "squid",
+        "type": "string",
+        "required": true,
+        "description": "Hash of the squid to get results from",
+        "example": "YOUR_SQUID_HASH"
+      },
+      {
+        "name": "run",
+        "type": "string",
+        "required": false,
+        "description": "Hash of a specific run (optional, filters to that run only)",
+        "example": "RUN_HASH"
+      },
+      {
+        "name": "page",
+        "type": "integer",
+        "required": false,
+        "description": "Page number (default: 1)",
+        "example": "1"
+      },
+      {
+        "name": "page_size",
+        "type": "integer",
+        "required": false,
+        "description": "Results per page (default: 50, max: 100)",
+        "example": "50"
+      }
+    ],
+    "headers": [
+      {
+        "key": "Authorization",
+        "value": "Token YOUR_API_KEY",
+        "required": true,
+        "description": "Your API authentication token"
+      }
+    ],
+    "proTips": [
+      {
+        "type": "tip",
+        "content": "Use `timestamp_datetime` for easy date filtering and sorting of posts by publication time."
+      },
+      {
+        "type": "note",
+        "content": "Carousel posts include up to 10 child items with individual media URLs in `child_post_1` through `child_post_10`."
+      },
+      {
+        "type": "tip",
+        "content": "Check `is_paid_partnership` to identify sponsored content and influencer collaborations."
+      },
+      {
+        "type": "tip",
+        "content": "The `hashtags` array is useful for content categorization and trend analysis."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Get Results - Instagram Posts Scraper - Lobstr.io API",
+    "description": "Learn how to retrieve scraped Instagram posts data including captions, engagement metrics, media URLs, comments, and hashtags using the Lobstr.io API."
+  }
+}

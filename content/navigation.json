@@ -650,6 +650,23 @@
           ]
         },
         {
+          "title": "Instagram Posts Scraper",
+          "items": [
+            {
+              "title": "Add Tasks",
+              "slug": "examples/instagram-posts-scraper/add-tasks"
+            },
+            {
+              "title": "Update Settings",
+              "slug": "examples/instagram-posts-scraper/update-settings"
+            },
+            {
+              "title": "Get Results",
+              "slug": "examples/instagram-posts-scraper/get-results"
+            }
+          ]
+        },
+        {
           "title": "Sales Navigator Companies Scraper",
           "items": [
             {

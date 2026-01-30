@@ -1,0 +1,86 @@
+{
+  "total_results": 150,
+  "page": 1,
+  "total_pages": 3,
+  "next": "https://api.lobstr.io/v1/results?squid=YOUR_SQUID_HASH&page=2&page_size=50",
+  "previous": null,
+  "data": [
+    {
+      "id": "6ab98eca1b26828a1a206be9d66db305",
+      "object": "result",
+      "squid": "YOUR_SQUID_HASH",
+      "run": "RUN_HASH",
+      "url": "https://www.instagram.com/p/DRPbQcBD07d/",
+      "post_id": "3769351289982373597",
+      "shortcode": "DRPbQcBD07d",
+      "caption": "Amazing sunset at the beach! #sunset #nature #photography",
+      "alt": "Photo by National Geographic on January 06, 2026",
+      "owner_username": "natgeo",
+      "owner_full_name": "National Geographic",
+      "owner_id": "787132",
+      "likes_count": 150000,
+      "comments_count": 2500,
+      "timestamp": 1640000000,
+      "timestamp_datetime": "2026-01-06T12:00:00+02:00",
+      "product_type": "carousel_container",
+      "is_pinned": false,
+      "dimensions": "1080x1350",
+      "video_url": null,
+      "display_url": "https://scontent.cdninstagram.com/v/t51.2885-15/123456789_post.jpg",
+      "is_paid_partnership": false,
+      "carousel_media_count": 3,
+      "media_type": "carousel",
+      "child_post_1": {
+        "id": "123",
+        "media_type": 1,
+        "display_url": "https://scontent.cdninstagram.com/v/t51.2885-15/1.jpg",
+        "height": 1350,
+        "width": 1080
+      },
+      "child_post_2": {
+        "id": "124",
+        "media_type": 1,
+        "display_url": "https://scontent.cdninstagram.com/v/t51.2885-15/2.jpg",
+        "height": 1350,
+        "width": 1080
+      },
+      "child_post_3": {
+        "id": "125",
+        "media_type": 2,
+        "video_url": "https://scontent.cdninstagram.com/v/t50.2886-16/3.mp4",
+        "height": 1350,
+        "width": 1080
+      },
+      "hashtags": ["#sunset", "#nature", "#photography"],
+      "user_tags": [
+        {
+          "pk": "123456",
+          "username": "photographer_jane",
+          "full_name": "Jane Photographer",
+          "is_verified": false
+        }
+      ],
+      "coauthors": [],
+      "music": null,
+      "comment_1": {
+        "comment_id": "17890123456789",
+        "text": "Absolutely stunning!",
+        "created_at": 1640001000,
+        "user": {
+          "user_id": "456789",
+          "username": "nature_lover"
+        }
+      },
+      "comment_2": {
+        "comment_id": "17890123456790",
+        "text": "Where was this taken?",
+        "created_at": 1640002000,
+        "user": {
+          "user_id": "456790",
+          "username": "travel_fan"
+        }
+      },
+      "scraping_time": "2026-01-13T10:30:00+02:00"
+    }
+  ]
+}

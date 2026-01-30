@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": "task_abc123def456",
+      "status": "pending",
+      "params": {
+        "url": "https://www.instagram.com/natgeo/"
+      }
+    },
+    {
+      "id": "task_abc123def457",
+      "status": "pending",
+      "params": {
+        "url": "https://www.instagram.com/cristiano/"
+      }
+    }
+  ],
+  "duplicated_count": 0
+}
