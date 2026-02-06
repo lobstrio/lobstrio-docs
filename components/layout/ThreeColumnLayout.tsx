@@ -19,9 +19,9 @@ export default function ThreeColumnLayout({
 }: ThreeColumnLayoutProps) {
   return (
     <div className="min-h-screen bg-background">
-      <div className="flex max-w-[1920px] mx-auto">
+      <div className="flex max-w-[1600px] mx-auto">
         {/* Left Sidebar */}
-        <aside className="hidden lg:block w-[280px] flex-shrink-0">
+        <aside className="hidden lg:block w-[307px] flex-shrink-0">
           <div className="sticky top-0 h-screen overflow-y-auto border-r border-border">
             {sidebar}
           </div>
@@ -29,14 +29,14 @@ export default function ThreeColumnLayout({
 
         {/* Center Content */}
         <main className="flex-1 min-w-0">
-          <div className="max-w-4xl mx-auto px-8 py-12">
+          <div className="mx-auto px-12 py-8">
             {children}
           </div>
         </main>
 
         {/* Right Code Column */}
-        <aside className="hidden xl:block w-[480px] flex-shrink-0">
-          <div className="sticky top-0 h-screen overflow-y-auto border-l border-border bg-zinc-950">
+        <aside className="hidden xl:block w-[406px] flex-shrink-0">
+          <div className="sticky top-0 h-screen border-l border-border">
             {codeColumn}
           </div>
         </aside>

@@ -83,9 +83,9 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
   const activeResponse = responses[activeResponseIndex];
 
   return (
-    <div className="p-6 h-full flex flex-col">
+    <div className="px-6 py-8 h-full flex flex-col">
       {/* Main Tab Switcher: Languages + Response */}
-      <div className="flex items-center gap-2 mb-4 border-b border-border">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-4 border-b border-border">
         {languages.map((lang, index) => (
           <button
             key={lang.language}
@@ -93,11 +93,10 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
               setActiveLanguageIndex(index);
               setShowResponse(false);
             }}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-              !showResponse && activeLanguageIndex === index
-                ? 'border-accent-red text-accent-red'
-                : 'border-transparent text-text-muted hover:text-text-secondary'
-            }`}
+            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors ${!showResponse && activeLanguageIndex === index
+                ? 'border-[#ff0000] text-[#ff0000]'
+                : 'border-transparent opacity-40 text-[#0a2540] hover:text-text-red-500'
+              }`}
           >
             {lang.label}
           </button>
@@ -105,11 +104,10 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
         {responses.length > 0 && (
           <button
             onClick={() => setShowResponse(true)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-              showResponse
-                ? 'border-accent-red text-accent-red'
-                : 'border-transparent text-text-muted hover:text-text-secondary'
-            }`}
+            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors ${showResponse
+                ? 'border-[#ff0000] text-[#ff0000]'
+                : 'border-transparent opacity-40 text-[#0a2540] hover:text-text-red-500'
+              }`}
           >
             Response
           </button>
@@ -123,11 +121,10 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
             <button
               key={response.status}
               onClick={() => setActiveResponseIndex(index)}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${
-                activeResponseIndex === index
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${activeResponseIndex === index
                   ? getStatusBadgeClass(response.status) + ' ring-2 ring-offset-2 ring-offset-code-bg ring-white/20'
                   : 'bg-surface text-text-muted hover:text-text-secondary border border-border'
-              }`}
+                }`}
             >
               {response.status}
             </button>
@@ -136,54 +133,61 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
       )}
 
       {/* Code Display */}
-      <div className="flex-1 overflow-auto">
-        <div className="relative">
-          {/* Copy Button */}
-          <div className="absolute top-3 right-3 z-10">
-            <CopyButton
-              text={showResponse ? activeResponse?.body || '' : activeLanguage?.code || ''}
-            />
-          </div>
+      {
+        responses.length > 0 && (
 
-          {/* Highlighted Code - Language */}
-          {!showResponse && activeLanguage && (
-            <div
-              className="[&>pre]:!bg-black/30 [&>pre]:!rounded-lg [&>pre]:!p-4 [&>pre]:!pr-16 [&>pre]:!m-0 [&>pre]:!border [&>pre]:!border-border [&>pre]:!overflow-x-auto [&>pre]:!text-sm"
-              dangerouslySetInnerHTML={{ __html: activeLanguage.html }}
-            />
-          )}
+         <div className="flex-1 overflow-y-auto overflow-x-hidden">
+            <div className="relative border border-[#e5e5eb] rounded-md">
+              {/* Copy Button */}
+              <div className="absolute top-3 right-3 z-10">
+                <CopyButton
+                  text={showResponse ? activeResponse?.body || '' : activeLanguage?.code || ''}
+                />
+              </div>
 
-          {/* Highlighted Code - Response */}
-          {showResponse && activeResponse && (
-            <div
-              className="[&>pre]:!bg-black/30 [&>pre]:!rounded-lg [&>pre]:!p-4 [&>pre]:!pr-16 [&>pre]:!m-0 [&>pre]:!border [&>pre]:!border-border [&>pre]:!overflow-x-auto [&>pre]:!text-sm"
-              dangerouslySetInnerHTML={{ __html: activeResponse.html }}
-            />
-          )}
-        </div>
+              {/* Highlighted Code - Language */}
+              {!showResponse && activeLanguage && (
+                <div
+                  className="overflow-hidden"
+                  dangerouslySetInnerHTML={{ __html: activeLanguage.html }}
+                />
+              )}
 
-        {/* Response Status Badge */}
-        {showResponse && activeResponse && (
-          <div className="mt-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-text-muted">Status:</span>
-              <span className={`badge ${getStatusBadgeClass(activeResponse.status)}`}>
-                {activeResponse.status}
-              </span>
-              <span className="text-sm text-text-muted">
-                {getStatusText(activeResponse.status)}
-              </span>
+              {/* Highlighted Code - Response */}
+              {showResponse && activeResponse && (
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={{ __html: activeResponse.html }}
+                />
+              )}
             </div>
+
+            {/* Response Status Badge */}
+            {showResponse && activeResponse && (
+              <div className="mt-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-text-muted">Status:</span>
+                  <span className={`badge ${getStatusBadgeClass(activeResponse.status)}`}>
+                    {activeResponse.status}
+                  </span>
+                  <span className="text-sm text-text-muted">
+                    {getStatusText(activeResponse.status)}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+
+        )
+
+      }
 
       {/* Footer Info */}
-      <div className="mt-6 pt-4 border-t border-border">
+      {/* <div className="mt-6 pt-4 border-t border-border">
         <p className="text-xs text-text-muted">
           Base URL: <code className="text-accent-red">https://api.lobstr.io</code>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

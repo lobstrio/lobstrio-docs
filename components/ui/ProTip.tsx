@@ -12,39 +12,44 @@ interface ProTipProps {
 export default function ProTip({ type, children }: ProTipProps) {
   const config = {
     tip: {
-      icon: Lightbulb,
-      borderColor: 'border-accent-red',
+      icon: "/images/note-icon.svg", 
+      borderColor: 'border-[#ff00007a]',
       iconColor: 'text-accent-red',
       bgColor: 'bg-accent-red/10',
       title: 'Pro Tip',
     },
     warning: {
-      icon: AlertTriangle,
-      borderColor: 'border-accent-yellow',
+      icon: "/images/warn-icon.svg",
+      borderColor: 'border-[#ffb546]',
       iconColor: 'text-accent-yellow',
       bgColor: 'bg-accent-yellow/10',
       title: 'Warning',
     },
     note: {
-      icon: Info,
-      borderColor: 'border-accent-green',
+      icon: "/images/pro-tip.svg",
+      borderColor: 'border-[#49da9a]',
       iconColor: 'text-accent-green',
       bgColor: 'bg-accent-green/10',
       title: 'Note',
     },
   };
 
-  const { icon: Icon, borderColor, iconColor, bgColor, title } = config[type];
+  const { icon, borderColor, iconColor, bgColor, title } = config[type];
 
   return (
-    <div className={`pro-tip ${borderColor} ${bgColor}`}>
-      <div className="flex gap-3">
-        <div className={`pro-tip-icon ${iconColor} flex-shrink-0 mt-0.5`}>
-          <Icon className="w-5 h-5" />
+    <div className={`pro-tip border ${borderColor} ${bgColor}`}>
+      <div className="flex gap-5">
+        <div className="flex-shrink-0 mt-0.5">
+          <img
+            src={icon}
+            alt={title}
+            className="w-5 h-5"
+          />
         </div>
+
         <div className="flex-1">
-          <h4 className={`font-semibold ${iconColor} mb-1`}>{title}</h4>
-          <div className="text-sm text-text-secondary leading-relaxed">
+          <h4 className={`text-[17px] font-bold text-[#0a2540] leading-[1.29] mb-3`}>{title}</h4>
+          <div className="text-sm text-[#0a2540] opacity-70 leading-relaxed">
             {children}
           </div>
         </div>

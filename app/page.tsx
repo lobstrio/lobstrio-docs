@@ -212,7 +212,7 @@ export default async function HomePage() {
                 <h3 className="font-semibold group-hover:text-accent-red transition-colors mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-text-muted">{item.desc}</p>
+                <span className="text-sm text-text-muted">{item.desc}</span>
               </Link>
             ))}
           </div>

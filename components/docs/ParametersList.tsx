@@ -40,7 +40,7 @@ export default function ParametersList({ title, parameters }: ParametersListProp
                 {param.required ? 'Required' : 'Optional'}
               </span>
             </div>
-            <p className="text-sm text-text-secondary">{param.description}</p>
+            <span className="text-sm text-text-secondary">{param.description}</span>
             {param.example && (
               <div className="mt-2">
                 <span className="text-xs text-text-muted">Example: </span>

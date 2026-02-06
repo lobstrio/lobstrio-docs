@@ -24,9 +24,9 @@ export default function EventTypesList({ title, events }: EventTypesListProps) {
                 {event.event}
               </code>
             </div>
-            <p className="text-sm text-text-secondary mb-2">
+            <span className="text-sm text-text-secondary mb-2">
               {event.description}
-            </p>
+            </span>
             <div className="mt-2 pt-2 border-t border-border">
               <span className="text-xs text-text-muted">Trigger: </span>
               <span className="text-sm text-text-secondary">

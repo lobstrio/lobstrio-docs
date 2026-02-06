@@ -95,11 +95,11 @@ export default function Sidebar({ navigation }: SidebarProps) {
           <li key={item.slug}>
             <Link
               href={`/docs/${item.slug}`}
-              className={`nav-item ${isActive ? 'nav-item-active' : ''}`}
+              className={`nav-item ${isActive ? 'nav-item-active' : 'opacity-60'}`}
             >
               {item.title}
               {item.badge && (
-                <span className="ml-2 badge badge-get text-xs">
+                <span className="ml-2 badge badge-get text-[18px]">
                   {item.badge}
                 </span>
               )}
@@ -118,7 +118,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
       <div key={sub.title} className="ml-2 mt-2">
         <button
           onClick={() => toggle(key)}
-          className="flex items-center justify-between w-full text-sm font-medium text-text-secondary mb-1 hover:text-accent-red transition-colors text-left"
+          className="flex items-center justify-between w-full text-[18px] font-medium text-text-secondary mb-1 hover:text-accent-red transition-colors text-left"
         >
           <span className="flex-1 text-left">{sub.title}</span>
           {isExpanded ? (
@@ -133,12 +133,16 @@ export default function Sidebar({ navigation }: SidebarProps) {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-8">
       {/* Logo/Header */}
-      <Link href="/" className="flex items-center gap-2 mb-8">
-        <span className="text-xl font-bold text-red-500">lobstr.io</span>
-        <span className="text-text-muted text-sm font-medium">API Docs</span>
-      </Link>
+    
+      <div className="flex items-center gap-2 mb-8">
+       <a href="/">
+        <span className="text-[26px] font-bold text-red-500">lobstr.io</span>{" "}
+        <span className="text-text-muted text-[22px]">docs</span>
+       </a>
+      </div>
+  
 
       {/* Navigation Sections */}
       <nav className="space-y-6">
@@ -147,7 +151,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
             {/* Section Header */}
             <button
               onClick={() => toggle(section.title)}
-              className="flex items-center justify-between w-full text-sm font-semibold text-text-primary mb-2 hover:text-accent-red transition-colors"
+              className="flex items-center justify-between w-full text-[18px] font-semibold text-text-primary mb-2 hover:text-accent-red transition-colors"
             >
               <span>{section.title}</span>
               {expanded[section.title] ? (
@@ -178,7 +182,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
             href="https://lobstr.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-text-muted hover:text-text-primary transition-colors"
+            className="block text-[18px] text-[#696a73] hover:text-red-500 transition-colors"
           >
             Main Website
           </a>
@@ -186,7 +190,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
             href="https://app.lobstr.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-text-muted hover:text-text-primary transition-colors"
+            className="block text-[18px] text-[#696a73] hover:text-red-500 transition-colors"
           >
             Dashboard
           </a>

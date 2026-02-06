@@ -93,7 +93,7 @@ export default async function DocPage({ params }: PageProps) {
         code: example.code,
         html: await codeToHtml(example.code || '# No example available', {
           lang: langMap[example.language] || 'text',
-          theme: 'github-dark',
+          theme: 'github-light',
         }),
       }))
     );
@@ -105,7 +105,7 @@ export default async function DocPage({ params }: PageProps) {
         body: response.body,
         html: await codeToHtml(response.body || '{}', {
           lang: 'json',
-          theme: 'github-dark',
+          theme: 'github-light',
         }),
       }))
     );

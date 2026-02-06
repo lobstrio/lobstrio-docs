@@ -22,23 +22,23 @@ export default function ResponseFieldsList({ title, fields }: ResponseFieldsList
             key={index}
             className="bg-surface border border-border rounded-lg p-4"
           >
-            <div className="flex items-start justify-between mb-2">
+            <div className="flex items-start justify-between mb-3">
               <div>
                 <code className="text-base text-accent-red font-semibold">
                   {field.path}
                 </code>
                 {field.type && (
-                  <span className="text-sm text-text-muted ml-2">
+                  <span className="text-base text-text-muted ml-2">
                     {field.type}
                   </span>
                 )}
               </div>
             </div>
-            <p className="text-sm text-text-secondary">{field.description}</p>
+            <span className="text-base text-text-secondary">{field.description}</span>
             {field.example && (
-              <div className="mt-2">
-                <span className="text-xs text-text-muted">Example: </span>
-                <code className="text-sm text-accent-green">
+              <div className="mt-3">
+                <span className="text-base text-text-muted">Example: </span>
+                <code className="text-base text-accent-green">
                   {field.example}
                 </code>
               </div>
