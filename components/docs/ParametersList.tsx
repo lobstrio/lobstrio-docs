@@ -1,17 +1,4 @@
-'use client';
-
-interface Parameter {
-  name: string;
-  type: string;
-  required: boolean;
-  description: string;
-  example?: string;
-}
-
-interface ParametersListProps {
-  title: string;
-  parameters: Parameter[];
-}
+import { ParametersListProps } from "@/lib/types/docs.type";
 
 export default function ParametersList({ title, parameters }: ParametersListProps) {
   return (

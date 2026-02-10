@@ -2,15 +2,8 @@
 
 import { useState } from 'react';
 import { Bot, Check } from 'lucide-react';
-import { DocContent } from '@/lib/types/content';
+import { CopyForLLMButtonProps } from '@/lib/types/layout.type';
 
-interface CopyForLLMButtonProps {
-  content: DocContent;
-}
-
-/**
- * Copy entire page content formatted for AI consumption
- */
 export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
   const [copied, setCopied] = useState(false);
 
@@ -52,14 +45,12 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
       formatted += '\n';
     }
 
-    // Add language examples
     if (content.examples.languages && content.examples.languages.length > 0) {
       content.examples.languages.forEach((lang) => {
         formatted += `## ${lang.label} Example\n\n\`\`\`${lang.language}\n${lang.code}\n\`\`\`\n\n`;
       });
     }
 
-    // Add response examples
     if (content.examples.responses && content.examples.responses.length > 0) {
       content.examples.responses.forEach((resp) => {
         formatted += `## Response (${resp.status})\n\n\`\`\`json\n${resp.body}\n\`\`\`\n\n`;
@@ -90,7 +81,7 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
   return (
     <button
       onClick={handleCopy}
-      className="btn btn-primary flex items-center gap-2"
+      className="btn btn-primary flex items-center gap-2 cursor-pointer"
       aria-label="Copy for LLM"
     >
       {copied ? (

@@ -1,16 +1,4 @@
-'use client';
-
-interface ResponseField {
-  path: string;
-  type?: string;
-  description: string;
-  example?: string;
-}
-
-interface ResponseFieldsListProps {
-  title: string;
-  fields: ResponseField[];
-}
+import { ResponseFieldsListProps } from "@/lib/types/docs.type";
 
 export default function ResponseFieldsList({ title, fields }: ResponseFieldsListProps) {
   return (

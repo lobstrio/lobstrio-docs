@@ -1,13 +1,6 @@
 import { codeToHtml } from 'shiki';
+import { HighlightedCodeProps } from '@/lib/types/layout.type';
 
-interface HighlightedCodeProps {
-  code: string;
-  language: string;
-}
-
-/**
- * Server-side syntax-highlighted code component using Shiki
- */
 export default async function HighlightedCode({
   code,
   language,

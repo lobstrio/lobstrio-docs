@@ -1,31 +1,18 @@
-import { DocContent as DocContentType } from '@/lib/types/content';
-import ProTip from '@/components/ui/ProTip';
-import CopyForLLMButton from '@/components/ui/CopyForLLMButton';
-import ParametersList from '@/components/docs/ParametersList';
-import ResponseFieldsList from '@/components/docs/ResponseFieldsList';
-import CustomTable from '@/components/docs/CustomTable';
-import { getMethodBadgeClass } from '@/lib/utils/code-generator';
 import { marked } from 'marked';
+import { DocContentProps } from '@/lib/types/layout.type';
+import { getMethodBadgeClass } from '@/lib/utils/code-generator';
+import ProTip from '@/components/ui/ProTip';
+import CustomTable from '@/components/docs/CustomTable';
+import ParametersList from '@/components/docs/ParametersList';
+import CopyForLLMButton from '@/components/ui/CopyForLLMButton';
+import ResponseFieldsList from '@/components/docs/ResponseFieldsList';
 
-interface DocContentProps {
-  content: DocContentType;
-}
-
-/**
- * Main documentation content component
- * Displays the explanatory content with headings, parameters, and pro-tips
- */
 export default function DocContent({ content }: DocContentProps) {
   const methodBadgeClass = getMethodBadgeClass(content.metadata.method);
-
-  // Configure marked renderer for custom code blocks
   const renderer = new marked.Renderer();
-
-  // Override code block rendering
   renderer.code = (token: any) => {
     const code = token.text || token;
     const lang = token.lang || 'text';
-    // Escape HTML in code
     const escapedCode = String(code)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
@@ -36,7 +23,7 @@ export default function DocContent({ content }: DocContentProps) {
     return `
       <div class="my-6 relative group">
         <div class="absolute top-3 right-3 z-10">
-          <span class="inline-block px-2 py-1 text-xs font-medium uppercase bg-[#ffffff] text-[#0a2540] opacity-80 leading-[1.36] rounded border border-[#dde1ee]">
+          <span class="inline-block px-2 py-1 text-xs font-medium uppercase bg-white text-[#0a2540] opacity-80 leading-[1.36] rounded border border-[#dde1ee]">
             ${lang}
           </span>
         </div>
@@ -47,13 +34,11 @@ export default function DocContent({ content }: DocContentProps) {
     `;
   };
 
-  // Override inline code rendering
   renderer.codespan = (token: any) => {
     const code = token.text || token;
     return `<code class="px-1.5 py-0.5 text-sm bg-[#0a25400d] border border-[#0a25401c] rounded text-[#0a2540] font-mono">${code}</code>`;
   };
 
-  // Process introduction: render {{RENDER:}} sections inline, track which were rendered
   const processIntroductionWithSections = (): { parts: (string | React.ReactNode)[]; renderedSections: Set<string> } => {
     const text = content.content.introduction;
     const markerRegex = /\{\{RENDER:(\w+)\}\}/g;
@@ -64,7 +49,6 @@ export default function DocContent({ content }: DocContentProps) {
     let sectionIndex = 0;
 
     while ((match = markerRegex.exec(text)) !== null) {
-      // Add text before the marker
       const textBefore = text.substring(lastIndex, match.index);
       if (textBefore) {
         const html = marked.parse(textBefore, {
@@ -76,7 +60,6 @@ export default function DocContent({ content }: DocContentProps) {
         parts.push(html);
       }
 
-      // Add the rendered section inline
       const sectionName = match[1];
       const section = content.content.sections?.[sectionName];
 
@@ -113,7 +96,6 @@ export default function DocContent({ content }: DocContentProps) {
       lastIndex = match.index + match[0].length;
     }
 
-    // Add remaining text after the last marker
     const textAfter = text.substring(lastIndex);
     if (textAfter) {
       const html = marked.parse(textAfter, {
@@ -130,14 +112,12 @@ export default function DocContent({ content }: DocContentProps) {
 
   const { parts: contentParts, renderedSections } = processIntroductionWithSections();
 
-  // Get sections NOT mentioned in introduction (to render after headers)
   const unmentiondSections = content.content.sections
     ? Object.entries(content.content.sections).filter(([key]) => !renderedSections.has(key))
     : [];
 
   return (
     <div className="prose prose-invert max-w-none">
-      {/* Header with Copy for LLM Button */}
       <div className="flex items-center justify-between mb-6 text-[#0a2540]">
         <div className="flex-1">
           <div className="flex items-center gap-3 ">
@@ -156,7 +136,6 @@ export default function DocContent({ content }: DocContentProps) {
       </div>
         <h1 className="text-5xl leading-[1.33] font-black mb-5">{content.title}</h1>
         <span className="text-[18px] text-[#0a2540] leading-[1.56] opacity-90">{content.description}</span>
-      {/* Introduction with inline {{RENDER:}} sections */}
       <div className="text-lg leading-relaxed mb-8">
         {contentParts.map((part, index) =>
           typeof part === 'string' ? (
@@ -167,7 +146,6 @@ export default function DocContent({ content }: DocContentProps) {
         )}
       </div>
 
-      {/* Headers Section */}
       {content.content.headers.length > 0 && (
         <div className="mb-10">
           <h2 className="text-3xl font-bold mb-5">Headers</h2>
@@ -219,7 +197,6 @@ export default function DocContent({ content }: DocContentProps) {
         </div>
       )}
 
-      {/* Sections NOT mentioned in introduction */}
       {unmentiondSections.length > 0 && (
         <div className="mb-8">
           {unmentiondSections.map(([key, section]) => {
@@ -254,7 +231,6 @@ export default function DocContent({ content }: DocContentProps) {
         </div>
       )}
 
-      {/* Parameters Section */}
       {content.content.parameters.length > 0 && (
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-4">Parameters</h2>
@@ -296,7 +272,6 @@ export default function DocContent({ content }: DocContentProps) {
         </div>
       )}
 
-      {/* Pro Tips */}
       {content.content.proTips.length > 0 && (
         <div className="my-10 space-y-5">
           {content.content.proTips.map((tip, index) => (
@@ -307,7 +282,6 @@ export default function DocContent({ content }: DocContentProps) {
         </div>
       )}
 
-      {/* Additional Notes */}
       {content.content.additionalNotes && (
         <div className="mt-8">
           <h2 className="text-3xl font-bold mb-4">Additional Notes</h2>

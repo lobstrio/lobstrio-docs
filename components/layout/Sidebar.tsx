@@ -2,26 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import { SidebarProps } from '@/lib/types/layout.type';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { Navigation, NavSubsection } from '@/lib/types/content';
 
-interface SidebarProps {
-  navigation: Navigation;
-}
-
-/**
- * Find which section and subsection contains the current path
- */
 function findActiveContext(navigation: Navigation, pathname: string) {
   const currentSlug = pathname.replace('/docs/', '');
 
   for (const section of navigation.sections) {
-    // Check direct items
     if (section.items?.some(item => item.slug === currentSlug)) {
       return { section: section.title, subsection: null };
     }
-    // Check subsections
     if (section.subsections) {
       for (const sub of section.subsections) {
         if (sub.items.some(item => item.slug === currentSlug)) {
@@ -33,31 +25,24 @@ function findActiveContext(navigation: Navigation, pathname: string) {
   return { section: null, subsection: null };
 }
 
-/**
- * Sidebar navigation component with collapsible sections and subsections
- */
 export default function Sidebar({ navigation }: SidebarProps) {
   const pathname = usePathname();
   const isInitialized = useRef(false);
 
-  // Initialize expanded state - only expand section containing active page
   const [expanded, setExpanded] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     const { section: activeSection, subsection: activeSubsection } = findActiveContext(navigation, pathname);
 
     navigation.sections.forEach((section) => {
-      // Expand section if it contains the active page
       initial[section.title] = section.title === activeSection;
       section.subsections?.forEach((sub) => {
         const key = `${section.title}:${sub.title}`;
-        // Expand subsection if it contains the active page
         initial[key] = key === activeSubsection;
       });
     });
     return initial;
   });
 
-  // When pathname changes, ensure the active section/subsection is expanded
   useEffect(() => {
     if (!isInitialized.current) {
       isInitialized.current = true;
@@ -134,21 +119,16 @@ export default function Sidebar({ navigation }: SidebarProps) {
 
   return (
     <div className="p-8">
-      {/* Logo/Header */}
-    
       <div className="flex items-center gap-2 mb-8">
-       <a href="/">
-        <span className="text-[26px] font-bold text-red-500">lobstr.io</span>{" "}
-        <span className="text-text-muted text-[22px]">docs</span>
-       </a>
+        <a href="/">
+          <span className="text-[26px] font-bold text-red-500">lobstr.io</span>{" "}
+          <span className="text-text-muted text-[22px]">docs</span>
+        </a>
       </div>
-  
 
-      {/* Navigation Sections */}
       <nav className="space-y-6">
         {navigation.sections.map((section) => (
           <div key={section.title}>
-            {/* Section Header */}
             <button
               onClick={() => toggle(section.title)}
               className="flex items-center justify-between w-full text-[18px] font-semibold text-text-primary mb-2 hover:text-accent-red transition-colors"
@@ -161,13 +141,9 @@ export default function Sidebar({ navigation }: SidebarProps) {
               )}
             </button>
 
-            {/* Section Content */}
             {expanded[section.title] && (
               <>
-                {/* Direct items */}
                 {section.items && section.items.length > 0 && renderItems(section.items)}
-
-                {/* Subsections */}
                 {section.subsections?.map((sub) => renderSubsection(sub, section.title))}
               </>
             )}
@@ -175,25 +151,22 @@ export default function Sidebar({ navigation }: SidebarProps) {
         ))}
       </nav>
 
-      {/* Footer Links */}
       <div className="mt-12 pt-6 border-t border-border">
         <div className="space-y-2 text-sm">
-          <a
-            href="https://lobstr.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-[18px] text-[#696a73] hover:text-red-500 transition-colors"
-          >
-            Main Website
-          </a>
-          <a
-            href="https://app.lobstr.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-[18px] text-[#696a73] hover:text-red-500 transition-colors"
-          >
-            Dashboard
-          </a>
+          {[
+            { href: 'https://lobstr.io', label: 'Main Website' },
+            { href: 'https://app.lobstr.io', label: 'Dashboard' },
+          ].map(link => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-[18px] text-[#696a73] hover:text-red-500 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </div>
     </div>

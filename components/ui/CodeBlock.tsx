@@ -1,15 +1,6 @@
 import { codeToHtml } from 'shiki';
+import { CodeBlockProps } from '@/lib/types/layout.type';
 
-interface CodeBlockProps {
-  code: string;
-  language: string;
-  showLineNumbers?: boolean;
-}
-
-/**
- * Syntax-highlighted code block component using Shiki
- * Server-side rendered for better performance
- */
 export default async function CodeBlock({
   code,
   language,
@@ -31,14 +22,12 @@ export default async function CodeBlock({
 
   return (
     <div className="relative group">
-      {/* Language Badge */}
       <div className="absolute top-3 right-3 z-10">
         <span className="badge bg-surface text-text-secondary text-xs uppercase">
           {language}
         </span>
       </div>
 
-      {/* Code */}
       <div
         className="overflow-x-auto rounded-lg text-sm [&>pre]:!bg-surface [&>pre]:!p-4 [&>pre]:!m-0"
         dangerouslySetInnerHTML={{ __html: html }}

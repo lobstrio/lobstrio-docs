@@ -1,14 +1,5 @@
-import { Lightbulb, AlertTriangle, Info } from 'lucide-react';
-import { ProTipType } from '@/lib/types/content';
+import { ProTipProps } from '@/lib/types/layout.type';
 
-interface ProTipProps {
-  type: ProTipType;
-  children: React.ReactNode;
-}
-
-/**
- * Callout box component for tips, warnings, and notes
- */
 export default function ProTip({ type, children }: ProTipProps) {
   const config = {
     tip: {

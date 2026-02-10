@@ -1,13 +1,4 @@
-interface EventType {
-  event: string;
-  description: string;
-  trigger: string;
-}
-
-interface EventTypesListProps {
-  title: string;
-  events: EventType[];
-}
+import { EventTypesListProps } from "@/lib/types/docs.type";
 
 export default function EventTypesList({ title, events }: EventTypesListProps) {
   return (

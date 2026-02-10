@@ -1,18 +1,4 @@
-interface TableColumn {
-  header: string;
-  key: string;
-  width?: string;
-}
-
-interface TableRow {
-  [key: string]: string | React.ReactNode;
-}
-
-interface CustomTableProps {
-  title?: string;
-  columns: TableColumn[];
-  rows: TableRow[];
-}
+import { CustomTableProps } from "@/lib/types/docs.type";
 
 export default function CustomTable({ title, columns, rows }: CustomTableProps) {
   return (
