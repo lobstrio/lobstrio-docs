@@ -8,29 +8,31 @@ import { CopyButtonProps } from '@/lib/types/layout.type';
 export default function CopyButton({ text, className = '' }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = async () => {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-      }
+const handleCopy = async () => {
+  const formattedContent = text;
+  if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(formattedContent);
+    } else {
+      let textArea = document.createElement("textarea");
+      textArea.value = formattedContent;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
 
-      else if (process.env.NODE_ENV !== 'production') {
-        const t = document.createElement('textarea');
-        t.value = text;
-        t.style.position = 'fixed';
-        t.style.left = '-9999px';
-        document.body.appendChild(t);
-        t.select();
-        document.execCommand('copy');
-        document.body.removeChild(t);
-      }
-
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      return new Promise((res, rej) => {
+        // @ts-ignore
+        document.execCommand("copy") ? res() : rej();
+        textArea.remove();
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
     }
-  };
+};
+
+ 
 
   return (
     <button

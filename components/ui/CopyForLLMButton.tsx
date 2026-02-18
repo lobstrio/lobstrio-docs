@@ -68,13 +68,27 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
   };
 
   const handleCopy = async () => {
-    try {
-      const formattedContent = formatForLLM();
-      await navigator.clipboard.writeText(formattedContent);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      console.error('Failed to copy:', error);
+    const formattedContent = formatForLLM();
+
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(formattedContent);
+    } else {
+      let textArea = document.createElement("textarea");
+      textArea.value = formattedContent;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      return new Promise((res, rej) => {
+        // @ts-ignore
+        document.execCommand("copy") ? res() : rej();
+        textArea.remove();
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
     }
   };
 
