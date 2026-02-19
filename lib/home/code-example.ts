@@ -6,7 +6,7 @@
     # 1. Create a squid with a crawler
     squid = requests.post("https://api.lobstr.io/v1/squids",
         headers=headers,
-        json={"crawler": "google-maps-scraper", "name": "Restaurants Paris"}
+        json={"crawler": "4734d096159ef05210e0e1677e8be823", "name": "Restaurants Paris"}
     ).json()
 
     # 2. Add tasks to scrape
