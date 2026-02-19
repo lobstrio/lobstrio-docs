@@ -33,7 +33,7 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
               setActiveLanguageIndex(index);
               setShowResponse(false);
             }}
-            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors ${!showResponse && activeLanguageIndex === index
+            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors cursor-pointer ${!showResponse && activeLanguageIndex === index
                 ? 'border-[#ff0000] text-[#ff0000]'
                 : 'border-transparent opacity-40 text-[#0a2540] hover:text-text-red-500'
               }`}
@@ -44,7 +44,7 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
         {responses.length > 0 && (
           <button
             onClick={() => setShowResponse(true)}
-            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors ${showResponse
+            className={`px-4 py-2 text-base font-semibold border-b-2 transition-colors cursor-pointer ${showResponse
                 ? 'border-[#ff0000] text-[#ff0000]'
                 : 'border-transparent opacity-40 text-[#0a2540] hover:text-text-red-500'
               }`}
@@ -60,7 +60,7 @@ export default function CodeColumn({ examples, highlightedCode }: CodeColumnProp
             <button
               key={response.status}
               onClick={() => setActiveResponseIndex(index)}
-              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors ${activeResponseIndex === index
+              className={`px-3 py-1.5 text-xs font-medium rounded transition-colors cursor-pointer ${activeResponseIndex === index
                   ? getStatusBadgeClass(response.status) + ' ring-2 ring-offset-2 ring-offset-code-bg ring-white/20'
                   : 'bg-surface text-text-muted hover:text-text-secondary border border-border'
                 }`}

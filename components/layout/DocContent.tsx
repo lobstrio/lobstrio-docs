@@ -120,7 +120,9 @@ export default function DocContent({ content }: DocContentProps) {
     <div className="prose prose-invert max-w-none">
       <div className="flex items-center justify-between mb-6 text-[#0a2540]">
         <div className="flex-1">
-          <div className="flex items-center gap-3 ">
+          <div  className={`flex items-center gap-3 ${
+             !content.metadata?.method && !content.metadata?.endpoint ? "opacity-0" : ""
+          }`}>
             <span className={`badge ${methodBadgeClass}`}>
               {content.metadata.method}
             </span>

@@ -131,7 +131,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
           <div key={section.title}>
             <button
               onClick={() => toggle(section.title)}
-              className="flex items-center justify-between w-full text-[18px] font-semibold text-text-primary mb-2 hover:text-accent-red transition-colors"
+              className="flex items-center justify-between w-full text-[18px] font-semibold text-text-primary mb-2 hover:text-accent-red transition-colors cursor-pointer"
             >
               <span>{section.title}</span>
               {expanded[section.title] ? (
