@@ -1,0 +1,27 @@
+import requests
+
+url = "https://api.lobstr.io/v1/delivery"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+params = {
+    "squid": "YOUR_SQUID_HASH"
+}
+payload = {
+    "s3_fields": {
+        "bucket": "my-bucket",
+        "is_active": True,
+        "target_path": "exports",
+        "aws_access_key": "your_access_key",
+        "aws_secret_key": "your_secret_key"
+    }
+}
+
+response = requests.post(url, headers=headers, params=params, json=payload)
+result = response.json()
+
+print("Amazon S3 delivery configured successfully!")
+print(f"Bucket: {result['s3_fields']['bucket']}")
+print(f"Target path: {result['s3_fields']['target_path']}")
+print(f"Active: {result['s3_fields']['is_active']}")

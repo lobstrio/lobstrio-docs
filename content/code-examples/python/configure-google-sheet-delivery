@@ -1,0 +1,25 @@
+import requests
+
+url = "https://api.lobstr.io/v1/delivery"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+params = {
+    "squid": "YOUR_SQUID_HASH"
+}
+payload = {
+    "google_sheet_fields": {
+        "url": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit?usp=sharing",
+        "append": False,
+        "is_active": True
+    }
+}
+
+response = requests.post(url, headers=headers, params=params, json=payload)
+result = response.json()
+
+print("Google Sheet delivery configured successfully!")
+print(f"Sheet URL: {result['google_sheet_fields']['url']}")
+print(f"Append mode: {result['google_sheet_fields']['append']}")
+print(f"Active: {result['google_sheet_fields']['is_active']}")

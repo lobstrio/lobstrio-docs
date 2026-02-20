@@ -1,0 +1,30 @@
+import requests
+
+url = "https://api.lobstr.io/v1/delivery"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+params = {
+    "squid": "YOUR_SQUID_HASH"
+}
+payload = {
+    "ftp_fields": {
+        "host": "sftp.example.com",
+        "port": 22,
+        "username": "user",
+        "password": "password",
+        "directory": "/upload/path",
+        "is_active": True
+    }
+}
+
+response = requests.post(url, headers=headers, params=params, json=payload)
+result = response.json()
+
+print("SFTP delivery configured successfully!")
+print(f"Host: {result['ftp_fields']['host']}")
+print(f"Port: {result['ftp_fields']['port']}")
+print(f"Username: {result['ftp_fields']['username']}")
+print(f"Directory: {result['ftp_fields']['directory']}")
+print(f"Active: {result['ftp_fields']['is_active']}")

@@ -1,0 +1,19 @@
+import requests
+
+# Test webhook endpoint
+url = "https://api.lobstr.io/v1/delivery/test-webhook"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+payload = {
+    "url": "https://your-webhook.com/endpoint"
+}
+
+response = requests.post(url, headers=headers, json=payload)
+result = response.json()
+
+print("Webhook test completed!")
+print(f"Success: {result['success']}")
+if 'status_code' in result:
+    print(f"Status code: {result['status_code']}")

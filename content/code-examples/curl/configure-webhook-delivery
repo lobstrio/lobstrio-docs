@@ -1,0 +1,16 @@
+curl -X POST "https://api.lobstr.io/v1/delivery?squid=YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhook_fields": {
+      "url": "https://your-webhook.com/endpoint",
+      "is_active": true,
+      "retry": false,
+      "events": {
+        "run.running": true,
+        "run.paused": false,
+        "run.done": false,
+        "run.error": true
+      }
+    }
+  }'

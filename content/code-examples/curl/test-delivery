@@ -1,0 +1,6 @@
+curl -X POST "https://api.lobstr.io/v1/delivery/test-webhook" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-webhook.com/endpoint"
+  }'

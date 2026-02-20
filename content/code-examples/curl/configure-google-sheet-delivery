@@ -1,0 +1,10 @@
+curl -X POST "https://api.lobstr.io/v1/delivery?squid=YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "google_sheet_fields": {
+      "url": "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit?usp=sharing",
+      "append": false,
+      "is_active": true
+    }
+  }'

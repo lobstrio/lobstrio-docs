@@ -1,0 +1,12 @@
+curl -X POST "https://api.lobstr.io/v1/delivery?squid=YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "s3_fields": {
+      "bucket": "my-bucket",
+      "is_active": true,
+      "target_path": "exports",
+      "aws_access_key": "your_access_key",
+      "aws_secret_key": "your_secret_key"
+    }
+  }'

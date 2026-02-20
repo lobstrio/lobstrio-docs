@@ -1,0 +1,34 @@
+import requests
+
+url = "https://api.lobstr.io/v1/delivery"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+params = {
+    "squid": "YOUR_SQUID_HASH"
+}
+payload = {
+    "webhook_fields": {
+        "url": "https://your-webhook.com/endpoint",
+        "is_active": True,
+        "retry": False,
+        "events": {
+            "run.running": True,
+            "run.paused": False,
+            "run.done": False,
+            "run.error": True
+        }
+    }
+}
+
+response = requests.post(url, headers=headers, params=params, json=payload)
+result = response.json()
+
+print("Webhook delivery configured successfully!")
+print(f"Webhook URL: {result['webhook_fields']['url']}")
+print(f"Active: {result['webhook_fields']['is_active']}")
+print(f"Retry enabled: {result['webhook_fields']['retry']}")
+print("\nSubscribed events:")
+for event, subscribed in result['webhook_fields']['events'].items():
+    print(f"  {event}: {subscribed}")

@@ -1,0 +1,23 @@
+import requests
+
+url = "https://api.lobstr.io/v1/delivery"
+headers = {
+    "Authorization": "Token YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+params = {
+    "squid": "YOUR_SQUID_HASH"
+}
+payload = {
+    "email": "user@example.com",
+    "notifications": True
+}
+
+response = requests.post(url, headers=headers, params=params, json=payload)
+result = response.json()
+
+print("Email delivery configured successfully!")
+print(f"Email: {result['email']}")
+print(f"Notifications: {result['notifications']}")
+if 'notifications_activation_date' in result:
+    print(f"Activated on: {result['notifications_activation_date']}")

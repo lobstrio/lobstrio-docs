@@ -1,0 +1,13 @@
+{
+  "webhook_fields": {
+    "url": "https://your-webhook.com/endpoint",
+    "is_active": true,
+    "retry": false,
+    "events": {
+      "run.running": false,
+      "run.paused": true,
+      "run.done": false,
+      "run.error": true
+    }
+  }
+}
