@@ -1,0 +1,5 @@
+{
+  "error": "Rate limit exceeded. Please try again later.",
+  "type": "RateLimitExceeded",
+  "code": 429
+}
