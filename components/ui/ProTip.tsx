@@ -40,7 +40,7 @@ export default function ProTip({ type, children }: ProTipProps) {
 
         <div className="flex-1">
           <h4 className={`text-[17px] font-bold leading-[1.29] mb-[13px]`}>{title}</h4>
-          <div className="text-sm opacity-70 leading-[1.64]">
+          <div className="text-base opacity-90 leading-[1.64]">
             {children}
           </div>
         </div>

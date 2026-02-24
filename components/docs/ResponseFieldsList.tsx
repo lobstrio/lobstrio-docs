@@ -11,7 +11,7 @@ export default function ResponseFieldsList({ title, fields }: ResponseFieldsList
             className="bg-surface border border-border rounded-lg p-6"
           >
             <div className="flex items-start justify-between leading-1.31 mb-3.5">
-              <div>
+              <div className="flex items-center">
                 <code className="text-base text-[#FF0000] font-semibold">
                   {field.path}
                 </code>

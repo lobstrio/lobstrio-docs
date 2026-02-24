@@ -247,7 +247,7 @@ export default function DocContent({ content }: DocContentProps) {
                     <code className="text-base text-[#FF0000] font-semibold">
                       {param.name}
                     </code>
-                    <span className="text-sm text-text-muted ml-2">
+                    <span className="text-base text-text-muted ml-2">
                       {param.type}
                     </span>
                   </div>
@@ -259,11 +259,11 @@ export default function DocContent({ content }: DocContentProps) {
                     {param.required ? 'Required' : 'Optional'}
                   </span>
                 </div>
-                <span className="text-sm text-text-secondary">{param.description}</span>
+                <span className="text-base opacity-90">{param.description}</span>
                 {param.example && (
                   <div className="mt-2">
-                    <span className="text-xs text-text-muted">Example: </span>
-                    <code className="text-sm text-accent-green">
+                    <span className="text-base text-text-muted">Example: </span>
+                    <code className="text-base text-accent-green">
                       {param.example}
                     </code>
                   </div>
