@@ -36,7 +36,7 @@ export default function DocContent({ content }: DocContentProps) {
 
   renderer.codespan = (token: any) => {
     const code = token.text || token;
-    return `<code class="px-1.5 py-0.5 text-[18px] font-medium bg-[#0a25400d] border border-[#0a25401c] rounded font-mono">${code}</code>`;
+    return `<code class="px-1.5 py-0.5 text-[18px] font-medium bg-[#0a25400d] border border-[#0a25401c] rounded-[7px] font-mono">${code}</code>`;
   };
 
   const processIntroductionWithSections = (): { parts: (string | React.ReactNode)[]; renderedSections: Set<string> } => {
@@ -126,7 +126,7 @@ export default function DocContent({ content }: DocContentProps) {
             <span className={`badge ${methodBadgeClass}`}>
               {content.metadata.method}
             </span>
-            <code className="text-base  bg-white px-3 pt-1 rounded border border-[#dee0ea] text-[#0a2540]">
+            <code className="text-base  bg-white px-3 pt-1 rounded-[7px] border border-[#dee0ea] text-[#0a2540]">
               {content.metadata.endpoint}
             </code>
           </div> 

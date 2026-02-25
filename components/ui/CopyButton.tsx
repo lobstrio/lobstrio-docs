@@ -37,7 +37,7 @@ const handleCopy = async () => {
   return (
     <button
       onClick={handleCopy}
-      className={`text-sm font-semibold leading-[1.36] bg-[#f2f5f9] cursor-pointer border border-[#dee0ea] rounded-md px-1.5 py-1 leading-[1.36] flex items-center gap-2 ${className}`}
+      className={`text-sm font-semibold leading-[1.36] bg-[#f2f5f9] cursor-pointer border border-[#dee0ea] rounded-[7px] px-1.5 py-1 leading-[1.36] flex items-center gap-2 ${className}`}
       aria-label="Copy to clipboard"
     >
       {copied ? (
