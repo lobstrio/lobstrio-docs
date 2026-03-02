@@ -39,6 +39,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: content.seo.title,
       description: content.seo.description,
+      alternates: {
+        canonical: `https://docs.lobstr.io/docs/${slugPath}`,
+      },
       openGraph: {
         title: content.seo.title,
         description: content.seo.description,
