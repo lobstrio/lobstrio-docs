@@ -106,7 +106,7 @@
     ]
   },
   "seo": {
-    "title": "Start Run - Lobstr.io API Documentation",
-    "description": "Learn how to start a new scraping run for a squid using the Lobstr.io API."
+    "title": "Start Run - lobstr.io API Documentation",
+    "description": "Learn how to start a new scraping run for a squid using the lobstr.io API."
   }
 }

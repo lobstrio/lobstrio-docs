@@ -119,7 +119,7 @@
     "response": "examples/tripadvisor-restaurants-scraper/update-settings"
   },
   "seo": {
-    "title": "Update Settings - TripAdvisor Restaurants Scraper - Lobstr.io API",
+    "title": "Update Settings - TripAdvisor Restaurants Scraper - lobstr.io API",
     "description": "Configure your TripAdvisor Restaurants Scraper with max_results and other settings for restaurant data extraction."
   }
 }

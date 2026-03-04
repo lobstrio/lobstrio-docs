@@ -216,7 +216,7 @@
     "response": "examples/tripadvisor-restaurants-scraper/get-results"
   },
   "seo": {
-    "title": "Get Results - TripAdvisor Restaurants Scraper - Lobstr.io API",
+    "title": "Get Results - TripAdvisor Restaurants Scraper - lobstr.io API",
     "description": "Retrieve scraped TripAdvisor restaurant listings including ratings, reviews, price ranges, contact details, and Michelin status."
   }
 }

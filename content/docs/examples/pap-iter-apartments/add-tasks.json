@@ -82,7 +82,7 @@
     "response": "examples/pap-search-export/add-tasks"
   },
   "seo": {
-    "title": "Add Tasks - PAP Search Export - Lobstr.io API",
+    "title": "Add Tasks - PAP Search Export - lobstr.io API",
     "description": "Learn how to add PAP.fr search URLs as tasks for scraping French private real estate listings with price, energy ratings, and contact details."
   }
 }

@@ -73,7 +73,7 @@
     ]
   },
   "seo": {
-    "title": "Update Settings - Yelp Search Export - Lobstr.io API",
-    "description": "Configure Yelp Search Export scraper settings using the Lobstr.io API."
+    "title": "Update Settings - Yelp Search Export - lobstr.io API",
+    "description": "Configure Yelp Search Export scraper settings using the lobstr.io API."
   }
 }

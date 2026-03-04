@@ -148,7 +148,7 @@
     ]
   },
   "seo": {
-    "title": "Update Account Limits - Lobstr.io API Documentation",
-    "description": "Learn how to configure account operational limits for rate limiting and batch processing using the Lobstr.io API."
+    "title": "Update Account Limits - lobstr.io API Documentation",
+    "description": "Learn how to configure account operational limits for rate limiting and batch processing using the lobstr.io API."
   }
 }

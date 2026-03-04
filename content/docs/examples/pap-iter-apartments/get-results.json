@@ -234,7 +234,7 @@
     "response": "examples/pap-search-export/get-results"
   },
   "seo": {
-    "title": "Get Results - PAP Search Export - Lobstr.io API",
+    "title": "Get Results - PAP Search Export - lobstr.io API",
     "description": "Retrieve scraped PAP.fr property listings including price, energy ratings, location coordinates, and direct seller contact information."
   }
 }

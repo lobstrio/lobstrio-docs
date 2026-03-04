@@ -82,7 +82,7 @@
     "response": "examples/idealista-listings-scraper/add-tasks"
   },
   "seo": {
-    "title": "Add Tasks - Idealista Listings Scraper - Lobstr.io API",
+    "title": "Add Tasks - Idealista Listings Scraper - lobstr.io API",
     "description": "Learn how to add Idealista search URLs as tasks for scraping Spanish property listings including price, area, bedrooms, and contact details."
   }
 }

@@ -143,7 +143,7 @@
     "response": "examples/pages-jaunes-companies-search-export/update-settings"
   },
   "seo": {
-    "title": "Update Settings - Pages Jaunes Companies Search Export - Lobstr.io API",
+    "title": "Update Settings - Pages Jaunes Companies Search Export - lobstr.io API",
     "description": "Configure Pages Jaunes scraper with enrichment functions to collect SIRET, SIREN, email addresses, and social media profiles from French businesses."
   }
 }

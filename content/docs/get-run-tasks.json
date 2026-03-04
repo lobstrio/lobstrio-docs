@@ -140,7 +140,7 @@
     ]
   },
   "seo": {
-    "title": "Get Run Tasks - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve task-level details for a scraping run using the Lobstr.io API."
+    "title": "Get Run Tasks - lobstr.io API Documentation",
+    "description": "Learn how to retrieve task-level details for a scraping run using the lobstr.io API."
   }
 }

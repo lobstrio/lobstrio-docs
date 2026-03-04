@@ -143,7 +143,7 @@
     "response": "examples/tripadvisor-reviews-scraper/update-settings"
   },
   "seo": {
-    "title": "Update Settings - TripAdvisor Reviews Scraper - Lobstr.io API",
+    "title": "Update Settings - TripAdvisor Reviews Scraper - lobstr.io API",
     "description": "Configure your TripAdvisor Reviews Scraper with filters for language, ratings, recency, and result limits for targeted review collection."
   }
 }

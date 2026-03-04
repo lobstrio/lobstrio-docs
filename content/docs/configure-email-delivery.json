@@ -97,7 +97,7 @@
     ]
   },
   "seo": {
-    "title": "Configure Email Delivery - Lobstr.io API Documentation",
-    "description": "Learn how to set up email notifications for squid run completions using the Lobstr.io API. Configure email addresses and notification preferences."
+    "title": "Configure Email Delivery - lobstr.io API Documentation",
+    "description": "Learn how to set up email notifications for squid run completions using the lobstr.io API. Configure email addresses and notification preferences."
   }
 }

@@ -73,7 +73,7 @@
     ]
   },
   "seo": {
-    "title": "Update Settings - SeLoger Search Export - Lobstr.io API",
-    "description": "Configure SeLoger Search Export scraper settings using the Lobstr.io API."
+    "title": "Update Settings - SeLoger Search Export - lobstr.io API",
+    "description": "Configure SeLoger Search Export scraper settings using the lobstr.io API."
   }
 }

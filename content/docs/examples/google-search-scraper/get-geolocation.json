@@ -74,7 +74,7 @@
     ]
   },
   "seo": {
-    "title": "Get Geolocation - Google Search Scraper - Lobstr.io API",
+    "title": "Get Geolocation - Google Search Scraper - lobstr.io API",
     "description": "Fetch valid location values for geographic search bias in Google Search Scraper."
   }
 }

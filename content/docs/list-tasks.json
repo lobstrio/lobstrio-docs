@@ -123,7 +123,7 @@
     ]
   },
   "seo": {
-    "title": "List Tasks - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve a list of tasks for a squid using the Lobstr.io API."
+    "title": "List Tasks - lobstr.io API Documentation",
+    "description": "Learn how to retrieve a list of tasks for a squid using the lobstr.io API."
   }
 }

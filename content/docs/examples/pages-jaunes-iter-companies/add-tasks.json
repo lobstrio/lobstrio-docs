@@ -82,7 +82,7 @@
     "response": "examples/pages-jaunes-companies-search-export/add-tasks"
   },
   "seo": {
-    "title": "Add Tasks - Pages Jaunes Companies Search Export - Lobstr.io API",
+    "title": "Add Tasks - Pages Jaunes Companies Search Export - lobstr.io API",
     "description": "Learn how to add Pages Jaunes search URLs as tasks for scraping French business directory listings with SIRET, contact details, and company information."
   }
 }

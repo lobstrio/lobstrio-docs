@@ -197,7 +197,7 @@
     ]
   },
   "seo": {
-    "title": "List Accounts - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve all connected platform accounts using the Lobstr.io API. List Twitter, LinkedIn, Facebook and other platform credentials."
+    "title": "List Accounts - lobstr.io API Documentation",
+    "description": "Learn how to retrieve all connected platform accounts using the lobstr.io API. List Twitter, LinkedIn, Facebook and other platform credentials."
   }
 }

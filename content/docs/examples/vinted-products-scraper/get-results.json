@@ -121,7 +121,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - Vinted Products Scraper - Lobstr.io API",
-    "description": "Retrieve Vinted product listings with pricing and seller data using the Lobstr.io API."
+    "title": "Get Results - Vinted Products Scraper - lobstr.io API",
+    "description": "Retrieve Vinted product listings with pricing and seller data using the lobstr.io API."
   }
 }

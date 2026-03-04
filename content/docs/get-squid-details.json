@@ -275,7 +275,7 @@
     ]
   },
   "seo": {
-    "title": "Get Squid Details - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve detailed information about a specific squid using the Lobstr.io API. Includes status, configuration, and integration details."
+    "title": "Get Squid Details - lobstr.io API Documentation",
+    "description": "Learn how to retrieve detailed information about a specific squid using the lobstr.io API. Includes status, configuration, and integration details."
   }
 }

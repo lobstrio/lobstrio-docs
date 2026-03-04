@@ -71,7 +71,7 @@
     ]
   },
   "seo": {
-    "title": "Rate Limiting - Lobstr.io API Documentation",
-    "description": "Learn about Lobstr.io API rate limits, response headers, and best practices for handling rate limit errors."
+    "title": "Rate Limiting - lobstr.io API Documentation",
+    "description": "Learn about lobstr.io API rate limits, response headers, and best practices for handling rate limit errors."
   }
 }

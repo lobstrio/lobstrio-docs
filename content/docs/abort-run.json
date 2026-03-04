@@ -98,7 +98,7 @@
     ]
   },
   "seo": {
-    "title": "Abort Run - Lobstr.io API Documentation",
-    "description": "Learn how to abort an active scraping run using the Lobstr.io API."
+    "title": "Abort Run - lobstr.io API Documentation",
+    "description": "Learn how to abort an active scraping run using the lobstr.io API."
   }
 }

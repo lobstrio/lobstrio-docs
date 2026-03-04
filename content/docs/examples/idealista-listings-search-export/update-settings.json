@@ -119,7 +119,7 @@
     "response": "examples/idealista-listings-scraper/update-settings"
   },
   "seo": {
-    "title": "Update Settings - Idealista Listings Scraper - Lobstr.io API",
+    "title": "Update Settings - Idealista Listings Scraper - lobstr.io API",
     "description": "Configure your Idealista Listings Scraper with pagination settings and scraping parameters for Spanish real estate data."
   }
 }

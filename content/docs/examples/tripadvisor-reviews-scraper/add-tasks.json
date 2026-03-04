@@ -83,7 +83,7 @@
     "response": "examples/tripadvisor-reviews-scraper/add-tasks"
   },
   "seo": {
-    "title": "Add Tasks - TripAdvisor Reviews Scraper - Lobstr.io API",
+    "title": "Add Tasks - TripAdvisor Reviews Scraper - lobstr.io API",
     "description": "Learn how to add TripAdvisor place URLs as tasks for scraping reviews from hotels, restaurants, and attractions with comprehensive review data."
   }
 }

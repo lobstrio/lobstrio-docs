@@ -348,7 +348,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - Leboncoin Listings Search Export - Lobstr.io API",
-    "description": "Retrieve Leboncoin classified listings with pricing and seller data using the Lobstr.io API."
+    "title": "Get Results - Leboncoin Listings Search Export - lobstr.io API",
+    "description": "Retrieve Leboncoin classified listings with pricing and seller data using the lobstr.io API."
   }
 }

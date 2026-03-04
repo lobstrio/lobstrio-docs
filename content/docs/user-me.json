@@ -116,7 +116,7 @@
     ]
   },
   "seo": {
-    "title": "Get User Profile - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve authenticated user profile data using the Lobstr.io API. Get account details, subscription info, and usage quotas."
+    "title": "Get User Profile - lobstr.io API Documentation",
+    "description": "Learn how to retrieve authenticated user profile data using the lobstr.io API. Get account details, subscription info, and usage quotas."
   }
 }

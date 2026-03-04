@@ -83,7 +83,7 @@
     ]
   },
   "seo": {
-    "title": "Upload Tasks - Lobstr.io API Documentation",
-    "description": "Learn how to bulk upload tasks from a CSV/TSV file using the Lobstr.io API."
+    "title": "Upload Tasks - lobstr.io API Documentation",
+    "description": "Learn how to bulk upload tasks from a CSV/TSV file using the lobstr.io API."
   }
 }

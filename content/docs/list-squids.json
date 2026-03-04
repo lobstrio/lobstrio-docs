@@ -282,7 +282,7 @@
     ]
   },
   "seo": {
-    "title": "List Squids - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve and filter your squids using the Lobstr.io API. Includes pagination, search, and response field details."
+    "title": "List Squids - lobstr.io API Documentation",
+    "description": "Learn how to retrieve and filter your squids using the lobstr.io API. Includes pagination, search, and response field details."
   }
 }

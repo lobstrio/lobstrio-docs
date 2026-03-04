@@ -205,7 +205,7 @@
     ]
   },
   "seo": {
-    "title": "Test Delivery Configuration - Lobstr.io API Documentation",
-    "description": "Learn how to test delivery configurations before activation using the Lobstr.io API. Verify email, webhooks, SFTP, S3, and Google Sheets."
+    "title": "Test Delivery Configuration - lobstr.io API Documentation",
+    "description": "Learn how to test delivery configurations before activation using the lobstr.io API. Verify email, webhooks, SFTP, S3, and Google Sheets."
   }
 }

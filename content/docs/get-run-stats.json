@@ -146,7 +146,7 @@
     ]
   },
   "seo": {
-    "title": "Get Run Stats - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve real-time statistics for a scraping run using the Lobstr.io API."
+    "title": "Get Run Stats - lobstr.io API Documentation",
+    "description": "Learn how to retrieve real-time statistics for a scraping run using the lobstr.io API."
   }
 }

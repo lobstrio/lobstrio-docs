@@ -140,7 +140,7 @@
     ]
   },
   "seo": {
-    "title": "List Runs - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve a list of all runs for a squid using the Lobstr.io API."
+    "title": "List Runs - lobstr.io API Documentation",
+    "description": "Learn how to retrieve a list of all runs for a squid using the lobstr.io API."
   }
 }

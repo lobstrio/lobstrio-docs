@@ -134,7 +134,7 @@
     ]
   },
   "seo": {
-    "title": "Configure Amazon S3 Delivery - Lobstr.io API Documentation",
-    "description": "Learn how to export squid results directly to AWS S3 buckets using the Lobstr.io API. Configure bucket credentials and target paths."
+    "title": "Configure Amazon S3 Delivery - lobstr.io API Documentation",
+    "description": "Learn how to export squid results directly to AWS S3 buckets using the lobstr.io API. Configure bucket credentials and target paths."
   }
 }

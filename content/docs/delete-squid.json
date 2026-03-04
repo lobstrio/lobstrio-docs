@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint permanently deletes a specified squid and all its associated data (tasks, results, and configurations) from Lobstr.io.\n\n## What Gets Deleted\n\nWhen you delete a squid, the following are permanently removed:\n- The squid itself and all its settings\n- All tasks (URLs and parameters)\n- All results and run history\n- All configuration (parameters, integrations, schedule)\n- Any pending or active runs",
+    "introduction": "This endpoint permanently deletes a specified squid and all its associated data (tasks, results, and configurations) from lobstr.io.\n\n## What Gets Deleted\n\nWhen you delete a squid, the following are permanently removed:\n- The squid itself and all its settings\n- All tasks (URLs and parameters)\n- All results and run history\n- All configuration (parameters, integrations, schedule)\n- Any pending or active runs",
     "sections": {
       "responseFields": {
         "title": "Response Field Explanations",
@@ -76,7 +76,7 @@
     ]
   },
   "seo": {
-    "title": "Delete Squid - Lobstr.io API Documentation",
-    "description": "Learn how to permanently delete a squid and all its associated data using the Lobstr.io API. Includes important warnings and alternatives."
+    "title": "Delete Squid - lobstr.io API Documentation",
+    "description": "Learn how to permanently delete a squid and all its associated data using the lobstr.io API. Includes important warnings and alternatives."
   }
 }

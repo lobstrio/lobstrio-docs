@@ -135,7 +135,7 @@
     ]
   },
   "seo": {
-    "title": "Create Squid - Lobstr.io API Documentation",
-    "description": "Learn how to create a new squid container for organizing scraping tasks using the Lobstr.io API. Includes examples and parameter details."
+    "title": "Create Squid - lobstr.io API Documentation",
+    "description": "Learn how to create a new squid container for organizing scraping tasks using the lobstr.io API. Includes examples and parameter details."
   }
 }

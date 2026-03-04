@@ -247,12 +247,12 @@
       },
       {
         "type": "warning",
-        "content": "Implement proper authentication/validation in your webhook endpoint to ensure requests are coming from Lobstr.io."
+        "content": "Implement proper authentication/validation in your webhook endpoint to ensure requests are coming from lobstr.io."
       }
     ]
   },
   "seo": {
-    "title": "Configure Webhook Delivery - Lobstr.io API Documentation",
-    "description": "Learn how to set up real-time webhook notifications for squid events using the Lobstr.io API. Configure event subscriptions and retry policies."
+    "title": "Configure Webhook Delivery - lobstr.io API Documentation",
+    "description": "Learn how to set up real-time webhook notifications for squid events using the lobstr.io API. Configure event subscriptions and retry policies."
   }
 }

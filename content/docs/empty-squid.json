@@ -109,7 +109,7 @@
     ]
   },
   "seo": {
-    "title": "Empty Squid - Lobstr.io API Documentation",
+    "title": "Empty Squid - lobstr.io API Documentation",
     "description": "Learn how to remove all tasks and results from a squid while preserving its configuration using the Lobstr.io API."
   }
 }

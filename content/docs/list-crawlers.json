@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint returns a paginated list of all available crawlers on the Lobstr.io platform. Each crawler is designed to extract specific types of data from different sources.\n\nUse this endpoint to discover which crawlers are available for your data collection needs before creating squids or adding tasks.",
+    "introduction": "This endpoint returns a paginated list of all available crawlers on the lobstr.io platform. Each crawler is designed to extract specific types of data from different sources.\n\nUse this endpoint to discover which crawlers are available for your data collection needs before creating squids or adding tasks.",
     "sections": {
       "responseStructure": {
         "title": "Response Structure",
@@ -172,7 +172,7 @@
     ]
   },
   "seo": {
-    "title": "List Crawlers - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve the list of available crawlers using the Lobstr.io API. Discover crawler capabilities, parameters, and pricing."
+    "title": "List Crawlers - lobstr.io API Documentation",
+    "description": "Learn how to retrieve the list of available crawlers using the lobstr.io API. Discover crawler capabilities, parameters, and pricing."
   }
 }

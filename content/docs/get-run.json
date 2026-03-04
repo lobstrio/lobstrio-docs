@@ -207,7 +207,7 @@
     ]
   },
   "seo": {
-    "title": "Get Run - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve detailed information about a specific scraping run using the Lobstr.io API."
+    "title": "Get Run - lobstr.io API Documentation",
+    "description": "Learn how to retrieve detailed information about a specific scraping run using the lobstr.io API."
   }
 }

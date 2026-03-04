@@ -486,7 +486,7 @@
     "response": "examples/tripadvisor-reviews-scraper/get-results"
   },
   "seo": {
-    "title": "Get Results - TripAdvisor Reviews Scraper - Lobstr.io API",
+    "title": "Get Results - TripAdvisor Reviews Scraper - lobstr.io API",
     "description": "Retrieve scraped TripAdvisor reviews including ratings, user profiles, photos, subratings, owner responses, and comprehensive place information."
   }
 }

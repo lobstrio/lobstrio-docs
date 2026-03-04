@@ -275,7 +275,7 @@
     "response": "examples/pages-jaunes-companies-search-export/get-results"
   },
   "seo": {
-    "title": "Get Results - Pages Jaunes Companies Search Export - Lobstr.io API",
+    "title": "Get Results - Pages Jaunes Companies Search Export - lobstr.io API",
     "description": "Retrieve scraped Pages Jaunes business listings including SIRET, SIREN, NAF codes, contact details, and social media profiles from France's Yellow Pages."
   }
 }

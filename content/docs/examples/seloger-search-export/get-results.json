@@ -182,7 +182,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - SeLoger Search Export - Lobstr.io API",
-    "description": "Retrieve SeLoger real estate listings using the Lobstr.io API."
+    "title": "Get Results - SeLoger Search Export - lobstr.io API",
+    "description": "Retrieve SeLoger real estate listings using the lobstr.io API."
   }
 }

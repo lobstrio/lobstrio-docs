@@ -126,7 +126,7 @@
     "proTips": [
       {
         "type": "warning",
-        "content": "Ensure your SFTP server is accessible from Lobstr.io's servers. Check firewall rules and IP allowlists if connection fails."
+        "content": "Ensure your SFTP server is accessible from lobstr.io's servers. Check firewall rules and IP allowlists if connection fails."
       },
       {
         "type": "tip",
@@ -147,7 +147,7 @@
     ]
   },
   "seo": {
-    "title": "Configure SFTP Delivery - Lobstr.io API Documentation",
-    "description": "Learn how to set up secure SFTP server delivery for squid results using the Lobstr.io API. Configure SFTP credentials and target directories."
+    "title": "Configure SFTP Delivery - lobstr.io API Documentation",
+    "description": "Learn how to set up secure SFTP server delivery for squid results using the lobstr.io API. Configure SFTP credentials and target directories."
   }
 }

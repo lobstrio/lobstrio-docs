@@ -108,7 +108,7 @@
     ]
   },
   "seo": {
-    "title": "Configure Google Sheet Delivery - Lobstr.io API Documentation",
-    "description": "Learn how to export squid results directly to Google Sheets using the Lobstr.io API. Configure sheet URLs and append modes."
+    "title": "Configure Google Sheet Delivery - lobstr.io API Documentation",
+    "description": "Learn how to export squid results directly to Google Sheets using the lobstr.io API. Configure sheet URLs and append modes."
   }
 }

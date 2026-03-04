@@ -119,7 +119,7 @@
     ]
   },
   "seo": {
-    "title": "List Account Types - Lobstr.io API Documentation",
-    "description": "Learn how to retrieve available platform account types and their authentication requirements using the Lobstr.io API."
+    "title": "List Account Types - lobstr.io API Documentation",
+    "description": "Learn how to retrieve available platform account types and their authentication requirements using the lobstr.io API."
   }
 }

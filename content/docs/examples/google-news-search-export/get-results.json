@@ -73,7 +73,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - Google News Search Export - Lobstr.io API",
+    "title": "Get Results - Google News Search Export - lobstr.io API",
     "description": "Retrieve scraped Google News articles including titles, sources, and publication dates."
   }
 }

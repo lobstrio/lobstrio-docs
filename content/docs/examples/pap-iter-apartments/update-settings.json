@@ -119,7 +119,7 @@
     "response": "examples/pap-search-export/update-settings"
   },
   "seo": {
-    "title": "Update Settings - PAP Search Export - Lobstr.io API",
+    "title": "Update Settings - PAP Search Export - lobstr.io API",
     "description": "Configure your PAP Search Export scraper with max_results and other settings for French real estate data extraction."
   }
 }

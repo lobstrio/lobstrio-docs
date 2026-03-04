@@ -129,7 +129,7 @@
     ]
   },
   "seo": {
-    "title": "Get Results - Yelp Search Export - Lobstr.io API",
-    "description": "Retrieve Yelp business listings using the Lobstr.io API."
+    "title": "Get Results - Yelp Search Export - lobstr.io API",
+    "description": "Retrieve Yelp business listings using the lobstr.io API."
   }
 }
