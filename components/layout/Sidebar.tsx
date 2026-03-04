@@ -7,6 +7,7 @@ import { SidebarProps } from '@/lib/types/layout.type';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { Navigation, NavSubsection } from '@/lib/types/content';
 import Image from 'next/image';
+import { SIDEBAR_SCROLL_KEY } from './SidebarScrollContainer';
 
 function findActiveContext(navigation: Navigation, pathname: string) {
   const currentSlug = pathname.replace('/docs/', '');
@@ -141,8 +142,8 @@ export default function Sidebar({ navigation }: SidebarProps) {
   return (
     <div className="p-8">
       <div className="flex items-center gap-2 mb-7.5">
-        <a href="/">
-          <span className="text-[26px] font-bold text-[#FF0000] leading-[1.08]">lobstr.io</span>{" "}
+        <a href="/" onClick={() => sessionStorage.removeItem(SIDEBAR_SCROLL_KEY)}>
+          <span className="text-2xl font-bold text-[#FF0000] leading-[1.08] font-[family-name:var(--font-source-sans-3)]">lobstr.io</span>{" "}
           <span className="text-[22px] opacity-60 leading-[1.36]">docs</span>
         </a>
       </div>

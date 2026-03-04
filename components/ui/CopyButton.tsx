@@ -11,25 +11,23 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
 const handleCopy = async () => {
   const formattedContent = text;
   if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(formattedContent);
-    } else {
-      let textArea = document.createElement("textarea");
-      textArea.value = formattedContent;
-      textArea.style.position = "fixed";
-      textArea.style.left = "-999999px";
-      textArea.style.top = "-999999px";
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
+    await navigator.clipboard.writeText(formattedContent);
+  } else {
+    let textArea = document.createElement("textarea");
+    textArea.value = formattedContent;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    // @ts-ignore
+    document.execCommand("copy");
+    textArea.remove();
+  }
 
-      return new Promise((res, rej) => {
-        // @ts-ignore
-        document.execCommand("copy") ? res() : rej();
-        textArea.remove();
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      });
-    }
+  setCopied(true);
+  setTimeout(() => setCopied(false), 2000);
 };
 
  

@@ -1,4 +1,5 @@
 import { ThreeColumnLayoutProps } from "@/lib/types/layout.type";
+import SidebarScrollContainer from "./SidebarScrollContainer";
 
 export default function ThreeColumnLayout({
   sidebar,
@@ -9,9 +10,9 @@ export default function ThreeColumnLayout({
     <div className="min-h-screen bg-background">
       <div className="flex max-w-[1600px] w- mx-auto">
         <aside className="hidden lg:block w-[307px] flex-shrink-0">
-          <div className="sticky top-0 h-screen overflow-y-auto border-r border-border">
+          <SidebarScrollContainer>
             {sidebar}
-          </div>
+          </SidebarScrollContainer>
         </aside>
 
         <main className="flex-1 min-w-0">

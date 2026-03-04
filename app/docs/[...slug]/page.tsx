@@ -32,24 +32,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   // Join the slug array back into a path string
   const slugPath = Array.isArray(slug) ? slug.join('/') : slug;
+  const slugTitle = slugPath.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
   try {
     const content = await loadDocContent(slugPath);
 
     return {
-      title: content.seo.title,
+      title: `${slugTitle} | lobstr.io API Documentation`,
       description: content.seo.description,
       alternates: {
         canonical: `https://docs.lobstr.io/docs/${slugPath}`,
       },
       openGraph: {
-        title: content.seo.title,
+        title: `${slugTitle} | lobstr.io API Documentation`,
         description: content.seo.description,
         type: 'article',
       },
       twitter: {
         card: 'summary_large_image',
-        title: content.seo.title,
+        title: `${slugTitle} | lobstr.io API Documentation`,
         description: content.seo.description,
       },
     };

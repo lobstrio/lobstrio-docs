@@ -71,7 +71,7 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
     const formattedContent = formatForLLM();
 
     if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(formattedContent);
+      await navigator.clipboard.writeText(formattedContent);
     } else {
       let textArea = document.createElement("textarea");
       textArea.value = formattedContent;
@@ -81,15 +81,13 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
-
-      return new Promise((res, rej) => {
-        // @ts-ignore
-        document.execCommand("copy") ? res() : rej();
-        textArea.remove();
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      });
+      // @ts-ignore
+      document.execCommand("copy");
+      textArea.remove();
     }
+
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
