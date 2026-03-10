@@ -19,7 +19,7 @@ export default function ProTip({ type, children }: ProTipProps) {
     note: {
       icon: "/images/pro-tip.svg",
       borderColor: 'border-[#49da9a]',
-      iconColor: 'text-accent-green',
+      iconColor: 'text-[#10b981]',
       bgColor: 'bg-accent-green/10',
       title: 'Note',
     },

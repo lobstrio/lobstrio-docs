@@ -22,13 +22,13 @@ export default function DocContent({ content }: DocContentProps) {
 
     return `
       <div class="my-6 relative group">
-        <div class="absolute top-[23px] right-5 z-10">
+        <div class="absolute top-[17px] right-5 z-10">
           <span class="inline-block px-3.5 py-1.5 text-sm leading-[1.36] font-normal  uppercase bg-[#ffffff] opacity-80 leading-[1.36] rounded-lg border border-[#dde1ee]">
             ${lang}
           </span>
         </div>
         <div class="bg-[#f2f5f9]/50 border border-[#dde1ee] rounded-lg overflow-hidden">
-          <pre class="p-6 overflow-x-auto !text-base leading-[1.19]"><code class="language-${lang}">${escapedCode}</code></pre>
+          <pre class="py-[19px] px-[22px] overflow-x-auto !text-base leading-[1.19]"><code class="language-${lang}">${escapedCode}</code></pre>
         </div>
       </div>
     `;
@@ -150,42 +150,41 @@ export default function DocContent({ content }: DocContentProps) {
 
       {content.content.headers.length > 0 && (
         <div className="mb-10">
-          <h2 className="text-3xl font-bold mb-5">Headers</h2>
-          <div className="bg-[#f2f5f9]/50 border border-[#dde1ee] rounded-lg overflow-hidden">
+          <h2 className="text-3xl font-bold mb-7.5">Headers</h2>
+          <div className="border border-[#dde1ee] rounded-lg overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="border-b-[2px] border-[#dde1ee]">
-                  <th className="text-left px-6 pt-[13px] pb-[11px] font-bold leading-[1.31]">
+                <tr className="border-b border-[#dde1ee] bg-[#f2f5f9] rounded-t-[8px]">
+                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
                     Key
                   </th>
-                  <th className="text-left px-6 pt-[13px] pb-[11px] font-bold leading-[1.31]">
+                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
                     Value
                   </th>
-                  <th className="text-left px-6 pt-[13px] pb-[11px] font-bold leading-[1.31]">
+                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
                     Required
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-[#dde1ee]">
                 {content.content.headers.map((header, index) => (
                   <tr
                     key={index}
-                    className="border-b border-border last:border-0"
                   >
-                    <td className="px-6 pt-[19px] pb-[20px] leading-[1.19]">
+                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.19]">
                       <span className=" text-[#ff0000]">
                         {header.key}
                       </span>
                     </td>
-                    <td className="px-6 pt-[19px] pb-[20px] leading-[1.31]">
+                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.31]">
                       <span className="opacity-80">
                         {header.value}
                       </span>
                     </td>
-                    <td className="px-6 pt-[19px] pb-[20px] leading-[1.31]">
+                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.31]">
                       <span
                         className={` ${
-                          header.required ? 'font-semibold text-[#10b981]' : 'text-[#0a2540]'
+                          header.required ? 'font-semibold text-[#10b981]' : 'opacity-60'
                         }`}
                       >
                         {header.required ? 'Yes' : 'No'}
@@ -236,35 +235,35 @@ export default function DocContent({ content }: DocContentProps) {
       {content.content.parameters.length > 0 && (
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-5">Parameters</h2>
-          <div className="space-y-4">
+          <div>
             {content.content.parameters.map((param, index) => (
               <div
                 key={index}
-                className="bg-surface border border-border rounded-lg p-6"
+                className={`border-t border-[#dde1ee] py-[30px] ${index === content.content.parameters.length - 1 ? ' border-b' : ''}`}
               >
-                <div className="flex items-start justify-between mb-2">
+                <div className="flex items-start gap-2.5 mb-[15px]">
                   <div>
-                    <code className="text-base text-[#FF0000] font-semibold">
+                    <span className="text-base leading-[1.31] text-[#FF0000] font-bold mr-3.5">
                       {param.name}
-                    </code>
-                    <span className="text-base text-text-muted ml-2">
+                    </span>
+                    <span className="badge-label border border-[#dee0ea] bg-[#fff]">
                       {param.type}
                     </span>
                   </div>
                   <span
-                    className={`badge text-xs ${
+                    className={`badge-label ${
                       param.required ? 'badge-get' : 'badge-post'
                     }`}
                   >
                     {param.required ? 'Required' : 'Optional'}
                   </span>
                 </div>
-                <span className="text-base opacity-90">{param.description}</span>
+                <span className="text-base leading-[1.31]">{param.description}</span>
                 {param.example && (
-                  <div className="mt-2">
-                    <span className="text-base text-text-muted">Example: </span>
-                    <code className="text-base text-accent-green">
-                      {param.example}
+                  <div className="mt-4.5 flex items-center">
+                    <span className="text-base leading-[1.31] opacity-60 mr-3.5">Example: </span>
+                    <code className="inline-block w-full text-base leading-[1.19] border border-[#dde1ee] bg-[#fbfcfd] px-3.5 py-2.5 rounded-[8px]">
+                      {param.example.replaceAll(`"`, "")}
                     </code>
                   </div>
                 )}

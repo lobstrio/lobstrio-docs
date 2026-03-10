@@ -9,7 +9,7 @@
     "requiresAuth": false
   },
   "content": {
-    "introduction": "The Lobstr.io API enforces rate limits to ensure fair usage and stable service performance. When you exceed the rate limit, the API returns a `429 Too Many Requests` response.",
+    "introduction": "The Lobstr.io API enforces rate limits to ensure fair usage and stable service performance. When you exceed the rate limit, the API returns a 429 Too Many Requests response.",
     "sections": {
       "rateLimitHeaders": {
         "title": "Rate Limit Headers",
@@ -29,15 +29,15 @@
         "title": "Endpoint-Specific Limits",
         "content": "Different endpoints have different rate limits based on their resource intensity:",
         "columns": [
-          {"header": "Endpoint", "key": "endpoint"},
+          {"header": "Endpoint", "key": "endpoint", "semibold": true},
           {"header": "Limit", "key": "limit"}
         ],
         "rows": [
-          {"endpoint": "`/v1/squids`", "limit": "120 requests/minute"},
-          {"endpoint": "`/v1/tasks`", "limit": "90 requests/minute"},
-          {"endpoint": "`/v1/runtasks`", "limit": "90 requests/minute"},
-          {"endpoint": "`/v1/runs`", "limit": "120 requests/minute"},
-          {"endpoint": "`/v1/results`", "limit": "2 requests/second"}
+          {"endpoint": "/v1/squids", "limit": "120 requests/minute"},
+          {"endpoint": "/v1/tasks", "limit": "90 requests/minute"},
+          {"endpoint": "/v1/runtasks", "limit": "90 requests/minute"},
+          {"endpoint": "/v1/runs", "limit": "120 requests/minute"},
+          {"endpoint": "/v1/results", "limit": "2 requests/second"}
         ]
       },
       "errorResponse": {

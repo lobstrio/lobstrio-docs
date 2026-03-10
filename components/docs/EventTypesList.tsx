@@ -4,23 +4,23 @@ export default function EventTypesList({ title, events }: EventTypesListProps) {
   return (
     <div className="mb-8">
       <h2 className="text-3xl font-bold mb-5">{title}</h2>
-      <div className="space-y-4">
+      <div>
         {events.map((event, index) => (
           <div
             key={index}
-            className="bg-surface border border-border rounded-lg p-6"
+            className={`border-t border-[#dde1ee] py-[30px]${index === events.length - 1 ? ' border-b' : ''}`}
           >
-            <div className="flex items-start justify-between mb-2">
-              <code className="text-base text-[#FF0000] font-semibold">
+            <div className="flex items-start justify-between leading-1.31 mb-3.5">
+              <span className="text-base leading-[1.31] text-[#FF0000] font-bold">
                 {event.event}
-              </code>
+              </span>
             </div>
-            <span className="text-sm mb-2">
+            <span className="text-base leading-[1.31]">
               {event.description}
             </span>
-            <div className="mt-2 pt-2 border-t border-border">
-              <span className="text-xs text-text-muted">Trigger: </span>
-              <span className="text-sm">
+            <div className="mt-4.5 flex items-center">
+              <span className="text-base leading-[1.31] opacity-60 mr-3.5">Trigger: </span>
+              <span className="inline-block w-full text-base leading-[1.19] border border-[#dde1ee] bg-[#fbfcfd] px-3.5 py-2.5 rounded-[8px]">
                 {event.trigger}
               </span>
             </div>

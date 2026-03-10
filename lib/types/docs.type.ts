@@ -2,6 +2,7 @@ interface TableColumn {
   header: string;
   key: string;
   width?: string;
+  semibold?: boolean;
 }
 
 interface TableRow {

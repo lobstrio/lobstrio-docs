@@ -50,12 +50,12 @@
 
 /* Keep the thumb visible */
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(10, 37, 64, 0.11);
+  background-color: #e4e7ea;
   border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(10, 37, 64, 0.3);
+  background: #c8cdd3;
 }
 
   /* Code blocks */
@@ -276,6 +276,15 @@
 
   .btn-secondary:hover {
     background-color: var(--color-border);
+  }
+
+  .badge-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-size: 14px;
+    line-height: 1.36;
   }
 
   .badge {
