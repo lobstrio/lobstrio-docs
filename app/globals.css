@@ -279,11 +279,12 @@
   }
 
   .badge-label {
+    font-size: 14px;
+    border-radius: 7px;
     display: inline-flex;
     align-items: center;
-    padding: 3px 8px;
-    border-radius: 7px;
-    font-size: 14px;
+    padding: 1px 8px 3px 8px;
+    text-transform: lowercase;
     line-height: 1.36;
   }
 
@@ -301,8 +302,6 @@
     background-color: #4adb981c;
     color: var(--color-accent-green);
     border: 1px solid #4adb98;
-    font-weight: 600;
-    
   }
 
   .badge-post {
