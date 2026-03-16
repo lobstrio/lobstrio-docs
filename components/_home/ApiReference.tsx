@@ -6,7 +6,7 @@ export default function ApiReference() {
     <div className="bg-surface/50 border-y border-border">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-5">API Reference</h2>
+          <h2 className="text-3xl font-bold mb-7.5">API Reference</h2>
           <p>
             Everything you need to integrate Lobstr.io into your workflow
           </p>
