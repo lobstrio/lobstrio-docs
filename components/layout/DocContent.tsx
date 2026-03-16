@@ -120,7 +120,7 @@ export default function DocContent({ content }: DocContentProps) {
     <div className="prose prose-invert max-w-none">
       <div className="flex items-center justify-between mb-6 text-[#0a2540]">
         <div className="flex-1">
-          <div  className={`flex items-center gap-3 ${
+          <div  className={`flex items-center gap-2.5 ${
              !content.metadata?.method && !content.metadata?.endpoint ? "opacity-0" : ""
           }`}>
             <span className={`badge ${methodBadgeClass}`}>
@@ -155,13 +155,13 @@ export default function DocContent({ content }: DocContentProps) {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[#dde1ee] bg-[#f2f5f9] rounded-t-[8px]">
-                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
+                  <th className="text-left px-[29px] py-3 font-bold leading-[1.31]">
                     Key
                   </th>
-                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
+                  <th className="text-left px-[29px] py-3 font-bold leading-[1.31]">
                     Value
                   </th>
-                  <th className="text-left px-6 py-3 font-bold leading-[1.31]">
+                  <th className="text-left px-[29px] py-3 font-bold leading-[1.31]">
                     Required
                   </th>
                 </tr>
@@ -171,17 +171,17 @@ export default function DocContent({ content }: DocContentProps) {
                   <tr
                     key={index}
                   >
-                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.19]">
+                    <td className="px-[29px] pt-[18px] pb-[19px] leading-[1.19]">
                       <span className=" text-[#ff0000]">
                         {header.key}
                       </span>
                     </td>
-                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.31]">
+                    <td className="px-[29px] pt-[18px] pb-[19px] leading-[1.31]">
                       <span className="opacity-80">
                         {header.value}
                       </span>
                     </td>
-                    <td className="px-6 pt-[18px] pb-[19px] leading-[1.31]">
+                    <td className="px-[29px] pt-[18px] pb-[19px] leading-[1.31]">
                       <span
                         className={` ${
                           header.required ? 'font-semibold text-[#10b981]' : 'opacity-60'

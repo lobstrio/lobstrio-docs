@@ -3,7 +3,7 @@ import { ParametersListProps } from "@/lib/types/docs.type";
 export default function ParametersList({ title, parameters }: ParametersListProps) {
   return (
     <div className="mb-8">
-      <h2 className="text-3xl font-bold mb-5">{title}</h2>
+      <h2 className="text-3xl font-bold mb-7.5">{title}</h2>
       <div>
         {parameters.map((param, index) => (
           <div

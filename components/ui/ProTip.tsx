@@ -28,7 +28,7 @@ export default function ProTip({ type, children }: ProTipProps) {
   const { icon, borderColor, iconColor, bgColor, title } = config[type];
 
   return (
-    <div className={`pro-tip border ${borderColor} ${bgColor}`}>
+    <div className={`pro-tip min-h-[120px] border ${borderColor} ${bgColor}`}>
       <div className="flex gap-[14px]">
         <div className="flex-shrink-0 mt-0.5">
           <img
