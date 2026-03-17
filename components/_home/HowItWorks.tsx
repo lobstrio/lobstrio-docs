@@ -3,9 +3,10 @@ import CodePreview from './CodePreview';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { HOW_IT_WORKS } from './Home.dto';
 
-export default function HowItWorks({ code, rawCode }: { code: string; rawCode: string }) {
+export default function HowItWorks({ rawCode }: { rawCode: string }) {
+
   return (
-    <div className="max-w-7xl mx-auto px-6 py-[120px]">
+    <div className="max-w-7xl mx-auto px-6 md:px-0 py-[120px] overflow-hidden">
       <div className="text-center mb-20">
         <h2 className="text-[40px] leading-[1.58] font-bold mb-4">How it works</h2>
         <p className=" max-w-2xl mx-auto leading-[1.28] opacity-90">
@@ -13,13 +14,13 @@ export default function HowItWorks({ code, rawCode }: { code: string; rawCode: s
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 items-start">
+      <div className="grid md:grid-cols-2 gap-8 items-start min-w-0">
         <div className="space-y-4">
           {HOW_IT_WORKS.map((item) => (
             <Link
               key={item.step}
               href={item.link}
-              className="flex justify-between items-center p-7 py-6 rounded-lg border hover:border-[#dde1ee] border-[#dde1ee] bg-[#fff] hover:bg-[#f2f5f9] transition-all group"
+              className="flex justify-between items-center px-7 py-6 rounded-lg border hover:border-[#dde1ee] border-[#dde1ee] bg-[#fff] hover:bg-[#f2f5f9] transition-all group"
             >
 
              <div className='flex flex-col gap-2'>
@@ -35,7 +36,7 @@ export default function HowItWorks({ code, rawCode }: { code: string; rawCode: s
             </Link>
           ))}
         </div>
-        <CodePreview html={code} rawCode={rawCode} />
+        <CodePreview rawCode={rawCode} />
       </div>
     </div>
   );

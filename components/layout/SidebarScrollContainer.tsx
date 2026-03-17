@@ -29,7 +29,7 @@ export default function SidebarScrollContainer({ children }: { children: React.R
   }, []);
 
   return (
-    <div ref={ref} className="sticky top-0 h-screen overflow-y-auto border-r border-border">
+    <div ref={ref} className="sticky top-[61px] h-[calc(100vh-61px)] overflow-y-auto border-r border-border">
       {children}
     </div>
   );
