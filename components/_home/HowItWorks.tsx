@@ -3,8 +3,7 @@ import CodePreview from './CodePreview';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { HOW_IT_WORKS } from './Home.dto';
 
-export default function HowItWorks({ rawCode }: { rawCode: string }) {
-
+export default function HowItWorks({ code, rawCode }: { code: string; rawCode: string }) {
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-0 py-[120px] overflow-hidden">
       <div className="text-center mb-20">
@@ -36,8 +35,7 @@ export default function HowItWorks({ rawCode }: { rawCode: string }) {
             </Link>
           ))}
         </div>
-        <CodePreview rawCode={rawCode} />
-      </div>
+        <CodePreview html={code} rawCode={rawCode} />      </div>
     </div>
   );
 }
