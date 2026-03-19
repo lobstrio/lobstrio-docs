@@ -4,7 +4,7 @@ import time
 API_KEY = "your_api_key"
 headers = {"Authorization": f"Token {API_KEY}"}
 
-# 1. Create a squid with a crawler
+# 1. Create a squid with Google Maps Leads Scraper
 squid = requests.post("https://api.lobstr.io/v1/squids",
     headers=headers,
     json={"crawler": "4734d096159ef05210e0e1677e8be823", "name": "Restaurants Paris"}
