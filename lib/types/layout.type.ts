@@ -40,6 +40,7 @@ export interface DocContentProps {
 export interface CopyButtonProps {
   text: string;
   className?: string;
+  variant?: 'light' | 'dark';
 }
 
 export interface CopyForLLMButtonProps {

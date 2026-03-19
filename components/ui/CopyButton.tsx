@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { CopyButtonProps } from '@/lib/types/layout.type';
 
-export default function CopyButton({ text, className = '' }: CopyButtonProps) {
+export default function CopyButton({ text, className = '', variant = 'light' }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
   const [active, setActive] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -31,7 +31,13 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const icon = copied
+  const icon = variant === 'dark'
+    ? copied
+      ? '/images/copy-dark-copied.svg'
+      : active
+      ? '/images/copy-dark-active.svg'
+      : '/images/copy-dark-icon.svg'
+    : copied
     ? '/images/coped-icon.svg'
     : active
     ? '/images/copy-active-icon.svg'
@@ -45,7 +51,7 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {hovered && (
+      {hovered && variant !== 'dark' && (
         <div className="absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none">
           <div
             className="text-xs leading-[1.33] px-2.5 py-[5px] whitespace-nowrap"
@@ -66,7 +72,7 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
         onMouseUp={() => setActive(false)}
         onMouseLeave={() => setActive(false)}
         style={{ backgroundColor: bgColor }}
-        className={`h-[28px] w-[28px] p-1.5 flex justify-center text-sm font-semibold leading-[1.36] cursor-pointer border border-[#dee0ea] rounded-[7px] items-center gap-2 ${className}`}
+        className={`${variant === 'dark' ? 'h-[35px] w-[35px] p-[1px]' : 'h-[28px] w-[28px] p-1.5'} flex justify-center text-sm font-semibold leading-[1.36] cursor-pointer border border-[#dee0ea] rounded-[7px] items-center gap-2 ${className}`}
         aria-label="Copy to clipboard"
       >
         <Image
@@ -74,7 +80,7 @@ export default function CopyButton({ text, className = '' }: CopyButtonProps) {
           alt={copied ? 'Copied' : 'Copy'}
           width={60}
           height={60}
-          className={copied ? 'w-[14px] h-auto' : 'w-[19px] h-auto'}
+          className={variant === 'dark' ? 'w-[32px] h-auto' : copied ? 'w-[14px] h-auto' : 'w-[19px] h-auto'}
         />
       </button>
     </div>

@@ -1,30 +1,29 @@
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-red/5 via-transparent to-accent-green/5" />
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+    <div className="bg-[#fff]">
+      <div className="max-w-7xl mx-auto px-6 md:px-0 pt-24 pb-[120px]">
+        <div className="text-center mx-auto">
+          <h1 className="text-[40px] sm:text-[60px] lg:text-[80px] font-black leading-[1.29]">
             Get the data you need
           </h1>
-          <p className="text-xl mb-8 leading-relaxed">
-            The most powerful and easy-to-use data collection API.
-            50+ ready-made crawlers, simple REST endpoints, structured JSON output.
+          <p className="text-[18px] font-normal pt-6.5 pb-11 leading-[1.83] text-center opacity-90" style={{ fontFamily: 'SegoeUI, sans-serif' }}>
+            The most powerful and easy-to-use data collection API. 50+ ready-made crawlers, <br className="hidden sm:block" />
+            simple REST endpoints, structured JSON output.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/docs/authentication"
-              className="inline-flex items-center gap-2 bg-[#ff0000] hover:bg-[#ff0000] text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center gap-2 leading-[1.31] bg-[#ff0000] hover:bg-[#ff0000] text-white px-5 py-3.5 rounded-lg font-semibold"
             >
               Get Started
-              <ArrowRight className="w-4 h-4" />
+               <ChevronDown className={`w-4 h-4 -rotate-90`} />
             </Link>
             <Link
               href="/docs/list-crawlers"
-              className="inline-flex items-center gap-2  hover:text-text-primary px-6 py-3 rounded-lg font-medium transition-colors border border-border hover:border-text-muted"
+              className="inline-flex items-center gap-2 leading-[1.31] text-[#ff0000]  hover:text-[#fff] px-5 py-3.5 rounded-lg font-semibold border border-[#FF0000] hover:bg-[#ff0000]"
             >
               Explore Crawlers
             </Link>

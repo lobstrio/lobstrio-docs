@@ -137,13 +137,6 @@ export default function Sidebar({ navigation }: SidebarProps) {
 
   return (
     <div className="p-8">
-      <div className="flex items-center gap-2 mb-7.5">
-        <a href="/" onClick={() => sessionStorage.removeItem(SIDEBAR_SCROLL_KEY)}>
-          <span className="text-2xl font-bold text-[#FF0000] leading-[1.08] font-[family-name:var(--font-source-sans-3)]">lobstr.io</span>{" "}
-          <span className="text-[22px] opacity-60 leading-[1.36]">docs</span>
-        </a>
-      </div>
-
       <nav className="space-y-[25px]">
         {navigation.sections.map((section, index) => (
           <div key={section.title}>
