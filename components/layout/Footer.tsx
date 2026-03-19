@@ -23,6 +23,11 @@ const FOOTER_COLUMNS = [
     direct: true,
     href: 'https://pypi.org/project/lobstrio/',
   },
+  {
+    label: 'MCP',
+    direct: true,
+    href: '/docs/mcp',
+  },
 ];
 
 export default function Footer() {
@@ -44,14 +49,23 @@ export default function Footer() {
           {FOOTER_COLUMNS.map((col) => (
             <div key={col.label} className=''>
               {'direct' in col && col.direct ? (
-                <a
-                  href={col.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold leading-[1.31] opacity-90 hover:text-[#ff0000] -mt-[1px] block"
-                >
-                  {col.label}
-                </a>
+                col.href?.startsWith('/') ? (
+                  <Link
+                    href={col.href}
+                    className="font-bold leading-[1.31] opacity-90 hover:text-[#ff0000] -mt-[1px] block"
+                  >
+                    {col.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={col.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold leading-[1.31] opacity-90 hover:text-[#ff0000] -mt-[1px] block"
+                  >
+                    {col.label}
+                  </a>
+                )
               ) : (
                 <>
                   <p className="font-bold leading-[1.31] mb-3.5 opacity-90">

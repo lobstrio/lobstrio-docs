@@ -120,7 +120,7 @@ export default async function McpPage() {
             <a href="#setup" className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#FF0000] text-white rounded-lg font-semibold text-sm hover:bg-[#E60000] transition">
               Get Started <ArrowRight className="w-4 h-4" />
             </a>
-            <a href="#tools" className="inline-flex items-center gap-2 px-5 py-2.5 border border-[#E5E7EB] text-[#0A2540] rounded-lg font-semibold text-sm hover:bg-[#F6F8FA] transition">
+            <a href="#tools" className="inline-flex items-center gap-2 px-5 py-2.5 text-[#FF0000] hover:text-white rounded-lg font-semibold text-sm border border-[#FF0000] hover:bg-[#FF0000] transition">
               View Tools
             </a>
           </div>
