@@ -2,7 +2,7 @@
   "slug": "examples/google-search-scraper/get-geolocation",
   "title": "Get Geolocation",
   "description": "Fetch valid location values for geographic search bias",
-  "category": "Google Search Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/googlelocations",
@@ -14,27 +14,69 @@
       "queryParams": {
         "title": "Query Parameters",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**q**", "required": "Yes", "description": "Substring to search for in region, district, or city names"},
-          {"param": "**country_name**", "required": "Yes", "description": "Full country name to scope the search (e.g., `United States`)"}
+          {
+            "param": "**q**",
+            "required": "Yes",
+            "description": "Substring to search for in region, district, or city names"
+          },
+          {
+            "param": "**country_name**",
+            "required": "Yes",
+            "description": "Full country name to scope the search (e.g., `United States`)"
+          }
         ]
       },
       "responseFields": {
         "title": "Response Fields",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**name**", "type": "string", "description": "Display name of the location (region, district, or city)"},
-          {"field": "**canonical_name**", "type": "string", "description": "Full hierarchical name (e.g., `Alabama,United States`)"},
-          {"field": "**country_name**", "type": "string", "description": "Country associated with this location"},
-          {"field": "**country_code**", "type": "string", "description": "ISO 2-letter country code (e.g., `US`)"}
+          {
+            "field": "**name**",
+            "type": "string",
+            "description": "Display name of the location (region, district, or city)"
+          },
+          {
+            "field": "**canonical_name**",
+            "type": "string",
+            "description": "Full hierarchical name (e.g., `Alabama,United States`)"
+          },
+          {
+            "field": "**country_name**",
+            "type": "string",
+            "description": "Country associated with this location"
+          },
+          {
+            "field": "**country_code**",
+            "type": "string",
+            "description": "ISO 2-letter country code (e.g., `US`)"
+          }
         ]
       }
     },
@@ -76,5 +118,6 @@
   "seo": {
     "title": "Get Geolocation - Google Search Scraper - lobstr.io API",
     "description": "Fetch valid location values for geographic search bias in Google Search Scraper."
-  }
+  },
+  "subcategory": "Google Search Scraper"
 }

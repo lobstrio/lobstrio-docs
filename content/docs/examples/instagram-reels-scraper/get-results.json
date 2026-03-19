@@ -2,7 +2,7 @@
   "slug": "examples/instagram-reels-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Instagram reels data from your squid",
-  "category": "Instagram Reels Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v2/squid/{squid_id}/result",
@@ -14,68 +14,243 @@
       "reelFields": {
         "title": "Reel Information Fields",
         "fields": [
-          { "path": "reel_id", "type": "string", "description": "Unique Instagram reel ID", "example": "\"3456789012345678901\"" },
-          { "path": "shortcode", "type": "string", "description": "Short code used in reel URL", "example": "\"C7AbCdEfGhI\"" },
-          { "path": "reel_url", "type": "string", "description": "Full URL to the reel", "example": "\"https://www.instagram.com/reel/C7AbCdEfGhI/\"" },
-          { "path": "caption", "type": "string", "description": "Reel caption text", "example": "\"Building cool stuff with Python #coding\"" },
-          { "path": "hashtags", "type": "string", "description": "Comma-separated hashtags from caption", "example": "\"coding, devlife, python\"" },
-          { "path": "mentions", "type": "string", "description": "Comma-separated mentioned usernames", "example": "\"nike, adidas\"" },
-          { "path": "tagged_users", "type": "array", "description": "Users tagged in the reel", "example": "[\"user1\", \"user2\"]" },
-          { "path": "timestamp", "type": "datetime", "description": "When the reel was posted", "example": "\"2025-01-15T14:22:05+00:00\"" },
-          { "path": "product_type", "type": "string", "description": "Content type identifier", "example": "\"clips\"" }
+          {
+            "path": "reel_id",
+            "type": "string",
+            "description": "Unique Instagram reel ID",
+            "example": "\"3456789012345678901\""
+          },
+          {
+            "path": "shortcode",
+            "type": "string",
+            "description": "Short code used in reel URL",
+            "example": "\"C7AbCdEfGhI\""
+          },
+          {
+            "path": "reel_url",
+            "type": "string",
+            "description": "Full URL to the reel",
+            "example": "\"https://www.instagram.com/reel/C7AbCdEfGhI/\""
+          },
+          {
+            "path": "caption",
+            "type": "string",
+            "description": "Reel caption text",
+            "example": "\"Building cool stuff with Python #coding\""
+          },
+          {
+            "path": "hashtags",
+            "type": "string",
+            "description": "Comma-separated hashtags from caption",
+            "example": "\"coding, devlife, python\""
+          },
+          {
+            "path": "mentions",
+            "type": "string",
+            "description": "Comma-separated mentioned usernames",
+            "example": "\"nike, adidas\""
+          },
+          {
+            "path": "tagged_users",
+            "type": "array",
+            "description": "Users tagged in the reel",
+            "example": "[\"user1\", \"user2\"]"
+          },
+          {
+            "path": "timestamp",
+            "type": "datetime",
+            "description": "When the reel was posted",
+            "example": "\"2025-01-15T14:22:05+00:00\""
+          },
+          {
+            "path": "product_type",
+            "type": "string",
+            "description": "Content type identifier",
+            "example": "\"clips\""
+          }
         ]
       },
       "ownerFields": {
         "title": "Owner/Creator Fields",
         "fields": [
-          { "path": "owner_username", "type": "string", "description": "Username of reel creator", "example": "\"leomessi\"" },
-          { "path": "owner_full_name", "type": "string", "description": "Display name of creator", "example": "\"Leo Messi\"" },
-          { "path": "owner_id", "type": "string", "description": "Instagram user ID of creator", "example": "\"427553890\"" },
-          { "path": "co_authors", "type": "array", "description": "Collaborators/co-authors on the reel", "example": "[\"@brandpartner\", \"@creator2\"]" }
+          {
+            "path": "owner_username",
+            "type": "string",
+            "description": "Username of reel creator",
+            "example": "\"leomessi\""
+          },
+          {
+            "path": "owner_full_name",
+            "type": "string",
+            "description": "Display name of creator",
+            "example": "\"Leo Messi\""
+          },
+          {
+            "path": "owner_id",
+            "type": "string",
+            "description": "Instagram user ID of creator",
+            "example": "\"427553890\""
+          },
+          {
+            "path": "co_authors",
+            "type": "array",
+            "description": "Collaborators/co-authors on the reel",
+            "example": "[\"@brandpartner\", \"@creator2\"]"
+          }
         ]
       },
       "engagementFields": {
         "title": "Engagement Metrics",
         "fields": [
-          { "path": "likes_count", "type": "integer", "description": "Number of likes", "example": "125430" },
-          { "path": "comments_count", "type": "integer", "description": "Number of comments", "example": "1523" },
-          { "path": "views_count", "type": "integer", "description": "Number of views", "example": "2456789" },
-          { "path": "is_sponsored", "type": "boolean", "description": "Whether the reel is a paid partnership", "example": "false" },
-          { "path": "comments_disabled", "type": "boolean", "description": "Whether comments are disabled", "example": "false" },
-          { "path": "like_and_view_counts_disabled", "type": "boolean", "description": "Whether counts are hidden", "example": "false" },
-          { "path": "can_viewer_reshare", "type": "boolean", "description": "Whether resharing is allowed", "example": "true" }
+          {
+            "path": "likes_count",
+            "type": "integer",
+            "description": "Number of likes",
+            "example": "125430"
+          },
+          {
+            "path": "comments_count",
+            "type": "integer",
+            "description": "Number of comments",
+            "example": "1523"
+          },
+          {
+            "path": "views_count",
+            "type": "integer",
+            "description": "Number of views",
+            "example": "2456789"
+          },
+          {
+            "path": "is_sponsored",
+            "type": "boolean",
+            "description": "Whether the reel is a paid partnership",
+            "example": "false"
+          },
+          {
+            "path": "comments_disabled",
+            "type": "boolean",
+            "description": "Whether comments are disabled",
+            "example": "false"
+          },
+          {
+            "path": "like_and_view_counts_disabled",
+            "type": "boolean",
+            "description": "Whether counts are hidden",
+            "example": "false"
+          },
+          {
+            "path": "can_viewer_reshare",
+            "type": "boolean",
+            "description": "Whether resharing is allowed",
+            "example": "true"
+          }
         ]
       },
       "mediaFields": {
         "title": "Media Fields",
         "fields": [
-          { "path": "video_url", "type": "string", "description": "Direct URL to video file", "example": "\"https://scontent.cdninstagram.com/v/...\"" },
-          { "path": "display_url", "type": "string", "description": "Thumbnail/cover image URL", "example": "\"https://scontent.cdninstagram.com/v/...\"" },
-          { "path": "video_duration_seconds", "type": "float", "description": "Duration of the reel in seconds", "example": "27.5" },
-          { "path": "media_dimensions", "type": "string", "description": "Video dimensions (width x height)", "example": "\"1080x1920\"" },
-          { "path": "location_id", "type": "string", "description": "Tagged location ID", "example": "\"123456789\"" },
-          { "path": "location_name", "type": "string", "description": "Tagged location name", "example": "\"Miami, Florida\"" }
+          {
+            "path": "video_url",
+            "type": "string",
+            "description": "Direct URL to video file",
+            "example": "\"https://scontent.cdninstagram.com/v/...\""
+          },
+          {
+            "path": "display_url",
+            "type": "string",
+            "description": "Thumbnail/cover image URL",
+            "example": "\"https://scontent.cdninstagram.com/v/...\""
+          },
+          {
+            "path": "video_duration_seconds",
+            "type": "float",
+            "description": "Duration of the reel in seconds",
+            "example": "27.5"
+          },
+          {
+            "path": "media_dimensions",
+            "type": "string",
+            "description": "Video dimensions (width x height)",
+            "example": "\"1080x1920\""
+          },
+          {
+            "path": "location_id",
+            "type": "string",
+            "description": "Tagged location ID",
+            "example": "\"123456789\""
+          },
+          {
+            "path": "location_name",
+            "type": "string",
+            "description": "Tagged location name",
+            "example": "\"Miami, Florida\""
+          }
         ]
       },
       "musicFields": {
         "title": "Music Information",
         "content": "The `music_info` field contains details about the audio track used in the reel.",
         "fields": [
-          { "path": "music_info.artist_name", "type": "string", "description": "Name of the music artist", "example": "\"Drake\"" },
-          { "path": "music_info.song_name", "type": "string", "description": "Name of the song", "example": "\"God's Plan\"" },
-          { "path": "music_info.audio_id", "type": "string", "description": "Instagram audio track ID", "example": "\"1234567890\"" },
-          { "path": "music_info.uses_original_audio", "type": "boolean", "description": "Whether it uses creator's original audio", "example": "false" },
-          { "path": "music_info.is_trending", "type": "boolean", "description": "Whether the audio is trending", "example": "true" },
-          { "path": "music_info.is_explicit", "type": "boolean", "description": "Whether audio is marked explicit", "example": "false" }
+          {
+            "path": "music_info.artist_name",
+            "type": "string",
+            "description": "Name of the music artist",
+            "example": "\"Drake\""
+          },
+          {
+            "path": "music_info.song_name",
+            "type": "string",
+            "description": "Name of the song",
+            "example": "\"God's Plan\""
+          },
+          {
+            "path": "music_info.audio_id",
+            "type": "string",
+            "description": "Instagram audio track ID",
+            "example": "\"1234567890\""
+          },
+          {
+            "path": "music_info.uses_original_audio",
+            "type": "boolean",
+            "description": "Whether it uses creator's original audio",
+            "example": "false"
+          },
+          {
+            "path": "music_info.is_trending",
+            "type": "boolean",
+            "description": "Whether the audio is trending",
+            "example": "true"
+          },
+          {
+            "path": "music_info.is_explicit",
+            "type": "boolean",
+            "description": "Whether audio is marked explicit",
+            "example": "false"
+          }
         ]
       },
       "commentFields": {
         "title": "Top Comments",
         "content": "Top comments are returned as individual fields `comment1`, `comment2`, etc. Each contains:",
         "fields": [
-          { "path": "comment1.user", "type": "string", "description": "Username of commenter", "example": "\"username1\"" },
-          { "path": "comment1.text", "type": "string", "description": "Comment text", "example": "\"Great video!\"" },
-          { "path": "comment1.replies_count", "type": "integer", "description": "Number of replies to comment", "example": "5" }
+          {
+            "path": "comment1.user",
+            "type": "string",
+            "description": "Username of commenter",
+            "example": "\"username1\""
+          },
+          {
+            "path": "comment1.text",
+            "type": "string",
+            "description": "Comment text",
+            "example": "\"Great video!\""
+          },
+          {
+            "path": "comment1.replies_count",
+            "type": "integer",
+            "description": "Number of replies to comment",
+            "example": "5"
+          }
         ]
       }
     },
@@ -121,5 +296,6 @@
   "seo": {
     "title": "Get Results - Instagram Reels Scraper - lobstr.io API",
     "description": "Learn how to retrieve scraped Instagram reels data including engagement metrics, media URLs, and music info using the lobstr.io API."
-  }
+  },
+  "subcategory": "Instagram Reels Scraper"
 }

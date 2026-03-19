@@ -2,7 +2,7 @@
   "slug": "examples/instagram-reels-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add Instagram reel URLs or profile URLs to scrape reels using the Lobstr.io API",
-  "category": "Instagram Reels Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v2/squid/{squid_id}/task",
@@ -18,13 +18,30 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          { "header": "Field", "key": "field" },
-          { "header": "Type", "key": "type" },
-          { "header": "Required", "key": "required" },
-          { "header": "Description", "key": "description" }
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          { "field": "**url**", "type": "string", "required": "Yes", "description": "Instagram Reel URL or Profile URL. If a profile URL is given, the scraper will collect reels from that profile." }
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Instagram Reel URL or Profile URL. If a profile URL is given, the scraper will collect reels from that profile."
+          }
         ]
       }
     },
@@ -61,5 +78,6 @@
   "seo": {
     "title": "Add Tasks - Instagram Reels Scraper - lobstr.io API",
     "description": "Learn how to add Instagram reel URLs or profile URLs as tasks to scrape reels data using the lobstr.io API."
-  }
+  },
+  "subcategory": "Instagram Reels Scraper"
 }

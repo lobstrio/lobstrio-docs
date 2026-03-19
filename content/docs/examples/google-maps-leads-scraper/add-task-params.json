@@ -2,7 +2,7 @@
   "slug": "examples/google-maps-leads-scraper/add-task-params",
   "title": "Add Task Params",
   "description": "Add structured search tasks using city, category, and location parameters",
-  "category": "Google Maps Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,30 +14,89 @@
       "taskParams": {
         "title": "Task Parameters",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**city**", "type": "string", "required": "Yes", "description": "City name with postal code (e.g., `Alpine 91901`)"},
-          {"field": "**category**", "type": "string", "required": "Yes", "description": "Business category to search (e.g., `restaurant`)"},
-          {"field": "**country**", "type": "string", "required": "No", "description": "Country name (e.g., `United States`)"},
-          {"field": "**region**", "type": "string", "required": "No", "description": "State or province (e.g., `California`)"},
-          {"field": "**district**", "type": "string", "required": "No", "description": "County or local district (e.g., `San Diego`)"}
+          {
+            "field": "**city**",
+            "type": "string",
+            "required": "Yes",
+            "description": "City name with postal code (e.g., `Alpine 91901`)"
+          },
+          {
+            "field": "**category**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Business category to search (e.g., `restaurant`)"
+          },
+          {
+            "field": "**country**",
+            "type": "string",
+            "required": "No",
+            "description": "Country name (e.g., `United States`)"
+          },
+          {
+            "field": "**region**",
+            "type": "string",
+            "required": "No",
+            "description": "State or province (e.g., `California`)"
+          },
+          {
+            "field": "**district**",
+            "type": "string",
+            "required": "No",
+            "description": "County or local district (e.g., `San Diego`)"
+          }
         ]
       },
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the google-maps-leads-scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects with location parameters"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the google-maps-leads-scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects with location parameters"
+          }
         ]
       }
     },
@@ -70,5 +129,6 @@
   "seo": {
     "title": "Add Task Params - Google Maps Leads Scraper - lobstr.io API",
     "description": "Learn how to add structured search tasks using city, category, and location parameters."
-  }
+  },
+  "subcategory": "Google Maps Leads Scraper"
 }

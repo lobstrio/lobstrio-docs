@@ -2,7 +2,7 @@
   "slug": "examples/bienici-search-export/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Bien'Ici real estate listings",
-  "category": "Bien'Ici Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,163 +15,593 @@
         "title": "Core Result Fields",
         "content": "Standard result identifiers:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "8542691"},
-          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"53317cbe332e408c5c46372a18e4fc76\""},
-          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"a1b2c3d4e5f6789012345678901234ab\""},
-          {"path": "url", "type": "string", "description": "Direct link to the listing", "example": "\"https://www.bienici.com/annonce/vente/antibes/appartement/3pieces/apimo-7410861\""},
-          {"path": "listing_id", "type": "string", "description": "Unique Bien'Ici listing identifier", "example": "\"apimo-7410861\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique result identifier",
+            "example": "8542691"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Squid that produced this result",
+            "example": "\"53317cbe332e408c5c46372a18e4fc76\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Run that produced this result",
+            "example": "\"a1b2c3d4e5f6789012345678901234ab\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Direct link to the listing",
+            "example": "\"https://www.bienici.com/annonce/vente/antibes/appartement/3pieces/apimo-7410861\""
+          },
+          {
+            "path": "listing_id",
+            "type": "string",
+            "description": "Unique Bien'Ici listing identifier",
+            "example": "\"apimo-7410861\""
+          }
         ]
       },
       "propertyFields": {
         "title": "Property Information",
         "content": "Basic property details:",
         "fields": [
-          {"path": "title", "type": "string", "description": "Headline/title of the listing", "example": "\"3 PIÈCES PROCHE PLACE DE GAULLE\""},
-          {"path": "description", "type": "string", "description": "Full listing description", "example": "\"Idéalement situé au centre d'Antibes...\""},
-          {"path": "property_type", "type": "string", "description": "Type of property", "example": "\"flat\""},
-          {"path": "ad_type", "type": "string", "description": "Transaction type", "example": "\"buy\""},
-          {"path": "new_property", "type": "boolean", "description": "Whether it's a new build", "example": "false"},
-          {"path": "year_of_construction", "type": "integer | null", "description": "Year the property was built", "example": "1980"},
-          {"path": "reference", "type": "string", "description": "Agency reference number", "example": "\"7410861\""}
+          {
+            "path": "title",
+            "type": "string",
+            "description": "Headline/title of the listing",
+            "example": "\"3 PIÈCES PROCHE PLACE DE GAULLE\""
+          },
+          {
+            "path": "description",
+            "type": "string",
+            "description": "Full listing description",
+            "example": "\"Idéalement situé au centre d'Antibes...\""
+          },
+          {
+            "path": "property_type",
+            "type": "string",
+            "description": "Type of property",
+            "example": "\"flat\""
+          },
+          {
+            "path": "ad_type",
+            "type": "string",
+            "description": "Transaction type",
+            "example": "\"buy\""
+          },
+          {
+            "path": "new_property",
+            "type": "boolean",
+            "description": "Whether it's a new build",
+            "example": "false"
+          },
+          {
+            "path": "year_of_construction",
+            "type": "integer | null",
+            "description": "Year the property was built",
+            "example": "1980"
+          },
+          {
+            "path": "reference",
+            "type": "string",
+            "description": "Agency reference number",
+            "example": "\"7410861\""
+          }
         ]
       },
       "locationFields": {
         "title": "Location Information",
         "content": "Geographic details:",
         "fields": [
-          {"path": "city", "type": "string", "description": "City name", "example": "\"Antibes\""},
-          {"path": "postal_code", "type": "string", "description": "Postal code", "example": "\"06600\""},
-          {"path": "department_code", "type": "string", "description": "French department code", "example": "\"06\""},
-          {"path": "district", "type": "json | null", "description": "District information with name and INSEE code", "example": "{\"name\": \"Antibes\", \"code_insee\": \"06004\"}"},
-          {"path": "address_known", "type": "boolean", "description": "Whether exact address is available", "example": "false"},
-          {"path": "blur_info", "type": "json | null", "description": "Address precision level", "example": "{\"type\": \"cityOrArrondissement\"}"}
+          {
+            "path": "city",
+            "type": "string",
+            "description": "City name",
+            "example": "\"Antibes\""
+          },
+          {
+            "path": "postal_code",
+            "type": "string",
+            "description": "Postal code",
+            "example": "\"06600\""
+          },
+          {
+            "path": "department_code",
+            "type": "string",
+            "description": "French department code",
+            "example": "\"06\""
+          },
+          {
+            "path": "district",
+            "type": "json | null",
+            "description": "District information with name and INSEE code",
+            "example": "{\"name\": \"Antibes\", \"code_insee\": \"06004\"}"
+          },
+          {
+            "path": "address_known",
+            "type": "boolean",
+            "description": "Whether exact address is available",
+            "example": "false"
+          },
+          {
+            "path": "blur_info",
+            "type": "json | null",
+            "description": "Address precision level",
+            "example": "{\"type\": \"cityOrArrondissement\"}"
+          }
         ]
       },
       "pricingFields": {
         "title": "Pricing Information",
         "content": "Price and transaction details:",
         "fields": [
-          {"path": "price", "type": "float", "description": "Total listing price in euros", "example": "267000"},
-          {"path": "price_without_fees", "type": "float | null", "description": "Price excluding agency fees", "example": "260000"},
-          {"path": "price_per_square_meter", "type": "float | null", "description": "Price per square meter", "example": "5037.74"},
-          {"path": "transaction_type", "type": "string", "description": "Transaction type identifier", "example": "\"buy\""},
-          {"path": "fees_charged_to", "type": "string | null", "description": "Who pays agency fees", "example": "\"purchaser\""},
-          {"path": "agency_fee_percentage", "type": "float | null", "description": "Agency fee as percentage", "example": "3.5"},
-          {"path": "reduced_vat", "type": "boolean", "description": "Whether reduced VAT applies", "example": "false"}
+          {
+            "path": "price",
+            "type": "float",
+            "description": "Total listing price in euros",
+            "example": "267000"
+          },
+          {
+            "path": "price_without_fees",
+            "type": "float | null",
+            "description": "Price excluding agency fees",
+            "example": "260000"
+          },
+          {
+            "path": "price_per_square_meter",
+            "type": "float | null",
+            "description": "Price per square meter",
+            "example": "5037.74"
+          },
+          {
+            "path": "transaction_type",
+            "type": "string",
+            "description": "Transaction type identifier",
+            "example": "\"buy\""
+          },
+          {
+            "path": "fees_charged_to",
+            "type": "string | null",
+            "description": "Who pays agency fees",
+            "example": "\"purchaser\""
+          },
+          {
+            "path": "agency_fee_percentage",
+            "type": "float | null",
+            "description": "Agency fee as percentage",
+            "example": "3.5"
+          },
+          {
+            "path": "reduced_vat",
+            "type": "boolean",
+            "description": "Whether reduced VAT applies",
+            "example": "false"
+          }
         ]
       },
       "sizeFields": {
         "title": "Size & Layout",
         "content": "Property dimensions and room counts:",
         "fields": [
-          {"path": "surface_area", "type": "float", "description": "Living area in square meters", "example": "53"},
-          {"path": "land_surface_area", "type": "float | null", "description": "Land area in square meters", "example": "250"},
-          {"path": "rooms_quantity", "type": "integer", "description": "Total number of rooms", "example": "3"},
-          {"path": "bedrooms_quantity", "type": "integer | null", "description": "Number of bedrooms", "example": "2"},
-          {"path": "bathrooms_quantity", "type": "integer | null", "description": "Number of bathrooms", "example": "1"},
-          {"path": "shower_rooms_quantity", "type": "integer | null", "description": "Number of shower rooms", "example": "1"},
-          {"path": "toilet_quantity", "type": "integer | null", "description": "Number of toilets", "example": "2"},
-          {"path": "floor", "type": "integer | null", "description": "Floor number", "example": "1"},
-          {"path": "floor_quantity", "type": "integer | null", "description": "Total floors in building", "example": "4"}
+          {
+            "path": "surface_area",
+            "type": "float",
+            "description": "Living area in square meters",
+            "example": "53"
+          },
+          {
+            "path": "land_surface_area",
+            "type": "float | null",
+            "description": "Land area in square meters",
+            "example": "250"
+          },
+          {
+            "path": "rooms_quantity",
+            "type": "integer",
+            "description": "Total number of rooms",
+            "example": "3"
+          },
+          {
+            "path": "bedrooms_quantity",
+            "type": "integer | null",
+            "description": "Number of bedrooms",
+            "example": "2"
+          },
+          {
+            "path": "bathrooms_quantity",
+            "type": "integer | null",
+            "description": "Number of bathrooms",
+            "example": "1"
+          },
+          {
+            "path": "shower_rooms_quantity",
+            "type": "integer | null",
+            "description": "Number of shower rooms",
+            "example": "1"
+          },
+          {
+            "path": "toilet_quantity",
+            "type": "integer | null",
+            "description": "Number of toilets",
+            "example": "2"
+          },
+          {
+            "path": "floor",
+            "type": "integer | null",
+            "description": "Floor number",
+            "example": "1"
+          },
+          {
+            "path": "floor_quantity",
+            "type": "integer | null",
+            "description": "Total floors in building",
+            "example": "4"
+          }
         ]
       },
       "amenitiesFields": {
         "title": "Amenities & Features",
         "content": "Property amenities (boolean fields):",
         "fields": [
-          {"path": "has_garage", "type": "boolean", "description": "Has garage", "example": "true"},
-          {"path": "has_parking", "type": "boolean", "description": "Has parking", "example": "true"},
-          {"path": "parking_places_quantity", "type": "integer | null", "description": "Number of parking spaces", "example": "1"},
-          {"path": "has_cellar", "type": "boolean", "description": "Has cellar/basement", "example": "true"},
-          {"path": "has_elevator", "type": "boolean", "description": "Has elevator", "example": "true"},
-          {"path": "has_balcony", "type": "boolean", "description": "Has balcony", "example": "true"},
-          {"path": "has_terrace", "type": "boolean", "description": "Has terrace", "example": "true"},
-          {"path": "terraces_quantity", "type": "integer | null", "description": "Number of terraces", "example": "1"},
-          {"path": "has_garden", "type": "boolean", "description": "Has garden", "example": "true"},
-          {"path": "has_pool", "type": "boolean", "description": "Has swimming pool", "example": "false"},
-          {"path": "has_air_conditioning", "type": "boolean", "description": "Has air conditioning", "example": "true"},
-          {"path": "has_fireplace", "type": "boolean", "description": "Has fireplace", "example": "false"},
-          {"path": "has_alarm", "type": "boolean", "description": "Has alarm system", "example": "false"}
+          {
+            "path": "has_garage",
+            "type": "boolean",
+            "description": "Has garage",
+            "example": "true"
+          },
+          {
+            "path": "has_parking",
+            "type": "boolean",
+            "description": "Has parking",
+            "example": "true"
+          },
+          {
+            "path": "parking_places_quantity",
+            "type": "integer | null",
+            "description": "Number of parking spaces",
+            "example": "1"
+          },
+          {
+            "path": "has_cellar",
+            "type": "boolean",
+            "description": "Has cellar/basement",
+            "example": "true"
+          },
+          {
+            "path": "has_elevator",
+            "type": "boolean",
+            "description": "Has elevator",
+            "example": "true"
+          },
+          {
+            "path": "has_balcony",
+            "type": "boolean",
+            "description": "Has balcony",
+            "example": "true"
+          },
+          {
+            "path": "has_terrace",
+            "type": "boolean",
+            "description": "Has terrace",
+            "example": "true"
+          },
+          {
+            "path": "terraces_quantity",
+            "type": "integer | null",
+            "description": "Number of terraces",
+            "example": "1"
+          },
+          {
+            "path": "has_garden",
+            "type": "boolean",
+            "description": "Has garden",
+            "example": "true"
+          },
+          {
+            "path": "has_pool",
+            "type": "boolean",
+            "description": "Has swimming pool",
+            "example": "false"
+          },
+          {
+            "path": "has_air_conditioning",
+            "type": "boolean",
+            "description": "Has air conditioning",
+            "example": "true"
+          },
+          {
+            "path": "has_fireplace",
+            "type": "boolean",
+            "description": "Has fireplace",
+            "example": "false"
+          },
+          {
+            "path": "has_alarm",
+            "type": "boolean",
+            "description": "Has alarm system",
+            "example": "false"
+          }
         ]
       },
       "securityFields": {
         "title": "Security & Access",
         "content": "Building security features:",
         "fields": [
-          {"path": "has_intercom", "type": "boolean", "description": "Has intercom", "example": "true"},
-          {"path": "has_door_code", "type": "boolean", "description": "Has door code entry", "example": "true"},
-          {"path": "has_videophone", "type": "boolean", "description": "Has video intercom", "example": "false"},
-          {"path": "is_disabled_people_friendly", "type": "boolean", "description": "Accessible for disabled persons", "example": "false"},
-          {"path": "is_calm", "type": "boolean", "description": "Quiet location", "example": "true"},
-          {"path": "work_to_do", "type": "boolean", "description": "Renovation needed", "example": "false"},
-          {"path": "exposition", "type": "string | null", "description": "Sun exposure direction", "example": "\"Sud-Ouest\""}
+          {
+            "path": "has_intercom",
+            "type": "boolean",
+            "description": "Has intercom",
+            "example": "true"
+          },
+          {
+            "path": "has_door_code",
+            "type": "boolean",
+            "description": "Has door code entry",
+            "example": "true"
+          },
+          {
+            "path": "has_videophone",
+            "type": "boolean",
+            "description": "Has video intercom",
+            "example": "false"
+          },
+          {
+            "path": "is_disabled_people_friendly",
+            "type": "boolean",
+            "description": "Accessible for disabled persons",
+            "example": "false"
+          },
+          {
+            "path": "is_calm",
+            "type": "boolean",
+            "description": "Quiet location",
+            "example": "true"
+          },
+          {
+            "path": "work_to_do",
+            "type": "boolean",
+            "description": "Renovation needed",
+            "example": "false"
+          },
+          {
+            "path": "exposition",
+            "type": "string | null",
+            "description": "Sun exposure direction",
+            "example": "\"Sud-Ouest\""
+          }
         ]
       },
       "energyFields": {
         "title": "Energy Performance",
         "content": "DPE and GES ratings (French energy diagnostics):",
         "fields": [
-          {"path": "energy_classification", "type": "string | null", "description": "Energy Performance rating (A-G)", "example": "\"E\""},
-          {"path": "energy_value", "type": "float | null", "description": "Energy consumption value (kWh/m²/year)", "example": "279"},
-          {"path": "greenhouse_gaz_classification", "type": "string | null", "description": "Greenhouse Gas rating (A-G)", "example": "\"B\""},
-          {"path": "greenhouse_gaz_value", "type": "float | null", "description": "GHG emissions value (kg CO2/m²/year)", "example": "9"},
-          {"path": "energy_performance_diagnostic_date", "type": "string | null", "description": "Date of DPE diagnosis", "example": "\"2022-09-21\""},
-          {"path": "max_energy_consumption", "type": "float | null", "description": "Maximum estimated annual energy cost", "example": "2900"},
-          {"path": "min_energy_consumption", "type": "float | null", "description": "Minimum estimated annual energy cost", "example": "2100"},
-          {"path": "use_july_2021_energy_performance_diagnostic", "type": "boolean", "description": "Uses new 2021 DPE standard", "example": "true"},
-          {"path": "heating", "type": "string | null", "description": "Heating type description", "example": "\"radiateur électrique individuel\""}
+          {
+            "path": "energy_classification",
+            "type": "string | null",
+            "description": "Energy Performance rating (A-G)",
+            "example": "\"E\""
+          },
+          {
+            "path": "energy_value",
+            "type": "float | null",
+            "description": "Energy consumption value (kWh/m²/year)",
+            "example": "279"
+          },
+          {
+            "path": "greenhouse_gaz_classification",
+            "type": "string | null",
+            "description": "Greenhouse Gas rating (A-G)",
+            "example": "\"B\""
+          },
+          {
+            "path": "greenhouse_gaz_value",
+            "type": "float | null",
+            "description": "GHG emissions value (kg CO2/m²/year)",
+            "example": "9"
+          },
+          {
+            "path": "energy_performance_diagnostic_date",
+            "type": "string | null",
+            "description": "Date of DPE diagnosis",
+            "example": "\"2022-09-21\""
+          },
+          {
+            "path": "max_energy_consumption",
+            "type": "float | null",
+            "description": "Maximum estimated annual energy cost",
+            "example": "2900"
+          },
+          {
+            "path": "min_energy_consumption",
+            "type": "float | null",
+            "description": "Minimum estimated annual energy cost",
+            "example": "2100"
+          },
+          {
+            "path": "use_july_2021_energy_performance_diagnostic",
+            "type": "boolean",
+            "description": "Uses new 2021 DPE standard",
+            "example": "true"
+          },
+          {
+            "path": "heating",
+            "type": "string | null",
+            "description": "Heating type description",
+            "example": "\"radiateur électrique individuel\""
+          }
         ]
       },
       "condominiumFields": {
         "title": "Condominium Details",
         "content": "For properties in co-ownership (copropriété):",
         "fields": [
-          {"path": "is_in_condominium", "type": "boolean", "description": "Part of a condominium", "example": "true"},
-          {"path": "is_condominium_in_procedure", "type": "boolean", "description": "Condominium under legal procedure", "example": "false"}
+          {
+            "path": "is_in_condominium",
+            "type": "boolean",
+            "description": "Part of a condominium",
+            "example": "true"
+          },
+          {
+            "path": "is_condominium_in_procedure",
+            "type": "boolean",
+            "description": "Condominium under legal procedure",
+            "example": "false"
+          }
         ]
       },
       "agencyFields": {
         "title": "Agency Information",
         "content": "Real estate agency details:",
         "fields": [
-          {"path": "account_type", "type": "string", "description": "Type of seller account", "example": "\"agency\""},
-          {"path": "account_display_name", "type": "string", "description": "Agency or seller display name", "example": "\"APIMO Agency\""},
-          {"path": "ad_created_by_pro", "type": "boolean", "description": "Listed by professional", "example": "true"},
-          {"path": "customer_id", "type": "string | null", "description": "Agency customer identifier", "example": "\"apimo-customer-123\""},
-          {"path": "agency_fee_url", "type": "string | null", "description": "URL to agency fee document", "example": "\"https://api.apimo.pro/document_agency/\""},
-          {"path": "is_exclusive_sale_mandate", "type": "boolean", "description": "Exclusive agency mandate", "example": "false"}
+          {
+            "path": "account_type",
+            "type": "string",
+            "description": "Type of seller account",
+            "example": "\"agency\""
+          },
+          {
+            "path": "account_display_name",
+            "type": "string",
+            "description": "Agency or seller display name",
+            "example": "\"APIMO Agency\""
+          },
+          {
+            "path": "ad_created_by_pro",
+            "type": "boolean",
+            "description": "Listed by professional",
+            "example": "true"
+          },
+          {
+            "path": "customer_id",
+            "type": "string | null",
+            "description": "Agency customer identifier",
+            "example": "\"apimo-customer-123\""
+          },
+          {
+            "path": "agency_fee_url",
+            "type": "string | null",
+            "description": "URL to agency fee document",
+            "example": "\"https://api.apimo.pro/document_agency/\""
+          },
+          {
+            "path": "is_exclusive_sale_mandate",
+            "type": "boolean",
+            "description": "Exclusive agency mandate",
+            "example": "false"
+          }
         ]
       },
       "mediaFields": {
         "title": "Media & Images",
         "content": "Listing images and virtual tours:",
         "fields": [
-          {"path": "photos", "type": "json", "description": "Array of photo URLs", "example": "[]"},
-          {"path": "with_3d_model", "type": "boolean", "description": "Has 3D model available", "example": "false"},
-          {"path": "is_3d_highlighted", "type": "boolean", "description": "3D tour is highlighted", "example": "false"},
-          {"path": "has_lot_with_360", "type": "boolean", "description": "Has 360° view", "example": "false"},
-          {"path": "need_virtual_tour", "type": "boolean", "description": "Virtual tour requested", "example": "false"}
+          {
+            "path": "photos",
+            "type": "json",
+            "description": "Array of photo URLs",
+            "example": "[]"
+          },
+          {
+            "path": "with_3d_model",
+            "type": "boolean",
+            "description": "Has 3D model available",
+            "example": "false"
+          },
+          {
+            "path": "is_3d_highlighted",
+            "type": "boolean",
+            "description": "3D tour is highlighted",
+            "example": "false"
+          },
+          {
+            "path": "has_lot_with_360",
+            "type": "boolean",
+            "description": "Has 360° view",
+            "example": "false"
+          },
+          {
+            "path": "need_virtual_tour",
+            "type": "boolean",
+            "description": "Virtual tour requested",
+            "example": "false"
+          }
         ]
       },
       "statusFields": {
         "title": "Listing Status",
         "content": "Status and metadata:",
         "fields": [
-          {"path": "status", "type": "json", "description": "Listing market status", "example": "{\"onTheMarket\": true}"},
-          {"path": "is_bien_ici_exclusive", "type": "boolean", "description": "Bien'Ici exclusive listing", "example": "false"},
-          {"path": "price_has_decreased", "type": "boolean", "description": "Price has been reduced", "example": "false"},
-          {"path": "relevance_bonus", "type": "integer | null", "description": "Search relevance score", "example": "5"},
-          {"path": "optical_fiber_status", "type": "string | null", "description": "Fiber optic availability", "example": "\"deploye\""}
+          {
+            "path": "status",
+            "type": "json",
+            "description": "Listing market status",
+            "example": "{\"onTheMarket\": true}"
+          },
+          {
+            "path": "is_bien_ici_exclusive",
+            "type": "boolean",
+            "description": "Bien'Ici exclusive listing",
+            "example": "false"
+          },
+          {
+            "path": "price_has_decreased",
+            "type": "boolean",
+            "description": "Price has been reduced",
+            "example": "false"
+          },
+          {
+            "path": "relevance_bonus",
+            "type": "integer | null",
+            "description": "Search relevance score",
+            "example": "5"
+          },
+          {
+            "path": "optical_fiber_status",
+            "type": "string | null",
+            "description": "Fiber optic availability",
+            "example": "\"deploye\""
+          }
         ]
       },
       "timestampFields": {
         "title": "Timestamps",
         "fields": [
-          {"path": "modification_date", "type": "datetime", "description": "Last modification date (ISO 8601)", "example": "\"2022-09-23T09:03:11.123Z\""},
-          {"path": "publication_date", "type": "datetime", "description": "Original publication date", "example": "\"2022-09-21T13:54:51.302Z\""},
-          {"path": "threshold_date", "type": "datetime | null", "description": "Listing threshold date", "example": "\"2025-08-17T00:00:00.000Z\""},
-          {"path": "scraping_time", "type": "string", "description": "When scraped (ISO 8601)", "example": "\"2025-07-16T10:04:14.545Z\""}
+          {
+            "path": "modification_date",
+            "type": "datetime",
+            "description": "Last modification date (ISO 8601)",
+            "example": "\"2022-09-23T09:03:11.123Z\""
+          },
+          {
+            "path": "publication_date",
+            "type": "datetime",
+            "description": "Original publication date",
+            "example": "\"2022-09-21T13:54:51.302Z\""
+          },
+          {
+            "path": "threshold_date",
+            "type": "datetime | null",
+            "description": "Listing threshold date",
+            "example": "\"2025-08-17T00:00:00.000Z\""
+          },
+          {
+            "path": "scraping_time",
+            "type": "string",
+            "description": "When scraped (ISO 8601)",
+            "example": "\"2025-07-16T10:04:14.545Z\""
+          }
         ]
       }
     },
@@ -235,5 +665,6 @@
   "seo": {
     "title": "Get Results - Bien'Ici Search Export - lobstr.io API",
     "description": "Retrieve Bien'Ici real estate listings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Bien'Ici Search Export"
 }

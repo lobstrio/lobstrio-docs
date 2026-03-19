@@ -2,7 +2,7 @@
   "slug": "examples/facebook-pages-search-export/update-settings",
   "title": "Update Settings",
   "description": "Configure Facebook Pages Search Export settings",
-  "category": "Facebook Pages Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,16 +15,45 @@
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -53,5 +82,6 @@
   "seo": {
     "title": "Update Settings - Facebook Pages Search Export - lobstr.io API",
     "description": "Configure Facebook Pages Search Export settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Facebook Pages Search Export"
 }

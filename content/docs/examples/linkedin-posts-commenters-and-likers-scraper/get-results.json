@@ -2,7 +2,7 @@
   "slug": "examples/linkedin-posts-commenters-and-likers-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped LinkedIn post engagement data from your squid",
-  "category": "LinkedIn Posts Commenters and Likers Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v2/squid/{squid_id}/result",
@@ -14,29 +14,89 @@
       "profileFields": {
         "title": "Profile Information",
         "fields": [
-          { "path": "profile_url", "type": "string", "description": "LinkedIn profile URL", "example": "\"https://www.linkedin.com/in/john-doe/\"" },
-          { "path": "first_name", "type": "string", "description": "First name", "example": "\"John\"" },
-          { "path": "last_name", "type": "string", "description": "Last name", "example": "\"Doe\"" },
-          { "path": "full_name", "type": "string", "description": "Full display name", "example": "\"John Doe\"" }
+          {
+            "path": "profile_url",
+            "type": "string",
+            "description": "LinkedIn profile URL",
+            "example": "\"https://www.linkedin.com/in/john-doe/\""
+          },
+          {
+            "path": "first_name",
+            "type": "string",
+            "description": "First name",
+            "example": "\"John\""
+          },
+          {
+            "path": "last_name",
+            "type": "string",
+            "description": "Last name",
+            "example": "\"Doe\""
+          },
+          {
+            "path": "full_name",
+            "type": "string",
+            "description": "Full display name",
+            "example": "\"John Doe\""
+          }
         ]
       },
       "emailFields": {
         "title": "Email Enrichment Fields",
         "content": "These fields are only populated when email enrichment is enabled.",
         "fields": [
-          { "path": "email", "type": "string", "description": "Discovered email address (if found)", "example": "\"john.doe@example.com\"" },
-          { "path": "email_status", "type": "string", "description": "Email validation status: valid, invalid, catch-all, unknown", "example": "\"valid\"" }
+          {
+            "path": "email",
+            "type": "string",
+            "description": "Discovered email address (if found)",
+            "example": "\"john.doe@example.com\""
+          },
+          {
+            "path": "email_status",
+            "type": "string",
+            "description": "Email validation status: valid, invalid, catch-all, unknown",
+            "example": "\"valid\""
+          }
         ]
       },
       "engagementFields": {
         "title": "Engagement Details",
         "fields": [
-          { "path": "post_url", "type": "string", "description": "URL of the post they engaged with", "example": "\"https://www.linkedin.com/posts/...\"" },
-          { "path": "has_commented", "type": "boolean", "description": "Whether the user commented on the post", "example": "true" },
-          { "path": "comment", "type": "string", "description": "The user's comment text (if they commented)", "example": "\"This is a great post! Thanks for sharing.\"" },
-          { "path": "comment_url", "type": "string", "description": "Direct URL to the comment", "example": "\"https://www.linkedin.com/feed/update/urn:li:comment:...\"" },
-          { "path": "has_liked", "type": "boolean", "description": "Whether the user reacted to the post", "example": "true" },
-          { "path": "reaction_type", "type": "string", "description": "Type of reaction: LIKE, CELEBRATE, LOVE, INSIGHTFUL, CURIOUS", "example": "\"LIKE\"" }
+          {
+            "path": "post_url",
+            "type": "string",
+            "description": "URL of the post they engaged with",
+            "example": "\"https://www.linkedin.com/posts/...\""
+          },
+          {
+            "path": "has_commented",
+            "type": "boolean",
+            "description": "Whether the user commented on the post",
+            "example": "true"
+          },
+          {
+            "path": "comment",
+            "type": "string",
+            "description": "The user's comment text (if they commented)",
+            "example": "\"This is a great post! Thanks for sharing.\""
+          },
+          {
+            "path": "comment_url",
+            "type": "string",
+            "description": "Direct URL to the comment",
+            "example": "\"https://www.linkedin.com/feed/update/urn:li:comment:...\""
+          },
+          {
+            "path": "has_liked",
+            "type": "boolean",
+            "description": "Whether the user reacted to the post",
+            "example": "true"
+          },
+          {
+            "path": "reaction_type",
+            "type": "string",
+            "description": "Type of reaction: LIKE, CELEBRATE, LOVE, INSIGHTFUL, CURIOUS",
+            "example": "\"LIKE\""
+          }
         ]
       }
     },
@@ -82,5 +142,6 @@
   "seo": {
     "title": "Get Results - LinkedIn Posts Commenters and Likers Scraper - lobstr.io API",
     "description": "Learn how to retrieve LinkedIn post commenters and likers data using the lobstr.io API."
-  }
+  },
+  "subcategory": "LinkedIn Posts Commenters and Likers Scraper"
 }

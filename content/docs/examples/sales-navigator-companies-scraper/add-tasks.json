@@ -2,7 +2,7 @@
   "slug": "examples/sales-navigator-companies-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add Sales Navigator company search URLs to scrape using the Lobstr.io API",
-  "category": "Sales Navigator Companies Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v2/squid/{squid_id}/task",
@@ -18,13 +18,30 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          { "header": "Field", "key": "field" },
-          { "header": "Type", "key": "type" },
-          { "header": "Required", "key": "required" },
-          { "header": "Description", "key": "description" }
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          { "field": "**url**", "type": "string", "required": "Yes", "description": "Sales Navigator Companies Search URL containing your search filters" }
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Sales Navigator Companies Search URL containing your search filters"
+          }
         ]
       }
     },
@@ -61,5 +78,6 @@
   "seo": {
     "title": "Add Tasks - Sales Navigator Companies Scraper - lobstr.io API",
     "description": "Learn how to add Sales Navigator company search URLs to export company data using the lobstr.io API."
-  }
+  },
+  "subcategory": "Sales Navigator Companies Scraper"
 }

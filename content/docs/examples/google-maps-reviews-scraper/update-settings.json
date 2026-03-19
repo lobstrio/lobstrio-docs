@@ -2,7 +2,7 @@
   "slug": "examples/google-maps-reviews-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure the Google Maps Reviews Scraper parameters",
-  "category": "Google Maps Reviews Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,33 +15,99 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**sort_by**", "type": "string", "default": "newest", "description": "Sort reviews: `newest`, `most relevant`, or `highest rating`"},
-          {"param": "**hours_back**", "type": "integer", "default": "null", "description": "Only collect reviews from the last N hours. Set `null` for no limit"},
-          {"param": "**max_results**", "type": "integer", "default": "20", "description": "Maximum number of reviews to collect per place"},
-          {"param": "**language**", "type": "string", "default": "English (United States)", "description": "Language for extracted reviews"},
-          {"param": "**functions.short_link**", "type": "boolean", "default": "false", "description": "Collect shortened review links (additional costs may apply)"}
+          {
+            "param": "**sort_by**",
+            "type": "string",
+            "default": "newest",
+            "description": "Sort reviews: `newest`, `most relevant`, or `highest rating`"
+          },
+          {
+            "param": "**hours_back**",
+            "type": "integer",
+            "default": "null",
+            "description": "Only collect reviews from the last N hours. Set `null` for no limit"
+          },
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "default": "20",
+            "description": "Maximum number of reviews to collect per place"
+          },
+          {
+            "param": "**language**",
+            "type": "string",
+            "default": "English (United States)",
+            "description": "Language for extracted reviews"
+          },
+          {
+            "param": "**functions.short_link**",
+            "type": "boolean",
+            "default": "false",
+            "description": "Collect shortened review links (additional costs may apply)"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "You can also configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping workers (1-10)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Only export unique results (deduplicated)"},
-          {"setting": "**run_notify**", "type": "string", "description": "When to send notifications: `on_success`, `on_failure`, `always`, `never`"},
-          {"setting": "**timezone**", "type": "string", "description": "Timezone for timestamps (e.g., `Europe/Paris`)"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping workers (1-10)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Only export unique results (deduplicated)"
+          },
+          {
+            "setting": "**run_notify**",
+            "type": "string",
+            "description": "When to send notifications: `on_success`, `on_failure`, `always`, `never`"
+          },
+          {
+            "setting": "**timezone**",
+            "type": "string",
+            "description": "Timezone for timestamps (e.g., `Europe/Paris`)"
+          }
         ]
       }
     },
@@ -82,5 +148,6 @@
   "seo": {
     "title": "Update Settings - Google Maps Reviews Scraper - lobstr.io API",
     "description": "Configure the Google Maps Reviews Scraper parameters including sort order, language, and result limits."
-  }
+  },
+  "subcategory": "Google Maps Reviews Scraper"
 }

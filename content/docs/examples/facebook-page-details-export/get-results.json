@@ -2,7 +2,7 @@
   "slug": "examples/facebook-page-details-export/get-results",
   "title": "Get Results",
   "description": "Retrieve detailed Facebook page information including contact details, ratings, and social links",
-  "category": "Facebook Page Details Export",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,31 +15,156 @@
         "title": "Result Fields",
         "content": "Each result object contains the following fields:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "50017"},
-          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"05d966bcc86f48b6afca3de8a0a0dc5e\""},
-          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"401314a9bf2547c984a3c5d335273a56\""},
-          {"path": "name", "type": "string", "description": "Name of the Facebook page", "example": "\"Example Business LLC\""},
-          {"path": "category", "type": "string", "description": "Page category", "example": "\"Local Business\""},
-          {"path": "about", "type": "string | null", "description": "\"About\" section content of the Facebook page", "example": "\"Your trusted local service provider since 2010.\""},
-          {"path": "address", "type": "string | null", "description": "Physical address of the business", "example": "\"123 Main Street, New York, NY 10001\""},
-          {"path": "phone", "type": "string | null", "description": "Contact phone number", "example": "\"+1 (555) 123-4567\""},
-          {"path": "email", "type": "string | null", "description": "Contact email address", "example": "\"contact@example-business.com\""},
-          {"path": "wesbite", "type": "string | null", "description": "Website URL (note: field name has typo in API)", "example": "\"https://www.example-business.com\""},
-          {"path": "instagram", "type": "string | null", "description": "Instagram profile URL if listed", "example": "\"https://www.instagram.com/examplebusiness\""},
-          {"path": "likes", "type": "string", "description": "Number of page likes", "example": "\"1542\""},
-          {"path": "followers", "type": "string", "description": "Number of page followers", "example": "\"1876\""},
-          {"path": "reviews", "type": "integer", "description": "Number of reviews the page has received", "example": "24"},
-          {"path": "score", "type": "number", "description": "Average rating score (0-5)", "example": "4.5"},
-          {"path": "visits", "type": "integer", "description": "Number of page visits if available", "example": "350"},
-          {"path": "image_url", "type": "string", "description": "URL of the page's profile image", "example": "\"https://scontent.xx.fbcdn.net/...\""},
-          {"path": "menu", "type": "string | null", "description": "URL of the page's menu or services section", "example": "null"},
-          {"path": "price", "type": "string | null", "description": "Price information if provided", "example": "null"},
-          {"path": "internal_id", "type": "string", "description": "Facebook's internal page identifier", "example": "\"123456789\""},
-          {"path": "slug", "type": "string", "description": "URL path slug for the page", "example": "\"/pages/example-business/123456789/\""},
-          {"path": "url", "type": "string", "description": "Full URL to the Facebook page", "example": "\"https://www.facebook.com/pages/example-business/123456789/\""},
-          {"path": "status", "type": "string", "description": "Scrape status (e.g., \"valid_page\")", "example": "\"valid_page\""},
-          {"path": "scraping_time", "type": "string", "description": "When this result was scraped (ISO 8601)", "example": "\"2025-05-02T08:17:12.353Z\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique result identifier",
+            "example": "50017"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Squid that produced this result",
+            "example": "\"05d966bcc86f48b6afca3de8a0a0dc5e\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Run that produced this result",
+            "example": "\"401314a9bf2547c984a3c5d335273a56\""
+          },
+          {
+            "path": "name",
+            "type": "string",
+            "description": "Name of the Facebook page",
+            "example": "\"Example Business LLC\""
+          },
+          {
+            "path": "category",
+            "type": "string",
+            "description": "Page category",
+            "example": "\"Local Business\""
+          },
+          {
+            "path": "about",
+            "type": "string | null",
+            "description": "\"About\" section content of the Facebook page",
+            "example": "\"Your trusted local service provider since 2010.\""
+          },
+          {
+            "path": "address",
+            "type": "string | null",
+            "description": "Physical address of the business",
+            "example": "\"123 Main Street, New York, NY 10001\""
+          },
+          {
+            "path": "phone",
+            "type": "string | null",
+            "description": "Contact phone number",
+            "example": "\"+1 (555) 123-4567\""
+          },
+          {
+            "path": "email",
+            "type": "string | null",
+            "description": "Contact email address",
+            "example": "\"contact@example-business.com\""
+          },
+          {
+            "path": "wesbite",
+            "type": "string | null",
+            "description": "Website URL (note: field name has typo in API)",
+            "example": "\"https://www.example-business.com\""
+          },
+          {
+            "path": "instagram",
+            "type": "string | null",
+            "description": "Instagram profile URL if listed",
+            "example": "\"https://www.instagram.com/examplebusiness\""
+          },
+          {
+            "path": "likes",
+            "type": "string",
+            "description": "Number of page likes",
+            "example": "\"1542\""
+          },
+          {
+            "path": "followers",
+            "type": "string",
+            "description": "Number of page followers",
+            "example": "\"1876\""
+          },
+          {
+            "path": "reviews",
+            "type": "integer",
+            "description": "Number of reviews the page has received",
+            "example": "24"
+          },
+          {
+            "path": "score",
+            "type": "number",
+            "description": "Average rating score (0-5)",
+            "example": "4.5"
+          },
+          {
+            "path": "visits",
+            "type": "integer",
+            "description": "Number of page visits if available",
+            "example": "350"
+          },
+          {
+            "path": "image_url",
+            "type": "string",
+            "description": "URL of the page's profile image",
+            "example": "\"https://scontent.xx.fbcdn.net/...\""
+          },
+          {
+            "path": "menu",
+            "type": "string | null",
+            "description": "URL of the page's menu or services section",
+            "example": "null"
+          },
+          {
+            "path": "price",
+            "type": "string | null",
+            "description": "Price information if provided",
+            "example": "null"
+          },
+          {
+            "path": "internal_id",
+            "type": "string",
+            "description": "Facebook's internal page identifier",
+            "example": "\"123456789\""
+          },
+          {
+            "path": "slug",
+            "type": "string",
+            "description": "URL path slug for the page",
+            "example": "\"/pages/example-business/123456789/\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Full URL to the Facebook page",
+            "example": "\"https://www.facebook.com/pages/example-business/123456789/\""
+          },
+          {
+            "path": "status",
+            "type": "string",
+            "description": "Scrape status (e.g., \"valid_page\")",
+            "example": "\"valid_page\""
+          },
+          {
+            "path": "scraping_time",
+            "type": "string",
+            "description": "When this result was scraped (ISO 8601)",
+            "example": "\"2025-05-02T08:17:12.353Z\""
+          }
         ]
       }
     },
@@ -99,5 +224,6 @@
   "seo": {
     "title": "Get Results - Facebook Page Details Export - lobstr.io API",
     "description": "Retrieve detailed Facebook page data including contact info, ratings, and social links using the lobstr.io API."
-  }
+  },
+  "subcategory": "Facebook Page Details Export"
 }

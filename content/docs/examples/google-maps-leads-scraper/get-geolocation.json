@@ -2,7 +2,7 @@
   "slug": "examples/google-maps-leads-scraper/get-geolocation",
   "title": "Get Geolocation",
   "description": "Fetch valid regions, districts, and cities for parameter-based tasks",
-  "category": "Google Maps Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/googlemaps/locations",
@@ -18,15 +18,40 @@
       "queryParams": {
         "title": "Query Parameters",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**country_code**", "required": "Yes", "description": "ISO 2-letter country code (e.g., `US`, `FR`, `PK`)"},
-          {"param": "**region**", "required": "Conditional", "description": "Required when querying districts or cities. Leave empty to get regions."},
-          {"param": "**district**", "required": "No", "description": "Narrows the city list within a region"},
-          {"param": "**city**", "required": "No", "description": "Used when retrieving a refined list of locations"}
+          {
+            "param": "**country_code**",
+            "required": "Yes",
+            "description": "ISO 2-letter country code (e.g., `US`, `FR`, `PK`)"
+          },
+          {
+            "param": "**region**",
+            "required": "Conditional",
+            "description": "Required when querying districts or cities. Leave empty to get regions."
+          },
+          {
+            "param": "**district**",
+            "required": "No",
+            "description": "Narrows the city list within a region"
+          },
+          {
+            "param": "**city**",
+            "required": "No",
+            "description": "Used when retrieving a refined list of locations"
+          }
         ]
       }
     },
@@ -82,5 +107,6 @@
   "seo": {
     "title": "Get Geolocation - Google Maps Leads Scraper - lobstr.io API",
     "description": "Fetch valid regions, districts, and cities for parameter-based Google Maps Search tasks."
-  }
+  },
+  "subcategory": "Google Maps Leads Scraper"
 }

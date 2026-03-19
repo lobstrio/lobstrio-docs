@@ -2,7 +2,7 @@
   "slug": "examples/tiktok-top-ads-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure the TikTok Top Ads Scraper parameters",
-  "category": "TikTok Top Ads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,18 +15,60 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**region**", "type": "string", "default": "World", "description": "Specify a predetermined region for your search (e.g., `United States`, `France`, `Germany`)"},
-          {"param": "**industry**", "type": "string", "default": "All industries", "description": "Filter by industry (e.g., `Beauty & Personal Care`, `Games`, `E-Commerce (Non-app)`)"},
-          {"param": "**objective**", "type": "string", "default": "All objectives", "description": "Campaign objective filter: `Conversions`, `Lead Generation`, `Traffic`, `Video Views`, etc."},
-          {"param": "**like**", "type": "string", "default": "All likes", "description": "Filter by engagement percentile: `Top 1~20%`, `Top 21~40%`, etc."},
-          {"param": "**time_range**", "type": "string", "default": "Last 7 days", "description": "Ad publication period: `Last 7 days`, `Last 30 days`, `Last 180 days`"},
-          {"param": "**sort_by**", "type": "string", "default": "For You", "description": "Sorting option: `For You`, `Reach`, `CTY`, `2s Views Rate`, `6s Views Rate`"}
+          {
+            "param": "**region**",
+            "type": "string",
+            "default": "World",
+            "description": "Specify a predetermined region for your search (e.g., `United States`, `France`, `Germany`)"
+          },
+          {
+            "param": "**industry**",
+            "type": "string",
+            "default": "All industries",
+            "description": "Filter by industry (e.g., `Beauty & Personal Care`, `Games`, `E-Commerce (Non-app)`)"
+          },
+          {
+            "param": "**objective**",
+            "type": "string",
+            "default": "All objectives",
+            "description": "Campaign objective filter: `Conversions`, `Lead Generation`, `Traffic`, `Video Views`, etc."
+          },
+          {
+            "param": "**like**",
+            "type": "string",
+            "default": "All likes",
+            "description": "Filter by engagement percentile: `Top 1~20%`, `Top 21~40%`, etc."
+          },
+          {
+            "param": "**time_range**",
+            "type": "string",
+            "default": "Last 7 days",
+            "description": "Ad publication period: `Last 7 days`, `Last 30 days`, `Last 180 days`"
+          },
+          {
+            "param": "**sort_by**",
+            "type": "string",
+            "default": "For You",
+            "description": "Sorting option: `For You`, `Reach`, `CTY`, `2s Views Rate`, `6s Views Rate`"
+          }
         ]
       },
       "availableRegions": {
@@ -71,5 +113,6 @@
   "seo": {
     "title": "Update Settings - TikTok Top Ads Scraper - lobstr.io API",
     "description": "Configure the TikTok Top Ads Scraper parameters including region, industry, objective, and sorting options."
-  }
+  },
+  "subcategory": "TikTok Top Ads Scraper"
 }

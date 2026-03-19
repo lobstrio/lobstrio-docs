@@ -2,7 +2,7 @@
   "slug": "examples/sales-navigator-leads-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure scraper settings for Sales Navigator Leads Scraper including email enrichment",
-  "category": "Sales Navigator Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,32 +15,93 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**functions.email**", "type": "boolean", "default": "false", "description": "Enable email enrichment using Lobstr.io's service (incurs extra credits)"},
-          {"param": "**profiles_per_page**", "type": "integer", "default": "25", "description": "Number of leads to scrape per page (max: 25)"},
-          {"param": "**max_pages**", "type": "integer", "default": "100", "description": "Maximum number of pages to crawl (max: 100)"},
-          {"param": "**max_results**", "type": "integer | null", "default": "null", "description": "Total leads to collect before stopping (`null` = no limit)"}
+          {
+            "param": "**functions.email**",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enable email enrichment using Lobstr.io's service (incurs extra credits)"
+          },
+          {
+            "param": "**profiles_per_page**",
+            "type": "integer",
+            "default": "25",
+            "description": "Number of leads to scrape per page (max: 25)"
+          },
+          {
+            "param": "**max_pages**",
+            "type": "integer",
+            "default": "100",
+            "description": "Maximum number of pages to crawl (max: 100)"
+          },
+          {
+            "param": "**max_results**",
+            "type": "integer | null",
+            "default": "null",
+            "description": "Total leads to collect before stopping (`null` = no limit)"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**accounts**", "type": "array", "description": "Array of linked Sales Navigator account hashes (required)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**accounts**",
+            "type": "array",
+            "description": "Array of linked Sales Navigator account hashes (required)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -77,5 +138,6 @@
   "seo": {
     "title": "Update Settings - Sales Navigator Leads Scraper - lobstr.io API",
     "description": "Configure Sales Navigator Leads Scraper settings including email enrichment using the lobstr.io API."
-  }
+  },
+  "subcategory": "Sales Navigator Leads Scraper"
 }

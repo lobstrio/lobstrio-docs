@@ -2,7 +2,7 @@
   "slug": "examples/facebook-pages-search-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add Facebook Pages search URLs to scrape",
-  "category": "Facebook Pages Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Facebook Pages Search Export crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Facebook Pages Search Export crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Facebook Pages search URL (e.g., `https://www.facebook.com/search/pages?q=coffee%20shop`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Facebook Pages search URL (e.g., `https://www.facebook.com/search/pages?q=coffee%20shop`)"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Facebook Pages Search Export - lobstr.io API",
     "description": "Learn how to add Facebook Pages search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Facebook Pages Search Export"
 }

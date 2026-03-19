@@ -2,7 +2,7 @@
   "slug": "examples/tiktok-top-ads-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped TikTok top ads data",
-  "category": "TikTok Top Ads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,25 +15,120 @@
         "title": "Result Fields",
         "content": "Each result object contains the following fields:",
         "fields": [
-          {"path": "internal_id", "type": "string", "description": "Unique identifier for the ad", "example": "\"6916651063119348000\""},
-          {"path": "url", "type": "string", "description": "URL to the ad on TikTok Creative Center", "example": "\"https://ads.tiktok.com/business/creativecenter/topads/6916651063119348000\""},
-          {"path": "ad_title", "type": "string", "description": "Title or caption of the ad", "example": "\"Don't miss out on our sale before we sell out!\""},
-          {"path": "brand_name", "type": "string", "description": "Name of the brand running the ad", "example": "\"GlowSkin\""},
-          {"path": "ctr", "type": "float", "description": "Click-through rate of the ad", "example": "0.58"},
-          {"path": "industry", "type": "string", "description": "Industry category of the ad", "example": "\"Beauty & Personal Care\""},
-          {"path": "objective", "type": "string", "description": "Campaign objective of the ad", "example": "\"Conversion\""},
-          {"path": "like", "type": "integer", "description": "Number of likes on the ad", "example": "14523"},
-          {"path": "share", "type": "integer", "description": "Number of shares on the ad", "example": "2341"},
-          {"path": "comment", "type": "integer", "description": "Number of comments on the ad", "example": "892"},
-          {"path": "video_info_duration", "type": "float", "description": "Duration of the video in seconds", "example": "15.016"},
-          {"path": "video_info_cover", "type": "string", "description": "URL to the video cover image", "example": "\"https://p16-cc-sign-sg.ibyteimg.com/...\""},
-          {"path": "video_info_video_url_720p", "type": "string", "description": "URL to the 720p version of the video", "example": "\"https://v16m-default.akamaized.net/...\""},
-          {"path": "video_info_width", "type": "integer", "description": "Video width in pixels", "example": "576"},
-          {"path": "video_info_height", "type": "integer", "description": "Video height in pixels", "example": "576"},
-          {"path": "keywords", "type": "string", "description": "Keywords associated with the ad", "example": "\"skincare, beauty, sale\""},
-          {"path": "landing_page", "type": "string", "description": "Landing page URL for the ad", "example": "\"https://example.com/shop\""},
-          {"path": "country_code", "type": "json", "description": "Countries where the ad is shown", "example": "[\"US\", \"CA\", \"GB\"]"},
-          {"path": "voice_over", "type": "boolean", "description": "Whether the ad has voice-over", "example": "true"}
+          {
+            "path": "internal_id",
+            "type": "string",
+            "description": "Unique identifier for the ad",
+            "example": "\"6916651063119348000\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "URL to the ad on TikTok Creative Center",
+            "example": "\"https://ads.tiktok.com/business/creativecenter/topads/6916651063119348000\""
+          },
+          {
+            "path": "ad_title",
+            "type": "string",
+            "description": "Title or caption of the ad",
+            "example": "\"Don't miss out on our sale before we sell out!\""
+          },
+          {
+            "path": "brand_name",
+            "type": "string",
+            "description": "Name of the brand running the ad",
+            "example": "\"GlowSkin\""
+          },
+          {
+            "path": "ctr",
+            "type": "float",
+            "description": "Click-through rate of the ad",
+            "example": "0.58"
+          },
+          {
+            "path": "industry",
+            "type": "string",
+            "description": "Industry category of the ad",
+            "example": "\"Beauty & Personal Care\""
+          },
+          {
+            "path": "objective",
+            "type": "string",
+            "description": "Campaign objective of the ad",
+            "example": "\"Conversion\""
+          },
+          {
+            "path": "like",
+            "type": "integer",
+            "description": "Number of likes on the ad",
+            "example": "14523"
+          },
+          {
+            "path": "share",
+            "type": "integer",
+            "description": "Number of shares on the ad",
+            "example": "2341"
+          },
+          {
+            "path": "comment",
+            "type": "integer",
+            "description": "Number of comments on the ad",
+            "example": "892"
+          },
+          {
+            "path": "video_info_duration",
+            "type": "float",
+            "description": "Duration of the video in seconds",
+            "example": "15.016"
+          },
+          {
+            "path": "video_info_cover",
+            "type": "string",
+            "description": "URL to the video cover image",
+            "example": "\"https://p16-cc-sign-sg.ibyteimg.com/...\""
+          },
+          {
+            "path": "video_info_video_url_720p",
+            "type": "string",
+            "description": "URL to the 720p version of the video",
+            "example": "\"https://v16m-default.akamaized.net/...\""
+          },
+          {
+            "path": "video_info_width",
+            "type": "integer",
+            "description": "Video width in pixels",
+            "example": "576"
+          },
+          {
+            "path": "video_info_height",
+            "type": "integer",
+            "description": "Video height in pixels",
+            "example": "576"
+          },
+          {
+            "path": "keywords",
+            "type": "string",
+            "description": "Keywords associated with the ad",
+            "example": "\"skincare, beauty, sale\""
+          },
+          {
+            "path": "landing_page",
+            "type": "string",
+            "description": "Landing page URL for the ad",
+            "example": "\"https://example.com/shop\""
+          },
+          {
+            "path": "country_code",
+            "type": "json",
+            "description": "Countries where the ad is shown",
+            "example": "[\"US\", \"CA\", \"GB\"]"
+          },
+          {
+            "path": "voice_over",
+            "type": "boolean",
+            "description": "Whether the ad has voice-over",
+            "example": "true"
+          }
         ]
       }
     },
@@ -93,5 +188,6 @@
   "seo": {
     "title": "Get Results - TikTok Top Ads Scraper - lobstr.io API",
     "description": "Retrieve scraped TikTok top ads including ad details, engagement metrics, and video information."
-  }
+  },
+  "subcategory": "TikTok Top Ads Scraper"
 }

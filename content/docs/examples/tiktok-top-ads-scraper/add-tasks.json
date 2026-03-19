@@ -2,7 +2,7 @@
   "slug": "examples/tiktok-top-ads-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add keyword search tasks to extract top ads from TikTok",
-  "category": "TikTok Top Ads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the tiktok-top-ads-scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `keyword` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the tiktok-top-ads-scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `keyword` field"
+          }
         ]
       },
       "taskFields": {
         "title": "Task Fields",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**keyword**", "type": "string", "required": "Yes", "description": "Search term you want to get TikTok Ads from (e.g., \"fitness\", \"skincare\", \"cooking\")"}
+          {
+            "field": "**keyword**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Search term you want to get TikTok Ads from (e.g., \"fitness\", \"skincare\", \"cooking\")"
+          }
         ]
       }
     },
@@ -70,5 +109,6 @@
   "seo": {
     "title": "Add Tasks - TikTok Top Ads Scraper - lobstr.io API",
     "description": "Learn how to add keyword search tasks to extract top performing TikTok ads using the lobstr.io API."
-  }
+  },
+  "subcategory": "TikTok Top Ads Scraper"
 }

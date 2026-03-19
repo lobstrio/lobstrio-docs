@@ -2,7 +2,7 @@
   "slug": "examples/facebook-page-details-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add Facebook page URLs to extract detailed page information",
-  "category": "Facebook Page Details Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Facebook Page Details Export crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Facebook Page Details Export crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Facebook page URL to scrape (e.g., `https://www.facebook.com/pages/business-name/123456/`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Facebook page URL to scrape (e.g., `https://www.facebook.com/pages/business-name/123456/`)"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Facebook Page Details Export - lobstr.io API",
     "description": "Learn how to add Facebook page URLs for detailed information extraction using the lobstr.io API."
-  }
+  },
+  "subcategory": "Facebook Page Details Export"
 }

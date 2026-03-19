@@ -2,7 +2,7 @@
   "slug": "examples/youtube-channel-email-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure YouTube Channel Email Scraper settings",
-  "category": "YouTube Channel Email Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,16 +15,45 @@
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -57,5 +86,6 @@
   "seo": {
     "title": "Update Settings - YouTube Channel Email Scraper - lobstr.io API",
     "description": "Configure YouTube Channel Email Scraper settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "YouTube Channel Email Scraper"
 }

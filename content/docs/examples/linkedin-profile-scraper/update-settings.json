@@ -2,7 +2,7 @@
   "slug": "examples/linkedin-profile-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure the LinkedIn Profile Scraper settings including email enrichment",
-  "category": "LinkedIn Profile Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "PATCH",
     "endpoint": "/v2/squid/{squid_id}",
@@ -14,13 +14,30 @@
       "settings": {
         "title": "Available Settings",
         "columns": [
-          { "header": "Parameter", "key": "parameter" },
-          { "header": "Type", "key": "type" },
-          { "header": "Default", "key": "default" },
-          { "header": "Description", "key": "description" }
+          {
+            "header": "Parameter",
+            "key": "parameter"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          { "parameter": "**email**", "type": "boolean", "default": "true", "description": "Enable email enrichment to find email addresses for profiles" }
+          {
+            "parameter": "**email**",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enable email enrichment to find email addresses for profiles"
+          }
         ]
       },
       "emailEnrichment": {
@@ -61,5 +78,6 @@
   "seo": {
     "title": "Update Settings - LinkedIn Profile Scraper - lobstr.io API",
     "description": "Learn how to configure LinkedIn Profile Scraper settings including email enrichment using the lobstr.io API."
-  }
+  },
+  "subcategory": "LinkedIn Profile Scraper"
 }

@@ -2,7 +2,7 @@
   "slug": "examples/google-search-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add keyword-based search tasks to scrape Google Search results",
-  "category": "Google Search Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the google-search-scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `keyword` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the google-search-scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `keyword` field"
+          }
         ]
       },
       "taskFields": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**keyword**", "type": "string", "required": "Yes", "description": "The search query to execute on Google"}
+          {
+            "field": "**keyword**",
+            "type": "string",
+            "required": "Yes",
+            "description": "The search query to execute on Google"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Google Search Scraper - lobstr.io API",
     "description": "Learn how to add keyword-based search tasks to scrape Google Search results."
-  }
+  },
+  "subcategory": "Google Search Scraper"
 }

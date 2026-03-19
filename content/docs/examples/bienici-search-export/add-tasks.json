@@ -2,7 +2,7 @@
   "slug": "examples/bienici-search-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add Bien'Ici search URLs to scrape real estate listings",
-  "category": "Bien'Ici Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Bien'Ici Search Export crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Bien'Ici Search Export crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Bien'Ici search URL (e.g., `https://www.bienici.com/recherche/achat/bouches-du-rhone-13/maisonvilla`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Bien'Ici search URL (e.g., `https://www.bienici.com/recherche/achat/bouches-du-rhone-13/maisonvilla`)"
+          }
         ]
       }
     },
@@ -70,5 +109,6 @@
   "seo": {
     "title": "Add Tasks - Bien'Ici Search Export - lobstr.io API",
     "description": "Learn how to add Bien'Ici real estate search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Bien'Ici Search Export"
 }

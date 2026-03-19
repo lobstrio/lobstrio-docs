@@ -2,7 +2,7 @@
   "slug": "examples/vinted-products-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add Vinted catalog search URLs to scrape product listings",
-  "category": "Vinted Products Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Vinted Products Scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Vinted Products Scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Vinted catalog URL (e.g., `https://www.vinted.fr/catalog?search_text=nike&order=newest_first`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Vinted catalog URL (e.g., `https://www.vinted.fr/catalog?search_text=nike&order=newest_first`)"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Vinted Products Scraper - lobstr.io API",
     "description": "Learn how to add Vinted catalog search URLs for product scraping using the lobstr.io API."
-  }
+  },
+  "subcategory": "Vinted Products Scraper"
 }

@@ -2,7 +2,7 @@
   "slug": "examples/youtube-channel-email-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped YouTube channel contact information",
-  "category": "YouTube Channel Email Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,55 +15,155 @@
         "title": "Core Result Fields",
         "content": "Standard result identifiers:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "47771"},
-          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"372558c06a004dbab527f731c0d095cf\""},
-          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"1edf08b8f753406287da8dbe1ff92bec\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique result identifier",
+            "example": "47771"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Squid that produced this result",
+            "example": "\"372558c06a004dbab527f731c0d095cf\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Run that produced this result",
+            "example": "\"1edf08b8f753406287da8dbe1ff92bec\""
+          }
         ]
       },
       "channelFields": {
         "title": "Channel Information",
         "content": "Basic channel details:",
         "fields": [
-          {"path": "account_name", "type": "string", "description": "Display name of the YouTube channel", "example": "\"Tech Legend\""},
-          {"path": "channel_id", "type": "string", "description": "YouTube's unique channel identifier", "example": "\"UCybLjt4Vp59aSXVVcI2RS1w\""},
-          {"path": "slug", "type": "string", "description": "URL-friendly channel name segment", "example": "\"TechLegend\""},
-          {"path": "url", "type": "string", "description": "Full URL to the channel page", "example": "\"https://www.youtube.com/c/TechLegend\""},
-          {"path": "about", "type": "string", "description": "Full channel description (About section)", "example": "\"Welcome to our channel...\""},
-          {"path": "country", "type": "string", "description": "Country associated with the channel", "example": "\"United States\""},
-          {"path": "creation_date", "type": "string", "description": "When the channel was created (ISO 8601)", "example": "\"2017-09-06T00:00:00Z\""}
+          {
+            "path": "account_name",
+            "type": "string",
+            "description": "Display name of the YouTube channel",
+            "example": "\"Tech Legend\""
+          },
+          {
+            "path": "channel_id",
+            "type": "string",
+            "description": "YouTube's unique channel identifier",
+            "example": "\"UCybLjt4Vp59aSXVVcI2RS1w\""
+          },
+          {
+            "path": "slug",
+            "type": "string",
+            "description": "URL-friendly channel name segment",
+            "example": "\"TechLegend\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Full URL to the channel page",
+            "example": "\"https://www.youtube.com/c/TechLegend\""
+          },
+          {
+            "path": "about",
+            "type": "string",
+            "description": "Full channel description (About section)",
+            "example": "\"Welcome to our channel...\""
+          },
+          {
+            "path": "country",
+            "type": "string",
+            "description": "Country associated with the channel",
+            "example": "\"United States\""
+          },
+          {
+            "path": "creation_date",
+            "type": "string",
+            "description": "When the channel was created (ISO 8601)",
+            "example": "\"2017-09-06T00:00:00Z\""
+          }
         ]
       },
       "contactFields": {
         "title": "Contact Information",
         "content": "Email and contact details:",
         "fields": [
-          {"path": "email", "type": "string", "description": "Contact email from the About page", "example": "\"techlegendofficial@gmail.com\""}
+          {
+            "path": "email",
+            "type": "string",
+            "description": "Contact email from the About page",
+            "example": "\"techlegendofficial@gmail.com\""
+          }
         ]
       },
       "socialFields": {
         "title": "Social Media Links",
         "content": "Associated social media profiles:",
         "fields": [
-          {"path": "facebook", "type": "string", "description": "Facebook page URL", "example": "\"facebook.com/techlegendhq\""},
-          {"path": "instagram", "type": "string", "description": "Instagram profile URL", "example": "\"instagram.com/techlegendhq\""},
-          {"path": "twitter", "type": "string", "description": "Twitter profile URL", "example": "\"twitter.com/TechLegendHQ\""},
-          {"path": "other_links", "type": "string", "description": "Comma-separated additional links (website, affiliate, etc.)", "example": "\"techlegend.us, twitch.tv/techlegendhq, amazon.com/shop/techlegend\""}
+          {
+            "path": "facebook",
+            "type": "string",
+            "description": "Facebook page URL",
+            "example": "\"facebook.com/techlegendhq\""
+          },
+          {
+            "path": "instagram",
+            "type": "string",
+            "description": "Instagram profile URL",
+            "example": "\"instagram.com/techlegendhq\""
+          },
+          {
+            "path": "twitter",
+            "type": "string",
+            "description": "Twitter profile URL",
+            "example": "\"twitter.com/TechLegendHQ\""
+          },
+          {
+            "path": "other_links",
+            "type": "string",
+            "description": "Comma-separated additional links (website, affiliate, etc.)",
+            "example": "\"techlegend.us, twitch.tv/techlegendhq, amazon.com/shop/techlegend\""
+          }
         ]
       },
       "statsFields": {
         "title": "Channel Statistics",
         "content": "Subscriber and view counts:",
         "fields": [
-          {"path": "subscribers_count", "type": "string", "description": "Subscriber count text", "example": "\"108K subscribers\""},
-          {"path": "videos_count", "type": "integer", "description": "Total number of videos published", "example": "105"},
-          {"path": "views_count", "type": "integer", "description": "Aggregate view count across all videos", "example": "1641373"}
+          {
+            "path": "subscribers_count",
+            "type": "string",
+            "description": "Subscriber count text",
+            "example": "\"108K subscribers\""
+          },
+          {
+            "path": "videos_count",
+            "type": "integer",
+            "description": "Total number of videos published",
+            "example": "105"
+          },
+          {
+            "path": "views_count",
+            "type": "integer",
+            "description": "Aggregate view count across all videos",
+            "example": "1641373"
+          }
         ]
       },
       "timestampFields": {
         "title": "Timestamps",
         "fields": [
-          {"path": "scraping_time", "type": "string", "description": "When this result was scraped (ISO 8601)", "example": "\"2025-07-11T17:45:19.416Z\""}
+          {
+            "path": "scraping_time",
+            "type": "string",
+            "description": "When this result was scraped (ISO 8601)",
+            "example": "\"2025-07-11T17:45:19.416Z\""
+          }
         ]
       }
     },
@@ -123,5 +223,6 @@
   "seo": {
     "title": "Get Results - YouTube Channel Email Scraper - lobstr.io API",
     "description": "Retrieve YouTube channel contact information using the lobstr.io API."
-  }
+  },
+  "subcategory": "YouTube Channel Email Scraper"
 }

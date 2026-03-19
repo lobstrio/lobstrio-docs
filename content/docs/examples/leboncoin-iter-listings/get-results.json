@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-iter-listings/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Leboncoin listings with details and seller information",
-  "category": "Leboncoin Listings Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -350,5 +350,6 @@
   "seo": {
     "title": "Get Results - Leboncoin Listings Search Export - lobstr.io API",
     "description": "Retrieve Leboncoin classified listings with pricing and seller data using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Listings Search Export"
 }

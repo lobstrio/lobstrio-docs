@@ -2,7 +2,7 @@
   "slug": "examples/sales-navigator-companies-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Sales Navigator company data from your squid",
-  "category": "Sales Navigator Companies Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v2/squid/{squid_id}/result",
@@ -14,15 +14,60 @@
       "resultFields": {
         "title": "Result Fields",
         "fields": [
-          { "path": "company_name", "type": "string", "description": "Company name", "example": "\"Crab Technologies\"" },
-          { "path": "company_id", "type": "integer", "description": "LinkedIn company ID (unique identifier)", "example": "99391839" },
-          { "path": "company_url", "type": "string", "description": "Sales Navigator company profile URL", "example": "\"https://www.linkedin.com/sales/company/99391839\"" },
-          { "path": "company_picture", "type": "string", "description": "Company logo URL", "example": "\"https://media.licdn.com/dms/image/...\"" },
-          { "path": "description", "type": "string", "description": "Company description/tagline", "example": "\"DECISION SUPPORT Data is the new oil...\"" },
-          { "path": "employee_count_range", "type": "string", "description": "Employee count bracket", "example": "\"51-200\"" },
-          { "path": "employee_display_count", "type": "integer", "description": "Number of employees on LinkedIn", "example": "156" },
-          { "path": "industry", "type": "string", "description": "Company industry", "example": "\"IT services and consulting\"" },
-          { "path": "is_saved", "type": "boolean", "description": "Whether company is saved in your Sales Navigator lists", "example": "false" }
+          {
+            "path": "company_name",
+            "type": "string",
+            "description": "Company name",
+            "example": "\"Crab Technologies\""
+          },
+          {
+            "path": "company_id",
+            "type": "integer",
+            "description": "LinkedIn company ID (unique identifier)",
+            "example": "99391839"
+          },
+          {
+            "path": "company_url",
+            "type": "string",
+            "description": "Sales Navigator company profile URL",
+            "example": "\"https://www.linkedin.com/sales/company/99391839\""
+          },
+          {
+            "path": "company_picture",
+            "type": "string",
+            "description": "Company logo URL",
+            "example": "\"https://media.licdn.com/dms/image/...\""
+          },
+          {
+            "path": "description",
+            "type": "string",
+            "description": "Company description/tagline",
+            "example": "\"DECISION SUPPORT Data is the new oil...\""
+          },
+          {
+            "path": "employee_count_range",
+            "type": "string",
+            "description": "Employee count bracket",
+            "example": "\"51-200\""
+          },
+          {
+            "path": "employee_display_count",
+            "type": "integer",
+            "description": "Number of employees on LinkedIn",
+            "example": "156"
+          },
+          {
+            "path": "industry",
+            "type": "string",
+            "description": "Company industry",
+            "example": "\"IT services and consulting\""
+          },
+          {
+            "path": "is_saved",
+            "type": "boolean",
+            "description": "Whether company is saved in your Sales Navigator lists",
+            "example": "false"
+          }
         ]
       }
     },
@@ -68,5 +113,6 @@
   "seo": {
     "title": "Get Results - Sales Navigator Companies Scraper - lobstr.io API",
     "description": "Learn how to retrieve scraped Sales Navigator company data using the lobstr.io API."
-  }
+  },
+  "subcategory": "Sales Navigator Companies Scraper"
 }

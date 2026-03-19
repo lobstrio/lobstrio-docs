@@ -2,7 +2,7 @@
   "slug": "examples/seloger-search-export/add-tasks",
   "title": "Add Tasks",
   "description": "Add SeLoger search URLs to scrape real estate listings",
-  "category": "SeLoger Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the SeLoger Search Export crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the SeLoger Search Export crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "SeLoger search URL (e.g., `https://www.seloger.com/list.htm?projects=2&places=...`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "SeLoger search URL (e.g., `https://www.seloger.com/list.htm?projects=2&places=...`)"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - SeLoger Search Export - lobstr.io API",
     "description": "Learn how to add SeLoger real estate search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "SeLoger Search Export"
 }

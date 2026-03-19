@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-iter-listings-with-phone/add-tasks",
   "title": "Add Tasks",
   "description": "Add Leboncoin search URLs to scrape listings with phone numbers",
-  "category": "Leboncoin Listings & Phone Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -105,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Leboncoin Listings & Phone Search Export - lobstr.io API",
     "description": "Learn how to add Leboncoin phone search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Listings & Phone Search Export"
 }

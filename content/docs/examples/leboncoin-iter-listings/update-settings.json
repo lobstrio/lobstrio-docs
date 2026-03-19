@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-iter-listings/update-settings",
   "title": "Update Settings",
   "description": "Configure scraper settings for Leboncoin Listings Search Export",
-  "category": "Leboncoin Listings Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -144,5 +144,6 @@
   "seo": {
     "title": "Update Settings - Leboncoin Listings Search Export - lobstr.io API",
     "description": "Configure Leboncoin Listings Search Export scraper settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Listings Search Export"
 }

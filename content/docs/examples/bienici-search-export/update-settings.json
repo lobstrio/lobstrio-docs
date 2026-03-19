@@ -2,7 +2,7 @@
   "slug": "examples/bienici-search-export/update-settings",
   "title": "Update Settings",
   "description": "Configure Bien'Ici Search Export scraper settings",
-  "category": "Bien'Ici Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,33 +15,99 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**max_results**", "type": "integer", "default": "50", "description": "Maximum number of results to collect per search URL (max: 2400)"},
-          {"param": "**max_pages**", "type": "integer", "default": "100", "description": "Last page the crawler will visit during a run"},
-          {"param": "**max_unique_results_per_run**", "type": "integer", "default": "null", "description": "Maximum unique results retrieved across all tasks in a run. Leave empty for unlimited"},
-          {"param": "**hours_back**", "type": "integer", "default": "null", "description": "Only collect ads modified within the last N hours. Uses the modification_date field"},
-          {"param": "**collect_ads**", "type": "boolean", "default": "false", "description": "If false, will NOT collect sponsored listings"}
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "default": "50",
+            "description": "Maximum number of results to collect per search URL (max: 2400)"
+          },
+          {
+            "param": "**max_pages**",
+            "type": "integer",
+            "default": "100",
+            "description": "Last page the crawler will visit during a run"
+          },
+          {
+            "param": "**max_unique_results_per_run**",
+            "type": "integer",
+            "default": "null",
+            "description": "Maximum unique results retrieved across all tasks in a run. Leave empty for unlimited"
+          },
+          {
+            "param": "**hours_back**",
+            "type": "integer",
+            "default": "null",
+            "description": "Only collect ads modified within the last N hours. Uses the modification_date field"
+          },
+          {
+            "param": "**collect_ads**",
+            "type": "boolean",
+            "default": "false",
+            "description": "If false, will NOT collect sponsored listings"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1, max: 20)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1, max: 20)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -82,5 +148,6 @@
   "seo": {
     "title": "Update Settings - Bien'Ici Search Export - lobstr.io API",
     "description": "Configure Bien'Ici Search Export scraper settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Bien'Ici Search Export"
 }

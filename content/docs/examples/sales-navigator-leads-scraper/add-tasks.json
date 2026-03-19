@@ -2,7 +2,7 @@
   "slug": "examples/sales-navigator-leads-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add LinkedIn Sales Navigator search URLs to scrape lead profiles",
-  "category": "Sales Navigator Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Sales Navigator Leads Scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Sales Navigator Leads Scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Sales Navigator people search URL (e.g., `https://www.linkedin.com/sales/search/people?query=...`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Sales Navigator people search URL (e.g., `https://www.linkedin.com/sales/search/people?query=...`)"
+          }
         ]
       }
     },
@@ -70,5 +109,6 @@
   "seo": {
     "title": "Add Tasks - Sales Navigator Leads Scraper - lobstr.io API",
     "description": "Learn how to add LinkedIn Sales Navigator search URLs for lead scraping using the lobstr.io API."
-  }
+  },
+  "subcategory": "Sales Navigator Leads Scraper"
 }

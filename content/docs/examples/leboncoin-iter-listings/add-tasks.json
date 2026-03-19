@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-iter-listings/add-tasks",
   "title": "Add Tasks",
   "description": "Add Leboncoin search URLs to scrape listings",
-  "category": "Leboncoin Listings Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -105,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Leboncoin Listings Search Export - lobstr.io API",
     "description": "Learn how to add Leboncoin search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Listings Search Export"
 }

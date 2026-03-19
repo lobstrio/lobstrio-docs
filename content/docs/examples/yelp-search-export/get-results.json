@@ -2,7 +2,7 @@
   "slug": "examples/yelp-search-export/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Yelp business listings",
-  "category": "Yelp Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,63 +15,173 @@
         "title": "Core Result Fields",
         "content": "Standard result identifiers:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Unique result identifier", "example": "28426"},
-          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"fe5052acadac4487bf5fb1f4afb14200\""},
-          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"d6ab6bcf72c94750aacf15e85c42bf62\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique result identifier",
+            "example": "28426"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Squid that produced this result",
+            "example": "\"fe5052acadac4487bf5fb1f4afb14200\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Run that produced this result",
+            "example": "\"d6ab6bcf72c94750aacf15e85c42bf62\""
+          }
         ]
       },
       "businessFields": {
         "title": "Business Information",
         "content": "Core business details:",
         "fields": [
-          {"path": "name", "type": "string", "description": "Name of the business", "example": "\"Joe's Pizza\""},
-          {"path": "url", "type": "string", "description": "Direct Yelp URL to the business listing", "example": "\"https://www.yelp.com/biz/joes-pizza-new-york\""},
-          {"path": "categories", "type": "string", "description": "Comma-separated business categories", "example": "\"Pizza, Italian, Delivery\""},
-          {"path": "price", "type": "string", "description": "Price range indicator ($, $$, $$$, $$$$)", "example": "\"$$\""},
-          {"path": "is_claimed", "type": "boolean", "description": "True if the business profile is claimed by owner", "example": "true"},
-          {"path": "is_closed", "type": "boolean", "description": "True if the business is permanently closed", "example": "false"}
+          {
+            "path": "name",
+            "type": "string",
+            "description": "Name of the business",
+            "example": "\"Joe's Pizza\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Direct Yelp URL to the business listing",
+            "example": "\"https://www.yelp.com/biz/joes-pizza-new-york\""
+          },
+          {
+            "path": "categories",
+            "type": "string",
+            "description": "Comma-separated business categories",
+            "example": "\"Pizza, Italian, Delivery\""
+          },
+          {
+            "path": "price",
+            "type": "string",
+            "description": "Price range indicator ($, $$, $$$, $$$$)",
+            "example": "\"$$\""
+          },
+          {
+            "path": "is_claimed",
+            "type": "boolean",
+            "description": "True if the business profile is claimed by owner",
+            "example": "true"
+          },
+          {
+            "path": "is_closed",
+            "type": "boolean",
+            "description": "True if the business is permanently closed",
+            "example": "false"
+          }
         ]
       },
       "ratingsFields": {
         "title": "Ratings & Reviews",
         "content": "Business ratings and review counts:",
         "fields": [
-          {"path": "score", "type": "number", "description": "Average star rating (1.0-5.0)", "example": "4.5"},
-          {"path": "reviews", "type": "integer", "description": "Total number of reviews", "example": "1250"}
+          {
+            "path": "score",
+            "type": "number",
+            "description": "Average star rating (1.0-5.0)",
+            "example": "4.5"
+          },
+          {
+            "path": "reviews",
+            "type": "integer",
+            "description": "Total number of reviews",
+            "example": "1250"
+          }
         ]
       },
       "contactFields": {
         "title": "Contact Information",
         "content": "Phone, website, and email:",
         "fields": [
-          {"path": "phone", "type": "string", "description": "Business phone number", "example": "\"(212) 555-1234\""},
-          {"path": "website", "type": "string", "description": "Business website URL", "example": "\"https://joespizza.com\""},
-          {"path": "email", "type": "string | null", "description": "Email address (if collect_contacts enabled)", "example": "\"info@joespizza.com\""}
+          {
+            "path": "phone",
+            "type": "string",
+            "description": "Business phone number",
+            "example": "\"(212) 555-1234\""
+          },
+          {
+            "path": "website",
+            "type": "string",
+            "description": "Business website URL",
+            "example": "\"https://joespizza.com\""
+          },
+          {
+            "path": "email",
+            "type": "string | null",
+            "description": "Email address (if collect_contacts enabled)",
+            "example": "\"info@joespizza.com\""
+          }
         ]
       },
       "locationFields": {
         "title": "Location Information",
         "content": "Address and coordinates:",
         "fields": [
-          {"path": "address", "type": "string", "description": "Business address as listed on Yelp", "example": "\"7 Carmine St, New York, NY 10014\""},
-          {"path": "lat", "type": "number | null", "description": "Latitude coordinate", "example": "40.7303"},
-          {"path": "lng", "type": "number | null", "description": "Longitude coordinate", "example": "-74.0023"}
+          {
+            "path": "address",
+            "type": "string",
+            "description": "Business address as listed on Yelp",
+            "example": "\"7 Carmine St, New York, NY 10014\""
+          },
+          {
+            "path": "lat",
+            "type": "number | null",
+            "description": "Latitude coordinate",
+            "example": "40.7303"
+          },
+          {
+            "path": "lng",
+            "type": "number | null",
+            "description": "Longitude coordinate",
+            "example": "-74.0023"
+          }
         ]
       },
       "additionalFields": {
         "title": "Additional Information",
         "content": "Amenities and menu links:",
         "fields": [
-          {"path": "amenities", "type": "string", "description": "Comma-separated amenities offered", "example": "\"Accepts Credit Cards, Delivery, Takeout\""},
-          {"path": "website_menu", "type": "string", "description": "URL to the business's menu page", "example": "\"https://joespizza.com/menu\""},
-          {"path": "yelp_menu", "type": "string | null", "description": "URL to Yelp-hosted menu section", "example": "\"https://www.yelp.com/menu/joes-pizza\""}
+          {
+            "path": "amenities",
+            "type": "string",
+            "description": "Comma-separated amenities offered",
+            "example": "\"Accepts Credit Cards, Delivery, Takeout\""
+          },
+          {
+            "path": "website_menu",
+            "type": "string",
+            "description": "URL to the business's menu page",
+            "example": "\"https://joespizza.com/menu\""
+          },
+          {
+            "path": "yelp_menu",
+            "type": "string | null",
+            "description": "URL to Yelp-hosted menu section",
+            "example": "\"https://www.yelp.com/menu/joes-pizza\""
+          }
         ]
       },
       "timestampFields": {
         "title": "Timestamps",
         "fields": [
-          {"path": "scraping_time", "type": "string", "description": "When this result was scraped (ISO 8601)", "example": "\"2025-04-07T06:56:02.016Z\""}
+          {
+            "path": "scraping_time",
+            "type": "string",
+            "description": "When this result was scraped (ISO 8601)",
+            "example": "\"2025-04-07T06:56:02.016Z\""
+          }
         ]
       }
     },
@@ -131,5 +241,6 @@
   "seo": {
     "title": "Get Results - Yelp Search Export - lobstr.io API",
     "description": "Retrieve Yelp business listings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Yelp Search Export"
 }

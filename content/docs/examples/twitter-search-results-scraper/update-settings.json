@@ -2,7 +2,7 @@
   "slug": "examples/twitter-search-results-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure Twitter Search Results Scraper settings",
-  "category": "Twitter Search Results Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,29 +15,75 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**max_results**", "type": "integer", "default": "null", "description": "Maximum number of tweets to scrape per search query"}
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "default": "null",
+            "description": "Maximum number of tweets to scrape per search query"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -70,5 +116,6 @@
   "seo": {
     "title": "Update Settings - Twitter Search Results Scraper - lobstr.io API",
     "description": "Configure Twitter Search Results Scraper settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "Twitter Search Results Scraper"
 }

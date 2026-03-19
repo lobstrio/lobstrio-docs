@@ -2,7 +2,7 @@
   "slug": "examples/google-maps-leads-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Google Maps places data",
-  "category": "Google Maps Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,36 +15,186 @@
         "title": "Result Fields",
         "content": "Each result object contains the following fields:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Native identifier for the place", "example": "12616007"},
-          {"path": "object", "type": "string", "description": "Type of returned object", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Squid that produced this result", "example": "\"040aafb93d3e41a093c797ebd01f828a\""},
-          {"path": "run", "type": "string", "description": "Run that produced this result", "example": "\"fcd40d91f69547cc9b3a11c21764f136\""},
-          {"path": "name", "type": "string", "description": "Name of the place", "example": "\"Le Baron Restaurant\""},
-          {"path": "address", "type": "string", "description": "Full physical address", "example": "\"33 Av. Jean Mermoz, 13700 Marignane, France\""},
-          {"path": "phone", "type": "string", "description": "Primary business phone number", "example": "\"+33465940903\""},
-          {"path": "website", "type": "string", "description": "Official website URL", "example": "\"https://example.com\""},
-          {"path": "email", "type": "string", "description": "Business contact email", "example": "\"contact@example.com\""},
-          {"path": "category", "type": "string", "description": "Business category", "example": "\"Restaurant\""},
-          {"path": "score", "type": "float", "description": "Average user rating (1-5)", "example": "4.8"},
-          {"path": "ratings", "type": "integer", "description": "Total number of reviews", "example": "81"},
-          {"path": "lat", "type": "float", "description": "Latitude", "example": "43.4182026"},
-          {"path": "lng", "type": "float", "description": "Longitude", "example": "5.2139755"},
-          {"path": "city", "type": "string", "description": "City name", "example": "\"Marignane\""},
-          {"path": "zip_code", "type": "string", "description": "ZIP/postal code", "example": "\"13700\""},
-          {"path": "country_code", "type": "string", "description": "ISO 2-letter country code", "example": "\"FR\""},
-          {"path": "country_name", "type": "string", "description": "Full country name", "example": "\"France\""},
-          {"path": "cid", "type": "string", "description": "Google Maps Customer ID", "example": "\"897477744848702604\""},
-          {"path": "url", "type": "string", "description": "Full Google Maps URL", "example": "\"https://www.google.com/maps/place/...\""},
-          {"path": "main_image_url", "type": "string", "description": "URL of the main cover image", "example": "\"https://lh3.googleusercontent.com/...\""},
-          {"path": "images_count", "type": "integer", "description": "Number of images available", "example": "33"},
-          {"path": "opening_hours", "type": "string", "description": "Weekly opening hours", "example": "\"Monday 8:30AM-11PM, ...\""},
-          {"path": "booking_link", "type": "string", "description": "External booking URL", "example": "\"https://thefork.fr/...\""},
-          {"path": "facebook", "type": "string", "description": "Facebook page link", "example": "\"https://facebook.com/...\""},
-          {"path": "instagram", "type": "string", "description": "Instagram profile link", "example": "\"https://instagram.com/...\""},
-          {"path": "has_owner", "type": "boolean", "description": "Whether place has a verified owner", "example": "true"},
-          {"path": "is_permanently_closed", "type": "boolean", "description": "Whether permanently closed", "example": "false"},
-          {"path": "is_temporarily_closed", "type": "boolean", "description": "Whether temporarily closed", "example": "false"},
-          {"path": "scraping_time", "type": "timestamp", "description": "When this data was scraped", "example": "\"2025-06-23T09:40:17.812Z\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Native identifier for the place",
+            "example": "12616007"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Type of returned object",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Squid that produced this result",
+            "example": "\"040aafb93d3e41a093c797ebd01f828a\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Run that produced this result",
+            "example": "\"fcd40d91f69547cc9b3a11c21764f136\""
+          },
+          {
+            "path": "name",
+            "type": "string",
+            "description": "Name of the place",
+            "example": "\"Le Baron Restaurant\""
+          },
+          {
+            "path": "address",
+            "type": "string",
+            "description": "Full physical address",
+            "example": "\"33 Av. Jean Mermoz, 13700 Marignane, France\""
+          },
+          {
+            "path": "phone",
+            "type": "string",
+            "description": "Primary business phone number",
+            "example": "\"+33465940903\""
+          },
+          {
+            "path": "website",
+            "type": "string",
+            "description": "Official website URL",
+            "example": "\"https://example.com\""
+          },
+          {
+            "path": "email",
+            "type": "string",
+            "description": "Business contact email",
+            "example": "\"contact@example.com\""
+          },
+          {
+            "path": "category",
+            "type": "string",
+            "description": "Business category",
+            "example": "\"Restaurant\""
+          },
+          {
+            "path": "score",
+            "type": "float",
+            "description": "Average user rating (1-5)",
+            "example": "4.8"
+          },
+          {
+            "path": "ratings",
+            "type": "integer",
+            "description": "Total number of reviews",
+            "example": "81"
+          },
+          {
+            "path": "lat",
+            "type": "float",
+            "description": "Latitude",
+            "example": "43.4182026"
+          },
+          {
+            "path": "lng",
+            "type": "float",
+            "description": "Longitude",
+            "example": "5.2139755"
+          },
+          {
+            "path": "city",
+            "type": "string",
+            "description": "City name",
+            "example": "\"Marignane\""
+          },
+          {
+            "path": "zip_code",
+            "type": "string",
+            "description": "ZIP/postal code",
+            "example": "\"13700\""
+          },
+          {
+            "path": "country_code",
+            "type": "string",
+            "description": "ISO 2-letter country code",
+            "example": "\"FR\""
+          },
+          {
+            "path": "country_name",
+            "type": "string",
+            "description": "Full country name",
+            "example": "\"France\""
+          },
+          {
+            "path": "cid",
+            "type": "string",
+            "description": "Google Maps Customer ID",
+            "example": "\"897477744848702604\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Full Google Maps URL",
+            "example": "\"https://www.google.com/maps/place/...\""
+          },
+          {
+            "path": "main_image_url",
+            "type": "string",
+            "description": "URL of the main cover image",
+            "example": "\"https://lh3.googleusercontent.com/...\""
+          },
+          {
+            "path": "images_count",
+            "type": "integer",
+            "description": "Number of images available",
+            "example": "33"
+          },
+          {
+            "path": "opening_hours",
+            "type": "string",
+            "description": "Weekly opening hours",
+            "example": "\"Monday 8:30AM-11PM, ...\""
+          },
+          {
+            "path": "booking_link",
+            "type": "string",
+            "description": "External booking URL",
+            "example": "\"https://thefork.fr/...\""
+          },
+          {
+            "path": "facebook",
+            "type": "string",
+            "description": "Facebook page link",
+            "example": "\"https://facebook.com/...\""
+          },
+          {
+            "path": "instagram",
+            "type": "string",
+            "description": "Instagram profile link",
+            "example": "\"https://instagram.com/...\""
+          },
+          {
+            "path": "has_owner",
+            "type": "boolean",
+            "description": "Whether place has a verified owner",
+            "example": "true"
+          },
+          {
+            "path": "is_permanently_closed",
+            "type": "boolean",
+            "description": "Whether permanently closed",
+            "example": "false"
+          },
+          {
+            "path": "is_temporarily_closed",
+            "type": "boolean",
+            "description": "Whether temporarily closed",
+            "example": "false"
+          },
+          {
+            "path": "scraping_time",
+            "type": "timestamp",
+            "description": "When this data was scraped",
+            "example": "\"2025-06-23T09:40:17.812Z\""
+          }
         ]
       }
     },
@@ -93,5 +243,6 @@
   "seo": {
     "title": "Get Results - Google Maps Leads Scraper - lobstr.io API",
     "description": "Retrieve scraped Google Maps places including business info, contact details, and location data."
-  }
+  },
+  "subcategory": "Google Maps Leads Scraper"
 }

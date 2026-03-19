@@ -2,7 +2,7 @@
   "slug": "examples/google-search-scraper/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Google Search results",
-  "category": "Google Search Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -15,24 +15,114 @@
         "title": "Result Fields",
         "content": "Each result object contains the following fields:",
         "fields": [
-          {"path": "id", "type": "integer", "description": "Unique identifier for this result", "example": "706594"},
-          {"path": "object", "type": "string", "description": "Always \"result\"", "example": "\"result\""},
-          {"path": "squid", "type": "string", "description": "Hash ID of the squid that produced this result", "example": "\"c3744f29e3b740feaae2c628da82680c\""},
-          {"path": "run", "type": "string", "description": "Hash ID of the run during which this result was scraped", "example": "\"5227fec5bd4a43ecabb22f52654f76c0\""},
-          {"path": "page", "type": "integer", "description": "Search results page number (1-based)", "example": "1"},
-          {"path": "title", "type": "string", "description": "Page title as shown in Google's results", "example": "\"Crab\""},
-          {"path": "url", "type": "string", "description": "Canonical URL of the result", "example": "\"https://en.wikipedia.org/wiki/Crab\""},
-          {"path": "displayed_url", "type": "string", "description": "Pretty URL shown beneath the title", "example": "\"https://en.wikipedia.org\""},
-          {"path": "description", "type": "string", "description": "Snippet or meta-description from the page", "example": "\"Crabs are decapod crustaceans...\""},
-          {"path": "date", "type": "string", "description": "Publication date if detected", "example": "\"2024-11-11\""},
-          {"path": "is_organic", "type": "boolean", "description": "True for non-paid (organic) results", "example": "true"},
-          {"path": "is_paid", "type": "boolean", "description": "True for ad or paid listings", "example": "false"},
-          {"path": "is_question_answer", "type": "boolean", "description": "True for 'People also ask' or Q&A snippets", "example": "false"},
-          {"path": "is_related_query", "type": "boolean", "description": "True for related search suggestions", "example": "false"},
-          {"path": "answer", "type": "string", "description": "Direct answer snippet if Google provided one", "example": "null"},
-          {"path": "question", "type": "string", "description": "Original query for featured Q&A results", "example": "null"},
-          {"path": "total_results", "type": "string", "description": "Google's reported total matching results", "example": "\"1,234\""},
-          {"path": "scraping_time", "type": "timestamp", "description": "When this result was scraped", "example": "\"2025-06-30T08:16:53.273Z\""}
+          {
+            "path": "id",
+            "type": "integer",
+            "description": "Unique identifier for this result",
+            "example": "706594"
+          },
+          {
+            "path": "object",
+            "type": "string",
+            "description": "Always \"result\"",
+            "example": "\"result\""
+          },
+          {
+            "path": "squid",
+            "type": "string",
+            "description": "Hash ID of the squid that produced this result",
+            "example": "\"c3744f29e3b740feaae2c628da82680c\""
+          },
+          {
+            "path": "run",
+            "type": "string",
+            "description": "Hash ID of the run during which this result was scraped",
+            "example": "\"5227fec5bd4a43ecabb22f52654f76c0\""
+          },
+          {
+            "path": "page",
+            "type": "integer",
+            "description": "Search results page number (1-based)",
+            "example": "1"
+          },
+          {
+            "path": "title",
+            "type": "string",
+            "description": "Page title as shown in Google's results",
+            "example": "\"Crab\""
+          },
+          {
+            "path": "url",
+            "type": "string",
+            "description": "Canonical URL of the result",
+            "example": "\"https://en.wikipedia.org/wiki/Crab\""
+          },
+          {
+            "path": "displayed_url",
+            "type": "string",
+            "description": "Pretty URL shown beneath the title",
+            "example": "\"https://en.wikipedia.org\""
+          },
+          {
+            "path": "description",
+            "type": "string",
+            "description": "Snippet or meta-description from the page",
+            "example": "\"Crabs are decapod crustaceans...\""
+          },
+          {
+            "path": "date",
+            "type": "string",
+            "description": "Publication date if detected",
+            "example": "\"2024-11-11\""
+          },
+          {
+            "path": "is_organic",
+            "type": "boolean",
+            "description": "True for non-paid (organic) results",
+            "example": "true"
+          },
+          {
+            "path": "is_paid",
+            "type": "boolean",
+            "description": "True for ad or paid listings",
+            "example": "false"
+          },
+          {
+            "path": "is_question_answer",
+            "type": "boolean",
+            "description": "True for 'People also ask' or Q&A snippets",
+            "example": "false"
+          },
+          {
+            "path": "is_related_query",
+            "type": "boolean",
+            "description": "True for related search suggestions",
+            "example": "false"
+          },
+          {
+            "path": "answer",
+            "type": "string",
+            "description": "Direct answer snippet if Google provided one",
+            "example": "null"
+          },
+          {
+            "path": "question",
+            "type": "string",
+            "description": "Original query for featured Q&A results",
+            "example": "null"
+          },
+          {
+            "path": "total_results",
+            "type": "string",
+            "description": "Google's reported total matching results",
+            "example": "\"1,234\""
+          },
+          {
+            "path": "scraping_time",
+            "type": "timestamp",
+            "description": "When this result was scraped",
+            "example": "\"2025-06-30T08:16:53.273Z\""
+          }
         ]
       }
     },
@@ -81,5 +171,6 @@
   "seo": {
     "title": "Get Results - Google Search Scraper - lobstr.io API",
     "description": "Retrieve scraped Google Search results including titles, URLs, and descriptions."
-  }
+  },
+  "subcategory": "Google Search Scraper"
 }

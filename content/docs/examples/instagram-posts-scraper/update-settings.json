@@ -2,7 +2,7 @@
   "slug": "examples/instagram-posts-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure the Instagram Posts Scraper settings",
-  "category": "Instagram Posts Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,32 +15,93 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**max_results**", "type": "integer", "default": "unlimited", "description": "Total posts the crawler will collect per profile"},
-          {"param": "**max_unique_results_per_run**", "type": "integer", "default": "unlimited", "description": "Maximum number of unique posts retrieved across all tasks in the entire run"},
-          {"param": "**hours_back**", "type": "integer", "default": "unlimited", "description": "Only collect posts from the last N hours (e.g., 24 for posts from last 24 hours)"},
-          {"param": "**skip_pinned_posts**", "type": "boolean", "default": "false", "description": "If enabled, pinned posts will be excluded from the results"}
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "default": "unlimited",
+            "description": "Total posts the crawler will collect per profile"
+          },
+          {
+            "param": "**max_unique_results_per_run**",
+            "type": "integer",
+            "default": "unlimited",
+            "description": "Maximum number of unique posts retrieved across all tasks in the entire run"
+          },
+          {
+            "param": "**hours_back**",
+            "type": "integer",
+            "default": "unlimited",
+            "description": "Only collect posts from the last N hours (e.g., 24 for posts from last 24 hours)"
+          },
+          {
+            "param": "**skip_pinned_posts**",
+            "type": "boolean",
+            "default": "false",
+            "description": "If enabled, pinned posts will be excluded from the results"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       }
     },
@@ -77,5 +138,6 @@
   "seo": {
     "title": "Update Settings - Instagram Posts Scraper - lobstr.io API",
     "description": "Learn how to configure Instagram Posts Scraper settings including post limits, time filters, and pinned post exclusion using the lobstr.io API."
-  }
+  },
+  "subcategory": "Instagram Posts Scraper"
 }

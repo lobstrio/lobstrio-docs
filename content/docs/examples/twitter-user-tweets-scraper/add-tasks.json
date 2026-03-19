@@ -2,7 +2,7 @@
   "slug": "examples/twitter-user-tweets-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add Twitter user tweets scraping tasks by screen name",
-  "category": "Twitter User Tweets Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Twitter User Tweets Scraper"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `screen_name` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Twitter User Tweets Scraper"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `screen_name` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**screen_name**", "type": "string", "required": "Yes", "description": "Twitter username without the @ symbol (e.g., `elonmusk`)"}
+          {
+            "field": "**screen_name**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Twitter username without the @ symbol (e.g., `elonmusk`)"
+          }
         ]
       }
     },
@@ -66,5 +105,6 @@
   "seo": {
     "title": "Add Tasks - Twitter User Tweets Scraper - lobstr.io API",
     "description": "Learn how to add Twitter user tweets scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Twitter User Tweets Scraper"
 }

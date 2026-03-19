@@ -2,7 +2,7 @@
   "slug": "examples/linkedin-posts-commenters-and-likers-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add LinkedIn post URLs to scrape commenters and likers using the Lobstr.io API",
-  "category": "LinkedIn Posts Commenters and Likers Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v2/squid/{squid_id}/task",
@@ -18,13 +18,30 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          { "header": "Field", "key": "field" },
-          { "header": "Type", "key": "type" },
-          { "header": "Required", "key": "required" },
-          { "header": "Description", "key": "description" }
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          { "field": "**post_url**", "type": "string", "required": "Yes", "description": "URL of the LinkedIn Post to scrape" }
+          {
+            "field": "**post_url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "URL of the LinkedIn Post to scrape"
+          }
         ]
       }
     },
@@ -61,5 +78,6 @@
   "seo": {
     "title": "Add Tasks - LinkedIn Posts Commenters and Likers Scraper - lobstr.io API",
     "description": "Learn how to add LinkedIn post URLs to extract commenters and likers using the lobstr.io API."
-  }
+  },
+  "subcategory": "LinkedIn Posts Commenters and Likers Scraper"
 }

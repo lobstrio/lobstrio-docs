@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-iter-listings-with-phone/get-results",
   "title": "Get Results",
   "description": "Retrieve scraped Leboncoin listings with phone numbers",
-  "category": "Leboncoin Listings & Phone Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "GET",
     "endpoint": "/v1/results",
@@ -242,5 +242,6 @@
   "seo": {
     "title": "Get Results - Leboncoin Listings & Phone Search Export - lobstr.io API",
     "description": "Retrieve Leboncoin listings with phone numbers using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Listings & Phone Search Export"
 }

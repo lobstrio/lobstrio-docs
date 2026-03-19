@@ -2,7 +2,7 @@
   "slug": "examples/linkedin-posts-commenters-and-likers-scraper/update-settings",
   "title": "Update Settings",
   "description": "Configure the LinkedIn Posts Commenters and Likers Scraper settings",
-  "category": "LinkedIn Posts Commenters and Likers Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,31 +15,87 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Default", "key": "default"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Default",
+            "key": "default"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**scrape_comments**", "type": "boolean", "default": "true", "description": "Enable to scrape users who commented on the post"},
-          {"param": "**scrape_reactions**", "type": "boolean", "default": "true", "description": "Enable to scrape users who reacted (liked) the post"},
-          {"param": "**email**", "type": "boolean", "default": "false", "description": "Enable email enrichment to find email addresses"}
+          {
+            "param": "**scrape_comments**",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enable to scrape users who commented on the post"
+          },
+          {
+            "param": "**scrape_reactions**",
+            "type": "boolean",
+            "default": "true",
+            "description": "Enable to scrape users who reacted (liked) the post"
+          },
+          {
+            "param": "**email**",
+            "type": "boolean",
+            "default": "false",
+            "description": "Enable email enrichment to find email addresses"
+          }
         ]
       },
       "squidSettings": {
         "title": "Squid Settings",
         "content": "Configure general squid settings:",
         "columns": [
-          {"header": "Setting", "key": "setting"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Setting",
+            "key": "setting"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"setting": "**name**", "type": "string", "description": "Display name for your squid configuration"},
-          {"setting": "**concurrency**", "type": "integer", "description": "Number of parallel scraping threads (default: 1)"},
-          {"setting": "**export_unique_results**", "type": "boolean", "description": "Export only unique results (deduplicated)"},
-          {"setting": "**to_complete**", "type": "boolean", "description": "Run until all tasks complete"},
-          {"setting": "**no_line_breaks**", "type": "boolean", "description": "Remove line breaks from results"}
+          {
+            "setting": "**name**",
+            "type": "string",
+            "description": "Display name for your squid configuration"
+          },
+          {
+            "setting": "**concurrency**",
+            "type": "integer",
+            "description": "Number of parallel scraping threads (default: 1)"
+          },
+          {
+            "setting": "**export_unique_results**",
+            "type": "boolean",
+            "description": "Export only unique results (deduplicated)"
+          },
+          {
+            "setting": "**to_complete**",
+            "type": "boolean",
+            "description": "Run until all tasks complete"
+          },
+          {
+            "setting": "**no_line_breaks**",
+            "type": "boolean",
+            "description": "Remove line breaks from results"
+          }
         ]
       },
       "emailEnrichment": {
@@ -80,5 +136,6 @@
   "seo": {
     "title": "Update Settings - LinkedIn Posts Commenters and Likers Scraper - lobstr.io API",
     "description": "Learn how to configure LinkedIn Posts Commenters and Likers Scraper settings using the lobstr.io API."
-  }
+  },
+  "subcategory": "LinkedIn Posts Commenters and Likers Scraper"
 }

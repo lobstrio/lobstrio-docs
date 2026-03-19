@@ -2,7 +2,7 @@
   "slug": "examples/google-news-search-export/update-settings",
   "title": "Update Settings",
   "description": "Configure the Google News Search Export parameters",
-  "category": "Google News Search Export",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/squids/{squid_hash}",
@@ -15,14 +15,35 @@
         "title": "Scraper Parameters",
         "content": "Set these parameters in the `params` object:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Type", "key": "type"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**language**", "type": "string", "description": "Country edition and UI language for Google News (e.g., `English (United States)`)"},
-          {"param": "**time_range**", "type": "string", "description": "Filter by recency: `Any time`, `Past hour`, `Past 24h`, `Past week`, `Past year`"},
-          {"param": "**max_results**", "type": "integer", "description": "Maximum articles to scrape. Leave blank to extract all news since 2005."}
+          {
+            "param": "**language**",
+            "type": "string",
+            "description": "Country edition and UI language for Google News (e.g., `English (United States)`)"
+          },
+          {
+            "param": "**time_range**",
+            "type": "string",
+            "description": "Filter by recency: `Any time`, `Past hour`, `Past 24h`, `Past week`, `Past year`"
+          },
+          {
+            "param": "**max_results**",
+            "type": "integer",
+            "description": "Maximum articles to scrape. Leave blank to extract all news since 2005."
+          }
         ]
       },
       "maxResultsBehavior": {
@@ -59,5 +80,6 @@
   "seo": {
     "title": "Update Settings - Google News Search Export - lobstr.io API",
     "description": "Configure Google News Search Export parameters including language, time range, and result limits."
-  }
+  },
+  "subcategory": "Google News Search Export"
 }

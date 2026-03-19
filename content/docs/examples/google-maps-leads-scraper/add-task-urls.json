@@ -2,7 +2,7 @@
   "slug": "examples/google-maps-leads-scraper/add-task-urls",
   "title": "Add Task URLs",
   "description": "Add Google Maps search URLs to scrape places from",
-  "category": "Google Maps Leads Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -18,14 +18,36 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the google-maps-leads-scraper crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the google-maps-leads-scraper crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       }
     },
@@ -58,5 +80,6 @@
   "seo": {
     "title": "Add Task URLs - Google Maps Leads Scraper - lobstr.io API",
     "description": "Learn how to add Google Maps search URLs to scrape places using the lobstr.io API."
-  }
+  },
+  "subcategory": "Google Maps Leads Scraper"
 }

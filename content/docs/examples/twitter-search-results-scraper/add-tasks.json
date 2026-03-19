@@ -2,7 +2,7 @@
   "slug": "examples/twitter-search-results-scraper/add-tasks",
   "title": "Add Tasks",
   "description": "Add Twitter search scraping tasks by providing search URLs",
-  "category": "Twitter Search Results Scraper",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,42 +14,105 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Twitter Search Results Scraper"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Twitter Search Results Scraper"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Twitter search URL (e.g., `https://x.com/search?q=keyword&src=typed_query&f=top`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Twitter search URL (e.g., `https://x.com/search?q=keyword&src=typed_query&f=top`)"
+          }
         ]
       },
       "searchUrlParams": {
         "title": "Search URL Parameters",
         "content": "Twitter search URLs support various filters via query parameters:",
         "columns": [
-          {"header": "Parameter", "key": "param"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Parameter",
+            "key": "param"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"param": "**q**", "description": "Search query (URL encoded)"},
-          {"param": "**f=top**", "description": "Show top results"},
-          {"param": "**f=live**", "description": "Show latest results"},
-          {"param": "**f=user**", "description": "Show people results"},
-          {"param": "**f=image**", "description": "Show image results"},
-          {"param": "**f=video**", "description": "Show video results"}
+          {
+            "param": "**q**",
+            "description": "Search query (URL encoded)"
+          },
+          {
+            "param": "**f=top**",
+            "description": "Show top results"
+          },
+          {
+            "param": "**f=live**",
+            "description": "Show latest results"
+          },
+          {
+            "param": "**f=user**",
+            "description": "Show people results"
+          },
+          {
+            "param": "**f=image**",
+            "description": "Show image results"
+          },
+          {
+            "param": "**f=video**",
+            "description": "Show video results"
+          }
         ]
       }
     },
@@ -86,5 +149,6 @@
   "seo": {
     "title": "Add Tasks - Twitter Search Results Scraper - lobstr.io API",
     "description": "Learn how to add Twitter search scraping tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Twitter Search Results Scraper"
 }

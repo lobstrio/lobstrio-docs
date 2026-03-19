@@ -2,7 +2,7 @@
   "slug": "examples/leboncoin-auto-message-sender/add-tasks",
   "title": "Add Tasks",
   "description": "Add Leboncoin listing URLs to send automated messages",
-  "category": "Leboncoin Auto Message Sender",
+  "category": "Examples",
   "metadata": {
     "method": "POST",
     "endpoint": "/v1/tasks",
@@ -14,26 +14,65 @@
       "requestBody": {
         "title": "Request Body",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**squid**", "type": "string", "required": "Yes", "description": "Hash of your squid configured with the Leboncoin Auto Message Sender crawler"},
-          {"field": "**tasks**", "type": "array", "required": "Yes", "description": "Array of task objects, each containing a `url` field"}
+          {
+            "field": "**squid**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Hash of your squid configured with the Leboncoin Auto Message Sender crawler"
+          },
+          {
+            "field": "**tasks**",
+            "type": "array",
+            "required": "Yes",
+            "description": "Array of task objects, each containing a `url` field"
+          }
         ]
       },
       "taskObject": {
         "title": "Task Object",
         "columns": [
-          {"header": "Field", "key": "field"},
-          {"header": "Type", "key": "type"},
-          {"header": "Required", "key": "required"},
-          {"header": "Description", "key": "description"}
+          {
+            "header": "Field",
+            "key": "field"
+          },
+          {
+            "header": "Type",
+            "key": "type"
+          },
+          {
+            "header": "Required",
+            "key": "required"
+          },
+          {
+            "header": "Description",
+            "key": "description"
+          }
         ],
         "rows": [
-          {"field": "**url**", "type": "string", "required": "Yes", "description": "Direct Leboncoin listing URL (e.g., `https://www.leboncoin.fr/ad/locations/2943434204`)"}
+          {
+            "field": "**url**",
+            "type": "string",
+            "required": "Yes",
+            "description": "Direct Leboncoin listing URL (e.g., `https://www.leboncoin.fr/ad/locations/2943434204`)"
+          }
         ]
       }
     },
@@ -70,5 +109,6 @@
   "seo": {
     "title": "Add Tasks - Leboncoin Auto Message Sender - lobstr.io API",
     "description": "Learn how to add Leboncoin auto message tasks using the lobstr.io API."
-  }
+  },
+  "subcategory": "Leboncoin Auto Message Sender"
 }
