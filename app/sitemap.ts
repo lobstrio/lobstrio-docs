@@ -7,15 +7,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllDocSlugs();
 
   const docPages = slugs.map((slug) => ({
-    url: `${BASE_URL}/docs/${slug}`,
+    url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),
   }));
 
   return [
     {
-      url: `${BASE_URL}/docs/authentication`,
+      url: `${BASE_URL}/authentication`,
       lastModified: new Date(),
     },
-    ...docPages.filter((page) => !page.url.endsWith('/docs/authentication')),
+    ...docPages.filter((page) => !page.url.endsWith('/authentication')),
   ];
 }

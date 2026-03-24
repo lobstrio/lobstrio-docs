@@ -7,10 +7,9 @@ import { SidebarProps } from '@/lib/types/layout.type';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { Navigation, NavSubsection } from '@/lib/types/content';
 import Image from 'next/image';
-import { SIDEBAR_SCROLL_KEY } from './SidebarScrollContainer';
 
 function findActiveContext(navigation: Navigation, pathname: string) {
-  const currentSlug = pathname.replace('/docs/', '');
+  const currentSlug = pathname.startsWith('/') ? pathname.slice(1) : pathname;
 
   for (const section of navigation.sections) {
     if (section.items?.some(item => item.slug === currentSlug)) {
@@ -77,12 +76,12 @@ export default function Sidebar({ navigation }: SidebarProps) {
   const renderItems = (items: { title: string; slug: string; badge?: string }[]) => (
     <ul>
       {items.map((item, index) => {
-        const isActive = pathname === `/docs/${item.slug}`;
+        const isActive = pathname === `/${item.slug}`;
         const isLast = index === items.length - 1;
         return (
           <li key={item.slug}>
             <Link
-              href={`/docs/${item.slug}`}
+              href={`/${item.slug}`}
               className={`nav-item ${!isLast ? 'mb-1' : ''} ${isActive ? 'nav-item-active' : ''}`}
             >
               {item.title}

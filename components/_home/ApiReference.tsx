@@ -16,7 +16,7 @@ export default function ApiReference() {
           {API_REFERENCE.map((item) => (
             <Link
               key={item.slug}
-              href={`/docs/${item.slug}`}
+              href={`/${item.slug}`}
               className="block p-[24px] bg-[#fff] border border-[#dde1ee] hover:bg-[#f2f5f9] rounded-lg group"
             >
               <h3 className="text-[18px] font-bold leading-[1.83] group-hover:text-[#ff0000] mb-2">

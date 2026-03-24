@@ -217,7 +217,7 @@ export default async function SdkPage() {
                       <tr key={m.sdk} className="hover:bg-[#F9FAFB] transition">
                         <td className="px-5 py-2.5 font-mono text-[13px] text-[#0A2540]">{m.sdk}</td>
                         <td className="px-5 py-2.5">
-                          <Link href={`/docs/${m.slug}`} className="font-mono text-[13px] text-[#FF0000] hover:underline">
+                          <Link href={`/${m.slug}`} className="font-mono text-[13px] text-[#FF0000] hover:underline">
                             {m.endpoint}
                           </Link>
                         </td>
@@ -229,7 +229,7 @@ export default async function SdkPage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/docs/authentication" className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF0000] hover:underline">
+            <Link href="/authentication" className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF0000] hover:underline">
               View full API documentation <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

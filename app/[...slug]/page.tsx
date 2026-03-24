@@ -89,7 +89,7 @@ export default async function DocPage({ params }: PageProps) {
         <Head
           title={`${slugTitle} | lobstr.io API Documentation`}
           description={content.seo.description}
-          url={`${siteUrl}/docs/${slugPath}`}
+          url={`${siteUrl}/${slugPath}`}
           type="article"
           image={metaImage}
         />

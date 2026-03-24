@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export default function CtaSection() {
   return (
@@ -14,7 +14,7 @@ export default function CtaSection() {
         <div>
 
           <Link
-            href="/docs/authentication"
+            href="/authentication"
             className="inline-flex items-center gap-2 leading-[1.31] bg-[#ff0000] hover:bg-[#ff0000] text-white px-5 py-3.5 rounded-lg font-semibold"
           >
             Get Started

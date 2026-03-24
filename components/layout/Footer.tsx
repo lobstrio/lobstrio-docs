@@ -2,28 +2,20 @@ import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
 
 const FOOTER_COLUMNS = [
-  // {
-  //   label: 'API',
-  //   links: [
-  //     { label: 'Reference', href: '/docs/authentication' },
-  //     { label: 'Client for JavaScript', href: '/docs/rate-limiting' },
-  //     { label: 'Client for Python', href: '/docs/rate-limiting' },
-  //   ],
-  // },
   {
     label: 'SDK',
     direct: true,
-    href: '/docs/sdk',
+    href: '/sdk',
   },
   {
     label: 'CLI',
     direct: true,
-    href: '/docs/cli',
+    href: '/cli',
   },
   {
     label: 'MCP',
     direct: true,
-    href: '/docs/mcp',
+    href: '/mcp',
   },
 ];
 

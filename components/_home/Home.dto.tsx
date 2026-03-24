@@ -24,37 +24,37 @@ export const HOW_IT_WORKS = [
         step: 1,
         title: 'Choose a crawler',
         desc: 'Google Maps, LinkedIn, Instagram, Twitter, and 50+ more ready to use.',
-        link: '/docs/list-crawlers',
+        link: '/list-crawlers',
     },
     {
         step: 2,
         title: 'Create a squid',
         desc: 'Your scraping configuration.',
-        link: '/docs/create-squid',
+        link: '/create-squid',
     },
     {
         step: 3,
         title: 'Configure settings',
         desc: 'Set country, language, and result limits.',
-        link: '/docs/update-squid',
+        link: '/update-squid',
     },
     {
         step: 4,
         title: 'Add tasks',
         desc: 'URLs or parameters via API or CSV.',
-        link: '/docs/add-tasks',
+        link: '/add-tasks',
     },
     {
         step: 5,
         title: 'Start the run',
         desc: 'Launch and monitor progress.',
-        link: '/docs/start-run',
+        link: '/start-run',
     },
     {
         step: 6,
         title: 'Get results',
         desc: 'Retrieve structured JSON or auto delivery.',
-        link: '/docs/get-results',
+        link: '/get-results',
     },
 ];
 

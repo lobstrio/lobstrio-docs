@@ -155,7 +155,7 @@ export default async function CliPage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/docs/authentication" className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF0000] hover:underline">
+            <Link href="/authentication" className="inline-flex items-center gap-2 text-sm font-semibold text-[#FF0000] hover:underline">
               View full API documentation <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

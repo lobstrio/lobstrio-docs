@@ -5,33 +5,25 @@ import { ExternalLink, ChevronDown, Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 const NAV_ITEMS = [
-  // {
-  //   label: 'API',
-  //   links: [
-  //     { label: 'Reference', href: '/docs/authentication' },
-  //     { label: 'Client for JavaScript', href: '/docs/rate-limiting' },
-  //     { label: 'Client for Python', href: '/docs/rate-limiting' },
-  //   ],
-  // },
   {
     label: 'SDK',
     direct: true,
     links: [
-      { label: 'Python SDK', href: '/docs/sdk' },
+      { label: 'Python SDK', href: '/sdk' },
     ],
   },
   {
     label: 'CLI',
     direct: true,
     links: [
-      { label: 'CLI', href: '/docs/cli' },
+      { label: 'CLI', href: '/cli' },
     ],
   },
   {
     label: 'MCP',
     direct: true,
     links: [
-      { label: 'MCP Server', href: '/docs/mcp' },
+      { label: 'MCP Server', href: '/mcp' },
     ],
   },
 ];
