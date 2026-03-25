@@ -52,7 +52,7 @@ type ToolResult = { content: { type: 'text'; text: string }[]; isError?: boolean
 const TOOLS = [
   {
     name: 'list_docs',
-    description: 'List core Lobstr.io API documentation pages (excludes scraper examples). Optionally filter by category (e.g. User, Squid, Task, Run, Crawler, Delivery, Account, Result, Getting Started). Paginated.',
+    description: 'List core lobstr.io API documentation pages (excludes scraper examples). Optionally filter by category (e.g. User, Squid, Task, Run, Crawler, Delivery, Account, Result, Getting Started). Paginated.',
     inputSchema: { type: 'object', properties: { category: { type: 'string', description: 'Filter by category name. Case-insensitive.' }, page: { type: 'number', description: 'Page number (default: 1)' }, page_size: { type: 'number', description: 'Results per page (default: 20, max: 50)' } } },
   },
   {
@@ -62,22 +62,22 @@ const TOOLS = [
   },
   {
     name: 'get_doc',
-    description: 'Get full documentation for a specific Lobstr.io API endpoint, including request body, response fields, parameters, headers, code examples, and response examples.',
+    description: 'Get full documentation for a specific lobstr.io API endpoint, including request body, response fields, parameters, headers, code examples, and response examples.',
     inputSchema: { type: 'object', properties: { slug: { type: 'string', description: 'Document slug (e.g. "get-balance", "create-squid", "examples/google-maps-leads-scraper/add-tasks")' } }, required: ['slug'] },
   },
   {
     name: 'search_docs',
-    description: 'Search all Lobstr.io API documentation (core + examples) by keyword. Searches across titles, descriptions, introductions, and endpoint paths.',
+    description: 'Search all lobstr.io API documentation (core + examples) by keyword. Searches across titles, descriptions, introductions, and endpoint paths.',
     inputSchema: { type: 'object', properties: { query: { type: 'string', description: 'Search query' }, limit: { type: 'number', description: 'Max results (default: 10, max: 50)' } }, required: ['query'] },
   },
   {
     name: 'get_navigation',
-    description: 'Get the Lobstr.io API documentation navigation structure.',
+    description: 'Get the lobstr.io API documentation navigation structure.',
     inputSchema: { type: 'object', properties: {} },
   },
   {
     name: 'get_code_example',
-    description: 'Get a specific code example (cURL, Python, or API response) for a Lobstr.io API endpoint.',
+    description: 'Get a specific code example (cURL, Python, or API response) for a lobstr.io API endpoint.',
     inputSchema: { type: 'object', properties: { slug: { type: 'string', description: 'Document slug' }, type: { type: 'string', enum: ['curl', 'python', 'response'], description: 'Example type' } }, required: ['slug', 'type'] },
   },
 ];

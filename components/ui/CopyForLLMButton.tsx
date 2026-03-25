@@ -8,7 +8,7 @@ export default function CopyForLLMButton({ content }: CopyForLLMButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const formatForLLM = (): string => {
-    let formatted = `Context for LLM: Lobstr.io API Documentation\n\n`;
+    let formatted = `Context for LLM: lobstr.io API Documentation\n\n`;
     formatted += `# ${content.title}\n\n`;
     formatted += `${content.description}\n\n`;
     formatted += `## Endpoint Details\n`;

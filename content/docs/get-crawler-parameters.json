@@ -165,6 +165,6 @@
   },
   "seo": {
     "title": "Get Crawler Parameters - lobstr.io API Documentation",
-    "description": "Learn how to retrieve input parameters for a specific crawler using the Lobstr.io API. Understand task-level and squid-level parameters."
+    "description": "Learn how to retrieve input parameters for a specific crawler using the lobstr.io API. Understand task-level and squid-level parameters."
   }
 }

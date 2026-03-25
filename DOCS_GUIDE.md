@@ -1,6 +1,6 @@
 # Documentation JSON Format Guide
 
-This guide explains how to create documentation JSON files for the Lobstr.io API documentation site.
+This guide explains how to create documentation JSON files for the lobstr.io API documentation site.
 
 ## File Structure
 
@@ -280,8 +280,8 @@ For POST endpoints, use an empty array: `"parameters": []`
 
 ```json
 "seo": {
-  "title": "Add Tasks - Google Maps Reviews Scraper - Lobstr.io API",
-  "description": "Learn how to add Google Maps place URLs to scrape reviews using the Lobstr.io API.",
+  "title": "Add Tasks - Google Maps Reviews Scraper - lobstr.io API",
+  "description": "Learn how to add Google Maps place URLs to scrape reviews using the lobstr.io API.",
   "image": "images/your-custom-meta-image.png"
 }
 ```
@@ -293,7 +293,7 @@ For POST endpoints, use an empty array: `"parameters": []`
 | `image` | string | No | Custom OG/meta image path. Falls back to the site default meta image if omitted. |
 
 **Format:**
-- Title: `{Page Title} - {Scraper Name} - Lobstr.io API`
+- Title: `{Page Title} - {Scraper Name} - lobstr.io API`
 - Description: Brief, keyword-rich description (150-160 characters)
 - Image (optional): Path relative to the public directory (e.g. `"images/authentication-meta-img.png"`). If not provided, the default site meta image is used automatically.
 

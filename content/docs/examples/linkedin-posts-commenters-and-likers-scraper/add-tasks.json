@@ -1,7 +1,7 @@
 {
   "slug": "examples/linkedin-posts-commenters-and-likers-scraper/add-tasks",
   "title": "Add Tasks",
-  "description": "Add LinkedIn post URLs to scrape commenters and likers using the Lobstr.io API",
+  "description": "Add LinkedIn post URLs to scrape commenters and likers using the lobstr.io API",
   "category": "Examples",
   "metadata": {
     "method": "POST",

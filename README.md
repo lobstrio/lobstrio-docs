@@ -1,4 +1,4 @@
-# Lobstr.io API Documentation
+# lobstr.io API Documentation
 
 Official API documentation site for [lobstr.io](https://lobstr.io), a powerful platform for performing web scraping jobs at scale.
 

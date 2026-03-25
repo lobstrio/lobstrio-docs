@@ -1,7 +1,7 @@
 {
   "slug": "examples/instagram-profile-scraper/add-tasks",
   "title": "Add Tasks",
-  "description": "Add Instagram profile URLs or usernames to scrape using the Lobstr.io API",
+  "description": "Add Instagram profile URLs or usernames to scrape using the lobstr.io API",
   "category": "Examples",
   "metadata": {
     "method": "POST",

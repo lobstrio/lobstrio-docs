@@ -9,7 +9,7 @@
     "requiresAuth": false
   },
   "content": {
-    "introduction": "The Lobstr.io API enforces rate limits to ensure fair usage and stable service performance. When you exceed the rate limit, the API returns a 429 Too Many Requests response.",
+    "introduction": "The lobstr.io API enforces rate limits to ensure fair usage and stable service performance. When you exceed the rate limit, the API returns a 429 Too Many Requests response.",
     "sections": {
       "rateLimitHeaders": {
         "title": "Rate Limit Headers",

@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "Configure your LinkedIn Profile Scraper settings. The main configurable option is email enrichment, which uses Lobstr.io's enrichment service to find email addresses for the profiles you scrape.",
+    "introduction": "Configure your LinkedIn Profile Scraper settings. The main configurable option is email enrichment, which uses lobstr.io's enrichment service to find email addresses for the profiles you scrape.",
     "sections": {
       "settings": {
         "title": "Available Settings",
@@ -42,7 +42,7 @@
       },
       "emailEnrichment": {
         "title": "Email Enrichment",
-        "content": "When email enrichment is enabled, Lobstr.io will attempt to find the email address associated with each LinkedIn profile.\n\n**Pricing:** 9 credits per profile enriched. No email found = 0 credits charged.\n\nThe enrichment service returns:\n- `email`: The discovered email address (if found)\n- `email_status`: Validation status of the email (valid, invalid, catch-all, etc.)"
+        "content": "When email enrichment is enabled, lobstr.io will attempt to find the email address associated with each LinkedIn profile.\n\n**Pricing:** 9 credits per profile enriched. No email found = 0 credits charged.\n\nThe enrichment service returns:\n- `email`: The discovered email address (if found)\n- `email_status`: Validation status of the email (valid, invalid, catch-all, etc.)"
       }
     },
     "parameters": [],

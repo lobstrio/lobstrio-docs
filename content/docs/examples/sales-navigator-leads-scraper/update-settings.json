@@ -37,7 +37,7 @@
             "param": "**functions.email**",
             "type": "boolean",
             "default": "false",
-            "description": "Enable email enrichment using Lobstr.io's service (incurs extra credits)"
+            "description": "Enable email enrichment using lobstr.io's service (incurs extra credits)"
           },
           {
             "param": "**profiles_per_page**",

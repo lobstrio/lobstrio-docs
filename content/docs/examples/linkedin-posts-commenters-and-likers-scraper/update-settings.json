@@ -100,7 +100,7 @@
       },
       "emailEnrichment": {
         "title": "Email Enrichment",
-        "content": "When email enrichment is enabled, Lobstr.io will attempt to find email addresses for each profile.\n\n**Pricing:** 9 credits per profile where an email is found. No email found = 0 credits charged.\n\nEnriched emails include validation status: `valid`, `invalid`, `catch-all`, etc."
+        "content": "When email enrichment is enabled, lobstr.io will attempt to find email addresses for each profile.\n\n**Pricing:** 9 credits per profile where an email is found. No email found = 0 credits charged.\n\nEnriched emails include validation status: `valid`, `invalid`, `catch-all`, etc."
       }
     },
     "parameters": [],

@@ -1,7 +1,7 @@
 {
   "slug": "examples/sales-navigator-companies-scraper/add-tasks",
   "title": "Add Tasks",
-  "description": "Add Sales Navigator company search URLs to scrape using the Lobstr.io API",
+  "description": "Add Sales Navigator company search URLs to scrape using the lobstr.io API",
   "category": "Examples",
   "metadata": {
     "method": "POST",
@@ -67,7 +67,7 @@
       },
       {
         "type": "warning",
-        "content": "This scraper requires a linked Sales Navigator account. Connect your account in Lobstr.io settings first."
+        "content": "This scraper requires a linked Sales Navigator account. Connect your account in lobstr.io settings first."
       },
       {
         "type": "note",

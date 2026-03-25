@@ -8,7 +8,7 @@ export default function ApiReference() {
         <div className="text-center mb-[60px]">
           <h2 className="text-[40px] font-bold leading-[1.58] mb-4">API Reference</h2>
           <span className='text-[18px] opacity-90 leading-[1.28]'>
-            Everything you need to integrate Lobstr.io into your workflow
+            Everything you need to integrate lobstr.io into your workflow
           </span>
         </div>
 
