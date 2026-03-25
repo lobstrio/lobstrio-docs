@@ -1,6 +1,23 @@
 # lobstr.io API Documentation
 
-Official API documentation site for [lobstr.io](https://lobstr.io), a powerful platform for performing web scraping jobs at scale.
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
+[![MCP](https://img.shields.io/badge/MCP-Server-red)](https://staging.docs.lobstr.io/docs/mcp)
+
+Official API documentation site for [lobstr.io](https://lobstr.io) — a web scraping automation platform with 50+ ready-made crawlers.
+
+**Live:** [docs.lobstr.io](https://docs.lobstr.io)
+
+## Features
+
+- **138 API endpoint docs** with cURL, Python examples, and response samples
+- **31 scraper examples** — Google Maps, Twitter, LinkedIn, Instagram, and more
+- **MCP Server** — AI assistants can search and retrieve docs via [Model Context Protocol](https://staging.docs.lobstr.io/docs/mcp)
+- **Python SDK** and **CLI** documentation pages
+- **Three-column layout** — sidebar navigation, content, code examples
+- **Syntax highlighting** with Shiki (dark/light themes)
+- **Copy for LLM** button on every page
+- **SEO** — per-page meta, OG images, sitemap, robots.txt
 
 ## Tech Stack
 
@@ -15,37 +32,25 @@ Official API documentation site for [lobstr.io](https://lobstr.io), a powerful p
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
+- npm
 
-### Environment Variables
-
-Create a `.env` file in the root of the project with the following variable:
-
-```env
-NEXT_PUBLIC_SITE_URL=base_url or domain
-e.g
-NEXT_PUBLIC_SITE_URL=https://docs.lobstr.io
-```
-
-| Variable | Description |
-|----------|-------------|
-| `NEXT_PUBLIC_SITE_URL` | The base URL of the site. Used for generating absolute URLs (e.g. OG/meta image URLs for SEO). |
-
-> The `.env` file is not committed to the repository. Make sure to create it locally before running the project.
-
-### Installation
+### Setup
 
 ```bash
+git clone https://github.com/lobstrio/lobstrio-docs.git
+cd lobstrio-docs
+cp .env.example .env
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the documentation site.
+Open [http://localhost:3000](http://localhost:3000).
+
+### Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SITE_URL` | Base URL for absolute URLs (OG images, canonical, sitemap). Default: `https://docs.lobstr.io` |
 
 ### Build
 
@@ -57,91 +62,88 @@ npm start
 ## Project Structure
 
 ```
-├── app/                      # Next.js App Router pages
-│   ├── layout.tsx           # Root layout with fonts
-│   ├── page.tsx             # Homepage
-│   └── docs/
-│       ├── layout.tsx       # Docs layout with sidebar
-│       └── [...slug]/
-│           └── page.tsx     # Dynamic doc pages
-├── components/
-│   ├── layout/              # Layout components
-│   │   ├── Sidebar.tsx      # Navigation sidebar
-│   │   ├── DocContent.tsx   # Main content area
-│   │   └── CodeColumn.tsx   # Code examples column
-│   └── ui/                  # UI components
-│       ├── CodeBlock.tsx    # Syntax-highlighted code
-│       ├── CopyButton.tsx   # Copy to clipboard
-│       └── ProTip.tsx       # Callout boxes
-├── content/
-│   ├── docs/                # Documentation JSON files
-│   │   └── examples/        # Scraper-specific examples
-│   ├── code-examples/       # Code snippets
-│   │   ├── curl/            # cURL examples
-│   │   ├── python/          # Python examples
-│   │   └── response/        # API response examples
-│   └── navigation.json      # Sidebar navigation structure
-├── lib/
-│   ├── content/             # Content loading utilities
-│   ├── types/               # TypeScript interfaces
-│   └── utils/               # Helper functions
-└── scripts/
-    └── generate-content.ts  # Content generation script
+app/
+  docs/
+    [...slug]/          # Dynamic doc pages (from JSON)
+    mcp/                # MCP server page
+    sdk/                # Python SDK page
+    cli/                # CLI page
+  api/mcp/              # MCP HTTP endpoint
+components/
+  layout/               # Header, Footer, Sidebar, ThreeColumnLayout
+  ui/                   # CodeBlock, CopyButton, ProTip
+  docs/                 # CustomTable, ParametersList, ResponseFieldsList
+content/
+  docs/                 # 138 documentation JSON files
+    examples/           # 31 scraper-specific examples
+  code-examples/
+    curl/               # cURL examples
+    python/             # Python examples
+    response/           # API response examples (by status code)
+  navigation.json       # Sidebar structure
+lib/
+  content/              # Content loader (reads JSON + code examples)
+  types/                # TypeScript interfaces
 ```
-
-## Content Structure
-
-Documentation is stored as JSON files in `content/docs/`. Each endpoint has:
-
-- **Doc file:** `content/docs/{slug}.json` - Title, description, parameters, etc.
-- **cURL example:** `content/code-examples/curl/{slug}`
-- **Python example:** `content/code-examples/python/{slug}`
-- **Response example:** `content/code-examples/response/{slug}/{status-code}`
-
-### Adding New Documentation
-
-1. Create the doc JSON file in `content/docs/`
-2. Add code examples in `content/code-examples/`
-3. Update `content/navigation.json` to include the new page
 
 ## API Sections
 
 ### Core Endpoints
-- **Authentication** - API key authentication
-- **Rate Limiting** - Request limits and handling
-- **User** - Profile and balance endpoints
-- **Crawler** - List and manage crawlers
-- **Squid** - Create, update, and manage squids
-- **Task** - Add and manage scraping tasks
-- **Run** - Start and monitor scraping runs
-- **Result** - Retrieve scraped data
-- **Delivery** - Configure email, SFTP, S3, webhook delivery
+- **Authentication** — Token-based API authentication
+- **Rate Limiting** — Request limits and headers
+- **User** — Profile and balance
+- **Crawler** — List, details, parameters, attributes
+- **Squid** — Create, update, empty, delete
+- **Task** — Add, upload, list, delete
+- **Run** — Start, monitor, abort, download
+- **Result** — Retrieve scraped data
+- **Delivery** — Email, SFTP, S3, Google Sheet, webhook
+- **Account** — Sync, manage platform accounts
 
-### Example Scrapers
-- Google Maps Reviews/Leads
-- Google Search/News
-- Twitter Profile/Search/Tweets
-- Facebook Pages/Details
-- LinkedIn Sales Navigator
-- Leboncoin Listings/Messages/Phone
-- Vinted Products
-- TripAdvisor Restaurants
-- Yelp Search
-- YouTube Channel Emails
-- Idealista Listings
-- SeLoger/PAP/Pages Jaunes
+### Example Scrapers (31)
+Google Maps (Leads + Reviews) · Google Search · Google News · Twitter (Profile + Search + Tweets) · Facebook (Pages + Details) · LinkedIn (Profile + Posts) · Sales Navigator (Leads + Companies) · Instagram (Profile + Posts + Reels) · Leboncoin (Listings + Phone + Messages) · Vinted · TripAdvisor (Restaurants + Reviews) · Yelp · YouTube · TikTok Top Ads · SeLoger · PAP · Pages Jaunes · LaCentrale · Idealista · Bien'Ici
+
+### Developer Tools
+- **[Python SDK](https://staging.docs.lobstr.io/docs/sdk)** — `pip install lobstrio-sdk`
+- **[CLI](https://staging.docs.lobstr.io/docs/cli)** — `pip install lobstrio`
+- **[MCP Server](https://staging.docs.lobstr.io/docs/mcp)** — Connect AI assistants to the docs
+
+## MCP Server
+
+The documentation is available via [Model Context Protocol](https://modelcontextprotocol.io) at `/api/mcp`. Configure in Claude Code, Claude Desktop, or Cursor:
+
+```json
+{
+  "mcpServers": {
+    "lobstrio-docs": {
+      "type": "http",
+      "url": "https://docs.lobstr.io/api/mcp"
+    }
+  }
+}
+```
+
+**6 tools:** `list_docs`, `list_examples`, `get_doc`, `search_docs`, `get_navigation`, `get_code_example`
+
+## Adding Documentation
+
+Each endpoint needs 4 files:
+
+1. `content/docs/{slug}.json` — Documentation JSON
+2. `content/code-examples/curl/{slug}` — cURL example
+3. `content/code-examples/python/{slug}` — Python example
+4. `content/code-examples/response/{slug}/{status}` — Response example
+
+Then add to `content/navigation.json`. See [DOCS_GUIDE.md](DOCS_GUIDE.md) for the full schema.
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Support
+## License
 
-For help, open an issue or contact [support@lobstr.io](mailto:support@lobstr.io).
+[Apache License 2.0](LICENSE)
 
 ---
 
-© [lobstr.io](https://lobstr.io)
+&copy; [lobstr.io](https://lobstr.io)
