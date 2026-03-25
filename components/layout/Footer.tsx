@@ -36,7 +36,7 @@ export default function Footer() {
            {/* Logo */}
           <div className="shrink-0 md:-mt-1">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-[26px] text-[#ff0000] font-bold leading-[1.08]">lobstr.io</span>
+              <span className="text-[26px] text-[#ff0000] font-bold leading-[1.08]" style={{ fontFamily: "'Source Sans 3', 'Source Sans 3 Fallback', sans-serif" }}>lobstr.io</span>
               <span className="text-[22px] leading-[1.36]">docs</span>
             </Link>
           </div>
@@ -107,7 +107,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="font-semibold opacity-70 leading-[1.31] flex items-start gap-1 md:-mt-1"
             >
-              Lobstr.io
+              lobstr.io
               <ExternalLink className="w-3 h-3 mt-1" />
             </a>
             <a

@@ -67,7 +67,7 @@ export default function Header() {
         {/* Logo */}
         <div className='flex items-center lg:gap-28'>
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-[26px] text-[#ff0000] font-bold leading-[1.08]">lobstr.io</span>
+            <span className="text-[26px] text-[#ff0000] font-bold leading-[1.08]" style={{ fontFamily: "'Source Sans 3', 'Source Sans 3 Fallback', sans-serif" }}>lobstr.io</span>
             <span className="text-[22px] leading-[1.36]">docs</span>
           </Link>
           {/* Desktop nav */}
@@ -141,7 +141,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="font-semibold opacity-70 leading-[1.31] flex items-center gap-1"
           >
-            Lobstr.io
+            lobstr.io
             <ExternalLink className="w-3 h-3 font-semibold opacity-70 leading-[1.31]" />
           </a>
           <a
@@ -230,7 +230,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="font-semibold opacity-70 leading-[1.31] flex items-center gap-1"
             >
-              Lobstr.io
+              lobstr.io
               <ExternalLink className="w-3 h-3" />
             </a>
             <a
