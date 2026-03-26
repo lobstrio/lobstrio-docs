@@ -2,7 +2,24 @@
 
 All notable changes to this project are documented here.
 
-## [1.1.0] - 2025-03-25
+## [1.2.0] - 2026-03-26
+
+### Added
+- **Common Parameters table** on Get Crawler Details and Get Squid Details pages — documents `max_results`, `max_unique_results_per_run`, `fetch_since`, `hours_back` (deprecated), `max_date` (deprecated), and `functions`
+- **`fetch_since` parameter** — replaces `hours_back` and `max_date`. Stops scraping when items older than the threshold are reached. Supports relative durations (`24h`, `7d`, `2w`) and absolute dates (`YYYY-MM-DD`)
+- **Open source preparation** — Apache 2.0 license, CONTRIBUTING.md, .env.example, CHANGELOG.md, updated README with badges and full feature list
+- **GitHub repo** — public with description, 8 topics, proper .gitignore
+
+### Changed
+- `hours_back` and `max_date` marked as deprecated across 9 scraper examples (38 files)
+- Code examples updated: `hours_back: 24` → `fetch_since: "7d"`
+- Deprecation wording softened — no strikethrough or bold red, just "Deprecated —" prefix
+- "lobstr.io" branding: lowercase everywhere, Source Sans 3 font for logo
+- CTA buttons use sentence case
+- Footer redesigned with gradient background, favicon logo, social icons, three link columns
+- Package renamed to `lobstrio-docs`, version bumped to 1.2.0
+
+## [1.1.0] - 2026-03-19
 
 ### Added
 - **Footer redesign** — favicon + brand logo, social icons (GitHub, Twitter, LinkedIn), three link columns (API, Tools, Resources), Dashboard CTA, gradient background
