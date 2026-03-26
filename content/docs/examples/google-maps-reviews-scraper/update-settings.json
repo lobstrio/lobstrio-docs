@@ -40,10 +40,16 @@
             "description": "Sort reviews: `newest`, `most relevant`, or `highest rating`"
           },
           {
+            "param": "**fetch_since**",
+            "type": "string",
+            "default": "null",
+            "description": "Only collect items published after this point. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
+          },
+          {
             "param": "**hours_back**",
             "type": "integer",
             "default": "null",
-            "description": "Only collect reviews from the last N hours. Set `null` for no limit"
+            "description": "Deprecated. Use `fetch_since` instead"
           },
           {
             "param": "**max_results**",
@@ -133,7 +139,7 @@
       },
       {
         "type": "tip",
-        "content": "Set `hours_back` to limit results to recent reviews only, reducing processing time and costs."
+        "content": "Set `fetch_since` to limit results to recent reviews only, reducing processing time and costs."
       },
       {
         "type": "warning",

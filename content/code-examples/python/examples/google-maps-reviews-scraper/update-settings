@@ -17,7 +17,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "timezone": "Europe/Paris",
         "params": {
             "sort_by": "newest",
-            "hours_back": None,
+            "fetch_since": None,
             "max_results": 20,
             "language": "English (United States)",
             "functions": {

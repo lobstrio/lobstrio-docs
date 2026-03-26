@@ -17,7 +17,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "no_line_breaks": True,
         "params": {
             "json": True,              # Return raw JSON from Twitter API
-            "hours_back": None,        # No time limit (fetch all)
+            "fetch_since": None,        # No time limit (fetch all)
             "max_results": 98,         # Maximum tweets per user
             "exclude_reposts": True,   # Don't include retweets
             "collect_pinned_tweets": True  # Include pinned tweets

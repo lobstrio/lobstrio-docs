@@ -9,7 +9,7 @@ curl -X POST "https://api.lobstr.io/v1/squids/b6ab0f03b02e472a8e2ab0b16b4fdd0f" 
     "timezone": "Europe/Paris",
     "params": {
       "sort_by": "newest",
-      "hours_back": null,
+      "fetch_since": null,
       "max_results": 20,
       "language": "English (United States)",
       "functions": {

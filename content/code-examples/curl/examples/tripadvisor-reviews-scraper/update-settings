@@ -7,6 +7,6 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
       "max_results": 100,
       "language": "English",
       "ratings": "5",
-      "hours_back": null
+      "fetch_since": null
     }
   }'

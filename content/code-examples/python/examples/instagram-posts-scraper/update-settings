@@ -14,7 +14,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "params": {
             "max_results": 50,
             "max_unique_results_per_run": 1000,
-            "hours_back": 24,
+            "fetch_since": "7d",
             "skip_pinned_posts": False
         }
     }
@@ -22,4 +22,4 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
 
 data = response.json()
 print(f"Max results: {data['params']['max_results']}")
-print(f"Hours back: {data['params']['hours_back']}")
+print(f"Hours back: {data['params']['fetch_since']}")

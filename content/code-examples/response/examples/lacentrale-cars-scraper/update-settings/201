@@ -6,7 +6,7 @@
   "no_line_breaks": true,
   "params": {
     "max_pages": 50,
-    "hours_back": 24,
+    "fetch_since": "7d",
     "annonce_details": true
   }
 }

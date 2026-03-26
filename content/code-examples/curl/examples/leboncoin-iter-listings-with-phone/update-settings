@@ -8,12 +8,12 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "to_complete": false,
     "no_line_breaks": true,
     "params": {
-      "max_date": null,
+      "fetch_since": null,
       "functions": {
         "phone": true
       },
       "max_pages": 99,
-      "hours_back": null,
+      "fetch_since": null,
       "max_results": null,
       "online_shop": true
     }

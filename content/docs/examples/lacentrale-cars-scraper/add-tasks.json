@@ -71,7 +71,7 @@
       },
       {
         "type": "tip",
-        "content": "Use the `hours_back` setting to only scrape recently added listings for monitoring new inventory."
+        "content": "Use the `fetch_since` setting to only scrape recently added listings for monitoring new inventory."
       }
     ]
   },

@@ -18,7 +18,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "params": {
             # Message template with dynamic variables
             "message": "Hello #pseudo#,\n\nI want to enquire about #title#.",
-            "hours_back": 1,           # Only listings from last hour
+            "fetch_since": 1,           # Only listings from last hour
             "max_results": 3,          # Process max 3 listings
             "max_unique_results_per_run": 10  # Max 10 per run
         }

@@ -16,7 +16,7 @@ payload = {
     "params": {
         "max_results": 100,      # Max results per search URL
         "max_pages": 10,         # Limit pages to crawl
-        "hours_back": 24,        # Only ads modified in last 24 hours
+        "fetch_since": "7d",        # Only items from last 7 days
         "collect_ads": False     # Skip sponsored listings
     }
 }

@@ -16,12 +16,12 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "to_complete": False,
         "no_line_breaks": True,
         "params": {
-            "max_date": None,
+            "fetch_since": None,
             "functions": {
                 "phone": True  # Enable phone number extraction
             },
             "max_pages": 99,
-            "hours_back": None,
+            "fetch_since": None,
             "max_results": None,
             "online_shop": True
         }

@@ -37,13 +37,19 @@
             "param": "**max_date**",
             "type": "string (ISO) | null",
             "default": "null",
-            "description": "Stop crawling once a listing older than this date is found"
+            "description": "Deprecated. Use `fetch_since` instead"
+          },
+          {
+            "param": "**fetch_since**",
+            "type": "string",
+            "default": "null",
+            "description": "Only collect items published after this point. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
           },
           {
             "param": "**hours_back**",
             "type": "integer | null",
             "default": "null",
-            "description": "Collect only listings posted in the last X hours"
+            "description": "Deprecated. Use `fetch_since` instead"
           },
           {
             "param": "**max_pages**",
@@ -129,7 +135,7 @@
     "proTips": [
       {
         "type": "tip",
-        "content": "Use `hours_back` to monitor new listings - set to `24` to only collect listings from the last day."
+        "content": "Use `fetch_since` to monitor new listings - set to `24` to only collect listings from the last day."
       },
       {
         "type": "warning",
@@ -137,7 +143,7 @@
       },
       {
         "type": "note",
-        "content": "If both `max_date` and `hours_back` are set, `hours_back` takes priority."
+        "content": "If both `fetch_since` and `fetch_since` are set, `fetch_since` takes priority."
       }
     ]
   },

@@ -6,7 +6,7 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "params": {
       "max_results": 50,
       "max_unique_results_per_run": 1000,
-      "hours_back": 24,
+      "fetch_since": "7d",
       "skip_pinned_posts": false
     }
   }'

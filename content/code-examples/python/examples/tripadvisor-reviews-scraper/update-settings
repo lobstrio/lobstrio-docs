@@ -15,7 +15,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_hash}",
             "max_results": 100,
             "language": "English",
             "ratings": "5",
-            "hours_back": None  # Set to None for all reviews, or specify hours (e.g., 168 for last week)
+            "fetch_since": None  # Set to None for all reviews, or specify hours (e.g., 168 for last week)
         }
     }
 )

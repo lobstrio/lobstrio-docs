@@ -7,7 +7,7 @@
   "params": {
     "max_results": 100,
     "max_pages": 10,
-    "hours_back": 24,
+    "fetch_since": "7d",
     "collect_ads": false
   }
 }

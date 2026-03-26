@@ -9,7 +9,7 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "no_line_breaks": true,
     "params": {
       "json": true,
-      "hours_back": null,
+      "fetch_since": null,
       "max_results": 98,
       "exclude_reposts": true,
       "collect_pinned_tweets": true

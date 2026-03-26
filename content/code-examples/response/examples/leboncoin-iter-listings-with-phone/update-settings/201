@@ -2,12 +2,12 @@
   "name": "Leboncoin Listings & Phone Search Export (1)",
   "no_line_breaks": true,
   "params": {
-    "max_date": null,
+    "fetch_since": null,
     "functions": {
       "phone": true
     },
     "max_pages": 99,
-    "hours_back": null,
+    "fetch_since": null,
     "max_results": null,
     "online_shop": true
   },

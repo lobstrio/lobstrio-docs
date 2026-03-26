@@ -3,7 +3,7 @@
   "no_line_breaks": true,
   "params": {
     "sort_by": "newest",
-    "hours_back": null,
+    "fetch_since": null,
     "max_results": 20,
     "language": "English (United States)",
     "functions": {

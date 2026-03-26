@@ -15,7 +15,7 @@ payload = {
     "no_line_breaks": True,
     "params": {
         "max_pages": 50,           # Limit pages to scrape
-        "hours_back": 24,          # Only listings from last 24 hours
+        "fetch_since": "7d",          # Only listings from last 24 hours
         "annonce_details": True    # Fetch detailed listing info
     }
 }

@@ -129,7 +129,7 @@
       },
       {
         "type": "tip",
-        "content": "Set hours_back to null for all reviews, or specify a number of hours (e.g., 168 for one week) to monitor only recent reviews."
+        "content": "Set fetch_since to null for all reviews, or specify a number of hours (e.g., 168 for one week) to monitor only recent reviews."
       },
       {
         "type": "note",

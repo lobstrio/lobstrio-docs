@@ -69,7 +69,7 @@
     "proTips": [
       {
         "type": "tip",
-        "content": "Use the scraper's filter settings (language, rating, hours_back) to collect only the reviews you need and reduce credit consumption."
+        "content": "Use the scraper's filter settings (language, rating, fetch_since) to collect only the reviews you need and reduce credit consumption."
       },
       {
         "type": "note",

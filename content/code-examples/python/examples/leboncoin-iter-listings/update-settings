@@ -16,9 +16,9 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "to_complete": False,
         "no_line_breaks": True,
         "params": {
-            "max_date": None,      # No date cutoff
+            "fetch_since": None,      # No date cutoff
             "max_pages": 1,        # First page only
-            "hours_back": None,    # No time filter
+            "fetch_since": None,    # No time filter
             "max_results": 3,      # Limit to 3 listings
             "online_shop": True    # Extract seller shop URLs
         }

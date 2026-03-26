@@ -40,10 +40,16 @@
             "description": "Template for the message sent to sellers. Supports dynamic variables (see below)"
           },
           {
+            "param": "**fetch_since**",
+            "type": "string",
+            "default": "null",
+            "description": "Only collect items published after this point. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
+          },
+          {
             "param": "**hours_back**",
             "type": "integer | null",
             "default": "null",
-            "description": "Only process listings posted in the last N hours"
+            "description": "Deprecated. Use `fetch_since` instead"
           },
           {
             "param": "**max_results**",
