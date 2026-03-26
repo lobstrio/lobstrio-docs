@@ -136,7 +136,7 @@
         ]
       },
       "commonParameters": {
-        "title": "Common Squid-Level Parameters",
+        "title": "Common Parameters",
         "content": "Most crawlers share a set of common squid-level parameters returned in the `input` array. These control run behavior across all crawlers that support them:",
         "columns": [
           {"header": "Parameter", "key": "param"},
