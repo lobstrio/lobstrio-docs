@@ -3,8 +3,8 @@ set -e
 
 cd /home/matrix/mdev/lobstrio-docs
 
-echo "Installing dependencies..."
-npm install
+#echo "Installing dependencies..."
+#npm install
 
 echo "Building..."
 npm run build

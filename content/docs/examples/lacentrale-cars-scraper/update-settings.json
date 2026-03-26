@@ -55,13 +55,13 @@
             "param": "**fetch_since**",
             "type": "string",
             "default": "null",
-            "description": "Only collect items published after this point. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
+            "description": "Stop scraping when items older than this threshold are reached. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
           },
           {
             "param": "**hours_back**",
             "type": "integer",
             "default": "null",
-            "description": "Deprecated. Use `fetch_since` instead"
+            "description": "Deprecated — use `fetch_since` instead"
           },
           {
             "param": "**annonce_details**",

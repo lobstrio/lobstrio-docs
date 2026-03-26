@@ -99,9 +99,9 @@
         "rows": [
           {"param": "**max_results**", "type": "integer", "description": "Maximum results per task. null = unlimited."},
           {"param": "**max_unique_results_per_run**", "type": "integer", "description": "Maximum unique results across all tasks in a run. null = unlimited."},
-          {"param": "**fetch_since**", "type": "string", "description": "Only collect items published after this point. Relative (`24h`, `7d`, `2w`) or absolute (`YYYY-MM-DD`). Replaces deprecated `hours_back` and `max_date`."},
-          {"param": "~~hours_back~~", "type": "integer", "description": "**Deprecated.** Use `fetch_since` instead."},
-          {"param": "~~max_date~~", "type": "string", "description": "**Deprecated.** Use `fetch_since` instead."},
+          {"param": "**fetch_since**", "type": "string", "description": "Stop scraping when items older than this threshold are reached. Accepts a relative duration (`24h`, `7d`, `2w`) or an absolute date (`YYYY-MM-DD`)."},
+          {"param": "**hours_back**", "type": "integer", "description": "Deprecated — stop scraping when items older than N hours are reached. Use `fetch_since` instead."},
+          {"param": "**max_date**", "type": "string", "description": "Deprecated — stop scraping when items older than this date are reached. Use `fetch_since` instead."},
           {"param": "**functions**", "type": "object", "description": "Optional add-on features. Each key is a boolean toggle. Enabling incurs extra credits per row."}
         ]
       },
@@ -291,7 +291,7 @@
       },
       {
         "type": "note",
-        "content": "The `fetch_since` parameter replaces the deprecated `hours_back` and `max_date`. Use relative durations (24h, 7d, 2w) or absolute dates (YYYY-MM-DD) to filter by recency."
+        "content": "Use `fetch_since` to stop scraping when older items are reached. It supports both relative durations (24h, 7d, 2w) and absolute dates (YYYY-MM-DD). Replaces the older `hours_back` and `max_date` parameters."
       }
     ]
   },
