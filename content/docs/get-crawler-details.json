@@ -9,7 +9,7 @@
     "requiresAuth": true
   },
   "content": {
-    "introduction": "This endpoint retrieves detailed information about a specific crawler using its hash ID. It helps you understand each crawler's availability, cost, parameters, and potential issues before using it.",
+    "introduction": "This endpoint retrieves detailed information about a specific crawler using its hash ID. It helps you understand each crawler's availability, cost, parameters, and potential issues before using it.\n\n{{RENDER:commonParameters}}",
     "sections": {
       "responseFields": {
         "title": "Response Field Explanations",
@@ -134,6 +134,23 @@
             "example": "\"\""
           }
         ]
+      },
+      "commonParameters": {
+        "title": "Common Squid-Level Parameters",
+        "content": "Most crawlers share a set of common squid-level parameters returned in the `input` array. These control run behavior across all crawlers that support them:",
+        "columns": [
+          {"header": "Parameter", "key": "param"},
+          {"header": "Type", "key": "type"},
+          {"header": "Description", "key": "description"}
+        ],
+        "rows": [
+          {"param": "**max_results**", "type": "integer", "description": "Maximum results per task. Leave null for unlimited."},
+          {"param": "**max_unique_results_per_run**", "type": "integer", "description": "Maximum unique results across all tasks in a run. Leave null for unlimited."},
+          {"param": "**fetch_since**", "type": "string", "description": "Only collect items published after this point. Accepts a relative duration (`24h`, `7d`, `2w`) or an absolute date (`YYYY-MM-DD`). Replaces the deprecated `hours_back` and `max_date` parameters."},
+          {"param": "~~hours_back~~", "type": "integer", "description": "**Deprecated.** Use `fetch_since` instead. Previously filtered by hours."},
+          {"param": "~~max_date~~", "type": "string", "description": "**Deprecated.** Use `fetch_since` instead. Previously filtered by date."},
+          {"param": "**functions**", "type": "object", "description": "Optional add-on features (e.g. email enrichment, image collection). Each key is a function name with a boolean value. Enabling a function incurs extra credits per row."}
+        ]
       }
     },
     "parameters": [
@@ -175,6 +192,10 @@
       {
         "type": "tip",
         "content": "Use the 'result' array to know exactly what fields will be returned in your data. This helps you plan your data processing pipeline."
+      },
+      {
+        "type": "note",
+        "content": "The `fetch_since` parameter replaces the deprecated `hours_back` and `max_date`. It accepts relative durations (24h, 7d, 2w) or absolute dates (YYYY-MM-DD)."
       }
     ]
   },
