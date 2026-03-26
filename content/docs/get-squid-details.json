@@ -89,7 +89,7 @@
         ]
       },
       "commonParams": {
-        "title": "Common Parameters (inside params object)",
+        "title": "Common Parameters",
         "content": "The `params` object contains crawler-specific settings. Most crawlers share these common parameters:",
         "columns": [
           {"header": "Parameter", "key": "param"},
