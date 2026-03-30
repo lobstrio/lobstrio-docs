@@ -1,0 +1,11 @@
+<svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#nzhejnlbda)" stroke="red">
+        <path d="M6.5 1 1 4l5.5 3L12 4 6.5 1z" stroke-linejoin="round"/>
+        <path d="m1 7 5.5 3L12 7M1 10l5.5 3 5.5-3" stroke-linecap="round"/>
+    </g>
+    <defs>
+        <clipPath id="nzhejnlbda">
+            <path fill="#fff" d="M0 0h13v14H0z"/>
+        </clipPath>
+    </defs>
+</svg>

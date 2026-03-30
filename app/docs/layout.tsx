@@ -1,5 +1,7 @@
 import { loadNavigation } from '@/lib/content/content-loader';
 import Sidebar from '@/components/layout/Sidebar';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 /**
  * Layout for documentation pages
@@ -12,5 +14,9 @@ export default async function DocsLayout({
 }) {
   const navigation = await loadNavigation();
 
-  return <>{children}</>;
+  return <>
+  <Header/>
+  {children}
+  <Footer/>
+  </>;
 }

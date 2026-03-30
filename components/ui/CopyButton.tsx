@@ -71,8 +71,8 @@ export default function CopyButton({ text, className = '', variant = 'light' }: 
         onMouseDown={() => setActive(true)}
         onMouseUp={() => setActive(false)}
         onMouseLeave={() => setActive(false)}
-        style={{ backgroundColor: bgColor }}
-        className={`${variant === 'dark' ? 'h-[35px] w-[35px] p-[1px]' : 'h-[28px] w-[28px] p-1.5'} flex justify-center text-sm font-semibold leading-[1.36] cursor-pointer border border-[#dee0ea] rounded-[7px] items-center gap-2 ${className}`}
+        style={variant === 'dark' ? undefined : { backgroundColor: bgColor }}
+        className={`${variant === 'dark' ? 'h-[30px] w-[30px]' : 'h-[28px] w-[28px] p-1.5 border border-[#dee0ea] rounded-[7px]'} flex justify-center text-sm font-semibold leading-[1.36] cursor-pointer rounded-[7px] items-center gap-2 ${className}`}
         aria-label="Copy to clipboard"
       >
         <Image

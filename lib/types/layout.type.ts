@@ -3,9 +3,9 @@ import { CodeExamples, Navigation, DocContent as DocContentType, DocContent, Pro
 
 
 export interface ThreeColumnLayoutProps {
-  sidebar: React.ReactNode;
+  sidebar?: React.ReactNode;
   children: React.ReactNode;
-  codeColumn: React.ReactNode;
+  codeColumn?: React.ReactNode;
 }
 
 export interface SidebarProps {
@@ -58,10 +58,14 @@ export interface ProTipProps {
 }
 
 export interface CodeBlockProps {
-  code: string;
+  code: string ;
   language: string;
   showLineNumbers?: boolean;
   theme?: 'dark' | 'light';
   showCopy?: boolean;
   showLabel?: boolean;
+  showBorder?: boolean;
+  codeBg?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
