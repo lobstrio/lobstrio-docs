@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ExternalLink, ChevronDown, Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
@@ -37,6 +38,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -109,7 +111,7 @@ export default function Header() {
                   item.links[0].href.startsWith('/') ? (
                     <Link
                       href={item.links[0].href}
-                      className="font-semibold leading-[1.31] opacity-90 hover:opacity-100"
+                      className={`font-semibold leading-[1.31] hover:opacity-100 ${pathname === item.links[0].href ? 'text-[#ff0000] opacity-100' : 'opacity-90'}`}
                     >
                       {item.label}
                     </Link>
@@ -201,7 +203,7 @@ export default function Header() {
                   <Link
                     href={item.links[0].href}
                     onClick={() => setMenuOpen(false)}
-                    className="font-semibold leading-[1.31] opacity-90"
+                    className={`font-semibold leading-[1.31] ${pathname === item.links[0].href ? 'text-[#ff0000]' : 'opacity-90'}`}
                   >
                     {item.label}
                   </Link>

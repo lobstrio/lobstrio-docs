@@ -1,5 +1,4 @@
 import { loadNavigation } from '@/lib/content/content-loader';
-import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 

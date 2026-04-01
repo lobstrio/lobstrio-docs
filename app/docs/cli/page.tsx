@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Terminal, Zap, Download, Settings, Globe, ArrowRight, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import CodeBlock from '@/components/ui/CodeBlock';
@@ -56,8 +54,6 @@ lobstr whoami`;
 export default async function CliPage() {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-
       {/* Hero */}
       <section className="border-b border-[#E5E7EB]">
         <div className="max-w-4xl mx-auto px-6 py-20 text-center">
@@ -65,7 +61,7 @@ export default async function CliPage() {
             <Terminal className="w-4 h-4" />
             Command Line Interface
           </div>
-          <h1 className="text-[42px] font-bold text-[#0A2540] leading-tight mb-5">
+          <h1 className="text-[64px] font-[900] text-[#0A2540] leading-[1.22] tracking-normal text-center mb-5">
             lobstr CLI
           </h1>
           <p className="text-lg text-[#0A2540]/70 max-w-2xl mx-auto leading-relaxed">
@@ -161,8 +157,6 @@ export default async function CliPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
