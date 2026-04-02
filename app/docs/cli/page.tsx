@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { ExternalLink } from 'lucide-react';
 import { codeToHtml } from 'shiki';
 import CodeBlock from '@/components/ui/CodeBlock';
 import CopyButton from '@/components/ui/CopyButton';
@@ -122,17 +123,17 @@ export default async function CliPage() {
       <section className="border-b border-[#dee0ea]">
         <div className="max-w-4xl mx-auto px-6 py-10 md:py-[80px] text-center">
           <div className="inline-flex items-center gap-2 px-2 py-1 rounded-lg border border-[#FF7F7F] bg-[#FEF2F2] text-[#FF0000] text-sm  mb-6">
-            Model Context Protocol
+            Command Line Interface
           </div>
-          <h1 className="text-[40px] md:text-[64px] font-[900] text-[#0A2540] leading-[0.77] tracking-normal text-center mb-10">
-            lobstr <span className="text-[#ff0000]">CLI</span>
+          <h1 className="text-[40px] md:text-[64px] font-[900] text-[#0A2540] leading-[1.1] tracking-normal text-center mb-10">
+            Run <span className="text-[#ff0000]">scrapers</span> from<br />your terminal
           </h1>
           <p className="text-[18px] font-normal text-[#0A2540]/70 max-w-2xl mx-auto leading-[1.78] tracking-normal text-center">
             Install the lobstr CLI, browse 50+ crawlers, and start scraping Google Maps, LinkedIn, or any platform — without ever touching the UI
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <HeroButton label="Quick start" href="#quickstart" />
-            <a href="https://pypi.org/project/lobstrio/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center h-[50px] px-[26px] rounded-lg font-semibold text-[18px] text-[#FF0000] border border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition whitespace-nowrap">View on PyPI</a>
+            <a href="https://pypi.org/project/lobstrio/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 h-[50px] px-[26px] rounded-lg font-semibold text-[18px] text-[#FF0000] border border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition whitespace-nowrap">View on PyPI <ExternalLink className="w-4 h-4" /></a>
           </div>
         </div>
       </section>
@@ -222,7 +223,10 @@ export default async function CliPage() {
                 <p className="text-[#ffffffb3] whitespace-pre-wrap">leads.csv ────────────────────────────────────────</p>
                 <div className="space-y-2">
                   <p className="text-[#4adb98]">──────── ✓ squid created ✓ 200 tasks added ✓ run</p>
-                  <p className="text-white whitespace-pre-wrap leading-[1em]"><span className="text-[#4adb98]">started </span><span style={{ fontSize: 8, verticalAlign: 'middle' }}>████████████████░░░░░░░░</span> 67% ✓ download</p>
+                  <div className='h-2.5 overflow-hidden flex items-center'>
+
+                  <p className="text-white whitespace-pre-wrap leading-[1em]"><span className="text-[#4adb98]">started </span><span style={{ fontSize: 12, verticalAlign: 'middle' }}>███████████████████░░░░░░░░░░</span> 67% ✓ download</p>
+                  </div>
                 </div>
                 <p className="text-[#ffffffb3] whitespace-pre-wrap">complete ─────────────────────────────────────────</p>
                 <p className="whitespace-pre-wrap text-[#ffffffb3]">──────── <span className="text-[#79b8ff]">Saved</span> <span className="text-white">leads.csv (1 204 rows)</span></p>
