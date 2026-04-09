@@ -73,7 +73,7 @@
             "param": "**fetch_since**",
             "type": "string",
             "default": "null",
-            "description": "Stop scraping when items older than this threshold are reached. Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD)"
+            "description": "Stop scraping when items older than this threshold are reached (based on `last_publication_date`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM)"
           },
           {
             "param": "**hours_back**",

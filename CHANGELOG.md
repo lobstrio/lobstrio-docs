@@ -5,12 +5,14 @@ All notable changes to this project are documented here.
 ## [1.2.0] - 2026-03-26
 
 ### Added
+
 - **Common Parameters table** on Get Crawler Details and Get Squid Details pages — documents `max_results`, `max_unique_results_per_run`, `fetch_since`, `hours_back` (deprecated), `max_date` (deprecated), and `functions`
-- **`fetch_since` parameter** — replaces `hours_back` and `max_date`. Stops scraping when items older than the threshold are reached. Supports relative durations (`24h`, `7d`, `2w`) and absolute dates (`YYYY-MM-DD`)
+- **`fetch_since` parameter** — replaces `hours_back` and `max_date`. Stops scraping when items older than the threshold are reached. Supports relative durations (`24h`, `7d`, `2w`) and absolute dates (`YYYY-MM-DD HH:MM`)
 - **Open source preparation** — Apache 2.0 license, CONTRIBUTING.md, .env.example, CHANGELOG.md, updated README with badges and full feature list
 - **GitHub repo** — public with description, 8 topics, proper .gitignore
 
 ### Changed
+
 - `hours_back` and `max_date` marked as deprecated across 9 scraper examples (38 files)
 - Code examples updated: `hours_back: 24` → `fetch_since: "7d"`
 - Deprecation wording softened — no strikethrough or bold red, just "Deprecated —" prefix
@@ -22,6 +24,7 @@ All notable changes to this project are documented here.
 ## [1.1.0] - 2026-03-19
 
 ### Added
+
 - **Footer redesign** — favicon + brand logo, social icons (GitHub, Twitter, LinkedIn), three link columns (API, Tools, Resources), Dashboard CTA, gradient background
 - **MCP Server** — 6 documentation tools over HTTP (`list_docs`, `list_examples`, `get_doc`, `search_docs`, `get_navigation`, `get_code_example`) with word-based search scoring
 - **MCP documentation page** (`/docs/mcp`) — setup configs for Claude Code, Claude Desktop, Cursor; example prompts; API reference
@@ -37,6 +40,7 @@ All notable changes to this project are documented here.
 - CONTRIBUTING.md and .env.example
 
 ### Changed
+
 - Header nav links (SDK, CLI, MCP) now point to internal documentation pages
 - Footer completely redesigned with multi-column layout
 - Homepage code example updated with correct API flow (configure settings step, proper status check, correct field names)
@@ -49,6 +53,7 @@ All notable changes to this project are documented here.
 - Version bumped to 1.1.0
 
 ### Fixed
+
 - Example docs category/subcategory normalization (81 files)
 - `NEXT_PUBLIC_SITE_URL` fallback in doc pages
 - Internal links use Next.js `<Link>` instead of `<a target="_blank">`
@@ -57,6 +62,7 @@ All notable changes to this project are documented here.
 ## [1.0.0] - 2025-02-03
 
 ### Added
+
 - **Documentation site** — Next.js 15 App Router with TypeScript and Tailwind CSS 4
 - **138 API endpoint documentation pages** covering all lobstr.io API routes
 - **31 scraper example documentation sets** (add-tasks, update-settings, get-results) for Google Maps, Twitter, LinkedIn, Instagram, Facebook, and more
@@ -74,6 +80,7 @@ All notable changes to this project are documented here.
 - **Responsive design** — mobile hamburger menu, adaptive layouts
 
 ### Scraper Examples
+
 - Bien'Ici Search Export
 - Facebook Page Details Export
 - Facebook Pages Search Export

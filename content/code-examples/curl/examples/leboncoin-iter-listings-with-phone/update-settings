@@ -8,7 +8,6 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "to_complete": false,
     "no_line_breaks": true,
     "params": {
-      "fetch_since": null,
       "functions": {
         "phone": true
       },
