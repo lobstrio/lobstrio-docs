@@ -12,7 +12,7 @@ export default function CliHero() {
           Run <span className="text-[#ff0000]">scrapers</span> from<br />your terminal
         </h1>
         <p className="text-[18px] font-normal text-[#111827]/70 max-w-2xl mx-auto leading-[1.78] tracking-normal text-center">
-          Install the lobstr CLI, browse 50+ crawlers, and start scraping Google Maps, LinkedIn, or any platform — without ever touching the UI
+          Install the lobstr.io CLI, browse 50+ crawlers, and start scraping Google Maps, LinkedIn, or any platform — without ever touching the UI
         </p>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <HeroButton label="Quick start" href="#quickstart" />

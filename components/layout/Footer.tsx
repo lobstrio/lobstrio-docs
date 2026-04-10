@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-[#dde1ee] mt-8 pt-5 text-[13px] text-[#0A2540]/35">
-          &copy; lobstr
+          &copy; lobstr.io
         </div>
       </div>
     </footer>
