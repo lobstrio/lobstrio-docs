@@ -1,7 +1,0 @@
-{
-  "error": {
-    "message": "Task not found",
-    "type": "not_found_error",
-    "param": "task_hash"
-  }
-}

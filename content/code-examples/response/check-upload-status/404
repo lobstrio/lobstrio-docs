@@ -1,7 +1,0 @@
-{
-  "error": {
-    "message": "Upload task not found",
-    "type": "not_found_error",
-    "param": "upload_task_id"
-  }
-}

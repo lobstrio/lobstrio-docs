@@ -1,3 +1,0 @@
-curl -X GET "https://api.lobstr.io/v1/user/balance" \
-  -H "Authorization: Token YOUR_API_KEY" \
-  -H "Content-Type: application/json"

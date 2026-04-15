@@ -1,7 +1,0 @@
-{
-  "error": {
-    "message": "You must provide either 'squid' or 'run' parameter, not both or neither",
-    "type": "validation_error",
-    "param": "squid,run"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "name": "TripAdvisor Iter Restaurants (1)",
-  "no_line_breaks": true,
-  "params": {
-    "max_results": 100
-  },
-  "to_complete": false,
-  "export_unique_results": true
-}

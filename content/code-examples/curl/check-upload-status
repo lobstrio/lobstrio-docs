@@ -1,2 +1,0 @@
-curl -X GET "https://api.lobstr.io/v1/tasks/upload/427a7bfc54cf4ce483d83ba23425164b" \
-  -H "Authorization: Token YOUR_API_KEY"

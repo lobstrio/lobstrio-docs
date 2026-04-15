@@ -1,7 +1,0 @@
-curl -X POST "https://api.lobstr.io/v1/squids" \
-  -H "Authorization: Token YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "crawler": "4734d096159ef05210e0e1677e8be823",
-    "name": "My Google Maps Scraper"
-  }'

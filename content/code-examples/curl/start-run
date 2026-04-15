@@ -1,6 +1,0 @@
-curl -X POST "https://api.lobstr.io/v1/runs" \
-  -H "Authorization: Token YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "squid": "b6c56d18cb0046949461ba9ca278e8ad"
-  }'

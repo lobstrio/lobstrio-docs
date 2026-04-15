@@ -1,2 +1,0 @@
-curl -X GET "https://api.lobstr.io/v1/crawlers" \
-  -H "Authorization: Token YOUR_API_KEY"

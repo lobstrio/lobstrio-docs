@@ -1,7 +1,0 @@
-{
-  "error": {
-    "message": "Run not found or already completed",
-    "type": "not_found_error",
-    "param": "run_hash"
-  }
-}

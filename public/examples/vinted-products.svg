@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
-    <g transform="translate(-32 -1431)">
-        <rect data-name="Прямоугольник 14250" width="33" height="33" rx="7" transform="translate(32 1431)" style="fill:#6b8fb3;opacity:.16"/>
-        <path data-name="Контур 67916" d="M0 5.505v8.181a1.415 1.415 0 0 0 .708 1.226L7.792 19a1.415 1.415 0 0 0 1.415 0l7.085-4.09A1.415 1.415 0 0 0 17 13.686V5.505a1.415 1.415 0 0 0-.708-1.226L9.208.189a1.415 1.415 0 0 0-1.415 0L.708 4.28A1.415 1.415 0 0 0 0 5.505" transform="translate(40 1437.904)" style="fill:#9aa8b5"/>
-        <path data-name="Контур 67917" d="m69.3 28.306-9.049 5.22a.875.875 0 0 0-.438.758v3.947a.669.669 0 0 0 .35.588l.8.435a.669.669 0 0 0 .988-.588v-2.821a.849.849 0 0 1 .424-.735l9.353-5.4z" transform="translate(-16.074 1410.125)" style="fill:#e7edf3"/>
-    </g>
-</svg>

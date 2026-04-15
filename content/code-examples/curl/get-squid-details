@@ -1,2 +1,0 @@
-curl -X GET "https://api.lobstr.io/v1/squids/c106a44a98044ef18acc59986ae10967" \
-  -H "Authorization: Token YOUR_API_KEY"
