@@ -1,0 +1,121 @@
+---
+title: "Pagination"
+description: "How to iterate through large result sets using the lobstr.io API"
+---
+
+All list endpoints return paginated responses. This guide explains the pagination model and how to fetch all records efficiently.
+
+## Response structure
+
+Every paginated endpoint returns the same envelope:
+
+```json
+{
+  "total_results": 243,
+  "limit": 10,
+  "page": 1,
+  "total_pages": 25,
+  "result_from": 1,
+  "result_to": 10,
+  "data": [...]
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `total_results` | integer | Total number of matching records |
+| `limit` | integer | Number of records per page (max 100) |
+| `page` | integer | Current page number (1-indexed) |
+| `total_pages` | integer | Total number of pages |
+| `result_from` | integer | Index of the first record on this page |
+| `result_to` | integer | Index of the last record on this page |
+| `data` | array | The records for this page |
+
+## Parameters
+
+| Parameter | Default | Max | Description |
+|-----------|---------|-----|-------------|
+| `page` | `1` | — | Page number to retrieve |
+| `limit` | `10` | `100` | Number of results per page |
+
+Pass these as query parameters:
+
+```bash
+GET /v1/results?squid=abc123&page=2&limit=50
+```
+
+## Iterating through all pages
+
+<CodeGroup>
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+def get_all_results(squid_id):
+    all_data = []
+    page = 1
+    limit = 100
+
+    while True:
+        response = requests.get(
+            "https://api.lobstr.io/v1/results",
+            headers=headers,
+            params={"squid": squid_id, "page": page, "limit": limit}
+        )
+        body = response.json()
+
+        all_data.extend(body["data"])
+        print(f"Fetched page {page}/{body['total_pages']} ({len(all_data)}/{body['total_results']} records)")
+
+        if page >= body["total_pages"]:
+            break
+
+        page += 1
+
+    return all_data
+
+results = get_all_results("YOUR_SQUID_ID")
+print(f"Total records fetched: {len(results)}")
+```
+
+```bash cURL
+# Page 1
+curl "https://api.lobstr.io/v1/results?squid=YOUR_SQUID_ID&page=1&limit=100" \
+  -H "Authorization: Token YOUR_API_KEY"
+
+# Page 2
+curl "https://api.lobstr.io/v1/results?squid=YOUR_SQUID_ID&page=2&limit=100" \
+  -H "Authorization: Token YOUR_API_KEY"
+```
+</CodeGroup>
+
+## Free plan limit
+
+On free plans, paginated endpoints cap results at a fixed limit regardless of `total_results`. When this cap is hit, the response includes a `warning` field:
+
+```json
+{
+  "total_results": 500,
+  "data": [...],
+  "warning": "Export limit reached - only 50 results returned. Upgrade to premium to access the full dataset: https://app.lobstr.io/dashboard/pricing."
+}
+```
+
+Upgrade your plan to remove this restriction.
+
+## Endpoints that support pagination
+
+| Endpoint | Path |
+|----------|------|
+| List Squids | `GET /v1/squids` |
+| List Tasks | `GET /v1/tasks` |
+| List Runs | `GET /v1/runs` |
+| Get Run Tasks | `GET /v1/runs/{run_hash}/tasks` |
+| Get Results | `GET /v1/results` |
+| List Accounts | `GET /v1/accounts` |
+
+<Tip>
+  Use `limit=100` (the maximum) to minimize the number of requests when fetching large datasets.
+</Tip>

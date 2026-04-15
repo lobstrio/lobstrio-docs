@@ -22,8 +22,17 @@
           {
             "group": "Getting Started",
             "pages": [
+              "docs/quickstart",
               "docs/authentication",
               "docs/rate-limiting"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "docs/concepts",
+              "docs/pagination",
+              "docs/errors"
             ]
           },
           {

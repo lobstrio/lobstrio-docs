@@ -1,0 +1,114 @@
+---
+title: "Concepts"
+description: "Understand the core building blocks of the lobstr.io API"
+---
+
+## The data model
+
+Everything in lobstr.io revolves around five objects: **Crawlers**, **Squids**, **Tasks**, **Runs**, and **Accounts**. Understanding how they relate to each other makes the API straightforward to use.
+
+```
+Crawler (what to scrape)
+    └── Squid (your project config)
+            ├── Tasks (what inputs to process)
+            ├── Runs (executions of those tasks)
+            │       └── Results (output data)
+            └── Accounts (platform logins, if needed)
+```
+
+---
+
+## Crawler
+
+A crawler is a pre-built scraper module for a specific website or platform — Google Maps, LinkedIn, Amazon, etc. lobstr.io maintains the crawlers; you just configure and run them.
+
+Crawlers define:
+
+- What **task parameters** they accept (e.g., `url`, `keyword`, `location`)
+- What **result attributes** they return (e.g., `name`, `rating`, `phone`)
+- Whether they require a linked **Account** (e.g., LinkedIn requires a LinkedIn login)
+
+Use [List Crawlers](/docs/list-crawlers) to browse what's available, and [Get Crawler Parameters](/docs/get-crawler-parameters) to see what inputs a specific crawler accepts.
+
+---
+
+## Squid
+
+A squid is your personal scraping project. It binds a crawler to your configuration and holds your tasks.
+
+Think of it like a saved search or a project folder: you create one squid per scraping job, configure its settings (concurrency, schedule, delivery), add tasks to it, and launch runs from it.
+
+Key properties:
+
+- **crawler** — which crawler the squid uses
+- **params** — optional settings specific to the crawler (e.g., language, country)
+- **concurrency** — how many tasks to run in parallel
+- **schedule** — optional cron expression to run automatically
+
+<Note>
+  The name "squid" is a nod to the lobstr.io theme — a squid is what holds your
+  scraping configuration together.
+</Note>
+
+---
+
+## Task
+
+A task is a single unit of work — one URL to scrape, one search query to run, one profile to look up. Tasks live inside a squid and are processed during runs.
+
+Tasks are cheap to add in bulk. You can add thousands at once via the [Add Tasks](/docs/add-tasks) endpoint or upload a CSV file via [Upload Tasks](/docs/upload-tasks).
+
+Key properties:
+
+- **params** — the input for this task (e.g., `{"url": "https://..."}`)
+- **is_active** — whether the task will be included in the next run
+- Duplicate tasks (same params) are automatically detected and skipped
+
+---
+
+## Run
+
+A run is a single execution of a squid's pending tasks. When you start a run, lobstr.io processes all active tasks in the squid and collects results.
+
+Runs are immutable once started — you can abort them, but not edit them.
+
+**Run lifecycle:**
+
+| Status      | Meaning                                |
+| ----------- | -------------------------------------- |
+| `pending`   | Queued, waiting to start               |
+| `running`   | Actively processing tasks              |
+| `uploading` | Processing complete, exporting results |
+| `paused`    | Temporarily paused                     |
+| `done`      | Completed successfully                 |
+| `aborted`   | Stopped manually                       |
+| `error`     | Failed due to an error                 |
+
+Results become available once status is `done`. Poll [Get Run](/docs/get-run) until you reach a terminal status, then fetch results.
+
+---
+
+## Account
+
+Some crawlers (LinkedIn, Instagram, Facebook, etc.) require a logged-in platform account to scrape data. You link these accounts to lobstr.io via the Accounts API.
+
+Once linked, you assign the account to a squid, and lobstr.io uses it automatically when running tasks. Accounts can expire (cookies time out), so the API provides endpoints to refresh them.
+
+<Warning>
+  Accounts contain platform session cookies. Only use accounts you own and are
+  authorized to use.
+</Warning>
+
+---
+
+## Credits
+
+Credits are the currency used to pay for scraping. Each result collected consumes credits, with the rate depending on the crawler and any optional enrichment functions (e.g., email verification).
+
+Check your balance with [Get Balance](/docs/get-balance) before launching large runs.
+
+---
+
+## Results
+
+Results are the scraped data rows collected during runs. They're stored and queryable per squid via [Get Results](/docs/get-results), or downloadable as a file via [Download Run](/docs/download-run).

@@ -1,0 +1,144 @@
+---
+title: "Errors"
+description: "HTTP status codes and error types returned by the lobstr.io API"
+---
+
+The lobstr.io API uses standard HTTP status codes. All error responses include a `detail` field with a human-readable message.
+
+```json
+{
+  "detail": "A required parameter squid is missing from the route."
+}
+```
+
+## HTTP status codes
+
+| Code | Meaning |
+|------|---------|
+| `200` | Success |
+| `400` | Bad request — invalid parameters or business logic violation |
+| `401` | Unauthorized — missing or invalid API key |
+| `403` | Forbidden — authenticated but not permitted |
+| `404` | Not found — resource does not exist |
+| `429` | Too many requests — rate limit exceeded |
+| `500` | Server error — something went wrong on our end |
+
+---
+
+## Authentication errors (401)
+
+| Error | Description |
+|-------|-------------|
+| `NotAuthenticated` | No API key provided or the key is invalid |
+| `TokenExpired` | The authentication token has expired |
+
+Make sure your `Authorization` header is formatted exactly as `Token YOUR_API_KEY`.
+
+---
+
+## Validation errors (400)
+
+These occur when required parameters are missing or have the wrong format.
+
+| Error | Description |
+|-------|-------------|
+| `ParamsNeeded` | A required parameter is missing (e.g., `squid`, `tasks`) |
+| `MultipleParamsNeeded` | Multiple required parameters are missing |
+| `ParamsInvalid` | A parameter value is invalid |
+| `InvalidParamType` | A parameter has the wrong type (e.g., string where integer expected) |
+| `InvalidParameterValue` | A parameter value is out of the allowed range |
+| `BadEncoding` | File encoding could not be recognized (upload endpoints) |
+| `InvalidParam` | General invalid parameter error |
+
+---
+
+## Resource not found errors (404)
+
+| Error | Description |
+|-------|-------------|
+| `SquidDoesNotExistException` | The specified squid does not exist or does not belong to you |
+| `RunDoesNotExist` | The specified run was not found |
+| `TaskDoesNotExist` | The specified task was not found |
+| `TasksNotFound` | No tasks found matching the criteria |
+| `ModuleNotFound` | The specified crawler does not exist |
+| `FunctionNotFound` | The specified crawler function does not exist |
+| `AccountDoesNotExist` | The specified account was not found |
+| `AccountTypeDoesNotExist` | The specified account type does not exist |
+
+---
+
+## Business logic errors (400)
+
+These occur when the request is valid but the operation can't proceed due to account state.
+
+| Error | Description |
+|-------|-------------|
+| `NotEnoughBalance` | Insufficient credits to start the run |
+| `NoActiveSubscription` | Account has no active subscription |
+| `UsageLimitExceeded` | Plan usage limit has been reached |
+| `SlotsLimitExceeded` | Maximum concurrency slots in use |
+| `ConcurrencyLimitExceeded` | Requested concurrency exceeds plan limit |
+| `NoTasksPresent` | Squid has no active tasks to run |
+| `SquidNotReady` | Squid is not in a state that allows running |
+| `DuplicateSquid` | A squid with the same name already exists |
+| `PremiumModule` | This crawler requires a paid plan |
+| `ModuleUnavailable` | The crawler is temporarily unavailable |
+| `ModuleRestricted` | Access to this crawler is restricted |
+| `RunInProgress` | A run is already in progress for this squid |
+| `TaskNotValidError` | Task parameters do not match the crawler's requirements |
+| `FileSizeLimitExceeded` | Uploaded file exceeds the size limit |
+
+---
+
+## Rate limiting (429)
+
+Requests that exceed your plan's rate limit return a `429` response. See [Rate Limiting](/docs/rate-limiting) for limits and retry guidance.
+
+```json
+{
+  "detail": "Request was throttled. Expected available in 2 seconds."
+}
+```
+
+---
+
+## Server errors (500)
+
+| Error | Description |
+|-------|-------------|
+| `SomethingWentWrong` | An unexpected server-side error occurred |
+
+If you encounter repeated 500 errors, contact support with the request details.
+
+---
+
+## Error handling example
+
+<CodeGroup>
+```python Python
+import requests
+
+def api_request(method, url, **kwargs):
+    response = requests.request(method, url, **kwargs)
+
+    if response.status_code == 401:
+        raise Exception("Authentication failed — check your API key")
+
+    if response.status_code == 404:
+        detail = response.json().get("detail", "Resource not found")
+        raise Exception(f"Not found: {detail}")
+
+    if response.status_code == 400:
+        detail = response.json().get("detail", "Bad request")
+        raise Exception(f"Bad request: {detail}")
+
+    if response.status_code == 429:
+        raise Exception("Rate limit exceeded — slow down requests")
+
+    if response.status_code >= 500:
+        raise Exception("Server error — try again later")
+
+    response.raise_for_status()
+    return response.json()
+```
+</CodeGroup>

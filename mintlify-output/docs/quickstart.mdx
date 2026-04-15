@@ -1,0 +1,209 @@
+---
+title: "Quickstart"
+description: "Go from zero to scraped data in minutes"
+---
+
+This guide walks through a complete workflow: pick a crawler, configure a squid, add tasks, run it, and download results — all via the API.
+
+## Prerequisites
+
+You'll need an API key. Find it in your [lobstr.io dashboard](https://app.lobstr.io/dashboard/api) under **API** in the sidebar.
+
+Set it as an environment variable to use in the examples below:
+
+```bash
+export LOBSTR_API_KEY="your_api_key_here"
+```
+
+## Step 1: Verify your credentials
+
+Confirm your key is working before proceeding.
+
+```python Python
+import requests
+
+headers = {"Authorization": f"Token {LOBSTR_API_KEY}"}
+
+response = requests.get("https://api.lobstr.io/v1/me", headers=headers)
+user = response.json()
+print(f"Logged in as: {user['first_name']} {user['last_name']} ({user['email']})")
+```
+
+## Step 2: Find a crawler
+
+Crawlers define what site you're scraping. List available crawlers and pick the one you need.
+
+```python Python
+response = requests.get("https://api.lobstr.io/v1/crawlers", headers=headers)
+crawlers = response.json()
+
+for crawler in crawlers:
+    print(f"{crawler['id']}  {crawler['name']}")
+```
+
+Note the `id` of the crawler you want to use. For example, the Google Maps Reviews crawler.
+
+## Step 3: Create a squid
+
+A squid is your configured scraping project — it ties together a crawler, your settings, and your tasks.
+
+```python Python
+payload = {
+    "name": "My first squid",
+    "crawler": "CRAWLER_ID"   # from Step 2
+}
+
+response = requests.post(
+    "https://api.lobstr.io/v1/squids",
+    headers={**headers, "Content-Type": "application/json"},
+    json=payload
+)
+squid = response.json()
+squid_id = squid["id"]
+print(f"Squid created: {squid_id}")
+```
+
+## Step 4: Add tasks
+
+Tasks tell the squid what to scrape — typically URLs or search queries. The accepted keys depend on the crawler (use [Get Crawler Parameters](/docs/get-crawler-parameters) to check).
+
+```python Python
+payload = {
+    "squid": squid_id,
+    "tasks": [
+        {"url": "https://maps.google.com/?cid=1234567890"},
+        {"url": "https://maps.google.com/?cid=0987654321"}
+    ]
+}
+
+response = requests.post(
+    "https://api.lobstr.io/v1/tasks",
+    headers={**headers, "Content-Type": "application/json"},
+    json=payload
+)
+result = response.json()
+print(f"Added {len(result['tasks'])} tasks ({result['duplicated_count']} duplicates skipped)")
+```
+
+## Step 5: Start a run
+
+A run executes all pending tasks in the squid.
+
+```python Python
+payload = {"squid": squid_id}
+
+response = requests.post(
+    "https://api.lobstr.io/v1/runs",
+    headers={**headers, "Content-Type": "application/json"},
+    json=payload
+)
+run = response.json()
+run_id = run["id"]
+print(f"Run started: {run_id}")
+```
+
+## Step 6: Poll until complete
+
+Check the run status periodically until it reaches a terminal state.
+
+```python Python
+import time
+
+terminal_statuses = {"done", "aborted", "error"}
+
+while True:
+    response = requests.get(f"https://api.lobstr.io/v1/runs/{run_id}", headers=headers)
+    run = response.json()
+    status = run["status"]
+
+    print(f"Status: {status} — {run['total_results']} results so far")
+
+    if status in terminal_statuses:
+        print(f"Run finished: {run['done_reason']}")
+        break
+
+    time.sleep(10)
+```
+
+<Tip>
+  Typical runs complete in seconds to a few minutes depending on task count and
+  concurrency. Avoid polling more frequently than every 5 seconds.
+</Tip>
+
+## Step 7: Download results
+
+Once the run is `done`, fetch your data.
+
+```python Python
+response = requests.get(
+    "https://api.lobstr.io/v1/results",
+    headers=headers,
+    params={"squid": squid_id, "limit": 100, "page": 1}
+)
+data = response.json()
+
+print(f"Total results: {data['total_results']}")
+for row in data["data"]:
+    print(row)
+```
+
+For large datasets, iterate through pages using the `page` parameter. See the [Pagination guide](/docs/pagination) for details.
+
+## Complete example
+
+<CodeGroup>
+```python Python
+import os, time, requests
+
+API_KEY = os.environ["LOBSTR_API_KEY"]
+CRAWLER_ID = "YOUR_CRAWLER_ID"
+
+headers = {"Authorization": f"Token {API_KEY}"}
+json_headers = {\*\*headers, "Content-Type": "application/json"}
+
+# Create squid
+
+squid = requests.post(
+"https://api.lobstr.io/v1/squids",
+headers=json_headers,
+json={"name": "Quickstart squid", "crawler": CRAWLER_ID}
+).json()
+squid_id = squid["id"]
+
+# Add tasks
+
+requests.post(
+"https://api.lobstr.io/v1/tasks",
+headers=json_headers,
+json={"squid": squid_id, "tasks": [{"url": "https://example.com"}]}
+)
+
+# Start run
+
+run_id = requests.post(
+"https://api.lobstr.io/v1/runs",
+headers=json_headers,
+json={"squid": squid_id}
+).json()["id"]
+
+# Poll until done
+
+while True:
+run = requests.get(f"https://api.lobstr.io/v1/runs/{run_id}", headers=headers).json()
+if run["status"] in {"done", "aborted", "error"}:
+break
+time.sleep(10)
+
+# Fetch results
+
+results = requests.get(
+"https://api.lobstr.io/v1/results",
+headers=headers,
+params={"squid": squid_id, "limit": 100, "page": 1}
+).json()
+
+print(f"Done — {results['total_results']} results collected")
+
+```
+</CodeGroup>
+```
