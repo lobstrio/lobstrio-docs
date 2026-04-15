@@ -28,8 +28,8 @@ This endpoint permanently removes a specific platform account using its hash ID.
   Always "account". Example: `"account"`
 </ResponseField>
 
-<ResponseField name="deleted" type="string">
-  Confirmation of deletion (always "true" on success). Example: `"true"`
+<ResponseField name="deleted" type="boolean">
+  Confirmation of deletion. Always `true` on success.
 </ResponseField>
 
 <Warning>
@@ -84,10 +84,10 @@ if account['squids']:
 response = requests.delete(url, headers=headers)
 data = response.json()
 
-if data.get('deleted') == 'true':
-    print(f"✓ Account {data['id']} deleted successfully")
+if data.get('deleted'):
+    print(f"Account {data['id']} deleted successfully")
 else:
-    print(f"✗ Failed to delete account")
+    print("Failed to delete account")
 ```
 </CodeGroup>
 
@@ -97,7 +97,7 @@ else:
 {
   "id": "d3e97f2cd33658f301bdbe807402ab30",
   "object": "account",
-  "deleted": "true"
+  "deleted": true
 }
 ```
 

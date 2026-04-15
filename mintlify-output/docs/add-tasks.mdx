@@ -35,11 +35,15 @@ This endpoint creates new tasks within a specified squid. Tasks define the speci
 </ResponseField>
 
 <ResponseField name="tasks" type="array">
-  Array of created task objects. Example: `[...]`
+  Array of created task objects.
 </ResponseField>
 
 <ResponseField name="tasks[].id" type="string">
-  Unique task identifier. Example: `"c5e29d2aba8b77cdc56391e7405302de"`
+  Unique task identifier (hash). Example: `"c5e29d2aba8b77cdc56391e7405302de"`
+</ResponseField>
+
+<ResponseField name="tasks[].object" type="string">
+  Always `"task"`.
 </ResponseField>
 
 <ResponseField name="tasks[].created_at" type="string">
@@ -51,11 +55,11 @@ This endpoint creates new tasks within a specified squid. Tasks define the speci
 </ResponseField>
 
 <ResponseField name="tasks[].params" type="object">
-  Task parameters (URL, search terms, etc.). Example: `{"url": "..."}`
+  Task parameters specific to the crawler (URL, search terms, etc.). Example: `{"url": "https://..."}`
 </ResponseField>
 
-<ResponseField name="tasks[].object" type="string">
-  Always "task". Example: `"task"`
+<ResponseField name="tasks[].module" type="string">
+  Identifier of the crawler module this task belongs to.
 </ResponseField>
 
 <Tip>
@@ -111,12 +115,12 @@ payload = {
 response = requests.post(url, headers=headers, json=payload)
 data = response.json()
 
-print(f"Added {data['inserted']} tasks")
-print(f"Duplicates skipped: {data['duplicates']}")
+print(f"Added {len(data['tasks'])} tasks")
+print(f"Duplicates skipped: {data['duplicated_count']}")
 
-# Display created task hashes
-for task_hash in data['task_hashes']:
-    print(f"  - {task_hash}")
+# Display created task IDs
+for task in data['tasks']:
+    print(f"  - {task['id']}")
 ```
 </CodeGroup>
 
@@ -124,13 +128,25 @@ for task_hash in data['task_hashes']:
 
 ```json 200
 {
-  "inserted": 2,
-  "duplicates": 0,
-  "task_hashes": [
-    "6b9d3afdf4e76df374915a50d7a495c4",
-    "c5e29d2aba8b77cdc56391e7405302de"
-  ],
-  "object": "task_list"
+  "duplicated_count": 0,
+  "tasks": [
+    {
+      "id": "6b9d3afdf4e76df374915a50d7a495c4",
+      "object": "task",
+      "created_at": "2025-02-10T14:19:32.916901",
+      "is_active": true,
+      "params": {"url": "https://www.linkedin.com/in/johndoe"},
+      "module": "4734d096159ef05210e0e1677e8be823"
+    },
+    {
+      "id": "c5e29d2aba8b77cdc56391e7405302de",
+      "object": "task",
+      "created_at": "2025-02-10T14:19:32.916901",
+      "is_active": true,
+      "params": {"url": "https://www.linkedin.com/in/janedoe"},
+      "module": "4734d096159ef05210e0e1677e8be823"
+    }
+  ]
 }
 ```
 

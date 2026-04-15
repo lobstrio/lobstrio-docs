@@ -355,14 +355,6 @@
             ]
           },
           {
-            "group": "Bien'Ici Search Export",
-            "pages": [
-              "examples/bienici-listings-search-export/add-tasks",
-              "examples/bienici-listings-search-export/update-settings",
-              "examples/bienici-listings-search-export/get-results"
-            ]
-          },
-          {
             "group": "Amazon Reviews Scraper",
             "pages": [
               "examples/amazon-reviews-scraper/add-tasks",
@@ -432,14 +424,6 @@
               "examples/leboncoin-listing-status-checker/add-tasks",
               "examples/leboncoin-listing-status-checker/update-settings",
               "examples/leboncoin-listing-status-checker/get-results"
-            ]
-          },
-          {
-            "group": "Leboncoin Listings Search Export",
-            "pages": [
-              "examples/leboncoin-listings-search-export/add-tasks",
-              "examples/leboncoin-listings-search-export/update-settings",
-              "examples/leboncoin-listings-search-export/get-results"
             ]
           },
           {

@@ -14,58 +14,46 @@ This is typically the first endpoint you'll call after authentication to confirm
   Your API authentication token. Value: `Token YOUR_API_KEY`
 </ParamField>
 
-<ParamField header="Content-Type" type="string">
+<ParamField header="Content-Type" type="string" default="application/json">
   Content type of the request. Value: `application/json`
 </ParamField>
 
 ## Response Field Explanations
 
-<ResponseField name="id" type="string">
-  Unique user identifier. Example: `"user_abc123xyz789"`
+<ResponseField name="first_name" type="string">
+  User's first name. Example: `"John"`
+</ResponseField>
+
+<ResponseField name="last_name" type="string">
+  User's last name. Example: `"Doe"`
 </ResponseField>
 
 <ResponseField name="email" type="string">
   User's email address. Example: `"user@example.com"`
 </ResponseField>
 
-<ResponseField name="name" type="string">
-  User's full name. Example: `"John Doe"`
+<ResponseField name="email_verified" type="boolean">
+  Whether the user's email address has been verified. Example: `true`
 </ResponseField>
 
-<ResponseField name="username" type="string">
-  User's username. Example: `"johndoe"`
+<ResponseField name="plan" type="array">
+  List of active subscription plan objects for the user.
 </ResponseField>
 
-<ResponseField name="is_verified" type="boolean">
-  Whether the user's email has been verified. Example: `true`
+<ResponseField name="login_count" type="integer">
+  Total number of times the user has logged in. Example: `42`
 </ResponseField>
 
-<ResponseField name="is_active" type="boolean">
-  Whether the user account is active. Example: `true`
+<ResponseField name="profile_image" type="string | null">
+  URL of the user's profile image, or `null` if not set.
 </ResponseField>
 
-<ResponseField name="subscription_plan" type="string">
-  Current subscription plan (free, basic, pro, enterprise). Example: `"pro"`
+<ResponseField name="is_staff" type="boolean">
+  Whether the user has staff/admin access. Example: `false`
 </ResponseField>
 
-<ResponseField name="subscription_status" type="string">
-  Status of the subscription (active, cancelled, expired, trial). Example: `"active"`
-</ResponseField>
-
-<ResponseField name="max_concurrency" type="integer">
-  Maximum number of concurrent operations allowed. Example: `20`
-</ResponseField>
-
-<ResponseField name="max_squids" type="integer">
-  Maximum number of squids allowed. Example: `100`
-</ResponseField>
-
-<ResponseField name="created_at" type="string">
-  Timestamp when the account was created. Example: `"2023-06-15T10:30:00Z"`
-</ResponseField>
-
-<ResponseField name="last_login" type="string">
-  Timestamp of the user's last login. Example: `"2024-01-20T08:45:00Z"`
+<ResponseField name="credit_interval" type="string">
+  The user's credit reset interval (e.g., monthly billing cycle). Example: `"monthly"`
 </ResponseField>
 
 <Tip>
@@ -106,24 +94,14 @@ print(response.json())
 
 ```json 200
 {
-  "id": 12345,
-  "email": "user@example.com",
   "first_name": "John",
   "last_name": "Doe",
-  "is_active": true,
-  "is_verified": true,
-  "date_joined": "2024-01-15T10:30:00Z",
-  "last_login": "2025-01-08T14:20:00Z",
-  "subscription": {
-    "plan": "Professional",
-    "status": "active",
-    "expires_at": "2025-12-31T23:59:59Z"
-  },
-  "quotas": {
-    "api_calls_remaining": 9750,
-    "api_calls_limit": 10000,
-    "data_points_remaining": 485000,
-    "data_points_limit": 500000
-  }
+  "email": "user@example.com",
+  "email_verified": true,
+  "plan": [],
+  "login_count": 42,
+  "profile_image": null,
+  "is_staff": false,
+  "credit_interval": "monthly"
 }
 ```

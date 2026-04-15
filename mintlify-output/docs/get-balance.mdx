@@ -14,30 +14,62 @@ It's recommended to check your balance before starting large-scale data collecti
   Your API authentication token. Value: `Token YOUR_API_KEY`
 </ParamField>
 
-<ParamField header="Content-Type" type="string">
+<ParamField header="Content-Type" type="string" default="application/json">
   Content type of the request. Value: `application/json`
 </ParamField>
 
 ## Response Field Explanations
 
-<ResponseField name="balance" type="number">
-  Current account balance in credits. Example: `1250.75`
+<ResponseField name="id" type="string">
+  The plan's price identifier. Example: `"price_abc123"`
 </ResponseField>
 
-<ResponseField name="total_credits_purchased" type="number">
-  Total credits purchased since account creation. Example: `5000.00`
+<ResponseField name="object" type="string">
+  Always `"plan"`.
 </ResponseField>
 
-<ResponseField name="credits_used" type="number">
-  Credits consumed in the current billing period. Example: `3749.25`
+<ResponseField name="name" type="string">
+  Name of the active subscription plan. Example: `"Professional"`
 </ResponseField>
 
-<ResponseField name="pending_cost" type="number">
-  Estimated cost for currently running operations. Example: `50.00`
+<ResponseField name="available" type="integer">
+  Total credits on the plan (including bonus). For daily-interval plans, this is the daily allowance. Example: `10000`
 </ResponseField>
 
-<ResponseField name="expiration_date" type="string | null">
-  Credit expiration date (null if credits don't expire). Example: `"2024-12-31T23:59:59Z"`
+<ResponseField name="consumed" type="integer">
+  Credits consumed in the current billing period. Example: `1550`
+</ResponseField>
+
+<ResponseField name="bonus_credit" type="integer">
+  Bonus credits applied to the account. Example: `0`
+</ResponseField>
+
+<ResponseField name="rollover_credit" type="integer">
+  Unused credits rolled over from a previous period. Example: `200`
+</ResponseField>
+
+<ResponseField name="rollover_credit_expires_at" type="string | null">
+  Timestamp when rollover credits expire, or `null` if none. Example: `null`
+</ResponseField>
+
+<ResponseField name="interval" type="string">
+  Credit reset interval (`"monthly"` or `"daily"`). Example: `"monthly"`
+</ResponseField>
+
+<ResponseField name="used_slots" type="integer">
+  Number of concurrency slots currently in use. Example: `3`
+</ResponseField>
+
+<ResponseField name="total_available_slots" type="integer">
+  Total concurrency slots available on the plan. Example: `20`
+</ResponseField>
+
+<ResponseField name="has_unpaid_bill" type="boolean">
+  Whether there is an outstanding unpaid invoice. Example: `false`
+</ResponseField>
+
+<ResponseField name="reset_time" type="string">
+  Timestamp when credits will next reset. Example: `"2025-02-01T00:00:00Z"`
 </ResponseField>
 
 <Tip>
@@ -75,8 +107,11 @@ response = requests.get(
 )
 
 balance_data = response.json()
-print(f"Available credits: {balance_data['available_credits']}")
-print(f"Balance: ${balance_data['balance']}")
+print(f"Plan: {balance_data['name']}")
+print(f"Total credits: {balance_data['available']}")
+print(f"Consumed: {balance_data['consumed']}")
+print(f"Remaining: {balance_data['available'] - balance_data['consumed']}")
+print(f"Slots used: {balance_data['used_slots']} / {balance_data['total_available_slots']}")
 ```
 </CodeGroup>
 
@@ -84,20 +119,18 @@ print(f"Balance: ${balance_data['balance']}")
 
 ```json 200
 {
-  "balance": 150.75,
-  "currency": "USD",
-  "available_credits": 15075,
-  "total_purchased": 20000,
-  "used_this_period": 4925,
-  "billing_period": {
-    "start": "2025-01-01T00:00:00Z",
-    "end": "2025-01-31T23:59:59Z"
-  },
-  "pending_operations": {
-    "count": 2,
-    "estimated_cost": 125
-  },
-  "credit_rate": 100,
-  "last_updated": "2025-01-08T14:25:30Z"
+  "id": "price_abc123",
+  "object": "plan",
+  "name": "Professional",
+  "available": 10000,
+  "consumed": 1550,
+  "bonus_credit": 0,
+  "rollover_credit": 200,
+  "rollover_credit_expires_at": null,
+  "interval": "monthly",
+  "used_slots": 3,
+  "total_available_slots": 20,
+  "has_unpaid_bill": false,
+  "reset_time": "2025-02-01T00:00:00Z"
 }
 ```
