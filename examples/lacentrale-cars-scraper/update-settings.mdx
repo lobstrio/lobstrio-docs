@@ -26,7 +26,6 @@ Set these parameters in the `params` object:
 | **max_results** | integer | unlimited | Maximum results per task |
 | **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `first_online_date`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
-| **hours_back** | integer | null | Deprecated — use `fetch_since` instead |
 | **get_listing_details** | boolean | true | Fetch detailed listing info (equipment, seller details) |
 
 ## Squid Settings
@@ -52,9 +51,9 @@ When `get_listing_details` is enabled, the scraper visits each listing page to e
 
 **Pricing:** 4 credits per listing when details are enabled.
 
-## Hours Back Filter
+## Fetch Since Filter
 
-Use `hours_back` to monitor new inventory. For example, setting `hours_back: 24` will stop scraping when it reaches listings older than 24 hours (based on `first_online_date`).
+Use `fetch_since` to monitor new inventory. For example, setting `fetch_since: 24h` will stop scraping when it reaches listings older than 24 hours (based on `first_online_date`).
 
 Perfect for daily monitoring of new car listings.
 

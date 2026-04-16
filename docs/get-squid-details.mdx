@@ -72,10 +72,6 @@ The `params` object contains crawler-specific settings. Most crawlers share thes
   Stop scraping when items older than this threshold are reached. Accepts a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM). Example: `"7d"`
 </ResponseField>
 
-<ResponseField name="params.hours_back" type="integer">
-  Deprecated — stop scraping when items older than N hours are reached. Use fetch_since instead. Example: `null`
-</ResponseField>
-
 <ResponseField name="params.max_date" type="string">
   Deprecated — stop scraping when items older than this date are reached. Use fetch_since instead. Example: `null`
 </ResponseField>

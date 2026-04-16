@@ -218,14 +218,6 @@
             ]
           },
           {
-            "group": "Facebook Page Details Export",
-            "pages": [
-              "examples/facebook-page-details-export/add-tasks",
-              "examples/facebook-page-details-export/update-settings",
-              "examples/facebook-page-details-export/get-results"
-            ]
-          },
-          {
             "group": "Vinted Products Scraper",
             "pages": [
               "examples/vinted-products-scraper/add-tasks",

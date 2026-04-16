@@ -25,7 +25,6 @@ Set these parameters in the `params` object:
 | **max_results** | integer | unlimited | Total posts the crawler will collect per profile |
 | **max_unique_results_per_run** | integer | unlimited | Maximum number of unique posts retrieved across all tasks in the entire run |
 | **fetch_since** | string | unlimited | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
-| **hours_back** | integer | unlimited | Deprecated — use `fetch_since` instead |
 | **skip_pinned_posts** | boolean | false | If enabled, pinned posts will be excluded from the results |
 
 ## Squid Settings
@@ -95,7 +94,7 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
 
 data = response.json()
 print(f"Max results: {data['params']['max_results']}")
-print(f"Hours back: {data['params']['fetch_since']}")
+print(f"Fetch since: {data['params']['fetch_since']}")
 ```
 </CodeGroup>
 

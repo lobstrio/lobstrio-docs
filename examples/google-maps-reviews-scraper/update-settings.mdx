@@ -24,7 +24,6 @@ Set these parameters in the `params` object:
 | --- | --- | --- | --- |
 | **sort_by** | string | newest | Sort reviews: `newest`, `most relevant`, or `highest rating` |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `modified_at_datetime`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
-| **hours_back** | integer | null | Deprecated — use `fetch_since` instead |
 | **max_results** | integer | 20 | Maximum number of reviews to collect per place |
 | **language** | string | English (United States) | Language for extracted reviews |
 | **functions.get_short_review_link** | boolean | false | Collect shortened review links (additional costs may apply) |
