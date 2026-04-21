@@ -1,24 +1,21 @@
 ---
 title: "MCP Server"
-description: "Connect AI assistants to lobstr.io API documentation using the Model Context Protocol (MCP). Search docs, get code examples, and explore scrapers programmatically."
+description: "Connect AI assistants to lobstr.io API documentation using the Model Context Protocol (MCP). Search docs and explore scrapers programmatically."
 ---
 
-The lobstr.io MCP server exposes all API documentation to AI assistants. No authentication required.
+The lobstr.io MCP server exposes all API documentation to AI assistants. Powered by Mintlify — no authentication required.
 
-**Endpoint:** `https://docs.lobstr.io/api/mcp`
+**Endpoint:** `https://docs.lobstr.io/mcp`
 
-<CardGroup cols={4}>
-  <Card title="6 Tools" icon="wrench">
-    Full documentation access via structured MCP tools.
-  </Card>
-  <Card title="42 Scrapers" icon="layer-group">
-    All scraper examples with parameters and result fields.
+<CardGroup cols={3}>
+  <Card title="2 Tools" icon="wrench">
+    Semantic search and full filesystem access to every docs page.
   </Card>
   <Card title="No Auth" icon="unlock">
     Public endpoint — no API key needed to query the docs.
   </Card>
-  <Card title="HTTP Transport" icon="globe">
-    Standard HTTP transport, compatible with all MCP clients.
+  <Card title="SSE Transport" icon="globe">
+    HTTP + Server-Sent Events transport, compatible with all MCP clients.
   </Card>
 </CardGroup>
 
@@ -28,7 +25,7 @@ The lobstr.io MCP server exposes all API documentation to AI assistants. No auth
 ```bash Claude Code
 claude mcp add lobstrio-docs \
   --transport http \
-  https://docs.lobstr.io/api/mcp
+  https://docs.lobstr.io/mcp
 ```
 
 ```json Claude Desktop
@@ -36,7 +33,7 @@ claude mcp add lobstrio-docs \
   "mcpServers": {
     "lobstrio-docs": {
       "type": "http",
-      "url": "https://docs.lobstr.io/api/mcp"
+      "url": "https://docs.lobstr.io/mcp"
     }
   }
 }
@@ -47,21 +44,22 @@ claude mcp add lobstrio-docs \
   "mcpServers": {
     "lobstrio-docs": {
       "type": "http",
-      "url": "https://docs.lobstr.io/api/mcp"
+      "url": "https://docs.lobstr.io/mcp"
     }
   }
 }
 ```
 
 ```bash Any MCP Client
-curl -X POST https://docs.lobstr.io/api/mcp \
+curl -X POST https://docs.lobstr.io/mcp \
   -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
   -d '{
     "jsonrpc": "2.0",
     "method": "tools/call",
     "params": {
-      "name": "search_docs",
-      "arguments": { "query": "squid", "limit": 2 }
+      "name": "search_lobstr_io",
+      "arguments": { "query": "create squid" }
     },
     "id": 1
   }'
@@ -70,14 +68,10 @@ curl -X POST https://docs.lobstr.io/api/mcp \
 
 ## Tools
 
-| Tool | Tag | Description |
-|---|---|---|
-| `list_docs` | Navigation | Browse all core API documentation pages with category filtering and pagination. |
-| `list_examples` | Examples | View all 42 scrapers with example documentation and their available endpoints. |
-| `get_doc` | Reference | Get full endpoint documentation including request body, response fields, and code examples. |
-| `search_docs` | Search | Keyword search across all documentation — titles, descriptions, and endpoint paths. |
-| `get_code_example` | Code | Get cURL, Python, or API response examples for any endpoint. |
-| `get_navigation` | Structure | Get the full sidebar navigation structure showing how docs are organized. |
+| Tool | Description |
+|---|---|
+| `search_lobstr_io` | Semantic search across all documentation — titles, descriptions, guides, and API references. |
+| `query_docs_filesystem_lobstr_io` | Read-only shell-like access to every docs page as `.mdx` files. Supports `cat`, `head`, `rg`, `tree`, `ls`, and more. |
 
 ## Example Prompts
 

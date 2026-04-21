@@ -24,51 +24,69 @@ pip install lobstrio-sdk
   </Card>
 </CardGroup>
 
+## Authentication
+
+The SDK resolves your API token in this order:
+
+1. **Explicit parameter** — `LobstrClient(token="your_token")`
+2. **Environment variable** — `LOBSTR_TOKEN=your_token`
+3. **CLI config file** — `~/.config/lobstr/config.toml` (written by the lobstr CLI on login)
+
+<Warning>
+  If `LOBSTR_TOKEN` is not set, the SDK silently falls back to the CLI config file — which may belong to a different account. There is no warning when the env var is absent. Always set `LOBSTR_TOKEN` explicitly in production environments.
+</Warning>
+
+```bash
+export LOBSTR_TOKEN=your_api_key
+```
+
 ## Quick Start
 
-<CodeGroup>
-```python Sync
+```python
+import time
 from lobstrio import LobstrClient
 
-client = LobstrClient()  # auto-resolves token
+# Token resolved from LOBSTR_TOKEN env var, then ~/.config/lobstr/config.toml.
+# Set LOBSTR_TOKEN explicitly in production — misnamed env vars fail silently.
+client = LobstrClient()
 
-# Get account info
-user = client.me()
-print(f"{user.email} — {client.balance().credits} credits")
+# 1. Resolve crawler slug → id (create() requires the hash, not the slug)
+crawlers = client.crawlers.list()
+crawler = next(c for c in crawlers if c.slug == "google-maps-leads-scraper")
 
-# Create a squid and scrape
-squid = client.squids.create(
-    crawler="google-maps-leads-scraper",
-    name="Restaurants Paris"
-)
-client.squids.update(squid.id, params={"country": "France", "max_results": 50})
+# 2. Create a squid
+squid = client.squids.create(crawler=crawler.id, name="Restaurants Paris")
+
+# 3. Configure squid-level params — required before runs.start(), even when all
+#    params are optional. Pass None for params you don't need to set.
+client.squids.update(squid.id, params={"language": "English (United States)", "max_results": 50})
+
+# 4. Add tasks
 client.tasks.add(squid=squid.id, tasks=[
-    {"url": "https://google.com/maps/search/restaurants+paris"}
+    {"url": "https://www.google.com/maps/search/restaurants/@48.8566,2.3522,14z"}
 ])
 
-# Start and wait for completion
+# 5. Start run and stream progress
+def on_progress(stats):
+    print(f"  {stats.percent_done} — {stats.total_results} results, ETA {stats.eta}")
+
 run = client.runs.start(squid=squid.id)
-run = client.runs.wait(run.id)
+print(f"Run {run.id} started")
+run = client.runs.wait(run.id, callback=on_progress)
+print(f"Run complete — {run.total_results} results, {run.credit_used} credits used")
 
-# Get results
-for page in client.results.iter(run=run.id):
-    for place in page.data:
-        print(f"{place['name']} — {place['score']}★")
+# 6. Wait for export to be ready before fetching results
+while not run.export_done:
+    time.sleep(3)
+    run = client.runs.get(run.id)
+
+# 7. Iterate results (PageIterator yields one dict per result)
+for place in client.results.iter(squid=squid.id):
+    print(f"{place['name']} — {place.get('score', 'N/A')}★  {place.get('phone', '')}")
+
+# 8. Clean up — delete the squid to free the slot
+client.squids.delete(squid.id)
 ```
-
-```python Async
-import asyncio
-from lobstrio import AsyncLobstrClient
-
-async def main():
-    async with AsyncLobstrClient() as client:
-        squids = await client.squids.list()
-        for squid in squids.data:
-            print(f"{squid.name} ({squid.id})")
-
-asyncio.run(main())
-```
-</CodeGroup>
 
 ## API Reference
 
@@ -78,6 +96,10 @@ asyncio.run(main())
 |---|---|---|---|
 | `client.me()` | GET | `/v1/me` | Get authenticated user profile |
 | `client.balance()` | GET | `/v1/user/balance` | Get current credit balance |
+
+<Note>
+  **`Balance.available` is your plan's total allotment, not credits remaining.** Remaining credits = `available − consumed`. Example: `Balance(available=100, consumed=64)` means 36 credits left.
+</Note>
 
 ### Crawlers
 
@@ -120,15 +142,16 @@ asyncio.run(main())
 | `client.runs.stats(hash)` | GET | `/v1/runs/{hash}/stats` | Get statistics for a run |
 | `client.runs.tasks(hash)` | GET | `/v1/runtasks` | List tasks executed in a run |
 | `client.runs.abort(hash)` | POST | `/v1/runs/{hash}/abort` | Abort an in-progress run |
-| `client.runs.download(hash)` | GET | `/v1/runs/{hash}/download` | Download run results as a file |
-| `client.runs.wait(hash)` | GET | `/v1/runs/{hash}` | Poll until run completes |
+| `client.runs.download_url(hash)` | GET | `/v1/runs/{hash}/download` | Get S3 download URL for run results |
+| `client.runs.download(hash, dest)` | GET | `/v1/runs/{hash}/download` | Download run results to a local file |
+| `client.runs.wait(hash, callback=None)` | — | — | Poll until run completes; optional `callback(RunStats)` for progress |
 
 ### Results
 
 | SDK Method | HTTP | Endpoint | Description |
 |---|---|---|---|
-| `client.results.list(run)` | GET | `/v1/results` | Get first page of results for a run |
-| `client.results.iter(run)` | GET | `/v1/results` | Lazily iterate all result pages |
+| `client.results.list(squid)` | GET | `/v1/results` | Get first page of results for a squid |
+| `client.results.iter(squid)` | GET | `/v1/results` | Lazily iterate all result pages for a squid |
 
 ### Accounts
 
@@ -137,7 +160,7 @@ asyncio.run(main())
 | `client.accounts.list()` | GET | `/v1/accounts` | List all connected accounts |
 | `client.accounts.get(hash)` | GET | `/v1/accounts/{hash}` | Get account details by hash |
 | `client.accounts.types()` | GET | `/v1/accounts/types` | List supported account types |
-| `client.accounts.sync(type, cookies)` | POST | `/v1/synchronize` | Sync an account using cookies |
+| `client.accounts.sync(type, cookies)` | POST | `/v1/accounts/cookies` | Sync an account using cookies |
 | `client.accounts.delete(hash)` | DELETE | `/v1/accounts/{hash}` | Delete a connected account |
 
 ### Delivery
