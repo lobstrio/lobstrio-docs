@@ -24,6 +24,7 @@ Set these parameters in the `params` object:
 | --- | --- | --- | --- |
 | **max_date** | string (ISO) | null | null | Deprecated — use `fetch_since` instead |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `last_publication_date`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 | **max_pages** | integer | null | Maximum number of result pages to crawl |
 | **max_results** | integer | null | Total number of listings to collect before stopping |
 | **online_shop** | boolean | false | Extract seller's shop URL (incurs extra requests/credits) |

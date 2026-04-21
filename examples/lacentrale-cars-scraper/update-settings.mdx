@@ -26,6 +26,7 @@ Set these parameters in the `params` object:
 | **max_results** | integer | unlimited | Maximum results per task |
 | **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `first_online_date`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 | **get_listing_details** | boolean | true | Fetch detailed listing info (equipment, seller details) |
 
 ## Squid Settings

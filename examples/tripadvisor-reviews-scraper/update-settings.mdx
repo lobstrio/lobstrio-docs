@@ -29,7 +29,7 @@ Standard squid settings that apply to all scrapers:
 </Tip>
 
 <Tip>
-  Set fetch_since to null for all reviews, or specify a number of hours (e.g., 168 for one week) to monitor only recent reviews.
+  Set `fetch_since` to `null` for all reviews, or use a relative duration (`"24h"`, `"7d"`, `"2w"`) or absolute date (`"YYYY-MM-DD HH:MM"`) to collect only recent reviews. When using an absolute date, set `fetch_since_timezone` to interpret it in the correct timezone (e.g. `"Europe/Paris"`).
 </Tip>
 
 <Note>
@@ -49,7 +49,8 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
       "max_results": 100,
       "language": "English",
       "ratings": "5",
-      "fetch_since": null
+      "fetch_since": null,
+      "fetch_since_timezone": null
     }
   }'
 ```
@@ -72,7 +73,8 @@ response = requests.post(f"{BASE_URL}/squids/{squid_hash}",
             "max_results": 100,
             "language": "English",
             "ratings": "5",
-            "fetch_since": None  # Set to None for all reviews, or specify hours (e.g., 168 for last week)
+            "fetch_since": None,  # relative: "7d", absolute: "2026-01-01 00:00"
+            "fetch_since_timezone": None  # e.g. "Europe/Paris" — only used with absolute fetch_since
         }
     }
 )
@@ -100,7 +102,8 @@ print(f"Rating filter: {data['params']['ratings']}")
     "max_results": 100,
     "language": "English",
     "ratings": "5",
-    "fetch_since": null
+    "fetch_since": null,
+    "fetch_since_timezone": null
   },
   "concurrency": 5,
   "export_unique_results": true,

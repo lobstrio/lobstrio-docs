@@ -60,6 +60,10 @@ Update the configuration of your **Trustpilot Reviews Scraper** squid. Pass craw
   Filter results by date. Accepts a relative duration (e.g. `"24h"`, `"7d"`, `"2w"`) or an absolute date (`"YYYY-MM-DD HH:MM"`). Replaces the deprecated `hours_back` parameter.
 </ParamField>
 
+<ParamField body="params.fetch_since_timezone" type="string">
+  Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`.
+</ParamField>
+
 <ParamField body="params.max_results" type="int">
   Default: `200`.
 </ParamField>

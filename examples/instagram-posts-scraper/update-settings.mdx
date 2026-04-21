@@ -25,6 +25,7 @@ Set these parameters in the `params` object:
 | **max_results** | integer | unlimited | Total posts the crawler will collect per profile |
 | **max_unique_results_per_run** | integer | unlimited | Maximum number of unique posts retrieved across all tasks in the entire run |
 | **fetch_since** | string | unlimited | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 | **skip_pinned_posts** | boolean | false | If enabled, pinned posts will be excluded from the results |
 
 ## Squid Settings
