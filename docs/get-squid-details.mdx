@@ -72,6 +72,10 @@ The `params` object contains crawler-specific settings. Most crawlers share thes
   Stop scraping when items older than this threshold are reached. Accepts a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM). Example: `"7d"`
 </ResponseField>
 
+<ResponseField name="params.fetch_since_timezone" type="string">
+  Timezone for interpreting an absolute `fetch_since` date (e.g. `"Europe/Paris"`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `"24h"` or `"7d"`. Example: `"Europe/Paris"`
+</ResponseField>
+
 <ResponseField name="params.max_date" type="string">
   Deprecated — stop scraping when items older than this date are reached. Use fetch_since instead. Example: `null`
 </ResponseField>
@@ -203,7 +207,7 @@ The `params` object contains crawler-specific settings. Most crawlers share thes
 </Tip>
 
 <Note>
-  Use `fetch_since` to stop scraping when older items are reached. It supports both relative durations (24h, 7d, 2w) and absolute dates (YYYY-MM-DD HH:MM). Replaces the older `hours_back` and `max_date` parameters.
+  Use `fetch_since` to stop scraping when older items are reached. Supports relative durations (`24h`, `7d`, `2w`) and absolute dates (`YYYY-MM-DD HH:MM`). When using an absolute date, set `fetch_since_timezone` to interpret it in the correct timezone (e.g. `"Europe/Paris"`). Replaces the older `hours_back` and `max_date` parameters.
 </Note>
 
 ## Code Examples
