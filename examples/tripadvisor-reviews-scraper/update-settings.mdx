@@ -16,13 +16,30 @@ Configure your TripAdvisor Reviews Scraper squid settings to control review coll
   Request body format. Value: `application/json`
 </ParamField>
 
-## Squid Parameters
+## Scraper Parameters
 
-The following parameters can be configured in the `params` object:
+Set these parameters in the `params` object:
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_results** | integer | unlimited | Maximum number of reviews to collect per listing |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique reviews across all tasks in the run |
+| **language** | string | All languages | Filter reviews by language (e.g., `English`, `French`, `German`) |
+| **ratings** | string | All ratings | Filter by star rating: `1`, `2`, `3`, `4`, `5` |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 
 ## General Settings
 
 Standard squid settings that apply to all scrapers:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Tip>
   Use the language and ratings filters to collect only high-quality reviews in your target language, reducing noise and credit consumption.

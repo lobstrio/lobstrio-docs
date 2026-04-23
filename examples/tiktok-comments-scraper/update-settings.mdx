@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your TikTok Comments Scraper squid"
+description: "Configure the TikTok Comments Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **TikTok Comments Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your TikTok Comments Scraper squid settings. Control the maximum number of comments and replies to collect per video.
 
 ## Headers
 
@@ -13,21 +13,99 @@ Update the configuration of your **TikTok Comments Scraper** squid. Pass crawler
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_comments** | integer | unlimited | Maximum number of top-level comments to collect per video |
+| **max_replies_per_comment** | integer | unlimited | Maximum number of replies to collect per comment |
 
-<ParamField body="params.max_comments" type="integer">
+## Squid Settings
 
-</ParamField>
+Configure general squid settings:
 
-<ParamField body="params.max_replies_per_comment" type="integer">
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
-</ParamField>
+<Tip>
+  Set `max_comments` to a reasonable limit (e.g., 500) for high-engagement videos to control credit usage.
+</Tip>
+
+<Note>
+  Setting `max_replies_per_comment` to 0 will collect only top-level comments without any replies.
+</Note>
+
+## Code Examples
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "TikTok Comments Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_comments": 500,
+      "max_replies_per_comment": 10
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "TikTok Comments Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_comments": 500,
+            "max_replies_per_comment": 10
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "TikTok Comments Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_comments": 500,
+    "max_replies_per_comment": 10
+  }
+}
+```

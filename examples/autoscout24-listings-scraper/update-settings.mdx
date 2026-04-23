@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your AutoScout24 Listings Scraper squid"
+description: "Configure the AutoScout24 Listings Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **AutoScout24 Listings Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your AutoScout24 Listings Scraper squid settings. Control pagination, result limits, time filters, and whether to fetch full listing details.
 
 ## Headers
 
@@ -13,43 +13,119 @@ Update the configuration of your **AutoScout24 Listings Scraper** squid. Pass cr
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
-
-<ParamField body="params.max_pages" type="integer">
-  Default: `99`.
-</ParamField>
-
-<ParamField body="params.fetch_since" type="string">
-  Filter results by date. Accepts a relative duration (e.g. `"24h"`, `"7d"`, `"2w"`) or an absolute date (`"YYYY-MM-DD HH:MM"`). Replaces the deprecated `hours_back` parameter.
-</ParamField>
-
-<ParamField body="params.fetch_since_timezone" type="string">
-  Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`.
-</ParamField>
-
-<ParamField body="params.max_results" type="integer">
-
-</ParamField>
-
-<ParamField body="params.max_unique_results_per_run" type="int">
-
-</ParamField>
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_pages** | integer | 99 | Maximum number of search result pages to scrape (max: 99) |
+| **max_results** | integer | unlimited | Maximum number of listings to collect per task |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 
 ## Optional Functions
 
-<Note>
-  Functions are optional add-ons that enable extra data extraction. Each incurs additional credits per row.
-</Note>
+Enable these in the `params.functions` object:
 
-<ParamField body="params.functions.get_listing_details" type="boolean">
-  Default: `false`. Extra cost: `{'legacy': 100, 'current': 4}` credits/row.
-</ParamField>
+| Function | Type | Default | Description |
+| --- | --- | --- | --- |
+| **get_listing_details** | boolean | false | Visit each listing's detail page to fetch full specifications, equipment, and seller information (4 credits per listing) |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Tip>
+  Use `fetch_since: 24h` to monitor new listings published in the last day.
+</Tip>
+
+<Warning>
+  Enabling `get_listing_details` costs 4 additional credits per listing. Plan accordingly for large scrapes.
+</Warning>
+
+## Code Examples
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "AutoScout24 Listings Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_pages": 99,
+      "fetch_since": "7d",
+      "functions": {
+        "get_listing_details": false
+      }
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "AutoScout24 Listings Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_pages": 99,
+            "fetch_since": "7d",
+            "functions": {
+                "get_listing_details": False  # Enable for full specs (4 credits per listing)
+            }
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "AutoScout24 Listings Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_pages": 99,
+    "fetch_since": "7d",
+    "functions": {
+      "get_listing_details": false
+    }
+  }
+}
+```

@@ -4,7 +4,7 @@ description: "Configure the TripAdvisor Restaurants Scraper parameters and optio
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Configure your TripAdvisor Restaurants Scraper squid settings to control the maximum number of restaurants to scrape per search. Adjust settings based on your data collection needs.
+Configure your TripAdvisor Restaurants Scraper squid settings to control the maximum number of restaurants to scrape per search.
 
 ## Headers
 
@@ -16,13 +16,26 @@ Configure your TripAdvisor Restaurants Scraper squid settings to control the max
   Request body format. Value: `application/json`
 </ParamField>
 
-## Squid Parameters
+## Scraper Parameters
 
-The following parameters can be configured in the `params` object:
+Set these parameters in the `params` object:
 
-## General Settings
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_results** | integer | unlimited | Maximum number of restaurants to collect per task |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
 
-Standard squid settings that apply to all scrapers:
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Tip>
   Start with a smaller max_results value (e.g., 50) to test your search before scaling up for larger data collection.
@@ -40,13 +53,14 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
   -H "Authorization: Token YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "TripAdvisor Iter Restaurants (1)",
+    "name": "TripAdvisor Restaurants Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
     "no_line_breaks": true,
     "params": {
       "max_results": 100
-    },
-    "to_complete": false,
-    "export_unique_results": true
+    }
   }'
 ```
 
@@ -59,17 +73,17 @@ headers = {"Authorization": f"Token {API_KEY}"}
 
 squid_id = "YOUR_SQUID_HASH"
 
-# Configure scraper settings
 response = requests.post(f"{BASE_URL}/squids/{squid_id}",
     headers=headers,
     json={
-        "name": "TripAdvisor Iter Restaurants (1)",
+        "name": "TripAdvisor Restaurants Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
         "no_line_breaks": True,
         "params": {
             "max_results": 100
-        },
-        "to_complete": False,
-        "export_unique_results": True
+        }
     }
 )
 
@@ -83,12 +97,13 @@ print(f"Max results: {data['params']['max_results']}")
 
 ```json 201
 {
-  "name": "TripAdvisor Iter Restaurants (1)",
+  "name": "TripAdvisor Restaurants Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
   "no_line_breaks": true,
   "params": {
     "max_results": 100
-  },
-  "to_complete": false,
-  "export_unique_results": true
+  }
 }
 ```

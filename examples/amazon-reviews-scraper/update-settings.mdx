@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Amazon Reviews Scraper squid"
+description: "Configure the Amazon Reviews Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Amazon Reviews Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Amazon Reviews Scraper squid settings. Control how reviews are sorted, filtered, and limited.
 
 ## Headers
 
@@ -13,61 +13,119 @@ Update the configuration of your **Amazon Reviews Scraper** squid. Pass crawler-
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **sort_by** | string | recent | Sort order for reviews: `recent`, `top_reviews` |
+| **filter_by_star** | string | all_stars | Filter by star rating: `all_stars`, `five_star`, `four_star`, `three_star`, `two_star`, `one_star`, `positive`, `critical` |
+| **reviewer_type** | string | all_reviewers | Filter by reviewer type: `all_reviewers`, `verified_purchase_only` |
+| **media_type** | string | text_image_video | Filter by review media: `text_image_video`, `image_and_video_only` |
+| **format_type** | string | all_variants | Filter by product variant: `all_variants`, `current_format` |
+| **filter_by_keyword** | string | null | Only return reviews containing this keyword |
+| **max_results** | integer | 100 | Maximum number of reviews to collect per product |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique reviews across all tasks in the run |
+| **scrape_max_reviews** | boolean | false | If true, attempt to collect all available reviews |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 
-<ParamField body="params.account" type="amazon-sync" required>
+## Squid Settings
 
-</ParamField>
+Configure general squid settings:
 
-<ParamField body="params.sort_by" type="string">
-  Allowed values: `recent`, `top_reviews`. Default: `recent`.
-</ParamField>
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
-<ParamField body="params.media_type" type="string">
-  Allowed values: `text_image_video`, `image_and_video_only`. Default: `text_image_video`.
-</ParamField>
+<Note>
+  This scraper requires a synced Amazon account. Add your Amazon cookies in the Accounts section before running.
+</Note>
 
-<ParamField body="params.fetch_since" type="string">
-  Filter results by date. Accepts a relative duration (e.g. `"24h"`, `"7d"`, `"2w"`) or an absolute date (`"YYYY-MM-DD HH:MM"`). Replaces the deprecated `hours_back` parameter.
-</ParamField>
+<Tip>
+  Use `filter_by_star: critical` to monitor negative feedback, or `sort_by: recent` combined with `fetch_since` to track new reviews.
+</Tip>
 
-<ParamField body="params.fetch_since_timezone" type="string">
-  Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`.
-</ParamField>
+## Code Examples
 
-<ParamField body="params.format_type" type="string">
-  Allowed values: `all_variants`, `current_format`. Default: `all_variants`.
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Amazon Reviews Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "sort_by": "recent",
+      "filter_by_star": "all_stars",
+      "reviewer_type": "verified_purchase_only",
+      "media_type": "text_image_video",
+      "format_type": "all_variants",
+      "max_results": 100,
+      "fetch_since": "7d"
+    }
+  }'
+```
 
-<ParamField body="params.max_results" type="integer" required>
-  Default: `100`.
-</ParamField>
+```python Python
+import requests
 
-<ParamField body="params.reviewer_type" type="string">
-  Allowed values: `all_reviewers`, `verified_purchase_only`. Default: `all_reviewers`.
-</ParamField>
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
 
-<ParamField body="params.filter_by_star" type="string">
-  Allowed values: `all_stars`, `five_star`, `four_star`, `three_star`, `two_star`, `one_star`, `positive`, `critical`. Default: `all_stars`.
-</ParamField>
+squid_id = "YOUR_SQUID_HASH"
 
-<ParamField body="params.filter_by_keyword" type="string">
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Amazon Reviews Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "sort_by": "recent",
+            "filter_by_star": "all_stars",
+            "reviewer_type": "verified_purchase_only",
+            "max_results": 100,
+            "fetch_since": "7d"
+        }
+    }
+)
 
-</ParamField>
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
 
-<ParamField body="params.scrape_max_reviews" type="boolean">
-  Default: `False`.
-</ParamField>
+## Response
 
-<ParamField body="params.max_unique_results_per_run" type="int">
-
-</ParamField>
+```json 201
+{
+  "name": "Amazon Reviews Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "sort_by": "recent",
+    "filter_by_star": "all_stars",
+    "reviewer_type": "verified_purchase_only",
+    "max_results": 100,
+    "fetch_since": "7d"
+  }
+}
+```

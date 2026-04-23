@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
 description: "Configure the LinkedIn Profile Scraper settings including email enrichment"
-api: "PATCH https://api.lobstr.io/v2/squid/{squid_id}"
+api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Configure your LinkedIn Profile Scraper settings. The main configurable option is email enrichment, which uses lobstr.io's enrichment service to find email addresses for the profiles you scrape.
+Configure your LinkedIn Profile Scraper squid settings. The main configurable option is email enrichment, which uses lobstr.io's enrichment service to find email addresses for the profiles you scrape.
 
 ## Headers
 
@@ -16,11 +16,25 @@ Configure your LinkedIn Profile Scraper settings. The main configurable option i
   Request body format. Value: `application/json`
 </ParamField>
 
-## Available Settings
+## Scraper Parameters
+
+Set these parameters in the `params` object:
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| **email_enrichment** | boolean | true | Enable email enrichment to find email addresses for profiles |
+| **email_enrichment** | boolean | true | Enable email enrichment to find email addresses for profiles (9 credits per profile where an email is found) |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
 ## Email Enrichment
 
@@ -33,7 +47,7 @@ The enrichment service returns:
 - `email_status`: Validation status of the email (valid, invalid, catch-all, etc.)
 
 <Warning>
-  Email enrichment costs 9 credits per profile where an email is found. Profiles without a found email are not charged. **Backward compatibility:** The old function name `email` is still accepted but deprecated. Migrate to `email_enrichment`.
+  Email enrichment is enabled by default. Disable it before running if you don't need email data to avoid unexpected credit usage.
 </Warning>
 
 <Tip>
@@ -41,18 +55,23 @@ The enrichment service returns:
 </Tip>
 
 <Note>
-  Email enrichment is enabled by default. Make sure to disable it before running if you don't need email data.
+  **Backward compatibility:** The old function name `email` is still accepted but deprecated. Migrate to `email_enrichment`.
 </Note>
 
 ## Code Examples
 
 <CodeGroup>
 ```bash cURL
-curl -X PATCH "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID" \
-  -H "Authorization: Token YOUR_API_TOKEN" \
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "settings": {
+    "name": "LinkedIn Profile Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
       "email_enrichment": true
     }
   }'
@@ -61,22 +80,30 @@ curl -X PATCH "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID" \
 ```python Python
 import requests
 
-API_TOKEN = "YOUR_API_TOKEN"
-SQUID_ID = "YOUR_SQUID_ID"
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
 
-url = f"https://api.lobstr.io/api/v2/squid/{SQUID_ID}"
-headers = {
-    "Authorization": f"Token {API_TOKEN}",
-    "Content-Type": "application/json"
-}
-data = {
-    "settings": {
-        "email_enrichment": True
+squid_id = "YOUR_SQUID_HASH"
+
+# Update scraper settings
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "LinkedIn Profile Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "email_enrichment": True  # 9 credits per profile with email found
+        }
     }
-}
+)
 
-response = requests.patch(url, headers=headers, json=data)
-print(response.json())
+data = response.json()
+print(f"Settings updated: {data['name']}")
+print(f"Email enrichment: {data['params']['email_enrichment']}")
 ```
 </CodeGroup>
 
@@ -84,11 +111,13 @@ print(response.json())
 
 ```json 201
 {
-  "id": "YOUR_SQUID_ID",
-  "crawler": "linkedin-profile-scraper",
-  "settings": {
+  "name": "LinkedIn Profile Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
     "email_enrichment": true
-  },
-  "updated_at": "2024-01-15T10:35:00Z"
+  }
 }
 ```

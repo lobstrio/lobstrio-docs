@@ -16,17 +16,31 @@ Configure your Pages Jaunes Companies Search Export squid settings to control pa
   Request body format. Value: `application/json`
 </ParamField>
 
-## Squid Parameters
+## Scraper Parameters
 
-The following parameters can be configured in the `params` object:
+Set these parameters in the `params` object:
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_pages** | integer | unlimited | Maximum number of search result pages to scrape |
+| **functions.collect_emails_from_website** | boolean | true | Visit each company's website to collect email addresses and social media links (1 credit per company) |
+| **functions.collect_additional_details** | boolean | true | Collect SIRET, SIREN, NAF codes and other official business registration details (1 credit per company) |
 
 ## Function Details
 
-When `functions.collect_additional_details` is enabled, the scraper collects additional structured data:
+When `functions.collect_additional_details` is enabled, the scraper collects additional structured data including SIRET number, SIREN number, NAF/APE code, and official company registration details from French business registries.
 
 ## General Settings
 
 Standard squid settings that apply to all scrapers:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Warning>
   Enabling `functions.collect_emails_from_website` or `functions.collect_additional_details` increases run time due to additional HTTP requests per listing.

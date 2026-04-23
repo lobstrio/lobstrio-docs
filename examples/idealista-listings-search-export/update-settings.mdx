@@ -20,9 +20,21 @@ Configure your Idealista Listings Scraper squid settings to control pagination a
 
 The following parameters can be configured in the `params` object:
 
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_pages** | integer | 100 | Maximum number of search result pages to scrape (max: 100) |
+
 ## General Settings
 
 Standard squid settings that apply to all scrapers:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Tip>
   Idealista typically shows 30 listings per page. Setting max_pages to 100 can yield up to 3,000 listings per search URL.

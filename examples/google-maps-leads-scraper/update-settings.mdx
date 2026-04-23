@@ -20,12 +20,17 @@ Configure the scraper parameters to control how places are collected. These sett
 
 Set these parameters in the `params` object:
 
-| Parameter | Type | Description |
-| --- | --- | --- |
-| **country** | string | Regional context for search results (e.g., `United States`) |
-| **ratings** | string | Filter by rating threshold: `Any rating`, `4.0+`, `2.5+` |
-| **language** | string | Language for place names and metadata (e.g., `English (United States)`) |
-| **max_results** | integer | Maximum places to collect before task ends |
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **country** | string | — | Regional context for search results (e.g., `United States`) |
+| **ratings** | string | Any rating | Filter by rating threshold: `Any rating`, `4.0+`, `2.5+` |
+| **language** | string | — | Language for place names and metadata (e.g., `English (United States)`) |
+| **max_results** | integer | unlimited | Maximum places to collect before task ends |
+| **geo_match** | boolean | true | Only return results that geographically match the searched location |
+| **category_match** | boolean | true | Only return results that match the searched business category |
+| **skip_closed** | boolean | false | Skip permanently closed businesses |
+| **website_filter** | string | all | Filter by website presence: `all`, `with_website`, `without_website` |
+| **skip_without_email** | boolean | false | Skip businesses where no email address was found |
 
 ## Optional Functions
 

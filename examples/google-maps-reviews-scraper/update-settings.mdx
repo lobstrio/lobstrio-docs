@@ -22,12 +22,12 @@ Set these parameters in the `params` object:
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| **sort_by** | string | newest | Sort reviews: `newest`, `most relevant`, or `highest rating` |
+| **sort_by** | string | newest | Sort reviews: `newest`, `most_relevant`, `highest_rating`, or `lowest_rating` |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `modified_at_datetime`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
 | **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 | **max_results** | integer | 20 | Maximum number of reviews to collect per place |
 | **language** | string | English (United States) | Language for extracted reviews |
-| **functions.get_short_review_link** | boolean | false | Collect shortened review links (additional costs may apply) |
+| **functions.get_short_review_link** | boolean | false | Collect shortened review links (1 credit per review) |
 
 ## Squid Settings
 
@@ -50,7 +50,7 @@ You can also configure general squid settings:
 </Tip>
 
 <Warning>
-  Enabling `functions.get_short_review_link` may incur additional costs. Only enable if you need shortened URLs.
+  Enabling `functions.get_short_review_link` costs 1 credit per review. Only enable if you need shortened URLs.
 </Warning>
 
 <Note>

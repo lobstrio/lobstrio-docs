@@ -22,10 +22,11 @@ Set these parameters in the `params` object:
 
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
-| **functions.email_enrichment** | boolean | false | Enable email enrichment using lobstr.io's service (incurs extra credits) |
+| **functions.email_enrichment** | boolean | false | Enable email enrichment using lobstr.io's service (9 credits per profile where an email is found) |
+| **functions.mobile_enrichment** | boolean | false | Enable mobile phone enrichment (300 credits per profile where a mobile number is found) |
 | **profiles_per_page** | integer | 25 | Number of leads to scrape per page (max: 25) |
 | **max_pages** | integer | 100 | Maximum number of pages to crawl (max: 100) |
-| **max_results** | integer | null | null | Total leads to collect before stopping (`null` = no limit) |
+| **max_results** | integer | null | Total leads to collect before stopping (`null` = no limit) |
 
 ## Squid Settings
 

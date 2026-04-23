@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Sales Navigator Profile Scraper squid"
+description: "Configure the Sales Navigator Profile Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Sales Navigator Profile Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Sales Navigator Profile Scraper squid settings. Enable email and mobile enrichment to find contact details for the profiles you scrape.
 
 ## Headers
 
@@ -13,31 +13,110 @@ Update the configuration of your **Sales Navigator Profile Scraper** squid. Pass
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
-</ParamField>
-
-## Body
-
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
-
-## Settings Fields
-
-<ParamField body="params.account" type="sales-nav-sync" required>
-
+  Request body format. Value: `application/json`
 </ParamField>
 
 ## Optional Functions
 
+Enable these in the `params.functions` object:
+
+| Function | Type | Default | Description |
+| --- | --- | --- | --- |
+| **email_enrichment** | boolean | true | Find email addresses for each profile (9 credits per profile where an email is found) |
+| **mobile_enrichment** | boolean | false | Find mobile phone numbers for each profile (300 credits per profile where a mobile number is found) |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **accounts** | array | Array of linked Sales Navigator account hashes (required) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Warning>
+  `email_enrichment` is enabled by default and costs 9 credits per profile where an email is found. Disable it if you don't need email data.
+</Warning>
+
+<Warning>
+  `mobile_enrichment` costs 300 credits per profile where a mobile number is found. Only enable when mobile numbers are specifically required.
+</Warning>
+
 <Note>
-  Functions are optional add-ons that enable extra data extraction. Each incurs additional credits per row.
+  This scraper requires a synced Sales Navigator account. Add your LinkedIn Sales Navigator cookies in the Accounts section before running.
 </Note>
 
-<ParamField body="params.functions.email_enrichment" type="boolean">
-  Default: `true`. Extra cost: `{'legacy': 400, 'current': 9}` credits/row.
-</ParamField>
+## Code Examples
 
-<ParamField body="params.functions.mobile_enrichment" type="boolean">
-  Default: `false`. Extra cost: `{'legacy': 6000, 'current': 300}` credits/row.
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Sales Nav Profile Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "functions": {
+        "email_enrichment": true,
+        "mobile_enrichment": false
+      }
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Sales Nav Profile Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "functions": {
+                "email_enrichment": True,    # 9 credits per profile with email
+                "mobile_enrichment": False   # 300 credits per profile with mobile
+            }
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Sales Nav Profile Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "functions": {
+      "email_enrichment": true,
+      "mobile_enrichment": false
+    }
+  }
+}
+```

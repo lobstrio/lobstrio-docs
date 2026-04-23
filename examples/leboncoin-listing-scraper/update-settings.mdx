@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Leboncoin Listing Scraper squid"
+description: "Configure the Leboncoin Listing Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Leboncoin Listing Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Leboncoin Listing Scraper squid settings. Enable phone number extraction to retrieve the seller's phone number from each listing page.
 
 ## Headers
 
@@ -13,27 +13,100 @@ Update the configuration of your **Leboncoin Listing Scraper** squid. Pass crawl
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
-</ParamField>
-
-## Body
-
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
-
-## Settings Fields
-
-<ParamField body="params.account" type="leboncoin-sync" required>
-
+  Request body format. Value: `application/json`
 </ParamField>
 
 ## Optional Functions
 
+Enable these in the `params.functions` object:
+
+| Function | Type | Default | Description |
+| --- | --- | --- | --- |
+| **get_phone_numbers** | boolean | true | Fetch the seller's phone number from the listing page (6 credits per listing) |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Warning>
+  Phone number extraction is enabled by default. Disable it if you only need listing data to avoid extra credit charges.
+</Warning>
+
 <Note>
-  Functions are optional add-ons that enable extra data extraction. Each incurs additional credits per row.
+  Phone numbers are only available when the seller has enabled phone contact on their listing.
 </Note>
 
-<ParamField body="params.functions.get_phone_numbers" type="boolean">
-  Default: `true`. Extra cost: `{'legacy': 150, 'current': 6}` credits/row.
-</ParamField>
+## Code Examples
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Leboncoin Listing Scraper (1)",
+    "concurrency": 5,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "functions": {
+        "get_phone_numbers": true
+      }
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Leboncoin Listing Scraper (1)",
+        "concurrency": 5,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "functions": {
+                "get_phone_numbers": True  # 6 credits per listing
+            }
+        }
+    }
+)
+
+print(f"Settings updated: {response.json()['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Leboncoin Listing Scraper (1)",
+  "concurrency": 5,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "functions": {
+      "get_phone_numbers": true
+    }
+  }
+}
+```

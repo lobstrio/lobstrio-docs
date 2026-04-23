@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your LinkedIn Leads Scraper squid"
+description: "Configure the LinkedIn Leads Scraper settings including enrichment options"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **LinkedIn Leads Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your LinkedIn Leads Scraper squid settings. Control result limits and enable email enrichment or profile detail collection.
 
 ## Headers
 
@@ -13,35 +13,117 @@ Update the configuration of your **LinkedIn Leads Scraper** squid. Pass crawler-
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
-
-<ParamField body="params.account" type="linkedin-sync" required>
-
-</ParamField>
-
-<ParamField body="params.max_results" type="int">
-  Default: `1000`.
-</ParamField>
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_results** | integer | 1000 | Maximum number of leads to collect per task |
 
 ## Optional Functions
 
+Enable these in the `params.functions` object:
+
+| Function | Type | Default | Description |
+| --- | --- | --- | --- |
+| **email_enrichment** | boolean | true | Find email addresses for each profile (9 credits per profile where an email is found) |
+| **scrape_profile_details** | boolean | true | Collect additional profile details from each LinkedIn profile page (1 credit per profile) |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **accounts** | array | Array of linked LinkedIn account hashes (required) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Warning>
+  Both `email_enrichment` and `scrape_profile_details` are enabled by default. Disable them if not needed to reduce credit usage.
+</Warning>
+
 <Note>
-  Functions are optional add-ons that enable extra data extraction. Each incurs additional credits per row.
+  This scraper requires a synced LinkedIn account. Add your LinkedIn cookies in the Accounts section before running.
 </Note>
 
-<ParamField body="params.functions.email_enrichment" type="boolean">
-  Default: `true`. Extra cost: `{'legacy': 400, 'current': 9}` credits/row.
-</ParamField>
+## Code Examples
 
-<ParamField body="params.functions.scrape_profile_details" type="boolean">
-  Default: `true`. Extra cost: `{'legacy': 1, 'current': 1}` credits/row.
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "LinkedIn Leads Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_results": 1000,
+      "functions": {
+        "email_enrichment": true,
+        "scrape_profile_details": true
+      }
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "LinkedIn Leads Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_results": 1000,
+            "functions": {
+                "email_enrichment": True,     # 9 credits per profile with email
+                "scrape_profile_details": True # 1 credit per profile
+            }
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "LinkedIn Leads Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_results": 1000,
+    "functions": {
+      "email_enrichment": true,
+      "scrape_profile_details": true
+    }
+  }
+}
+```

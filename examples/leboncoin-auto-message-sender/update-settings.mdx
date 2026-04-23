@@ -25,8 +25,8 @@ Configure the message content and targeting:
 | **message** | string | — | Template for the message sent to sellers. Supports dynamic variables (see below) |
 | **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `last_publication_date`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
 | **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
-| **max_results** | integer | null | null | Maximum number of listings to process before stopping |
-| **max_unique_results_per_run** | integer | null | null | Maximum unique results across all tasks in a single run |
+| **max_results** | integer | null | Maximum number of listings to process before stopping |
+| **max_unique_results_per_run** | integer | null | Maximum unique results across all tasks in a single run |
 
 ## Message Template Variables
 

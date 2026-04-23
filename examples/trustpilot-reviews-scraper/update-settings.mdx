@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Trustpilot Reviews Scraper squid"
+description: "Configure the Trustpilot Reviews Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Trustpilot Reviews Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Trustpilot Reviews Scraper squid settings. Filter by star rating, language, date, and more to target specific review types.
 
 ## Headers
 
@@ -13,61 +13,124 @@ Update the configuration of your **Trustpilot Reviews Scraper** squid. Pass craw
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_results** | integer | 200 | Maximum number of reviews to collect per company page |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique reviews across all tasks in the run |
+| **sort_by** | string | recency | Sort order: `recency`, `relevance` |
+| **stars** | string | all | Filter by star rating: `all`, `1`, `2`, `3`, `4`, `5` |
+| **language** | string | All languages | Filter by review language. Allowed values: `All languages`, `Arabic`, `Chinese (Simplified)`, `Chinese (Traditional)`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Greek`, `Hebrew`, `Indonesian`, `Italian`, `Japanese`, `Korean`, `Norwegian`, `Polish`, `Portuguese`, `Russian`, `Spanish`, `Swedish`, `Thai`, `Turkish`, `Vietnamese` |
+| **verified** | boolean | false | Only return reviews from verified purchases |
+| **replies** | boolean | false | Include company replies in the results |
+| **search** | string | null | Filter reviews by keyword |
+| **topics** | string | null | Filter by Trustpilot topic tag |
+| **start_page** | integer | 1 | Page number to start scraping from |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 
-<ParamField body="params.stars" type="string">
-  Allowed values: `all`, `1`, `2`, `3`, `4`, `5`. Default: `all`.
-</ParamField>
+## Squid Settings
 
-<ParamField body="params.search" type="string">
+Configure general squid settings:
 
-</ParamField>
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
-<ParamField body="params.topics" type="string">
+<Tip>
+  Use `stars: 1` combined with `fetch_since: 7d` to monitor recent negative reviews for reputation management.
+</Tip>
 
-</ParamField>
+<Tip>
+  Set `verified: true` to focus on reviews from confirmed customers only.
+</Tip>
 
-<ParamField body="params.replies" type="boolean">
-  Default: `False`.
-</ParamField>
+## Code Examples
 
-<ParamField body="params.sort_by" type="string">
-  Allowed values: `recency`, `relevance`. Default: `recency`.
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Trustpilot Reviews Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_results": 200,
+      "sort_by": "recency",
+      "stars": "all",
+      "language": "English",
+      "verified": false,
+      "replies": false,
+      "fetch_since": null
+    }
+  }'
+```
 
-<ParamField body="params.language" type="string">
-  Allowed values: `All languages`, `Arabic`, `Chinese (Simplified)`, `Chinese (Traditional)`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Greek`, `Hebrew`, `Indonesian`, `Italian`, `Japanese`, `Korean`, `Norwegian`, `Polish`, `Portuguese`, `Russian`, `Spanish`, `Swedish`, `Thai`, `Turkish`, `Vietnamese`. Default: `All languages`.
-</ParamField>
+```python Python
+import requests
 
-<ParamField body="params.verified" type="boolean">
-  Default: `False`.
-</ParamField>
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
 
-<ParamField body="params.start_page" type="int">
-  Default: `1`.
-</ParamField>
+squid_id = "YOUR_SQUID_HASH"
 
-<ParamField body="params.fetch_since" type="string">
-  Filter results by date. Accepts a relative duration (e.g. `"24h"`, `"7d"`, `"2w"`) or an absolute date (`"YYYY-MM-DD HH:MM"`). Replaces the deprecated `hours_back` parameter.
-</ParamField>
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Trustpilot Reviews Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_results": 200,
+            "sort_by": "recency",
+            "stars": "all",
+            "language": "English",
+            "verified": False,
+            "replies": False,
+            "fetch_since": None
+        }
+    }
+)
 
-<ParamField body="params.fetch_since_timezone" type="string">
-  Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`.
-</ParamField>
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
 
-<ParamField body="params.max_results" type="int">
-  Default: `200`.
-</ParamField>
+## Response
 
-<ParamField body="params.max_unique_results_per_run" type="int">
-
-</ParamField>
+```json 201
+{
+  "name": "Trustpilot Reviews Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_results": 200,
+    "sort_by": "recency",
+    "stars": "all",
+    "language": "English",
+    "verified": false,
+    "replies": false,
+    "fetch_since": null
+  }
+}
+```

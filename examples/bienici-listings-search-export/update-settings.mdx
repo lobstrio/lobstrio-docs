@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Bien'Ici Search Export squid"
+description: "Configure the Bien'Ici Listings Search Export scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Bien'Ici Search Export** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Bien'Ici Listings Search Export squid settings. Control pagination, result limits, time filters, and whether to include sponsored listings.
 
 ## Headers
 
@@ -13,37 +13,109 @@ Update the configuration of your **Bien'Ici Search Export** squid. Pass crawler-
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_pages** | integer | 100 | Maximum number of search result pages to scrape (max: 100) |
+| **max_results** | integer | 50 | Maximum number of listings to collect per task |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
+| **collect_ads** | boolean | false | Include sponsored/promoted listings in results |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
 
-<ParamField body="params.max_pages" type="integer">
-  Default: `100`.
-</ParamField>
+## Squid Settings
 
-<ParamField body="params.collect_ads" type="boolean" required>
-  Default: `False`.
-</ParamField>
+Configure general squid settings:
 
-<ParamField body="params.fetch_since" type="string">
-  Filter results by date. Accepts a relative duration (e.g. `"24h"`, `"7d"`, `"2w"`) or an absolute date (`"YYYY-MM-DD HH:MM"`). Replaces the deprecated `hours_back` parameter.
-</ParamField>
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
-<ParamField body="params.fetch_since_timezone" type="string">
-  Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`.
-</ParamField>
+<Tip>
+  Use `fetch_since: 24h` to monitor new listings published in the last day.
+</Tip>
 
-<ParamField body="params.max_results" type="integer">
-  Default: `50`.
-</ParamField>
+<Note>
+  Keep concurrency at 1 to avoid rate limiting on Bien'Ici.
+</Note>
 
-<ParamField body="params.max_unique_results_per_run" type="int">
+## Code Examples
 
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Bien'\''ici Listings Search Export (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_pages": 100,
+      "max_results": 50,
+      "collect_ads": false,
+      "fetch_since": null
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Bien'ici Listings Search Export (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_pages": 100,
+            "max_results": 50,
+            "collect_ads": False,
+            "fetch_since": None
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Bien'ici Listings Search Export (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_pages": 100,
+    "max_results": 50,
+    "collect_ads": false,
+    "fetch_since": null
+  }
+}
+```

@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Twitter Followers & Following Scraper squid"
+description: "Configure the Twitter Followers/Following Scraper settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Twitter Followers & Following Scraper** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Twitter Followers/Following Scraper squid settings. Choose whether to scrape followers, following, or both for each target account.
 
 ## Headers
 
@@ -13,37 +13,101 @@ Update the configuration of your **Twitter Followers & Following Scraper** squid
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **scrape_followers** | boolean | false | If true, collect the account's followers list |
+| **scrape_following** | boolean | false | If true, collect the accounts the user is following |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
 
-<ParamField body="params.account" type="twitter-sync" required>
+## Squid Settings
 
-</ParamField>
+Configure general squid settings:
 
-<ParamField body="params.max_followers" type="int">
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **accounts** | array | Array of linked Twitter account hashes (required) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
 
-</ParamField>
+<Note>
+  This scraper requires a synced Twitter/X account. Add your Twitter cookies in the Accounts section before running.
+</Note>
 
-<ParamField body="params.max_following" type="int">
+<Tip>
+  Enable both `scrape_followers` and `scrape_following` to get a complete picture of an account's network.
+</Tip>
 
-</ParamField>
+## Code Examples
 
-<ParamField body="params.scrape_followers" type="boolean">
-  Default: `False`.
-</ParamField>
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Twitter Followers/Following Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "scrape_followers": true,
+      "scrape_following": false
+    }
+  }'
+```
 
-<ParamField body="params.scrape_following" type="boolean">
-  Default: `False`.
-</ParamField>
+```python Python
+import requests
 
-<ParamField body="params.max_unique_results_per_run" type="int">
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
 
-</ParamField>
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Twitter Followers/Following Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "scrape_followers": True,   # Collect followers list
+            "scrape_following": False   # Skip following list
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Twitter Followers/Following Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "scrape_followers": true,
+    "scrape_following": false
+  }
+}
+```

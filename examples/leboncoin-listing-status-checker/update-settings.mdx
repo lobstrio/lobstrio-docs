@@ -1,10 +1,10 @@
 ---
 title: "Update Settings"
-description: "Configure settings for your Leboncoin Listing Status Checker squid"
+description: "Configure the Leboncoin Listing Status Checker settings"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Update the configuration of your **Leboncoin Listing Status Checker** squid. Pass crawler-specific settings inside the `params` object.
+Configure your Leboncoin Listing Status Checker squid settings. This scraper checks whether Leboncoin listings are still active and has no scraper-specific parameters beyond global run limits.
 
 ## Headers
 
@@ -13,17 +13,90 @@ Update the configuration of your **Leboncoin Listing Status Checker** squid. Pas
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be application/json. Value: `application/json`
+  Request body format. Value: `application/json`
 </ParamField>
 
-## Body
+## Scraper Parameters
 
-<ParamField body="params" type="object">
-  Crawler-specific settings. See fields below.
-</ParamField>
+Set these parameters in the `params` object:
 
-## Settings Fields
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
 
-<ParamField body="params.max_unique_results_per_run" type="int">
+## Squid Settings
 
-</ParamField>
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Tip>
+  Set a high concurrency value to check large batches of listing URLs quickly.
+</Tip>
+
+## Code Examples
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Leboncoin Listing Status Checker (1)",
+    "concurrency": 5,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_unique_results_per_run": 1000
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Leboncoin Listing Status Checker (1)",
+        "concurrency": 5,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_unique_results_per_run": 1000
+        }
+    }
+)
+
+print(f"Settings updated: {response.json()['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Leboncoin Listing Status Checker (1)",
+  "concurrency": 5,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_unique_results_per_run": 1000
+  }
+}
+```

@@ -28,6 +28,7 @@ Set these parameters in the `params` object:
 | **like** | string | All likes | Filter by engagement percentile: `Top 1~20%`, `Top 21~40%`, etc. |
 | **time_range** | string | Last 7 days | Ad publication period: `Last 7 days`, `Last 30 days`, `Last 180 days` |
 | **sort_by** | string | For You | Sorting option: `For You`, `Reach`, `CTY`, `2s Views Rate`, `6s Views Rate` |
+| **functions.ad_details** | boolean | false | Fetch full ad details including landing page URL and additional metadata (1 credit per ad) |
 
 ## Available Regions
 
@@ -53,17 +54,25 @@ All industries, App Installs, Apparel & Accessories, Appliances, Apps, Baby, Kid
 
 <CodeGroup>
 ```bash cURL
-curl -X PATCH "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID" \
-  -H "Authorization: Token YOUR_API_TOKEN" \
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "settings": {
+    "name": "TikTok Top Ads Scraper (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
       "region": "United States",
       "industry": "Beauty & Personal Care",
       "objective": "Conversions",
       "like": "Top 1~20%",
       "time_range": "Last 30 days",
-      "sort_by": "Reach"
+      "sort_by": "Reach",
+      "functions": {
+        "ad_details": false
+      }
     }
   }'
 ```
@@ -71,27 +80,37 @@ curl -X PATCH "https://api.lobstr.io/api/v2/squid/YOUR_SQUID_ID" \
 ```python Python
 import requests
 
-API_TOKEN = "YOUR_API_TOKEN"
-SQUID_ID = "YOUR_SQUID_ID"
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
 
-url = f"https://api.lobstr.io/api/v2/squid/{SQUID_ID}"
-headers = {
-    "Authorization": f"Token {API_TOKEN}",
-    "Content-Type": "application/json"
-}
-data = {
-    "settings": {
-        "region": "United States",
-        "industry": "Beauty & Personal Care",
-        "objective": "Conversions",
-        "like": "Top 1~20%",
-        "time_range": "Last 30 days",
-        "sort_by": "Reach"
+squid_id = "YOUR_SQUID_HASH"
+
+# Update scraper settings
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "TikTok Top Ads Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "region": "United States",
+            "industry": "Beauty & Personal Care",
+            "objective": "Conversions",
+            "like": "Top 1~20%",
+            "time_range": "Last 30 days",
+            "sort_by": "Reach",
+            "functions": {
+                "ad_details": False  # Enable for full ad details (1 credit per ad)
+            }
+        }
     }
-}
+)
 
-response = requests.patch(url, headers=headers, json=data)
-print(response.json())
+data = response.json()
+print(f"Settings updated: {data['name']}")
 ```
 </CodeGroup>
 
@@ -99,16 +118,21 @@ print(response.json())
 
 ```json 201
 {
-  "id": "YOUR_SQUID_ID",
-  "crawler": "tiktok-top-ads-scraper",
-  "settings": {
+  "name": "TikTok Top Ads Scraper (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
     "region": "United States",
     "industry": "Beauty & Personal Care",
     "objective": "Conversions",
     "like": "Top 1~20%",
     "time_range": "Last 30 days",
-    "sort_by": "Reach"
-  },
-  "updated_at": "2024-01-15T10:35:00Z"
+    "sort_by": "Reach",
+    "functions": {
+      "ad_details": false
+    }
+  }
 }
 ```

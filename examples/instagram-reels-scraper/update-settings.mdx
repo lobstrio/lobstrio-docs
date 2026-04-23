@@ -24,6 +24,9 @@ Set these parameters in the `params` object:
 | --- | --- | --- | --- |
 | **max_results** | integer | unlimited | Maximum number of reels to collect per task (profile) |
 | **max_unique_results_per_run** | integer | unlimited | Maximum number of unique results retrieved across all tasks in the entire run |
+| **fetch_since** | string | null | Stop scraping when items older than this threshold are reached (based on `published_at`). Use a relative duration (24h, 7d, 2w) or an absolute date (YYYY-MM-DD HH:MM) |
+| **fetch_since_timezone** | string | null | Timezone for interpreting an absolute `fetch_since` date (e.g. `Europe/Paris`). Only applies when `fetch_since` is an absolute date — ignored for relative values like `24h` or `7d`. |
+| **skip_pinned_reels** | boolean | false | If enabled, pinned reels will be excluded from the results |
 
 ## Squid Settings
 
@@ -70,7 +73,9 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "no_line_breaks": true,
     "params": {
       "max_results": 50,
-      "max_unique_results_per_run": 500
+      "max_unique_results_per_run": 500,
+      "fetch_since": "7d",
+      "skip_pinned_reels": false
     }
   }'
 ```
@@ -92,8 +97,10 @@ payload = {
     "to_complete": False,
     "no_line_breaks": True,
     "params": {
-        "max_results": 50,                # Max reels per profile
-        "max_unique_results_per_run": 500 # Total unique reels limit
+        "max_results": 50,
+        "max_unique_results_per_run": 500,
+        "fetch_since": "7d",
+        "skip_pinned_reels": False
     }
 }
 
@@ -117,7 +124,9 @@ print(f"Settings updated: {response.json()['name']}")
   "no_line_breaks": true,
   "params": {
     "max_results": 50,
-    "max_unique_results_per_run": 500
+    "max_unique_results_per_run": 500,
+    "fetch_since": "7d",
+    "skip_pinned_reels": false
   }
 }
 ```
