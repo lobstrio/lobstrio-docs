@@ -1,0 +1,21 @@
+---
+title: "April 22, 2026"
+description: "API updates shipped April 22, 2026"
+---
+
+<Update label="April 22, 2026">
+
+### New
+- `GET /v1/crawlers` now returns a `tags` field listing crawler categories (e.g. `social`, `real-estate`, `ecommerce`)
+- `GET /v1/runs/{id}/stats` exposes a new `error_rate` field showing the percentage of failed tasks in a run
+
+### Improved
+- `POST /v1/runs/start` — `max_results` now accepts `null` to remove the result cap entirely
+- `GET /v1/results` — response time improved by ~30% for result sets above 10 000 rows
+- `GET /v1/squids` — list endpoint now supports filtering by `is_active` query parameter
+
+### Fixed
+- `GET /v1/runs` — pagination cursor was incorrectly resetting when combining `status` and `module` filters
+- `POST /v1/tasks/upload` — files with Windows-style line endings (`\r\n`) no longer cause a 400 error
+
+</Update>
