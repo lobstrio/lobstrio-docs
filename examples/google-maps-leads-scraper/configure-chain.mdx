@@ -6,7 +6,7 @@ api: "POST https://api.lobstr.io/v1/squids/{squid_hash}/chain"
 
 Once your Google Maps Leads Scraper squid collects place URLs, you can chain it to a **Google Maps Reviews Scraper** so that reviews are fetched automatically for every place found — no manual steps required.
 
-When a leads run completes, the scheduler extracts the `url` field from each result and queues it as a task on the reviews squid, then starts a new run.
+When a leads run completes with a status of `DONE`, the scheduler extracts the `url` field from each result and queues it as a task on the reviews squid, then starts a new run. Runs that end in `ERROR` do not trigger the chain.
 
 ## Headers
 

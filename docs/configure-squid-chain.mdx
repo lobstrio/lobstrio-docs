@@ -15,9 +15,13 @@ Crawler chaining lets you connect two squids so that when a run on the **source 
 ## How it works
 
 1. You configure a chain on a source squid, specifying the target crawler and a `field_map`
-2. When a run on the source squid completes, the scheduler extracts the mapped fields from its results
+2. When a run on the source squid completes with a status of **`DONE`**, the scheduler extracts the mapped fields from its results
 3. Those values are queued as tasks on the target squid (auto-created on first trigger if it doesn't exist yet)
 4. If `autostart` is `true`, a new run starts immediately on the target squid
+
+<Warning>
+  The chain is only triggered when the source run reaches a status of `DONE`. Runs that end with `ERROR` or any other status will not trigger the downstream chain.
+</Warning>
 
 ## Path Parameters
 
