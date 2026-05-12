@@ -4,7 +4,7 @@ description: "Configure scraper settings for Vinted Products Scraper"
 api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
 ---
 
-Configure your squid settings for the Vinted Products Scraper. Control pagination depth to limit the number of catalog pages scraped.
+Configure your squid settings for the Vinted Products Scraper. Control pagination depth and result limits.
 
 ## Headers
 
@@ -24,6 +24,7 @@ Set these parameters in the `params` object:
 | --- | --- | --- | --- |
 | **max_pages** | integer | 10 | Maximum number of catalog pages to scrape per task (max: 10) |
 | **max_results** | integer | unlimited | Maximum number of items to collect per task |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
 
 ## Squid Settings
 
@@ -38,7 +39,7 @@ Configure general squid settings:
 | **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Tip>
-  Set `max_pages` to limit scraping depth and control costs for large catalog searches.
+  Use `max_results` to cap items per search URL, and `max_unique_results_per_run` for a global limit across all tasks.
 </Tip>
 
 <Note>
@@ -59,7 +60,8 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "to_complete": false,
     "no_line_breaks": true,
     "params": {
-      "max_pages": 10
+      "max_pages": 10,
+      "max_results": 200
     }
   }'
 ```
@@ -73,21 +75,19 @@ headers = {"Authorization": f"Token {API_KEY}"}
 
 squid_id = "YOUR_SQUID_HASH"
 
-# Update squid settings with pagination limit
-payload = {
-    "name": "Vinted Products Scraper (1)",
-    "concurrency": 1,
-    "export_unique_results": True,
-    "to_complete": False,
-    "no_line_breaks": True,
-    "params": {
-        "max_pages": 10  # Limit catalog pages to scrape
-    }
-}
-
 response = requests.post(f"{BASE_URL}/squids/{squid_id}",
     headers=headers,
-    json=payload
+    json={
+        "name": "Vinted Products Scraper (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_pages": 10,
+            "max_results": 200
+        }
+    }
 )
 
 print(f"Settings updated: {response.json()['name']}")
@@ -104,7 +104,8 @@ print(f"Settings updated: {response.json()['name']}")
   "to_complete": false,
   "no_line_breaks": true,
   "params": {
-    "max_pages": 10
+    "max_pages": 10,
+    "max_results": 200
   }
 }
 ```
