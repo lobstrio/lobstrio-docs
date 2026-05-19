@@ -1,0 +1,117 @@
+---
+title: "Update Settings"
+description: "Configure the Yelp Reviews Export scraper settings"
+api: "POST https://api.lobstr.io/v1/squids/{squid_hash}"
+---
+
+Configure your Yelp Reviews Export squid settings. Filter reviews by rating, sort order, or keyword, and set limits to control how many reviews are collected.
+
+## Headers
+
+<ParamField header="Authorization" type="string" required>
+  Your API authentication token. Value: `Token YOUR_API_KEY`
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required>
+  Request body format. Value: `application/json`
+</ParamField>
+
+## Scraper Parameters
+
+Set these parameters in the `params` object:
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| **max_results** | integer | unlimited | Maximum number of reviews to collect per business URL |
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique reviews across all tasks in the run |
+| **sort** | string | `Yelp Sort` | Sort order: `Yelp Sort`, `Newest First`, `Oldest First`, `Highest Rated`, `Lowest Rated`, `Elites` |
+| **rating** | string | `All Ratings` | Filter by star rating: `All Ratings`, `5 Stars`, `4 Stars`, `3 Stars`, `2 Stars`, `1 Star` |
+| **term** | string | null | Keyword to search inside review text (e.g. `great service`). When set, `sort` and `rating` filters are ignored |
+
+## Squid Settings
+
+Configure general squid settings:
+
+| Setting | Type | Description |
+| --- | --- | --- |
+| **name** | string | Display name for your squid configuration |
+| **concurrency** | integer | Number of parallel scraping threads (default: 1) |
+| **export_unique_results** | boolean | Export only unique results (deduplicated) |
+| **to_complete** | boolean | Run until all tasks complete |
+| **no_line_breaks** | boolean | Remove line breaks from results |
+
+<Tip>
+  Use `rating: "1 Star"` combined with `sort: "Newest First"` to monitor recent negative reviews for reputation management.
+</Tip>
+
+<Note>
+  When `term` is set, Yelp overrides the sort and rating parameters server-side — they will be ignored.
+</Note>
+
+## Code Examples
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
+  -H "Authorization: Token YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Yelp Reviews Export (1)",
+    "concurrency": 1,
+    "export_unique_results": true,
+    "to_complete": false,
+    "no_line_breaks": true,
+    "params": {
+      "max_results": 500,
+      "sort": "Newest First",
+      "rating": "All Ratings"
+    }
+  }'
+```
+
+```python Python
+import requests
+
+API_KEY = "YOUR_API_KEY"
+BASE_URL = "https://api.lobstr.io/v1"
+headers = {"Authorization": f"Token {API_KEY}"}
+
+squid_id = "YOUR_SQUID_HASH"
+
+response = requests.post(f"{BASE_URL}/squids/{squid_id}",
+    headers=headers,
+    json={
+        "name": "Yelp Reviews Export (1)",
+        "concurrency": 1,
+        "export_unique_results": True,
+        "to_complete": False,
+        "no_line_breaks": True,
+        "params": {
+            "max_results": 500,
+            "sort": "Newest First",
+            "rating": "All Ratings"
+        }
+    }
+)
+
+data = response.json()
+print(f"Settings updated: {data['name']}")
+```
+</CodeGroup>
+
+## Response
+
+```json 201
+{
+  "name": "Yelp Reviews Export (1)",
+  "concurrency": 1,
+  "export_unique_results": true,
+  "to_complete": false,
+  "no_line_breaks": true,
+  "params": {
+    "max_results": 500,
+    "sort": "Newest First",
+    "rating": "All Ratings"
+  }
+}
+```

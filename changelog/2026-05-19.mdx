@@ -1,0 +1,18 @@
+---
+title: "May 19, 2026"
+description: "API updates shipped May 19, 2026"
+---
+
+<Update label="May 19, 2026">
+
+### New
+- **Yelp Reviews Scraper** — new public scraper to collect all reviews from any Yelp business page. Supports filtering by star rating, sort order (`Newest First`, `Oldest First`, `Highest Rated`, `Lowest Rated`, `Elites`), and keyword search inside review text. See the [Yelp Reviews](/examples/yelp-reviews-scraper/add-tasks) example.
+
+### Improved
+- **Pages Jaunes: major scraper overhaul** — the Pages Jaunes Companies Search Export scraper now collects significantly more data per listing when enrichment functions are enabled. New result fields include: `opening_hours`, `latitude`, `longitude`, `is_verified`, `images`, `payment_methods`, `prestations`, `products`, `brands`, `accepts_quote_requests`, `listing_type`, `raison_social`, `forme_juridique`, `multi_activite`, `external_links`, `autres_denominations`, `nombre_etablissements`, and `reviews` (up to 20 most recent).
+
+### Fixed
+- **Twitter User Tweets: `name` and `username` fields** — the scraper was returning incorrect or swapped values for these two fields. Both are now correctly populated.
+- **Trustpilot Reviews: non-existent URLs** — URLs that returned no results no longer cause the run to error out.
+
+</Update>

@@ -130,3 +130,79 @@ Each result object contains the following fields:
 <ResponseField name="additional_phone" type="string">
   Secondary or alternative phone number of the business. Example: `0297638780`
 </ResponseField>
+
+<ResponseField name="ref" type="string">
+  Input search URL the listing was discovered from
+</ResponseField>
+
+<ResponseField name="raison_social" type="string">
+  Legal business name as registered (raison sociale)
+</ResponseField>
+
+<ResponseField name="forme_juridique" type="string">
+  French legal form code of the company (e.g. `SAS`, `SARL`, `EI`)
+</ResponseField>
+
+<ResponseField name="multi_activite" type="string">
+  Comma-separated list of all activities the business is registered for
+</ResponseField>
+
+<ResponseField name="autres_denominations" type="string">
+  Comma-separated list of alternative trade names registered for the business
+</ResponseField>
+
+<ResponseField name="nombre_etablissements" type="integer">
+  Total number of establishments registered under the same SIREN
+</ResponseField>
+
+<ResponseField name="listing_type" type="string">
+  Listing tier on Pages Jaunes. Example: `PROFESSIONNEL`
+</ResponseField>
+
+<ResponseField name="is_verified" type="boolean">
+  Whether the listing is verified on Pages Jaunes
+</ResponseField>
+
+<ResponseField name="latitude" type="float">
+  Latitude of the business location
+</ResponseField>
+
+<ResponseField name="longitude" type="float">
+  Longitude of the business location
+</ResponseField>
+
+<ResponseField name="opening_hours" type="json">
+  JSON-encoded weekly opening hours, keyed by day in French. Example: `{"Lundi": "09:00-18:00", "Mardi": "09:00-18:00"}`
+</ResponseField>
+
+<ResponseField name="images" type="string">
+  Comma-separated list of all business image URLs
+</ResponseField>
+
+<ResponseField name="external_links" type="string">
+  Comma-separated list of all external website and social URLs of the business
+</ResponseField>
+
+<ResponseField name="payment_methods" type="string">
+  Comma-separated list of accepted payment methods. Example: `Carte bancaire, Chèque, Espèces`
+</ResponseField>
+
+<ResponseField name="prestations" type="string">
+  Comma-separated list of services offered by the business
+</ResponseField>
+
+<ResponseField name="products" type="string">
+  Comma-separated list of products sold by the business
+</ResponseField>
+
+<ResponseField name="brands" type="string">
+  Comma-separated list of brands carried by the business
+</ResponseField>
+
+<ResponseField name="accepts_quote_requests" type="boolean">
+  Whether the business accepts quote requests via Pages Jaunes
+</ResponseField>
+
+<ResponseField name="reviews" type="json">
+  JSON-encoded list of the most recent customer reviews (up to 20)
+</ResponseField>

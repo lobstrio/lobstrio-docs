@@ -1,0 +1,137 @@
+---
+title: "Get Results"
+description: "Retrieve scraped reviews from Yelp Reviews Export"
+api: "GET https://api.lobstr.io/v1/results"
+---
+
+Retrieve scraped reviews from your **Yelp Reviews Export** runs.
+
+## Headers
+<ParamField header="Authorization" type="string" required>
+  Your API authentication token. Value: `Token YOUR_API_KEY`
+</ParamField>
+
+## Query Parameters
+<ParamField query="squid" type="string" required>
+  Hash of the squid to get results from
+</ParamField>
+
+<ParamField query="run" type="string">
+  Hash of a specific run (optional)
+</ParamField>
+
+<ParamField query="page" type="integer">
+  Page number (default: 1). Example: `1`
+</ParamField>
+
+## Result Fields
+
+Each result object contains the following fields:
+
+<ResponseField name="review_id" type="string">
+  Yelp review ID — unique across the platform. Example: `E2HrRt6Pf_l2lzaB_eDc5Q`
+</ResponseField>
+
+<ResponseField name="url" type="string">
+  Direct shareable URL to the review on Yelp. Example: `https://www.yelp.com/biz/olio-e-piu-new-york-7?hrid=E2HrRt6Pf_l2lzaB_eDc5Q`
+</ResponseField>
+
+<ResponseField name="rating" type="integer">
+  Star rating given by the reviewer (1–5). Example: `5`
+</ResponseField>
+
+<ResponseField name="text" type="string">
+  Full text of the review. Example: `Really great service, food, and ambiance!!`
+</ResponseField>
+
+<ResponseField name="time_modified" type="string">
+  Date and time the review was last posted or modified (UTC, ISO format). Example: `2026-04-04 10:40:18`
+</ResponseField>
+
+<ResponseField name="language" type="string">
+  Language of the review (ISO 639-1 code). Example: `en`
+</ResponseField>
+
+<ResponseField name="is_featured" type="boolean">
+  Whether the review is highlighted as featured by Yelp. Example: `false`
+</ResponseField>
+
+<ResponseField name="useful_count" type="integer">
+  Community vote count: "Useful". Example: `12`
+</ResponseField>
+
+<ResponseField name="funny_count" type="integer">
+  Community vote count: "Funny". Example: `4`
+</ResponseField>
+
+<ResponseField name="cool_count" type="integer">
+  Community vote count: "Cool". Example: `8`
+</ResponseField>
+
+<ResponseField name="photo_count" type="integer">
+  Number of photos attached to the review. Example: `2`
+</ResponseField>
+
+<ResponseField name="photos" type="string">
+  Comma-separated URLs of photos attached to the review
+</ResponseField>
+
+<ResponseField name="video_count" type="integer">
+  Number of videos attached to the review. Example: `0`
+</ResponseField>
+
+<ResponseField name="user_name" type="string">
+  Display name of the reviewer. Example: `Diana H.`
+</ResponseField>
+
+<ResponseField name="user_id" type="string">
+  Yelp user ID of the reviewer. Example: `KrnCBHS68nvCDyLOjC7TwQ`
+</ResponseField>
+
+<ResponseField name="user_location" type="string">
+  Reviewer's home location as displayed on Yelp. Example: `Manhattan, New York, NY`
+</ResponseField>
+
+<ResponseField name="user_review_count" type="integer">
+  Total number of reviews the reviewer has posted on Yelp. Example: `1`
+</ResponseField>
+
+<ResponseField name="user_friend_count" type="integer">
+  Number of friends the reviewer has on Yelp. Example: `12`
+</ResponseField>
+
+<ResponseField name="user_check_in_count" type="integer">
+  Number of check-ins the reviewer has logged on Yelp. Example: `0`
+</ResponseField>
+
+<ResponseField name="user_photo_count" type="integer">
+  Total number of photos the reviewer has uploaded across Yelp. Example: `2`
+</ResponseField>
+
+<ResponseField name="user_member_since" type="string">
+  Date the reviewer joined Yelp (ISO date). Example: `2019-09-05`
+</ResponseField>
+
+<ResponseField name="has_user_paid_through_yelp" type="boolean">
+  Whether the reviewer paid for a service through Yelp's payment integration. Example: `false`
+</ResponseField>
+
+<ResponseField name="business_url" type="string">
+  URL of the business the review is for. Example: `https://www.yelp.com/biz/olio-e-piu-new-york-7`
+</ResponseField>
+
+<ResponseField name="business_id" type="string">
+  Yelp business ID. Example: `16ZnHpuaaBt92XWeJHCC5A`
+</ResponseField>
+
+<ResponseField name="business_name" type="string">
+  Business name. Example: `Olio e Più`
+</ResponseField>
+
+<ResponseField name="business_avg_rating" type="float">
+  Average rating of the business at the time of scraping. Example: `4.5`
+</ResponseField>
+
+<ResponseField name="business_review_count" type="integer">
+  Total number of reviews on the business at the time of scraping. Example: `7375`
+</ResponseField>

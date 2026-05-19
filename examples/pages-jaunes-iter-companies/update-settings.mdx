@@ -23,12 +23,9 @@ Set these parameters in the `params` object:
 | Parameter | Type | Default | Description |
 | --- | --- | --- | --- |
 | **max_pages** | integer | unlimited | Maximum number of search result pages to scrape |
-| **functions.collect_emails_from_website** | boolean | true | Visit each company's website to collect email addresses and social media links (1 credit per company) |
-| **functions.collect_additional_details** | boolean | true | Collect SIRET, SIREN, NAF codes and other official business registration details (1 credit per company) |
-
-## Function Details
-
-When `functions.collect_additional_details` is enabled, the scraper collects additional structured data including SIRET number, SIREN number, NAF/APE code, and official company registration details from French business registries.
+| **max_unique_results_per_run** | integer | unlimited | Maximum unique results across all tasks in the run |
+| **functions.collect_contacts** | boolean | true | Visit each company's detail page to collect enriched data: opening hours, images, social links, payment methods, services, reviews and more (1 credit per company) |
+| **functions.results_details** | boolean | true | Collect official business registration details: SIRET, SIREN, NAF codes, legal form, and other registry data (1 credit per company) |
 
 ## General Settings
 
@@ -43,16 +40,12 @@ Standard squid settings that apply to all scrapers:
 | **no_line_breaks** | boolean | Remove line breaks from results |
 
 <Warning>
-  Enabling `functions.collect_emails_from_website` or `functions.collect_additional_details` increases run time due to additional HTTP requests per listing.
+  Enabling `functions.collect_contacts` or `functions.results_details` increases run time due to additional HTTP requests per listing.
 </Warning>
 
 <Tip>
   SIRET numbers are valuable for B2B verification and can be used to look up official company information in French government databases.
 </Tip>
-
-<Note>
-  **Backward compatibility:** The old function names `collect_contacts` and `results_details` are still accepted but deprecated. Migrate to `collect_emails_from_website` and `collect_additional_details` respectively.
-</Note>
 
 ## Code Examples
 
@@ -69,8 +62,8 @@ curl -X POST "https://api.lobstr.io/v1/squids/YOUR_SQUID_HASH" \
     "no_line_breaks": true,
     "params": {
       "functions": {
-        "collect_additional_details": true,
-        "collect_emails_from_website": true
+        "collect_contacts": true,
+        "results_details": true
       },
       "max_pages": 3
     }
@@ -97,8 +90,8 @@ response = requests.post(f"{BASE_URL}/squids/{squid_id}",
         "no_line_breaks": True,
         "params": {
             "functions": {
-                "collect_additional_details": True,  # Collect SIRET, SIREN, NAF codes
-                "collect_emails_from_website": True   # Collect email addresses
+                "collect_contacts": True,   # Enriched detail page data
+                "results_details": True     # Official registry data (SIRET, SIREN, NAF)
             },
             "max_pages": 3
         }
@@ -124,8 +117,8 @@ print(f"Collect emails from website: {data['params']['functions']['collect_email
   "no_line_breaks": true,
   "params": {
     "functions": {
-      "collect_additional_details": true,
-      "collect_emails_from_website": true
+      "collect_contacts": true,
+      "results_details": true
     },
     "max_pages": 3
   }
